@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>登錄</title>
+    <script src="../public/js/base.js"></script>
+</head>
+
+<body>
+<div class="main">
+	<script src="../public/js/header.js"></script>
+	
+    <div class="wrap-bg" id="mainBody">
+        <div class="wrapper">
+            <div class="reg">
+                <div class="reg-tit">
+                    <div class="fr">沒有賬號？
+                        <a class="orange" href="register.html">立即註冊</a>
+                    </div>
+                    <h3>用戶登錄</h3>
+                </div>
+                <div class="reg-info" id="_form_login" style="padding-bottom: 20px;">
+                    <ul>
+                        <li>
+                            <div class="info-left"><span class="red">* </span>用戶名：</div>
+                            <div class="info-right"><label class="fl-small-tip-icon fl-reg-account-tip-icon"></label>
+                                <input class="reg-int" id="username_login" placeholder="请输入用户名" type="text" maxlength="11" @change="checkUserName()">
+                            </div>
+                            <div class="info-txt" id="checkUserName" style="color: red;"></div>
+                        </li>
+                        <li>
+                            <div class="info-left"><span class="red">* </span>密碼：</div>
+                            <div class="info-right"><label class="fl-small-tip-icon fl-reg-pwd-tip-icon"></label>
+                                <input class="reg-int" id="passwd_login" placeholder="请输入密码" type="password" maxlength="16" @change="checkPassword11()">
+                            </div>
+                            <div class="info-txt" id="checkPassword" style="color: red;"></div>
+                        </li>
+                        <li id="verifycode_div">
+                            <div class="info-left"><span class="red">* </span>驗證碼：</div>
+                            <div class="info-right info-codes" style="position:relative;">
+                                <label class="fl-small-tip-icon fl-reg-verify-tip-icon"></label>
+                                <input name="verify" id="regVerifyCode" class="reg-int codes-int " unique="2" maxlength="4"
+                                       type="text"  placeholder="请输入验证码" @change="checkCodeInput()">
+                                <div class="reg-notice-ok hidn"></div>
+                                <div id="need_captcha" class="reg_need_captcha">
+                                    <div class="yanzhengma">
+											<span class="register_captcha_span" style="position:relative;">
+		                                       <img name="login_img" id="regVerifyImg">
+		                                       <a name="btn_refresh">
+		                                       <img :src="'data:image/png;base64,'+imgUrl" style="cursor: pointer;"
+                                                    height="41" width="110" id="regVerifyCode" @click="getImgcode()">
+		                                       </a>
+		                                   </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-txt" id="_focus" style="color: red;"></div>
+                            <div class="info-txt" id="_blur" style="display:none;"></div>
+                        </li>
+                        <li>
+                            <div class="prompt" style="color:red"></div>
+                        </li>
+                        <li>
+                            <div class="info-left">&nbsp;</div>
+                            <div class="info-right">
+                                <input id="btn-sub" @click="userLogin" class="submit" value="登錄" type="button"><br />
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script src="../public/js/footer.js"></script>
+</div>
+
+<script type="text/javascript" src="../public/js/jquery.validate.js"></script>
+<script type="text/javascript" src="../public/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+</body>
+
+</html>

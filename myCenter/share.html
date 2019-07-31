@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>分享好友</title>
+		<link rel="stylesheet" type="text/css" href="css/betrecord.css" />
+		<script type="text/javascript" src="../public/js/base.js"></script>
+		<style type="text/css">
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<script src="../public/js/header.js"></script>
+			<section id="main">
+				<div class="wrapper">
+					<div id="mainContent" class="clearfix">
+						<!--左边导航-->
+						<nav class="left">
+                        <div class="member">
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>會員中心</blockquote>
+                                <li>
+                                    <a href="/myCenter/member.html">會員中心</a>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/betrecord.html">投註記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/lotteryrecord.html">中獎記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li class="on">
+                                    <a href="/myCenter/accountDetails.html">賬號明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/userInfo.html">賬號信息</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li v-if="agencyType!=6">
+                                    <a href="/myCenter/draw.html">提款</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <div class="hr"></div>
+                                </li>
+                    
+                            </ul>
+                        </div>
+                        <div class="agency" v-if="agencyType==1" v-cloak>
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <li>
+                                    <a href="/agency/agentIntro.html">代理說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentReport.html">代理報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/lowerReport.html">下級報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/downAccount.html">下級開戶</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentMember.html">會員管理</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyBetDetail.html">投注說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyDealDetail.html">交易明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    
+                    </nav>
+						<!--右边主体内容-->
+						<div class="right">
+							<!--顶部用户信息-->
+							<div id="top">
+								<div id="show">
+									<!--账号总览-->
+									<div class="memberMsg " style="margin-bottom:0">
+										<div class="title">
+											<strong>分享好友</strong>
+										</div>
+									</div>
+									<section id="share">
+										<div class="mainList">
+											<div class="headerTit">我的推广码</div>
+											<div id="aaa" class="procode"></div>
+											<div class="bshare-custom icon-medium-plus">
+												<div class="bsPromo bsPromo2"></div>
+												<a title="分享到微信" class="bshare-weixin" href="javascript:void(0);"></a>
+												<a title="分享到QQ好友" class="bshare-qqim" href="javascript:void(0);"></a>
+												<a title="分享到QQ空间" class="bshare-qzone"></a>
+												<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+												<a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a>
+												<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+											</div>
+											<script type="text/javascript" charset="utf-8" src="js/sharehi.js"></script>
+											<script type="text/javascript" charset="utf-8" src="js/bshareC0.js"></script>
+										</div>
+									</section>
+								</div>
+							</div>
+						</div>
+					</div>
+			</section>
+			<script src="../public/js/footer.js"></script>
+			</div>
+
+			<script type="text/javascript" src="../public/js/md5.js"></script>
+			<!--<script src="js/share.js"></script>-->
+			<script type="text/javascript">
+				if(localStorage.userType==2){
+					$(".registerFree").hide();
+				}
+				var webName;
+				var promotionCode;
+				var promotionUrl;
+				$(function() {
+					var isTrue = JSON.parse(localStorage.getItem('isTrue'));
+					promotionCode = isTrue.promotionCode;
+					if(localStorage.userType==2){
+						$('#aaa').html('该用户为试玩账号')
+					}else{
+						$('#aaa').html(promotionCode)
+						
+					}
+					var config = JSON.parse(localStorage.getItem('config'));
+					promotionUrl = config.promotionUrl;
+					if(promotionUrl != "" || promotionUrl != undefined) {
+						promotionUrl = promotionUrl.split("?")[0];
+						promotionUrl = promotionUrl + "/index.html?" + promotionCode;
+					}
+					webName = config.webName;
+					bShare.addEntry({
+						url: promotionUrl,
+						title: "欢迎来到" + webName,
+						summary: ",我的推广码是:" + promotionCode + ",我的推广链接" + promotionUrl,
+						pic: "自定义分享的图片连接地址"
+					});
+				})
+			</script>
+	</body>
+
+</html>

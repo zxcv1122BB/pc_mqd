@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>加载中...</title>
+    <link rel="stylesheet" href="css/ssc.css" />
+    <script type="text/javascript" src="../public/js/base.js"></script>
+</head>
+
+<body>
+<script src="../public/js/header.js"></script>
+  <div class="game-bg">
+<section id="cqssc-container">
+    <div class="cqssc-header">
+    	<div class="countdown">
+    		<ul style="display: flex;align-items: center;">
+    			<li class="icon"><img :src="'../'+pic_url"></li>
+    			<li><h2 class="title">{{typeName}}</h2></li>
+    		</ul>
+    	</div>
+    	<div class="trendOpenBtn" style="display: flex;align-items: center;">
+    		<div style="margin: 0 15px;" @click="collectFn"><i :class="['iconfont',isCollect==1?'coll_succ':'coll_fail']">{{(isCollect==1?'&#xe666;':'&#xe7ce;')}}</i></div>
+    		<a style="margin: 0 15px;" @click="togoChart(oneTypeId)">开奖走势</a>
+    		<a style="margin: 0;" @click="togoSkip(oneTypeId)">开奖详情</a>
+    		<div class="video" onclick="videoFn('https://kj.kai861.com/view/video/11x5_video/index.html?10018?www.1680380.com')" v-if="oneTypeId == 18">
+    		    <img src="/images/video.jpg" />
+    		</div>
+    		<div class="video" onclick="videoFn('https://kj.kai861.com/view/video/11x5_video/index.html?10006?www.1680380.com')" v-if="oneTypeId == 7">
+    		    <img src="/images/video.jpg" />
+    		</div>
+    		<div class="video" onclick="videoFn('https://kj.kai861.com/view/video/11x5_video/index.html?10015?www.1680380.com')" v-if="oneTypeId == 16">
+    		    <img src="/images/video.jpg" />
+    		</div>
+    		<div class="video" onclick="videoFn('https://kj.kai861.com/view/video/11x5_video/index.html?10017?www.1680380.com')" v-if="oneTypeId == 55">
+    		    <img src="/images/video.jpg" />
+    		</div>
+    	</div>
+    </div>
+    <header style="display: flex;justify-content: space-between;align-items: center;">
+		<div style="text-align: center;">
+			<div style="font-size: 20px;color: #f00;" v-if="preventBanner">
+				第{{preventBanner}}期
+			</div>
+            <div class="time" v-if="!isNaN(preventBanner)">
+                <span v-cloak>距投注截止 还剩下:</span>
+            </div>
+            <div class="time" v-else>
+                <span v-cloak>{{preventBanner}}</span>
+            </div>
+		</div>
+		<div class="countdown">
+			<span v-cloak v-html="deadlineStr" v-if="deadlineStr" :class="[deadlineStr == '封盘' || deadlineStr == '暂停销售' ? 'red' : '']">{{deadlineStr}}</span>
+		</div>
+        <p class="banner_num" v-cloak>
+            <span v-if="previousIssue_tips" style="font-size: 1.5rem;color: red;">开奖中...</span>
+            <span v-else-if="recentlyNum.length==0" style="font-size: 1.5rem;color: red;">数据获取中...</span>
+		    <a v-if="previousIssue_tips" href="javascript:;" class="refresh" @click="refresh"><i class="iconfont" style="font-size: 15px;color: #f67620">&#xe667;</i></a>
+        </p>
+		<div class="record" style="padding-left: 0;">
+            <ul class="layui-nav" lay-filter="" v-if="history.length > 0">
+              <li class="layui-nav-item banner_num">
+                <a href="javascript:;" class="lucky-nav-box" onclick="showRecord()">第{{history[0]['issue']}}期 <span v-for="item in history[0]['recentlyNum']" class="r_bage" v-cloak>{{item}}</span></a>
+                <dl class="record-box"> 
+                  <dd v-for="val in history"><a href="javascript:;">第{{val.issue}}期<span class="r_bage" v-for="item in val.recentlyNum" v-cloak>{{item}}</span></a></dd>
+                </dl>
+              </li>
+            </ul>
+		</div>
+	</header>
+    <div class="main">
+
+        <!--玩法菜单-->
+        <nav id="nav" class="play_choice">
+            <div class="tab clearfix" v-cloak>
+                <ul>
+                    <li v-for="(item,index) in menu" :class="index==0?'active':''" @click="switchover_play(index,0)">
+                        <a href="javascript:;">{{item.oneType}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="playList clearfix" v-cloak>
+                <ul>
+                    <li v-for="(item,index) in menu" :class="index==0?'active':''" >
+                        <div style="width: 11%" class="radio_group" v-for="(items,indexs) in item.twoType" @click="switchover_play(index,indexs)" :class="indexs==0?'active':''">
+                           {{items.name3}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--玩法内容-->
+        <section class="mainArea">
+            <div class="playArea">
+                <!--玩法说明-->
+                <div class="title" v-cloak>
+                    <span>玩法说明：{{game_tips}}</span>
+                </div>
+                <!--玩法选项区-->
+                <div class="area">
+                    <div class="bets_one">
+                        <!--玩法标题-->
+                        <header class="topTitle" v-cloak><h2>{{present_title}}</h2></header>
+
+                        <!-- 第一位 -->
+                        <div class="first_area clearfix" v-if="presentAreaList[0]==1" v-cloak>
+                            <span class="leftTitle">第一位</span>
+                            <div class="numberList"  style="width: 620px;"  v-cloak>
+                                <span :class="['circle',{'sel':item.isSel}]" v-for="(item,index) in myriabit" @click="handleAddClass(item,index,0)">{{item.num}}</span>
+                            </div>
+                            <div class="btnList">
+                                <div class="draw_menu" v-cloak>
+                                    <p>{{ranNumList[0]}}
+                                        <b class="bage"></b>
+                                    </p>
+                                    <ul>
+                                        <li v-for="(item,index) in myriabit" @click="changeRandomNum(0,index+1)">{{index+1}}</li>
+                                    </ul>
+                                </div>
+                                <span class="btn" @click="randomNum(0,0,$event)">机选</span>
+                                <span class="btn" @click="randomNum(0,1,$event)">全选</span>
+                            </div>
+                        </div>
+                        <!-- 第二位 -->
+                        <div class="second_area clearfix" v-if="presentAreaList[1]==1" v-cloak>
+                            <span class="leftTitle">第二位</span>
+                            <div class="numberList"   style="width: 620px;"  v-cloak>
+                                <span :class="['circle',{'sel':item.isSel}]" v-for="(item,index) in kilobit" @click="handleAddClass(item,index,0)">{{item.num}}</span>
+                            </div>
+                            <div class="btnList">
+                                <div class="draw_menu" v-cloak>
+                                    <p>{{ranNumList[1]}}
+                                        <b class="bage"></b>
+                                    </p>
+                                    <ul>
+                                        <li v-for="(item,index) in kilobit" @click="changeRandomNum(1,index+1)">{{index+1}}</li>
+                                    </ul>
+                                </div>
+                                <span class="btn" @click="randomNum(1,0,$event)">机选</span>
+                                <span class="btn" @click="randomNum(1,1,$event)">全选</span>
+                            </div>
+                        </div>
+                        <!-- 第三位 -->
+                        <div class="third_area clearfix" v-if="presentAreaList[2]==1" v-cloak>
+                            <span class="leftTitle">第三位</span>
+                            <div class="numberList "  style="width: 620px;"   v-cloak>
+                                <span :class="['circle',{'sel':item.isSel}]" v-for="(item,index) in hundreds" @click="handleAddClass(item,index,0)">{{item.num}}</span>
+                            </div>
+                            <div class="btnList">
+                                <div class="draw_menu" v-cloak>
+                                    <p>{{ranNumList[2]}}
+                                        <b class="bage"></b>
+                                    </p>
+                                    <ul>
+                                        <li v-for="(item,index) in hundreds" @click="changeRandomNum(2,index+1)">{{index+1}}</li>
+                                    </ul>
+                                </div>
+                                <span class="btn" @click="randomNum(2,0,$event)">机选</span>
+                                <span class="btn" @click="randomNum(2,1,$event)">全选</span>
+                            </div>
+                        </div>
+                        <!-- 第四位 -->
+                        <div class="four_area clearfix" v-if="presentAreaList[3]==1" v-cloak>
+                            <span class="leftTitle">第四位</span>
+                            <div class="numberList " style="width: 620px;"  v-cloak>
+                                <span :class="['circle',{'sel':item.isSel}]" v-for="(item,index) in decade" @click="handleAddClass(item,index,0)">{{item.num}}</span>
+                            </div>
+                            <div class="btnList">
+                                <div class="draw_menu" v-cloak>
+                                    <p>{{ranNumList[3]}}
+                                        <b class="bage"></b>
+                                    </p>
+                                    <ul>
+                                        <li v-for="(item,index) in decade" @click="changeRandomNum(3,index+1)">{{index+1}}</li>
+                                    </ul>
+                                </div>
+                                <span class="btn" @click="randomNum(3,0,$event)">机选</span>
+                                <span class="btn" @click="randomNum(3,1,$event)">全选</span>
+                            </div>
+                        </div>
+                        <!-- 第五位 -->
+                        <div class="five_area clearfix" v-if="presentAreaList[4]==1" v-cloak>
+                            <span class="leftTitle">第五位</span>
+                            <div class="numberList" style="width: 620px;" v-cloak>
+                                <span :class="['circle',{'sel':item.isSel}]" v-for="(item,index) in unit" @click="handleAddClass(item,index,0)">{{item.num}}</span>
+                            </div>
+                            <div class="btnList">
+                                <div class="draw_menu" v-cloak>
+                                    <p>{{ranNumList[4]}}
+                                        <b class="bage"></b>
+                                    </p>
+                                    <ul>
+                                        <li v-for="(item,index) in unit" @click="changeRandomNum(4,index+1)">{{index+1}}</li>
+                                    </ul>
+                                </div>
+                                <span class="btn" @click="randomNum(4,0,$event)">机选</span>
+                                <span class="btn" @click="randomNum(4,1,$event)">全选</span>
+                            </div>
+                        </div>
+                        <!-- 公共 -->
+                        <div class="five_area clearfix" v-if="presentAreaList[5]==1" v-cloak>
+                            <span class="leftTitle"> {{right_title}}</span>
+                            <div class="numberList "  style="width: 620px;"  v-cloak>
+                                <span :class="['circle',{'sel':item.isSel}]" v-for="(item,index) in common" @click="handleAddClass(item,index,0)">{{item.num}}</span>
+                            </div>
+                            <div class="btnList">
+                                <div class="draw_menu" v-cloak>
+                                    <p>{{ranNumList[5]}}
+                                        <b class="bage"></b>
+                                    </p>
+                                    <ul>
+                                        <li v-for="item in specialNumList" @click="changeRandomNum(5,item)">{{item}}</li>
+                                    </ul>
+                                </div>
+                                <span class="btn" @click="randomNum(5,0,$event)">机选</span>
+                                <span v-show="multifunctionalbtn" class="btn" @click="randomNum(5,1,$event)">全选</span>
+                            </div>
+                        </div>
+                        <!--公共1-->
+                        <div class="five_area clearfix" v-if="presentAreaList[6]==1" v-cloak>
+                            <span class="leftTitle">{{right_title1}}</span>
+                            <div class="numberList"  style="width: 620px;" >
+                                <span :class="['circle',{'sel':item.isSel}]" v-for="(item,index) in common1" @click="handleAddClass(item,index,1)">{{item.num}}</span>
+                            </div>
+                            <div class="btnList">
+                                <div class="draw_menu" v-cloak>
+                                    <p>{{ranNumList[6]}}
+                                        <b class="bage"></b>
+                                    </p>
+                                    <ul>
+                                        <li v-for="(item,index) in common1" @click="changeRandomNum(6,index+1)">{{index+1}}</li>
+                                    </ul>
+                                </div>
+                                <span class="btn" @click="randomNum(6,0,$event)">机选</span>
+                                <span class="btn" @click="randomNum(6,1,$event)">全选</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 显示区域 -->
+                    <div class="bets_two ">
+                        <div class="betsMsg " v-cloak>
+                            共
+                            <span class="red " v-cloak>{{bets}}</span> 注
+                            <span class="red " v-cloak>{{parseFloat(bets*singleCoins).toFixed(2)}}</span> {{coinUnit}} 单注
+                            <input type="text " v-model="singleCoins" @keyup="handleCoins" maxlength="6" class="betSum " v-cloak>{{coinUnit}}
+                            <span class="clearTopBtn " @click="clearSelectData(0)" v-cloak>清空上方选号</span>
+                            <span class="odds"  v-cloak> 赔率:<em :title='orderOdds' class="orderOdds">{{orderOdds}}</em></span>
+                            <!-- <span id="odds">{{orderOdds}}</span> -->
+                            <!-- <input class="range" type="range" max="100" min="0" v-model="rebateNum" @input="changeRebate">
+                            <span v-cloak>返利:{{rebate}}%</span> -->
+                            <div class=" ">
+                                <span class="addBtn " @click="handleConfirm">选好了</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 投注列表 -->
+                    <div class="order_group " v-cloak>
+                        <div class="orderList ">
+                            <div class="bets_item line clearfix" v-for="(item,index) in BetsList" v-cloak>
+                                <div class="bets_type" style="width: 25%" v-cloak>
+                                    {{item.type}}
+                                </div>
+                                <div class="bets_info" v-cloak>
+                                    {{item.betsClause}}
+                                </div>
+                                <div v-cloak>
+					                <span> 共
+                                        <em class="red">{{item.betsCount}}</em>注，共
+                                        <em class="red">{{item.betsCoins}}</em>{{coinUnit}}
+                                        <!--{{item.odds}}倍-->
+                                    </span>
+                                </div>
+                                <span class="close" @click="clearSelectData(1,index)">
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAQlBMVEUAAADm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ub////4+Piqqqrv7++ZmZn09PTy8vKurq7k5OSvr6+ck+3yAAAADHRSTlMA6ZP5xldMEICt7IGlbHDtAAAAu0lEQVQoz4WT2w6DIAxAKfcptSLu/391ks4Vo1nPE+kJUGhrhGg9OAfeRnMjZaCK5QArQU5XG2ArAxuE0VrCcgHJin1RuUEv2VseOPcHtncfuk2Azxqh55855/2Nv3jbOf98aOBYWxf82mVtvAJjIp3B7mXRoWhsLYMX26nWeCyjZ3tGPF8tXixf7srFdys4RSuHK6kpD9O+xUz/PlVK0h5KohRUaQelmZRWVBpZHwMmzZMM0TQnwygj+AE2iSHIyezfBgAAAABJRU5ErkJggg==" alt="" srcset="">
+                    </span>
+                            </div>
+                            <div class="btns_item line" v-if="BetsList.length==0"></div>
+                            <!--<div class="list-footer"></div>-->
+                        </div>
+                        <div class="btnList " v-cloak>
+                            <span class="btn " @click="randomBets(1)">机选添加</span>
+                            <span class="btn " @click="clearSelectData(2,0)">清空列表</span>
+                        </div>
+                    </div>
+
+                    <div class="betsSum">
+                        <div class="betMsg" v-cloak>
+                            共
+                            <span class="red" v-cloak>{{totalBets*(continue_periods?parseInt(continue_periods):'')}}</span>注 共
+                            <span class="red" v-cloak>{{totalCoins}}</span>{{coinUnit}}&nbsp;&nbsp;&nbsp;
+                            <!--<span>追号</span>-->
+                            <!--<input type="text" maxlength="2" v-model="continue_periods" @keyup="handleChase" @blur="continue_periods?'':continue_periods=1"> 期(最大10期)&nbsp;&nbsp;&nbsp;-->
+                            <!--<span :class="['circle',{'active':after_no&&continue_periods!=1},{'gray':continue_periods==1}]" @click="after_no==0?after_no=1:after_no=0"></span> <span :class="continue_periods==1?'gray':''">中奖后停止追号</span>-->
+                        </div>
+                        <div class="btnList">
+                            <div class="submitBtn" @click="handleBets">
+                                立即投注
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="betMesTips" class="tips hide" v-cloak>
+                    <div class="tips_wrap"></div>
+                    <div class="content">
+                        <div class="tips_title">提示</div>
+                        <span class="tips_close">
+						<a href="javascript:;" @click="closeTipscloseTips($event,tipsContent.showSecond)"></a>
+					</span>
+                        <div class="tips_content" v-cloak>
+                            <div class="tips_msg">{{tipsContent.tzState}}</div>
+                            <div class="tips_second" v-if="tipsContent.showSecond">{{tenSecond}}秒后{{tipsContent.showSecond==2?"自动跳转到充值页面":"自动刷新本页"}}</div>
+                            <a class="tips_errorBtn"  v-if="tipsContent.showSecond==2" href="../myCenter/recharge.html">直接前往</a>
+                                <div class="tips_errorBtn" v-if="tipsContent.showSecond&&tipsContent.showSecond!=2"
+                                     @click="closeTips($event,tipsContent.showSecond)">返回
+                                </div>
+                            <ul class="tips_msgContent" v-if="tipsContent.tzType">
+                                <li>投注类型：{{tipsContent.tzType}}</li>
+                                <li>投注注数：{{tipsContent.tzNum}}注</li>
+                                <li>投注金额：{{tipsContent.tzMoney+coinUnit}}</li>
+                                <li>剩余金额：{{tipsContent.lastCoin+coinUnit}}
+                                    <a href="../myCenter/betrecord.html">前往查看</a>
+                                </li>
+                                <li>{{tenSecond}}秒后自动刷新本页</li>
+                            </ul>
+                            <div class="btnList" v-if="!tipsContent.showSecond">
+                                <span class="goCenter"><a href="../myCenter/betrecord.html">前往会员中心查看</a></span><span class="continue"><a href="javascript:;" @click="closeTips($event,3)">继续投注</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</section>
+<script src="../public/js/footer.js "></script>
+<script src="../public/js/bettingCountUtils.js "></script>
+<script src="js/eleven5.js"></script>
+</body>
+
+</html>

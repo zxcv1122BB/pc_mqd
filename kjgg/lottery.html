@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>開獎公告</title>
+    <script src="../public/js/base.js"></script>
+</head>
+
+<body class="fiexd">
+    <script src="../public/js/header.js"></script>
+    <div class="main" id="app">
+        <div class="lottery-container unable_select">
+            <div class="athletics">
+                <div class="athletics-container" id="athletics" v-cloak>
+                    <div data-v-57ca92a5="" class="kj-list">
+                        <ul>
+                            <li class="clearfix special" v-for="(item,index) in DigitalGameList">
+                                <div class="img" @click="togoBuy(item.bet_url)">
+                                    <img :src="'../'+item.pic_url">
+                                </div>
+                                <div class="banner-info" @click="togoBuy(item.bet_url)">
+                                    <p class="fz-b">{{item.show_name}}
+                                        <span class="fz-m">第{{item.issue}}期</span>
+                                    </p>
+                                </div>
+                                <div class="prize-number" v-if="item.luck_number">
+                                    <p v-if="item.code== 'k3'">
+                                        <span v-for="it in item.luck_number" :class="['dice','dice-'+it]"></span>
+                                    </p>
+                                    <p v-else-if="item.code == 'PCDD'">
+                                        <span v-for="it in  item.luck_number" :class="it=='+'||it=='='?'white':bj28CL[it]">{{it}}</span>
+                                    </p>
+
+                                    <p v-else-if="item.code == 'hk6'">
+                                        <span v-for="it in item.luck_number" :class="it=='='?'white':lhcCL[it-1]">{{it}}</span>
+                                    </p>
+                                    <p v-else-if="item.code == 'pk10'||item.code == 'PK10'">
+                                        <span v-for="it in item.luck_number" :class="['square','square-'+it]"></span>
+                                    </p>
+                                    <p v-else>
+                                        <span v-for="it in  item.luck_number">{{it}}</span>
+                                    </p>
+                                </div>
+                                <div class="prize-number" v-else><span class="league">暫無數據</span></div>
+                                <div class="option">
+                                    <a href="javascript:;" @click="togoSkip(item)" class="kj-detail">開獎詳情</a>|
+                                    <a @click="togoChart(item.gameID)" class="kj-detail">走勢圖</a>
+                                </div>
+                                <div class="buy">
+                                    <a href="javascript:;" @click="togoBuy(item.bet_url)" class="border-btn">購買</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../public/js/footer.js"></script>
+    </div>
+    <script src="./js/lottery.js"></script>
+</body>
+
+</html>

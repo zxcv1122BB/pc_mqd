@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>優惠活動</title>
+    <link rel="stylesheet" href="css/favorable.css"/>
+    <script src="../public/js/base.js"></script>
+</head>
+
+<body class="fiexd">
+    <script src="../public/js/header.js"></script>
+<div class="main" id="app">
+    <div class="favorable_container unable_select banner" id="fav" v-cloak>
+        <div class="wel">
+            <h3>
+                歡迎光臨
+                <span>/WELCOME</span>
+            </h3>
+        </div>
+        <div class="fav_body" v-if="imgArr.length">
+            <div class="fav_item" v-for="(item,index) in imgArr">
+                <div class="fav_head">
+                    <img :src="item.titleUrl">
+                    <p class="btn">
+                        <span>查看詳情</span><b></b>
+                    </p>
+                </div>
+                <div class="fav_detail" style="text-align: center;">
+                    <img :src="item.contentUrl">
+                </div>
+                <div class="fav_footer">
+                    <div>
+                        {{item.title}}
+                    </div>
+                    <div>
+                        {{item.startTime.slice(0, 10)}} 至 {{item.endTime.slice(0, 10)}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="no_data" v-else>
+            <p>暫無活動，敬請期待</p>
+        </div>
+    </div>
+    <script src="../public/js/footer.js"></script>
+</div>
+<script>
+    $(function () {
+        var vm = new Vue({
+            el: "#fav",
+            data: {
+                imgArr: []
+            },
+            created: function () {
+                this.getImgUrl();
+            },
+            methods: {
+                getImgUrl: function () {
+                    var _this = this;
+                    base.callCommonApi({
+                        url: "/commonAPI/activity/selectBySysActivity",
+                        success: function (data) {
+                            if (data.code==200&&data.body!==undefined) {
+                                data.body.list.map(item => {
+                                    if (item) {
+                                        _this.imgArr.push(item)
+                                    }
+                                })
+                            }
+                        },
+                        data: {
+                            pageIndex: 1,
+                            pageNum: 10,
+                            pageSize: 10
+                        },
+                        type: 'post'
+                    })
+                },
+            },
+        })
+        $("body").on("click",".btn",function(){
+            layer.open({
+                type: 1,
+                content: $(this).parent().siblings(".fav_detail"),
+                area: ['500px', '600px'],
+                resize: false,
+                shadeClose: true
+            })
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>帐号信息</title>
+	<script type="text/javascript" src="../public/js/base.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/betrecord.css" />
+</head>
+
+	<body>
+		<div>
+			<script src="../public/js/header.js"></script>
+			<section id="main">
+				<div class="wrapper">
+					<div id="mainContent" class="clearfix">
+						<nav class="left">
+                        <div class="member">
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>會員中心</blockquote>
+                                <li>
+                                    <a href="/myCenter/member.html">會員中心</a>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/betrecord.html">投註記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/lotteryrecord.html">中獎記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/accountDetails.html">賬號明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li class="on">
+                                    <a href="/myCenter/userInfo.html">賬號信息</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li v-if="agencyType!=6">
+                                    <a href="/myCenter/draw.html">提款</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <div class="hr"></div>
+                                </li>
+                    
+                            </ul>
+                        </div>
+                        <div class="agency" v-if="agencyType==1" v-cloak>
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <li>
+                                    <a href="/agency/agentIntro.html">代理說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentReport.html">代理報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/lowerReport.html">下級報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/downAccount.html">下級開戶</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentMember.html">會員管理</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyBetDetail.html">投注說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyDealDetail.html">交易明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    
+                    </nav>
+                <!--右边主体内容-->
+                <div class="right">
+                    <!--顶部用户信息-->
+                    <div id="top">
+                        <div>
+                            <!--账号总览-->
+                            <div class="memberMsg " style="margin-bottom:0">
+                                <div class="title">
+                                    <strong>账户总览</strong>
+                                </div>
+                            </div>
+                            <section id="record" class="mainList layui-form layui-form-pane">
+                                  <div class="layui-form-item">
+                                    <label class="layui-form-label">用户名</label>
+                                    <div class="layui-form-mid">{{datas.USER_NAME}}</div>
+                                  </div>
+                                  <div class="layui-form-item">
+                                    <label class="layui-form-label">真实姓名</label>
+                                    <div class="layui-form-mid" v-cloak v-if="datas.NAME">{{datas.NAME}}<button class="layui-btn layui-btn-normal layui-btn-radius" @click="openLayer" data-id="#personalArea">查看个人资料</button><span style="color: #aaa;margin-left:10px;">真实姓名如果有误，请联系客服。</span></div>
+                                    <div class="layui-form-mid red" v-else>请完善银行卡信息</div>
+                                  </div>
+                                  <div class="layui-form-item">
+                                    <label class="layui-form-label">银行卡</label>
+                                    <div class="layui-form-mid" v-cloak v-if="bankPrivacyStatus==0">(卡号：{{datas.BANK_ACCOUNT}})<span style="color: #aaa;margin-left:10px;">如需更换银行卡绑定，请联系客服。</span></div>
+                                    <div class="layui-form-mid red" v-else>暂未绑定请先添加银行卡<button class="layui-btn layui-btn-normal layui-btn-radius" @click="openLayer" data-id=".bank">立即添加</button></div>
+                                  </div>
+                                  <div class="layui-form-item">
+                                    <label class="layui-form-label">登陆密码</label>
+                                    <div class="layui-form-mid layui-word-aux">{{isTrue.passwordLevel==2?"中":(isTrue.passwordLevel==3?"高":"低")}} <button class="layui-btn layui-btn-normal layui-btn-radius" @click="openLayer" data-id=".updatepwd">修改</button></div>
+                                  </div>
+                                  <div class="layui-form-item">
+                                    <label class="layui-form-label">提款密码</label>
+                                    <div class="layui-form-mid layui-word-aux" v-cloak v-if="coinPrivacyStatus==0">已设置 <button class="layui-btn layui-btn-normal layui-btn-radius" @click="openLayer" data-id=".updateCoinpwd">立即修改</button></div>
+                                    <div class="layui-form-mid layui-word-aux" v-else>必须设置提款密码，才能进行提款！<button class="layui-btn layui-btn-normal layui-btn-radius" @click="openLayer" data-id=".addCoinpwd">立即设置</button></div>
+                                  </div>
+                                <div id="show">
+                                    <div class="mainList">
+                                        <table>
+                                            <tbody class="bindCard">
+	                                            <tbody  id="personalArea">
+	                                            	<tr v-for="(item,index) in userInfoList"  v-cloak  v-if="item.is_show == 1">
+	                                            		<td>
+	                                            			<span v-if="item.is_input == 1" v-cloak><i style="color: red;">*</i>{{item.attr_name}}</span><span v-if="item.is_input == 0" v-cloak>{{item.attr_name}} </span>：
+	                                            		</td>
+	                                            		<td>
+	                                            			<label>
+	                                            		
+														<em>
+															<input v-if="perfectMarker && item.attr_name_en == 'NAME'" disabled="true" @change="onChange_validate(item,index)" type="text" v-model="item.attr_value" :id=item.attr_name_en :placeholder=item.intro_info  />
+															<input v-else @change="onChange_validate(item,index)" type="text" v-model="item.attr_value" :id=item.attr_name_en :placeholder=item.intro_info  />
+														</em>
+	                                            		</label>
+														<div class="tips" v-if="item.msgTipsFlag" v-cloak>{{item.msgTipsMsg}}</div>
+	                                            		</td>
+	                                            	</tr>
+	                                            	<tr><td></td> <td><input type="button" value="确认" @click="submit_validate"><span><a class="cancel">取消</a></span></td> <td></td></tr>
+	                                            </tbody>
+	                                            <tbody class="bank">
+		                                            <tr>
+		                                                <td>完善銀行信息：</td>
+		                                                <td>
+                                                           <select id="bankName" lay-ignore v-model="bankName" style="display: inline-block;border: ;background: none;border: 1px solid #aaa;height: 33px;">
+                                                               <option value="">請選擇銀行名稱</option>
+                                                               <option v-for="item in bankList" :value="item">{{item}}</option>
+                                                           </select>
+		                                                </td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td>
+		                                                    <input type="text" placeholder="請輸入真實姓名" id="firstName"
+		                                                           v-model="firstName">
+		                                                </td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="text" placeholder="請輸入銀行卡號" id="bankAccount"
+		                                                           v-model="bankAccount"></td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="text" placeholder="請輸入開戶分行" id="bankDot"
+		                                                           v-model="bankDot">
+		                                                </td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="button" value="確認"
+		                                                           @click="addBank"><span><a>取消</a></span>
+		                                                </td>
+		                                                <td></td>
+		                                            </tr>
+	                                            </tbody>
+                                            </tbody>
+                                            <tbody class="pwd">
+	                                            <tbody class="updatepwd">
+		                                            <tr>
+		                                                <td>修改登录密码：</td>
+		                                                <td>请输入6-16个英文、数字或特殊字符</td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="password" placeholder="请输入原登录密码" id="oldPwd"
+		                                                           v-model="pwd"
+		                                                           @blur="checkOldPwd()"></td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="password" placeholder="请输入新登录密码" id="newPwd"
+		                                                           v-model="newPwd"></td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="password" placeholder="请再次输入" id="newPwdAgain"
+		                                                           v-model="newPwdAgain"></td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="button" value="确认"
+		                                                           @click="updatePwd"><span><a>取消</a></span></td>
+		                                                <td></td>
+		                                            </tr>
+	                                            </tbody>
+                                            </tbody>
+                                            <tbody class="coinpwd">
+	                                            <tbody class="addCoinpwd">
+		                                            <tr>
+		                                                <td>设置提款密码：</td>
+		                                                <td>提款密码为6位数字</td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="password" placeholder="请输入新提款密码" id="addCoinPwd" v-model="addCoinPwd"></td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="password" placeholder="请再次输入" id="addCoinPwdAgain" v-model="addCoinPwdAgain"></td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="button" value="确认" @click="addCoinPword()"><span><a>取消</a></span>
+		                                                </td>
+		                                                <td></td>
+		                                            </tr>
+		                                        </tbody>
+		                                        <tbody class="updateCoinpwd">
+		                                            <tr>
+		                                                <td>修改提款密码：</td>
+		                                                <td>提款密码为6位数字</td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="password" placeholder="请输入原提款密码" id="coinPwd"
+		                                                           v-model="coinPwd" @blur="checkOldCoinPwd()"></td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="password" placeholder="请输入新提款密码" id="newCoinPwd"
+		                                                           v-model="newCoinPwd"></td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="password" placeholder="请再次输入" id="newCoinPwdAgain"
+		                                                           v-model="newCoinPwdAgain"></td>
+		                                                <td></td>
+		                                            </tr>
+		                                            <tr>
+		                                                <td></td>
+		                                                <td><input type="button" value="确认"
+		                                                           @click="updateCoinPwd"><span><a>取消</a></span></td>
+		                                                <td></td>
+		                                            </tr>
+	                                            </tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../public/js/footer.js"></script>
+</div>
+		<script src="js/userInfo.js"></script>
+	</body>
+
+</html>

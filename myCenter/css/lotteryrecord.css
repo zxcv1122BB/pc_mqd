@@ -1,0 +1,413 @@
+#mainContent>.left {
+  width: 200px;
+  margin-right: 10px;
+  float: left;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+#mainContent>.left ul {
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid #ffecdc;
+  min-height: 0px;
+  padding: 5px;
+}
+
+#mainContent>.left ul li {
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+}
+
+#mainContent>.left ul li a {
+  font-size: 16px;
+  color: #555;
+}
+
+#mainContent>.left ul li h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.iconfont {
+  font-style: normal;
+  font-family: iconfont;
+  font-size: inherit;
+  color: inherit;
+}
+
+#mainContent>.left ul li .iconfont {
+  position: absolute;
+  left: 25px;
+  margin: 0;
+  font-size: 18px;
+}
+
+#mainContent>.left ul li a:hover {
+  /* text-decoration: #eb6100; */
+  text-decoration: underline;
+  color: red;
+  text-decoration-color: red;
+}
+
+#mainContent>.left ul li.on a {
+  color: red;
+}
+
+#mainContent>.left .agency ul {
+  border-top: none;
+}
+
+#mainContent>.left .member ul {
+  border-bottom: none;
+}
+
+body {
+  background-color: #F6F6F6;
+}
+
+/*主要内容*/
+
+.nav-link:hover .select-lottery {
+  display: block;
+  box-shadow: 0 1px 1px #888888;
+}
+
+.head-nav .nav-link.active h2 em {
+  display: inline-block;
+}
+
+/*主要内容*/
+
+#main {
+  margin: 15px auto;
+}
+
+#main .wrapper {
+  width: 1090px;
+  margin: auto;
+}
+
+#main .breadcrumb {
+  margin: 10px 0;
+}
+
+#main .right {
+  float: left;
+  display: inline-block;
+  width: 880px;
+  margin-right: 0;
+  color: #333;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+.welcome {
+  line-height: 40px;
+  padding-left: 4px;
+}
+
+/*按钮*/
+
+.summary .btn>a {
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  line-height: 18px;
+}
+
+/*充值按鈕*/
+
+.summary .btn.recharge>a {
+  background: #FC9C1F;
+  color: #fff;
+  padding: 2px;
+  margin-left: 4px;
+}
+
+/*提現按鈕*/
+
+.summary .btn.withdrawal>a {
+  background: #FFEBCD;
+  color: #eb6100;
+  padding: 2px;
+  margin-left: 4px;
+}
+
+
+
+.memberMsg {
+  margin-bottom: 10px;
+  border: 1px solid #ececec;
+}
+
+.memberMsg .title {
+  text-align: left;
+  /* background: url(../images/my_lottery_title.gif) repeat-x; */
+  /*border-bottom: 1px solid #fff;*/
+  height: 40px;
+  position: relative;
+  z-index: 4;
+  line-height: 40px;
+  /* padding-left: 10px; */
+  background-color: #f1f1f1;
+}
+
+.memberMsg .content ul {
+  padding: 15px 0 15px 25px;
+}
+
+.memberMsg .content li {
+  float: left;
+  color: #333;
+  width: 260px;
+  border-right: 1px solid #dadada;
+  border-left: 1px solid #fff;
+  text-align: center;
+}
+
+.memberMsg .content li.profit_loss {
+  border-right: 0;
+}
+
+.memberMsg .content li.xz_Coin {
+  border-left: 0;
+}
+
+/*中奖记录*/
+
+.lotteryRecord {}
+
+.lotteryRecord>.title {
+  position: relative;
+  /* border: 1px solid #ececec; */
+  border-bottom: 0;
+  border-top: 0;
+  height: 40px;
+  line-height: 40px;
+  /* padding-left: 15px; */
+  /* background: url(../images/my_lottery_title.gif) repeat-x; */
+  background-color: #f1f1f1;
+}
+
+.title strong {
+  position: absolute;
+  top: -2px;
+  left: 15px;
+}
+
+.lotteryRecord .clear {
+  line-height: 1px;
+  font-size: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/*查询条件*/
+
+.filter {
+  background: none repeat scroll 0 0 #fafafa;
+  height: 35px;
+  padding: 10px;
+  border: 1px solid #cdcdcd;
+  border-bottom: 0;
+  border-top: 0;
+}
+
+.filter>ul>li {
+  float: left;
+  margin: 0 10px;
+  position: relative;
+}
+
+.type {
+  display: inline-block;
+  line-height: 30px;
+  height: 30px;
+  width: 120px;
+  border: 1px solid #c2c2c2;
+  padding: 0 5px 0 10px;
+  /*box-shadow: 1px 1px 1px #ddd;*/
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.type>b {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background: url(../images/triangle.png) no-repeat;
+  position: absolute;
+  right: 3px;
+  top: 0;
+  z-index: 1;
+}
+
+.typeContent {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  max-height: 150px;
+  background: #fff;
+  overflow-y: scroll;
+  border-bottom: 1px solid #c2c2c2;
+  z-index: 999;
+}
+
+.typeContent li {
+  width: 135px;
+  text-align: center;
+  border: 1px solid #c2c2c2;
+  border-top: 0;
+  border-bottom: 0;
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.typeContent li:hover {
+  color: #fff;
+  background: #FC9C1F;
+}
+
+.col {
+  height: 24px;
+  line-height: 24px;
+}
+
+.col label {
+  position: relative;
+}
+
+.col label>b {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -2px;
+  left: 6px;
+  background: url(../images/dateTime.png) no-repeat;
+}
+
+.col input {
+  border: 1px solid #ddd;
+  font-size: 12px;
+  width: 115px;
+  padding-right: 5px;
+  padding-left: 30px;
+  height: 23px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #ddd;
+  margin-bottom: 2px;
+}
+
+.col .btn {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  border: 1px solid #ddd;
+  height: 24px;
+  line-height: 24px;
+  background: #fc951a;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*表格内容*/
+
+.mainList {
+  border: 1px solid #cdcdcd;
+}
+
+#tz_table {
+  border: 1px solid #ddd;
+  border-top: 0;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+#tz_table .title {
+  background-color: #e1e1e1;
+  text-align: center;
+  height: 30px;
+}
+
+#tz_table .title td {
+  border-left: 1px solid #fff;
+}
+
+#betResultOrder {
+  display: none;
+}
+
+#betResultOrder tr {
+  text-align: center;
+  padding: 5px 0;
+  border-left: 1px #FFF solid;
+}
+
+#betResultOrder a:link,
+#betResultOrder a:hover,
+#betResultOrder a:visited {
+  color: #005aa0;
+  text-decoration: none;
+}
+
+#showBetRecord td #orderId {
+  color: #29abe2;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.concealDivOrders {
+  min-height: 300px;
+  height: auto !important;
+  height: 300px;
+}
+
+.concealDivOrders td span {
+  display: inline-block;
+}
+
+.concealDivOrders td:nth-of-type(odd) {
+  padding-right: 5px;
+  background-color: #E3E3E3;
+  text-align: right;
+  width: 20%
+}
+
+.concealDivOrders td:nth-of-type(even) {
+  padding-left: 5px;
+  text-align: left;
+  width: 35%
+}
+
+#odds {
+  color: #ba142b;
+}
+
+.list:nth-of-type(1) .fenge {
+  display: none;
+}
+
+#ticDetails {
+  height: 480px;
+}
+
+#ticketDetailsStr {
+  margin-top: 5%;
+  height: 50px;
+}
+
+#ticketDetailsStr td {
+  background: #e23a3a;
+  color: white;
+  border-right: 1px solid #E3E3E3;
+}

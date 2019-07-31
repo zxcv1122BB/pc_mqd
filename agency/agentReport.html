@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>代理报表</title>
+    <script src="../public/js/base.js"></script>
+</head>
+<body>
+	<script src="../public/js/header.js"></script>
+<div id="agentReport" class="proxy">
+    <section id="main">
+        <div id="mainBody" class="wrapper">
+            <div id="mainContent" class="clearfix">
+                <nav class="left">
+                        <div class="member">
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>會員中心</blockquote>
+                                <li>
+                                    <a href="/myCenter/member.html">會員中心</a>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/betrecord.html">投註記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/lotteryrecord.html">中獎記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/accountDetails.html">賬號明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/userInfo.html">賬號信息</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li v-if="agencyType!=6">
+                                    <a href="/myCenter/draw.html">提款</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <div class="hr"></div>
+                                </li>
+                    
+                            </ul>
+                        </div>
+                        <div class="agency" v-if="agencyType==1" v-cloak>
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <li>
+                                    <a href="/agency/agentIntro.html">代理說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li class="on">
+                                    <a href="/agency/agentReport.html">代理報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/lowerReport.html">下級報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/downAccount.html">下級開戶</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentMember.html">會員管理</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyBetDetail.html">投注說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyDealDetail.html">交易明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    
+                    </nav>
+                <div class="right">
+                    <div class="title">代理报表</div>
+                    <div id="proxy_indexPage" class="proxy_main">
+                        <div class="edit">
+                            <div id="timeType" class="newTab">
+                                <a href="javascript:;" class="curr" @click="changeType(currSearchType=1)">今天</a>
+                                <a href="javascript:;" @click="changeType(currSearchType=2)">昨天</a>
+                                <a href="javascript:;" @click="changeType(currSearchType='')">近七天</a>
+                                <a href="javascript:;" @click="changeType(currSearchType=3)">本月</a>
+                                <a href="javascript:;" @click="changeType(currSearchType=4)">上月</a>
+                            </div>
+                            <div class="search">
+                                <input type="text" placeholder="下级报表查询" v-model="nextAgentName" />
+                                <a class="submitBtn ClickShade" @click="getdatas">搜索</a>
+                            </div>
+                            <div class="pl_data">
+                                <ul>
+                                    <li>
+                                        <em v-cloak> {{Reportdatas.betAmount}} {{coinUnit}}</em>
+                                        <span>投注金额</span>
+                                    </li>
+                                    <li>
+                                        <em v-cloak> {{Reportdatas.bonusAmount}} {{coinUnit}}</em>
+                                        <span>中奖金额</span>
+                                    </li>
+                                    <li>
+                                        <em v-cloak>{{Reportdatas.betRebate }} {{coinUnit}}</em>
+                                        <span>投注返利</span>
+                                    </li>
+                                    <li>
+                                        <em v-cloak> {{Reportdatas.activeAmount}} {{coinUnit}}</em>
+                                        <span>活动礼金</span>
+                                    </li>
+                                    <li>
+                                        <em v-cloak> {{Reportdatas.teamAgentRebate}} {{coinUnit}}</em>
+                                        <span>团队返点</span>
+                                    </li>
+                                    <li>
+                                        <em v-cloak> {{Reportdatas.teamProfit}} {{coinUnit}}</em>
+                                        <span>团队盈利</span>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <em v-cloak>{{Reportdatas.betCount}} 人</em>
+                                        <span>投注人数</span>
+                                    </li>
+                                    <li>
+                                        <em v-cloak>{{Reportdatas.firstCashinMoneyCount}} 人</em>
+                                        <span>首充人数</span>
+                                    </li>
+                                    <li>
+                                        <em v-cloak>{{Reportdatas.registerUserCount}} 人</em>
+                                        <span>注册人数</span>
+                                    </li>
+                                    <li>
+                                        <em v-cloak>{{Reportdatas.downAgentCount}} 人</em>
+                                        <span>下级人数</span>
+                                    </li>
+                                    <li>
+                                        <em v-cloak>{{Reportdatas.teamBalance}} {{coinUnit}}</em>
+                                        <span>团队余额</span>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <em v-cloak> {{Reportdatas.cashinAmount}} {{coinUnit}}</em>
+                                        <span>充值金额</span>
+                                    </li>
+                                    <li>
+                                        <em v-cloak> {{Reportdatas.cashoutAmount}} {{coinUnit}}</em>
+                                        <span>提现余额</span>
+                                    </li>
+                                    <li>
+                                        <em v-cloak>{{Reportdatas.currentAgentRebate}} {{coinUnit}}</em>
+                                        <span>代理返点</span>
+                                    </li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <div class="pl_tips">
+                                <p>
+                                    <i></i>
+                                    温馨提示： 代理报表非即时统计，可能有5-10分钟的延迟，请稍等片刻。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</div>
+<script src="../public/js/footer.js"></script>
+<script type="text/javascript" src="js/agentReport.js"></script>
+</body>
+</html>

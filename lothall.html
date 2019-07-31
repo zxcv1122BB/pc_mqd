@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>购彩大厅</title>
+    <script type="text/javascript" src="public/js/base.js"></script>
+</head>
+
+<body class="fiexd">
+<script src="public/js/header.js"></script>
+<div class="game-bg main">
+<div id="lothall">
+    <div class="mainArea">
+        <div class="lcbox">
+            <div class="lctit">
+                <div class="jingcai" id="jc_lottery_area">
+                    <h2>高频</h2>
+                </div>
+            </div>
+            <div class="lcmain" style="min-height: 100px;">
+                <ul class="lot_ul clearfix">
+                    <li v-for="item in high">
+                        <div class="btnbox_top clearfix" >
+                            <a :href="item.bet_url" class="item-pic" :style="item.pic_url">
+                                <!--<img :src="item.pic_url" />-->
+                            </a>
+                            <div class="info">
+                                <h3>
+                                    <a :href="item.bet_url" v-cloak>{{item.show_name}}</a>
+                                </h3>
+                                <span>
+                                    第<font color="red" v-cloak> {{item.new_issue}} </font>期
+                                </span>
+                                <div class="gct_time_now_l" v-if="item.msg">
+                                    <span class="leaveh-2">暂停销售</span>
+                                </div>
+                                <div class="gct_time_now_l" v-else-if="item.saleStatus=='ON_SALE'">
+                                    <span class="leaveh-2">距离投注截止</span>
+                                </div>
+                                <div class="gct_time_now_l"  v-else>
+                                    <span class="leaveh-2">距离下一期开售</span>
+                                </div>
+                                <br/>
+                                <div class="gct_time">
+                                    <div v-if="item.msg">
+                                    </div>
+                                    <div v-else-if="item.saleStatus=='ON_SALE'">
+                                        <span class="leaveh-1" v-html="item.deadlineStr">{{item.deadlineStr}}</span>
+                                    </div>
+                                    <div  v-else>
+                                        <span class="leaveh-1" v-html="item.deadlineStr">{{item.deadlineStr}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lot-fore" >
+                            <span class="fl" >
+                                <!--&nbsp;&nbsp;  近 期 开 奖<br>-->
+                                 第 <span style="color:red">{{item.issue}}</span> 期
+                            </span>
+                            <div class="show-gd1">
+                                <ul class="big_ball" v-if="item.code=='PCDD'">
+                                    <!--<span>正在开奖...</span>-->
+                                    <li  v-for="it in item.luck_number" :class="it=='='||it=='+'?'white':bj28CL[it]">{{it}}</li>
+                                </ul>
+                                <ul class="big_ball" v-else-if="item.gameID==37">
+                                    <!--<span>正在开奖...</span>-->
+                                    <li  v-for="it in item.luck_number" :class="it=='='||it=='+'?'white':lhcCL[it]">{{it}}</li>
+                                </ul>
+                                <ul class="big_ball" v-else-if="item.gameID==8||item.gameID==15||item.gameID==34">
+                                    <!--<span>正在开奖...</span>-->
+                                    <li v-for="it in item.luck_number" :class="['square','square-'+it]"  v-cloak></li>
+                                </ul>
+                                <ul class="big_ball" v-else>
+                                    <!--<span>正在开奖...</span>-->
+                                    <li v-for="it in item.luck_number" >{{it}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="btnbox">
+                            <a href="javascript:;" @click="togoChart(item.gameID)">走势图</a>
+                            <a href="javascript:;" @click="togoSkip(item)">开奖详情</a>
+                            <a href="javascript:;" @click="togoBuy(item.bet_url)"  class="buybtn">立即投注</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="lcbox">
+            <div class="lctit">
+                <div class="jingcai" >
+                    <h2>低频</h2>
+                </div>
+            </div>
+            <div class="lcmain" style="min-height: 100px;">
+                <ul class="lot_ul clearfix">
+                    <li v-for="item in low">
+                        <div class="btnbox_top clearfix" >
+                            <a :href="item.bet_url" class="item-pic" :style="item.pic_url">
+                                <!--<img :src="item.pic_url" />-->
+                            </a>
+                            <div class="info">
+                                <h3>
+                                    <a :href="item.bet_url">{{item.show_name}}</a>
+                                </h3>
+                                <span>
+                                    第<font color="red"> {{item.new_issue}} </font>期
+                                </span>
+                                <div class="gct_time_now_l" v-if="item.msg">
+                                    <span class="leaveh-2">暂停销售</span>
+                                </div>
+                                <div class="gct_time_now_l" v-else-if="item.saleStatus=='ON_SALE'">
+                                    <span class="leaveh-2">距离投注截止</span>
+                                </div>
+                                <div class="gct_time_now_l"  v-else>
+                                    <span class="leaveh-2">距离下一期开售</span>
+                                </div>
+                                <br/>
+                                <div class="gct_time">
+                                    <div v-if="item.msg">
+                                    </div>
+                                    <div v-else-if="item.saleStatus=='ON_SALE'">
+                                        <span class="leaveh-1" v-html="item.deadlineStr">{{item.deadlineStr}}</span>
+                                    </div>
+                                    <div  v-else>
+                                        <span class="leaveh-1" v-html="item.deadlineStr">{{item.deadlineStr}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lot-fore" >
+                            <span class="fl" >
+                                <!--&nbsp;&nbsp; 近 期 开 奖<br>-->
+                                第 <span style="color:red">{{item.issue}}</span> 期
+                            </span>
+                            <div class="show-gd1">
+                                <ul class="big_ball" v-if="item.gameID==31">
+                                    <li  v-for="it in item.luck_number" :class="it=='='||it=='+'?'white':lhcCL[it]">{{it}}</li>
+                                </ul>
+                                <ul class="big_ball" v-else>
+                                    <li v-for="it in item.luck_number" >{{it}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="btnbox">
+                            <a href="javascript:;" @click="togoChart(item.gameID)">走势图</a>
+                            <a href="javascript:;" @click="togoSkip(item)">开奖详情</a>
+                            <a href="javascript:;" @click="togoBuy(item.bet_url)" class="buybtn">立即投注</a>
+                        </div>
+                    </li>
+                </ul>
+                <div v-if="low.length == 0" style="text-align:center;">
+                    暂无低频彩种
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="public/js/footer.js"></script>
+<script>
+var app = new Vue({
+    el: '#lothall',
+    data: {
+        high: [], //高频
+        low: [], //低频
+        deadlineStr: [], //倒计时
+        oldId: [], // 请求的id
+        IdList: [], // 所有的ID
+        bj28CL: ['gray', 'green', 'blue', 'red', 'green', 'blue', 'red', 'green', 'blue', 'red', 'green', 'blue', 'red', 'gray', 'gray', 'red', 'gray', 'blue', 'red', 'green', 'blue', 'red', 'green', 'blue', 'red', 'green', 'blue', 'gray'],
+        lhcCL: ['red', 'red', 'blue', 'blue', 'green', //1
+        'green', 'red', 'red', 'blue', 'blue', //2
+        'green', 'red', 'red', 'blue', 'blue', //3
+        'green', 'green', 'red', 'red', 'blue', //4
+        'green', 'green', 'red', 'red', 'blue', //5
+        'blue', 'green', 'green', 'red', 'red', //6
+        'blue', 'green', 'green', 'red', 'red', //7
+        'blue', 'blue', 'green', 'green', 'red', //8
+        'blue', 'blue', 'green', 'green', 'red', //9
+        'red', 'blue', 'blue', 'green' //10
+        ]
+
+    },
+    inject: ['reload'],
+    created: function created() {
+        this.getDigitalInfo();
+    },
+    mounted: function mounted() {
+        this.initDom();
+    },
+    methods: {
+
+        initDom: function initDom() {
+            $('.nav ul li:nth-child(2) a').css('background-color', '#d42b2b');
+        },
+
+        sortNum: function sortNum(property) {
+            return function (a, b) {
+                var value1 = a[property];
+                var value2 = b[property];
+                return value1 - value2;
+            };
+        },
+
+        isInArray: function isInArray(arr, value) {
+            for (var i = 0; i < arr.length; i++) {
+                if (value === arr[i]) {
+                    return true;
+                }
+            }
+            return false;
+        },
+
+        // 获取毫秒数
+        getMilliseconds: function getMilliseconds(str) {
+            str=""+str+"";
+            str = str.replace(new RegExp("-", "gm"), "/");
+            return new Date(str).getTime(); //得到毫秒数
+        },
+        //补0
+        getzf: function getzf(num) {
+            if (parseInt(num) < 10) {
+                num = '0' + num;
+            }
+            return num;
+        },
+        //时间倒计时
+        countdown: function countdown(lastTime, startTime, index, id) {
+            var _this = this,
+                deadlineT = lastTime - startTime,
+                deadline_hour = _this.getzf(Math.floor(deadlineT / 1000 / 60 / 60)),
+                deadline_minute = _this.getzf(Math.floor(deadlineT / 1000 / 60 % 60)),
+                deadline_second = _this.getzf(Math.floor(deadlineT / 1000 % 60));
+            if (deadlineT >= 0) {
+				_this.deadlineStr = '<span class="timer">'+deadline_hour+'</span><span class="time-tip">:</span><span class="timer">'+deadline_minute+'</span><span class="time-tip">:</span><span class="timer">'+deadline_second+'</span>';
+                _this.dataList[index].deadlineStr = _this.deadlineStr;
+            } else {
+                // _this.deadlineStr = '正在请求数据...';
+                _this.deadlineStr = '开奖中...';
+                _this.dataList[index].deadlineStr = _this.deadlineStr;
+                clearInterval(_this.dataList[index].deadlineTiming);
+                _this.dataList[index].deadlineTiming = '';
+                var ids = id;
+                setTimeout(function() {
+                    _this.getDigitalInfo(ids);
+                }, 10000);
+            }
+        },
+        // 获取历史开奖数据
+        getHistoryBannerInfo: function (id) {
+            var _this = this,
+                obj = {
+                    type: "post",
+                    url: '/commonAPI/hisOpenData',
+                    data: {
+                        one_type_id: id,
+                        count: 1
+                    },
+                    success: function (data) {
+                        if (data.code == 200 && data.body && data.body.length != 0) {
+                            if (data.body[0].luck_number) {
+                                if (data.body[0].code == 'PCDD') {
+                                    data.body[0].luck_number = data.body[0].luck_number.replace(/,/g, ',+,').split(',');
+                                    var sum = parseInt(data.body[0].luck_number[0]) + parseInt(data.body[0].luck_number[2]) + parseInt(data.body[0].luck_number[4]);
+                                    data.body[0].luck_number.push('=');
+                                    data.body[0].luck_number.push(sum);
+                                } else {
+                                    data.body[0].luck_number = data.body[0].luck_number.replace('+', ',=,').split(',');
+                                }
+                            }
+                            var indexA = _this.IdList.indexOf(id);
+                            _this.dataList[indexA].luck_number = data.body[0].luck_number;
+                        }
+                    }
+                };
+            base.callCommonApi(obj);
+        },
+
+        // 获取彩种信息
+        getDigitalInfo: function getDigitalInfo(id) {
+            $('#loading_wait', parent.document).show();
+            var _this = this,
+                obj2 = {},
+                obj = {
+                type: "post",
+                url: '/commonAPI/getDigitalInfo',
+                data: {
+                    one_type_id: id
+                },
+                success: function success(data) {
+                    if (data.code == 200 && data.body.length != 0) {
+                        $('#loading_wait', parent.document).hide();
+                        if (data.body.length == 1) {
+                            if (data.body[0].luck_number) {
+                                if (data.body[0].code == 'PCDD') {
+                                    data.body[0].luck_number = data.body[0].luck_number.replace(/,/g, ',+,').split(',');
+                                    var sum = parseInt(data.body[0].luck_number[0]) + parseInt(data.body[0].luck_number[2]) + parseInt(data.body[0].luck_number[4]);
+                                    data.body[0].luck_number.push('=');
+                                    data.body[0].luck_number.push(sum);
+                                } else {
+
+                                    data.body[0].luck_number = data.body[0].luck_number.replace('+', ',=,').split(',');
+                                }
+                            }
+
+                            var indexA = _this.IdList.indexOf(id);
+                            var indexB = _this.low.map(function (e) {
+                                return e.gameID;
+                            }).indexOf(id);
+                            var indexC = _this.high.map(function (e) {
+                                return e.gameID;
+                            }).indexOf(id);
+                            if (_this.isInArray(_this.IdList, id)) {
+                                Vue.set(_this.dataList, indexA, data.body[0]);
+                            }
+                            if(_this.dataList[indexA].deadline){
+                                _this.getHistoryBannerInfo(id);
+                                _this.dataList[indexA].lastTime = _this.getMilliseconds(_this.dataList[indexA].deadline);
+                                _this.dataList[indexA].startTime = _this.getMilliseconds(_this.dataList[indexA].response_date);
+                                _this.dataList[indexA].gameID = _this.dataList[indexA].gameID;
+                                _this.countdown(_this.dataList[indexA].lastTime, _this.dataList[indexA].startTime, indexA, _this.dataList[indexA].gameID);
+                                _this.dataList[indexA].deadlineTiming = setInterval(function () {
+                                    _this.dataList[indexA].startTime += 1000;
+                                    _this.countdown(_this.dataList[indexA].lastTime, _this.dataList[indexA].startTime, indexA, _this.dataList[indexA].gameID);
+                                }, 1000);
+                            }
+                            
+                            _this.dataList[indexA].pic_url = 'background-image: url(' + _this.dataList[indexA].pic_url + ')';
+                           
+                            if (indexB > 0) {
+                                Vue.set(_this.low, indexB, _this.dataList[indexA]);
+                            } else {
+                                Vue.set(_this.high, indexC, _this.dataList[indexA]);
+                            }
+                        } else {
+                            data.body = data.body.sort(_this.sortNum('sort'));
+                            _this.dataList = data.body;
+                            _this.dataList.map(function (item, index) {
+                                if (item.luck_number) {
+                                    if (item.code == 'PCDD') {
+                                        item.luck_number = item.luck_number.replace(/,/g, ',+,').split(',');
+                                        var sum = parseInt(item.luck_number[0]) + parseInt(item.luck_number[2]) + parseInt(item.luck_number[4]);
+                                        item.luck_number.push("=");
+                                        item.luck_number.push(sum);
+                                    } else {
+                                        item.luck_number = item.luck_number.replace('+', ',=,').split(',');
+                                    }
+                                }
+                                _this.IdList.push(item.gameID);
+                                if (item.deadline&&item.gameID!="99") {
+                                    item.lastTime = _this.getMilliseconds(item.deadline); //结束时间
+                                    item.startTime = _this.getMilliseconds(item.response_date); //开始时间
+                                    _this.countdown(item.lastTime, item.startTime, index, item.gameID);
+                                    if (item.deadlineTiming) {
+                                        window.clearInterval(item.deadlineTiming);
+                                        item.deadlineTiming = "";
+                                    }
+                                    item.deadlineTiming = setInterval(function () {
+                                        item.startTime += 1000;
+                                        _this.countdown(item.lastTime, item.startTime, index, item.gameID);
+                                    }, 1000);
+                                }
+                                obj2[item.gameID] = item.pic_url;
+                                item.pic_url = 'background-image: url(' + item.pic_url + ')';
+                                localStorage.img_list = JSON.stringify(obj2);
+                            });
+                            _this.dataList.map(function (item) {
+                                if (item.game_type == 1) {
+                                    _this.low.push(item);
+                                } else if (item.game_type == 2 || item.game_type == 3) {
+                                    _this.high.push(item);
+                                }
+                            });
+                        }
+                    }
+                    // setTimeout(function () {
+                    //     parent.onComplete();
+                    // },50)
+                }
+            };
+            base.callCommonApi(obj);
+        },
+
+        //走势图跳转
+        togoChart: function togoChart(id) {
+            //(id);
+            // if ( id == 10 || id == 26 || id == 27 || id == 28 || id == 29 || id == 30 || id == 32 || id == 33 || id == 34 || id == 35 || id == 36 ) {
+            //     window.parent.layui.use('layer', function () {
+            //         var layer = window.parent.layui.layer;
+            //         layer.msg('暂无走势图，敬请期待!');
+            //     });
+            // } else {
+                localStorage.chartId = id;
+                window.location.href = "ng/trend.html";
+            // }
+        },
+
+        //开奖公告
+        togoSkip: function togoSkip(item) {
+            // localStorage.lottery_img = item.pic_url;	//开奖页面用到图片url
+            // localStorage.lottery_url = item.bet_url;	//开奖页面用到投注页面url
+            localStorage.lottery_id = item.gameID; //一级玩法id
+            localStorage.lottery_name = item.gameName; //一级玩法name
+            window.location.href = 'kjgg/lotdetail.html#' + item.gameID;
+        },
+
+        //去购彩
+        togoBuy:function(url){
+            if(localStorage.userName== undefined){
+                window.location.href = 'login/login.html';							
+            }else{
+                window.location.href = url;
+            }
+        },
+    },
+    watch: {}
+});
+</script>
+
+</body>
+
+</html>

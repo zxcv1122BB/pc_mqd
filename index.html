@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="/public/css/swiper-4.1.0.min.css" />
+		<script src="public/js/base.js"></script>
+		<link rel="stylesheet" type="text/css" href="/public/css/index.css" />
+		<title>SSG 娱乐</title>
+	</head>
+	<body class="fiexd">
+		<script src="public/js/header.js"></script>
+
+		<div id="app">
+			<div class="swiper_box">
+				<div class="swiper-main">
+					<div>
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide" v-for="item in imgs">
+									<a :href="item.destinationUrl">
+										<img :src="item.picture_url" width="100%" height="600" />
+									</a>
+								</div>
+							</div>
+							<!-- 如果需要分页器 -->
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wrapper ssg_inner" id="danmu" style="position: relative;">
+				<div class="index_wrap">
+					<div class="banner-home">
+						<!--<div class="ssg_top">-->
+						<!--    <div class="ssg_notice">-->
+						<!--         <h2 class="public-title">平台公告 <span >News</span></h2>-->
+						         <!--<h4 >SSG欢迎你</h4>-->
+						<!--         <div class="news-con">-->
+						<!--             <img src="/images/xiao/logo.png" alt="" class="hot-news-img">-->
+						<!--              <div class="hot-news-info">-->
+						<!--                  <p >{{popupNotice.title}}</p> <span class="detail" @click="openNotice(popupNotice)" style="cursor:pointer;">详细 &gt;&gt;</span></div></div>-->
+						         <!--<div class="notice-list">-->
+						         <!--    <ul>-->
+						         <!--        <li>尊敬的乐购所有会员，微信固码、支付宝固码、微信个人码、支付宝个人码，已经全部更新新的二维码，请放心充值。</li>-->
+						         <!--        <li>尊敬的乐购所有会员，微信固码、支付宝固码、微信个人码、支付宝个人码，已经全部更新新的二维码，请放心充值。</li>-->
+						         <!--        <li>尊敬的乐购所有会员，微信固码、支付宝固码、微信个人码、支付宝个人码，已经全部更新新的二维码，请放心充值。</li>-->
+						         <!--        <li>尊敬的乐购所有会员，微信固码、支付宝固码、微信个人码、支付宝个人码，已经全部更新新的二维码，请放心充值。</li>-->
+						         <!--    </ul>-->
+						         <!--</div>        -->
+						<!--     </div>-->
+						<!--    <div class="hot_lottery">-->
+						<!--         <h2 class="public-title">热门彩种<span>Hot Lottery</span></h2>-->
+						<!--         <div class="lottery-list">-->
+						<!--                 <ul>-->
+						<!--                   <li v-for="item in hotlottery" @click='openPage(item.bet_url)'>-->
+						<!--                         <div class="shadow"></div>-->
+						<!--                         <img :src="item.pic_url" alt="" class="lottery-img">-->
+						<!--                         <a  href="javascript:void(0);" class="go-game" @click='window.opendpg(item.bet_url)'>进入游戏</a>-->
+						<!--                     </li>-->
+						<!--                 </ul>-->
+						<!--         </div>-->
+						<!--    </div>-->
+						<!--</div>-->
+
+                        <!--登录设置-->
+				<!--未登录显示-->
+				<div v-if="localStorage.userName==undefined" class="welcome-jdd unlogin login_box active">
+					<div class="box">
+						<div class="quit-btn"></div>
+						<div class="user-face">
+							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAABWVBMVEUAAAD/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP9lzP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP5lDP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTPkhTP/mTPykDPfgjPSeDP/mTMEAAD/ZmZCIQ3oijBvLxv/ljb9lzLQeykPBgL/a2H/h0X7ljL4lDHdgiy8byUXDAT/fk7/jz31kTLhhC3SfSrNdyqiXyCNUxtJKQ7/b13RdzP5lTKqWiSwaSOWUx53RhdXLxFULxAIAgH/cln/elH/gkr/g0nSeDPsjTHwkDDVeizUfyrJcSrBcia1YiamYyGRSCGPRiCdXR+IQR96Nx11Mxx9RRloORVhORNeNRJDJg0zHQowGwkmFQf/dFjXezOaXB9xQxZje+14AAAAMHRSTlMA0wnv6AX28pZvZUIPfvzsw7mwXzYe+dxzB/u1k4liVkY8JybVclxgMxoD6bu4fVsZhBkCAAADAUlEQVRYw7XYV1fiQBgG4IRQRaooKNiwrtu+URApUpVi773XVVe3/P+LhYnCkhkmDZ7L9+S8J2TCZGY4hpnpoUEvb7QAWIy8d3BoeobToNfmFUBC8No+qWsx9LgBYO24AFLOr9/7Fdd0O4xQVThaPUoBYfHzt25FNf0BAbDI6upvoHIFFNyV3Q/vYpFIClrw2+UejhUUshpYPWM8KMaPte4ZEUAFy0irnskBUGWgh97TBap10XqGnaCac5gy7H2gQZ+dGC8BNBEkY2fgQaPx5vfJCppZ/+8ZBR1GGz0mHnTgTfWiCdBloj7/CKCL8DE/OUAnx/vQu0Anl/gK9Ejz5fLFIrRysrFJhuK/1y2NywjFn86AInVVQSh7QuRu/N0BQmRjZ3d3i5xnM28ou5Wh3W1vtcgGpLMsyqJKTJL+QXGESkBjqxZ5yHjxDdVcNacxHO4uAIWn+labyfgWYeXmdEFMt4HCbOJ8QNpB2N/mdENM4zGg8FEn2J8I25I8aiSK0CfdUOuikmQsWUUhLgikJ/E3HEviFxxnqT8tyPFAWo6jqlt6XAYanjPS4uL2ayVDxunn15cSUBk5C7SFhZME8/srib0kMCT3Eiu5eSLmJJ+zldmaPKMHX/CLLHI139AsdtD4t6QXqpYbQ76PL0iQP83fHOTwZfU7L1bmRD8+knyidsUh8bCJ4c8f5JKNJ3AxJy2C+WTuME8Z/iAwPYo9O0vAFuRCwJTarPU8y/VASH5VlH7cLq0pWCn5QM5lNA2yfHhiY7uOroMcswlPtUxL0YeHAsjw4Mmfae3u/lT+lmz4c8RSuImewno0A2y9kg8kIX0fPQeIbUbvisDglnyyScUb8Q06v74Ehqm2LSLataxp70JL/9Iv0ObFqP7lcScW7JxhHAiathBcWOumJtyJbZb+jZ/+rWgHN8fYiEXbdp0UVnOAEO7okQZ5yMLmtys89mETAv2KD6IYjI5u5UdjU26gc36ZNKg9rPOYie+pBx/WqWby4eNDc7UBHx/6TIyL/wEicAd3LxzPFwAAAABJRU5ErkJggg==" />
+						</div>
+
+						<div class="user-name">Hi，欢迎来到彩票网</div>
+						<a class="user-btn" href="login/login.html">用户登录</a>
+						<a class="user-btn" href="login/register.html">免费注册</a>
+					</div>
+				</div>
+				<!--已登录显示-->
+				<div v-else class="welcome-jdd logined  login_box active">
+					<div class="box">
+						<div class="quit-btn">
+							<a class="show" @click="quitLogin">退出</a>
+						</div>
+						<div class="user-face">
+							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAABWVBMVEUAAAD/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP9lzP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP5lDP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTPkhTP/mTPykDPfgjPSeDP/mTMEAAD/ZmZCIQ3oijBvLxv/ljb9lzLQeykPBgL/a2H/h0X7ljL4lDHdgiy8byUXDAT/fk7/jz31kTLhhC3SfSrNdyqiXyCNUxtJKQ7/b13RdzP5lTKqWiSwaSOWUx53RhdXLxFULxAIAgH/cln/elH/gkr/g0nSeDPsjTHwkDDVeizUfyrJcSrBcia1YiamYyGRSCGPRiCdXR+IQR96Nx11Mxx9RRloORVhORNeNRJDJg0zHQowGwkmFQf/dFjXezOaXB9xQxZje+14AAAAMHRSTlMA0wnv6AX28pZvZUIPfvzsw7mwXzYe+dxzB/u1k4liVkY8JybVclxgMxoD6bu4fVsZhBkCAAADAUlEQVRYw7XYV1fiQBgG4IRQRaooKNiwrtu+URApUpVi773XVVe3/P+LhYnCkhkmDZ7L9+S8J2TCZGY4hpnpoUEvb7QAWIy8d3BoeobToNfmFUBC8No+qWsx9LgBYO24AFLOr9/7Fdd0O4xQVThaPUoBYfHzt25FNf0BAbDI6upvoHIFFNyV3Q/vYpFIClrw2+UejhUUshpYPWM8KMaPte4ZEUAFy0irnskBUGWgh97TBap10XqGnaCac5gy7H2gQZ+dGC8BNBEkY2fgQaPx5vfJCppZ/+8ZBR1GGz0mHnTgTfWiCdBloj7/CKCL8DE/OUAnx/vQu0Anl/gK9Ejz5fLFIrRysrFJhuK/1y2NywjFn86AInVVQSh7QuRu/N0BQmRjZ3d3i5xnM28ou5Wh3W1vtcgGpLMsyqJKTJL+QXGESkBjqxZ5yHjxDdVcNacxHO4uAIWn+labyfgWYeXmdEFMt4HCbOJ8QNpB2N/mdENM4zGg8FEn2J8I25I8aiSK0CfdUOuikmQsWUUhLgikJ/E3HEviFxxnqT8tyPFAWo6jqlt6XAYanjPS4uL2ayVDxunn15cSUBk5C7SFhZME8/srib0kMCT3Eiu5eSLmJJ+zldmaPKMHX/CLLHI139AsdtD4t6QXqpYbQ76PL0iQP83fHOTwZfU7L1bmRD8+knyidsUh8bCJ4c8f5JKNJ3AxJy2C+WTuME8Z/iAwPYo9O0vAFuRCwJTarPU8y/VASH5VlH7cLq0pWCn5QM5lNA2yfHhiY7uOroMcswlPtUxL0YeHAsjw4Mmfae3u/lT+lmz4c8RSuImewno0A2y9kg8kIX0fPQeIbUbvisDglnyyScUb8Q06v74Ehqm2LSLataxp70JL/9Iv0ObFqP7lcScW7JxhHAiathBcWOumJtyJbZb+jZ/+rWgHN8fYiEXbdp0UVnOAEO7okQZ5yMLmtys89mETAv2KD6IYjI5u5UdjU26gc36ZNKg9rPOYie+pBx/WqWby4eNDc7UBHx/6TIyL/wEicAd3LxzPFwAAAABJRU5ErkJggg==" />
+						</div>
+						<div class="user-name" v-cloak>Hi,{{localStorage.userName}}</div>
+						<div class="is-show-money show">
+							<span @click="show_money">点击显示余额</span>
+						</div>
+						<a class="recharge-btn" href="#" @click="recharge">充值</a>
+						<div class="other-handle">
+							<a href="myCenter/betrecord.html">投注记录</a>
+							<em>|</em>
+							<a href="myCenter/lotteryrecord.html">中奖记录</a>
+							<em>|</em>
+							<a href="#" @click="draw">提款</a>
+						</div>
+					</div>
+				</div>
+                        
+						<div class="ssg_all_wrap">
+							<div class="all_left">
+								<h2 class="public-title">玩家動態<span>Dynamic</span></h2>
+								<div class="dtbox">
+								    <ul>
+										<li style="display: flex;justify-content: space-between;padding: 0px 15px 10px;font-size: 16px;color: #555;">
+											<div class="u_name">
+												<span>用戶</span>
+											</div>
+											<div class="u_gj">
+												<span>彩種</span>
+											</div>
+											<div class="u_amount">
+												<span>獎金</span>
+											</div>
+										</li>
+									</ul>
+									<div class="scroll-wrap" style="height: 1000px;">
+									    <ul style="height: 1000px;">
+											<li v-for="item in dynamics" @click='openPage(item.url)'>
+												<div class="u_name">
+													<span>{{item.name}}</span>
+												</div>
+												<div class="u_gj">
+													<span>{{item.game}}</span>
+												</div>
+												<div class="u_amount">
+													<span>{{item.num}} 元</span>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="announce_middle">
+										<h1><span class="newAnn">行业新闻</span>
+										    <!--<span class="more">-->
+										    <!--<a href="javascript:;">更多</a></span>-->
+										</h1>
+										<div class="margin_top" id="bannernews">
+											<p v-for="(item, i) in news_list" @click="show_news(i)">
+												<a href="javascript:;">
+													{{item.title}} <span>{{item.releaseDate}}</span>
+												</a>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="all_right">
+								<h2 class="public-title">全部彩种<span>All Lotteries</span></h2>
+								<div class="lottery-list all-list">
+									<ul>
+										<li v-for="item in alllottery">
+											<a href="javascript:;" @click='openPage(item.bet_url)'>
+												<img src="" alt="" class="today">
+												<div class="shadow"></div>
+												<span class="period-info">{{item.sys_config1}}</span>
+												<img :src="item.pic_url" alt="" class="lottery-img-small">
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="ssg_databox">
+							<div class="ssg_databox_left">
+								<h2 class="public-title">快捷通道<span>Fast Channel</span></h2>
+								<div class="row_list clearfix">
+									<table width="100%">
+										<tr>
+											<td>
+												<div class="item first">
+													<a href="javascript:void(0);" @click="goPage('/agency/agentIntro.html')">
+														<i class="icon"></i>
+														<p>代理說明</p>
+													</a>
+												</div>
+											</td>
+											<td>
+												<div class="item second">
+													<a href="javascript:void(0);" @click="openPage('/agency/lowerReport.html')">
+														<i class="icon"></i>
+														<p>下級報表</p>
+													</a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="item third">
+													<a href="javascript:void(0);" @click="openPage('/agency/downAccount.html')">
+														<i class="icon"></i>
+														<p>下級開戶</p>
+													</a>
+												</div>
+											</td>
+											<td>
+												<div class="item four">
+													<a href="javascript:void(0);" @click="openPage('/agency/agentMember.html')">
+														<i class="icon"></i>
+														<p>會員管理</p>
+													</a>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="ssg_databox_right">
+								<h2 class="public-title">平台数据<span>Platform Data</span></h2>
+								<div class="platform-data" style="padding: 28px 0;">
+									<div class="flex">
+										<div class="item gotyb">
+											<p><i class="icon"></i>用户已赚元宝</p>
+											<h4><span class="arktitle" id="count_number">800</span></h4>
+											<!--<count-to :startVal='startVal' :endVal='endVal' :duration='3000'></count-to>-->
+										</div>
+										<div class="item zql">
+											<p><i class="icon"></i>用户赚钱率</p>
+											<h4><span class="arktitle2">97%</span></h4>
+										</div>
+										<div class="item regnum">
+											<p><i class="icon"></i>用户注册人数</p>
+											<h4><span class="arktitle3">95,641,509</span></h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+                <div style="background: rgba(0, 0, 0, 0) url('/images/download.png');height: 150px;background-repeat: no-repeat;background-size: 100% 100%;background-color: black;margin: 20px 0;"></div>
+			</div>
+		</div>
+		<script src="public/js/footer.js"></script>
+		<script src="public/js/swiper-4.1.0.min.js"></script>
+		<script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+        <script src="https://unpkg.com/v-animate-css/dist/v-animate-css.js"><script>
+        <script>
+      Vue.use(VAnimateCss.default);
+    </script>
+		<script>
+
+			layui.use('layer', function() {
+				var layer = layui.layer,
+				    _this = null;
+    			let app = new Vue({
+    				el: '#app',
+    				data: {
+    					datas: '',
+    					imgs: [], //存储轮播图
+    					popupNotice: {}, //弹出公告
+    					coin: '',
+    					coinUnit: '元',
+    					hotlottery: [],
+    					dynamics: [],
+    					alllottery: [],
+    					fixedDisplay: [],
+    					numCai: [],
+    					userNameMsg: '',
+    					count_number: 800,
+    					startVal: 800,
+    					endVal: 30000,
+    					news_list: [{
+            				"title": "新疆11选5号码推荐",
+            				"releaseDate": "07-22",
+            			}, {
+            				"title": "上海快三出号分析对子44转热 ",
+            				"releaseDate": "07-22",
+            			}, {
+            				"title": "福建11选5号码推荐",
+            				"releaseDate": "07-22",
+            			}]
+    				},
+    				created: function() {
+    				    _this = this;
+    				    this.userNameMsg = localStorage.userName;
+    					this.get_msg(); //获取公告
+    					this.get_pic();
+    					this.get_login();
+    					this.getDigitalColor();
+    					if (this.userNameMsg && localStorage.access_token) {
+    						base.threadPoxi();
+    					}
+    					this.getAllGame();
+    					
+    				},
+    				mounted: function() {
+    					let url = window.location.search;
+    					if (url != "") {
+    						let code = url.split("?").join(""); //截取？后的注册码
+    						localStorage.promotionCode = code.substring(0, code.length); //截取推广码
+    						_this.goPage("/login/register.html");
+    					}
+    					this._jia();
+    				},
+    				methods: {
+    				    _jia() {
+    				      setInterval(function() {
+    				          this.count_number +=1;
+    				      }, 10)  
+    				    },
+                		// 轮播初始化设置
+                		init_pic: function init_pic() {
+                			var mySwiper = new Swiper('.swiper-container', {
+                				direction: 'horizontal',
+                				loop: true,
+                				autoplay: {
+                					disableOnInteraction: false
+                				},
+                				// 如果需要分页器
+                				pagination: {
+                					el: '.swiper-pagination'
+                				}
+                			});
+                		},
+                		//获取轮播图片
+                		get_pic: function get_pic() {
+                			var obj = {
+                				type: "post",
+                				data: {},
+                				url: "/commonAPI/advpicture/selectBySysAdvpicture",
+                				success: function success(data) {
+                					if (data.code == 200) {
+                						_this.imgs = data.body;
+                						localStorage.index_sysAdvpicture = JSON.stringify(data.body);
+                						setTimeout(function () {
+                							_this.init_pic();
+                						}, 50);
+                					}
+                				}
+                			};
+                			base.callCommonApi(obj);
+                		},
+                		get_login: function get_login() {
+                			if (localStorage.userName != undefined) {
+                				var options_autoLogin = {
+                					type: "post",
+                					url: "/authApi/AutoLoginGetUserinfoByRedis",
+                					data: {},
+                					success: function success(data) {
+                						if (data.code == 200) {
+                							_this.coin = parseFloat(data.body.COIN).toFixed(2) + _this.coinUnit;
+                							if (localStorage.username) {
+                								if (localStorage.userType != 2) {
+                									if (localStorage.ip) {
+                										parent.base.threadPoxi();
+                									} else {
+                										parent.base.initWebSocket();
+                									}
+                								}
+                							}
+                						}
+                					}
+                				};
+                				base.callAuthApiNoEcrypt(options_autoLogin);
+                			}
+                		},
+    					getDynamics: function() {
+    						for (var i = 0; i < 120; i++) {
+    							var arr = this.alllottery;
+    							var name = this.randomRangeId(2) + '****' + this.randomRangeId(1),
+    								type = arr[Math.floor(arr.length * Math.random())],
+    								num = Math.floor(Math.random() * 300 + 2) * 10;
+    							this.dynamics.push({
+    								name: name,
+    								url: type.bet_url,
+    								game: type.gameName,
+    								num: num
+    							});
+    						}
+    					},
+    					randomRangeId: function(num) {
+    						var returnStr = "",
+    							charStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    						for (var i = 0; i < num; i++) {
+    							var index = Math.round(Math.random() * (charStr.length - 1));
+    							returnStr += charStr.substring(index, index + 1);
+    						}
+    						return returnStr;
+    					},
+    					getAllGame: function() {
+    						var obj = {
+    							type: 'post',
+    							data: {
+    								source_type: 1
+    							},
+    							dataType: 'json',
+    							url: '/commonAPI/qryAllGame1Info',
+    							success: function success(data) {
+    								if (data.code == 200) {
+    									var c = _this.compare(data.body, 'sort');
+    									for (var i = 0; i < data.body.length; i++) {
+    										if (data.body[i].is_hot == 1) {
+    											if (_this.hotlottery.length < 3) {
+    												_this.hotlottery.push(data.body[i]);
+    											}
+    
+    										}
+    									}
+    									_this.alllottery = c;
+    					                _this.getDynamics();
+    								}
+    							},
+    						};
+    						base.callCommonApi(obj);
+    					},
+    					//获取公告
+    					get_msg: function () {
+    						var data = {
+    							pageIndex: 1,
+    							pageNum: 5,
+    							pageSize: 10
+    						};
+    						var obj = {
+    							type: "post",
+    							data: data,
+    							dataType: 'json',
+    							url: "/commonAPI/bulletin/selectBySysBulletin",
+    							success: function success(data) {
+    								if (data.code == 200) {
+    									var obj = data.body.list[0];
+    									_this.popupNotice = obj;
+    									_this.openNotice(obj);
+    								}
+    							}
+    						};
+    						base.callCommonApi(obj);
+    					},
+    					openNotice: function (obj) {
+    					    layer.open({
+							    type: 1,
+    							title: '系统公告',
+    							area: ['600px', '450px'], //宽高
+    							content: '<div id="popNotice"><div class="popContent"><div class="title">'+obj.title+'</div><div class="content">'+obj.content+'</div></div></div>',
+    							shadeClose: true
+    						});
+    					},
+    					show_news: function(i) {
+    					    this.goPage('/news.html?'+i);
+    					},
+    					compare: function(array, key) {
+    						return array.sort(function(a, b) {
+    							var x = parseInt(a[key]);
+    							var y = parseInt(b[key]);
+    							return ((x < y) ? -1 : (x > y) ? 1 : 0)
+    						})
+    					},
+    					getDigitalColor: function getDigitalColor() {
+    						var _this = this;
+    						var data = {};
+    						var obj = {
+    							type: 'post',
+    							data: data,
+    							dataType: 'json',
+    							url: '/commonAPI/qryDigitalGameIntro',
+    							success: function success(data) {
+    								if (data.code == 200 && data.body.length != 0) {
+    									for (var i = 0; i < data.body.length; i++) {
+    										if (data.body[i].luck_number) {
+    											var arr = data.body[i].luck_number.split(',');
+    											data.body[i].arr = arr;
+    										} else {
+    											data.body[i].arr = [];
+    										}
+    										if (!data.body[i].issue) {
+    											data.body.splice(i, 1);
+    											i--;
+    										}
+    									}
+    									for (var i = 4; i < 9; i++) {
+    										if (i == 5) {
+    											i = 7;
+    										}
+    										_this.numCai.push(data.body[i]);
+    									}
+    								}
+    							},
+    							error: function error(msg) {}
+    						};
+    						base.callCommonApi(obj);
+    					},
+    					//点击显示余额
+    					show_money: function () {
+    						$('.is-show-money>span').html(this.coin);
+    					},
+    					//点击退出登录
+    					quitLogin: function () {
+    						base.callAuthApi({
+    							type: "post",
+    							url: "/authApi/loginout",
+    							data: {
+    								"userName": localStorage.getItem("userName")
+    							},
+    							success: function success(data) {
+    								var arr = [];
+    								arr = JSON.stringify({
+    									messType: '900',
+    									userName: _this.userNameMsg,
+    									code: '001'
+    								});
+    								base.websock.send(arr);
+    								if (data.code == 200) {
+    									var config_2 = JSON.stringify(localStorage.config);
+    									localStorage.clear();
+    									sessionStorage.clear();
+    									localStorage.config = JSON.parse(config_2);
+    									setTimeout(function() {
+    										_this.goPage("/");
+    									}, 500);
+    								}
+    							}
+    						});
+    					},
+    
+    					openPage: function (url) {
+    						if (!this.userNameMsg) {
+    							layer.alert("您还未登录，请先登录", function(index) {
+    								sessionStorage.loginTo = "/";
+    								_this.goPage("/login/login.html");
+    							});
+    						} else {
+    							_this.goPage(url);
+    						}
+    					},
+    					
+    					goPage: function (url) {
+    					    window.location.href = url;
+    					},
+    					
+    					recharge: function () {
+    						if (localStorage.userType == 2) {
+    							layer.alert('试玩账号不能充值');
+    						} else {
+    							this.goPage("/myCenter/recharge.html");
+    						}
+    					},
+    					
+    					draw: function () {
+    						if (localStorage.userType == 2) {
+    							layer.alert('试玩账号不能提款');
+    						} else {
+    							this.goPage("/myCenter/draw.html");
+    						}
+    					}
+    				}
+    			});
+    			
+    			$(document).ready(function() { 
+    				function _jia() {
+    				      var num = $('#count_number').text()
+    				      setInterval(function() {
+    				          if(num >= 100000) {
+    				              num = 800;
+    				          } else {
+    				              num++;
+    				          }
+    				          $('#count_number').text(num)
+    				      },100)
+    				
+    				}
+    				_jia();
+    			});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>註冊</title>
+    <script src="../public/js/base.js"></script>
+    
+</head>
+
+<body>
+<div class="main">
+	<script src="../public/js/header.js"></script>
+	
+    <div class="wrap-bg" id="mainBody">
+        <div class="wrapper">
+            <div class="reg">
+                <div class="reg-tit">
+                    <div class="fr">已有賬號？
+                        <a class="orange" href="login.html">立即登錄</a>
+                    </div>
+                    <h3>用戶註冊</h3>
+                </div>
+                <div class="reg-info" id="reg_form_1">
+                    <ul>
+                         <li v-for="(item,index) in userInfoList">
+                            <div class="info-left" v-if="item.is_input == 1" v-cloak>
+                                <span class="red">* </span>
+                                {{item.attr_name}}：
+                            </div>
+                            <div class="info-left" v-else v-cloak>{{item.attr_name}}：</div>
+
+                            <div class="info-right" v-if="item.attr_name_en=='password' || item.attr_name_en=='rePassword' ">
+                                <label class="fl-small-tip-icon fl-reg-account-tip-icon"></label>
+                                <input class="reg-int" @change="onChange_validate(item,index)" type="password"
+                                       :id='item.attr_name_en' :placeholder='item.intro_info' @blur="isCheck_validate(item,index)" @focus="isInput_validate(item,index)"/>
+                                <div class="reg-notice-ok hidn"></div>
+                            </div>
+                            <div class="info-right" v-else>
+                                <label class="fl-small-tip-icon fl-reg-account-tip-icon"></label>
+                                <input class="reg-int" @change="onChange_validate(item,index)" type="text"
+                                       :id='item.attr_name_en' :placeholder='item.intro_info' @blur="isCheck_validate(item,index)" @focus="isInput_validate(item,index)"/>
+                                <div class="reg-notice-ok hidn"></div>
+                            </div>
+                            <!--错误信息展示-->
+                            <div class="info-txt" id="_focus" v-if="item.msgTipsFlag" style="color: red;" v-cloak>
+                                ×{{item.msgTipsMsg}}
+                            </div>
+                        </li>
+                         <li>
+                            	<div class="info-left"><span class="red">* </span>邀請碼：</div>
+                            	<div class="info-right">
+                            		<input type="text" id="code" v-model="promotionCode" name="code" placeholder="邀請碼 (必填)" class="reg-int">
+                            	</div> 
+                            	<div class="info-txt" id="_blurCode" style="color: red;">
+                            		
+                            	</div>
+                            </li>	
+                        <!--数据 end-->
+                        <!--验证码start-->
+                        <li id="verifycode_div">
+                            <div class="info-left"><span class="red">* </span>驗證碼：</div>
+                            <div class="info-right info-codes" style="position:relative;">
+                                <label class="fl-small-tip-icon fl-reg-verify-tip-icon"></label>
+                                <input name="verify" id="regVerifyCode" class="reg-int codes-int " unique="2"
+                                       maxlength="4" type="text" @change="checkVerifyCode()" placeholder="請輸入驗證碼">
+                                <div class="reg-notice-ok hidn"></div>
+                                <div id="need_captcha" class="reg_need_captcha">
+                                    <div class="yanzhengma">
+		                                   <span class="register_captcha_span" style="position:relative;">
+		                                       <img name="login_img" id="regVerifyImg">
+		                                       <a name="btn_refresh">
+		                                       <img :src="'data:image/png;base64,'+imgUrl" style="cursor: pointer;"
+                                                    height="41" width="110" id="" @click="getImgcode()">
+		                                       </a>
+		                                   </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-txt" id="verifyCodeInfo" style="color: red;"></div>
+                            <div class="info-txt" id="_blur" style="display:none;"></div>
+                        </li>
+                        <!--验证码end-->
+                        <!--提交start-->
+                         <li>
+                            <div class="info-left">&nbsp;</div>
+                            <div class="info-right">
+                                <input name="reg_checkbox" checked="checked" type="checkbox" @change="checkBtn();">我已看過並同意
+                                <a class="orange" target="_blank" href="#">《彩票網絡服務協議》</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="info-left">&nbsp;</div>
+                            <div class="info-right">
+                                <input id="btn-sub" @click="submit_validate" class="submit" value="立即註冊" type="button">
+                            </div>
+                        </li>
+                        <!--提交end-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../public/js/footer.js"></script>
+</div>
+
+<script type="text/javascript" src="../public/js/jquery.validate.js"></script>
+<script type="text/javascript" src="../public/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
+</body>
+
+</html>

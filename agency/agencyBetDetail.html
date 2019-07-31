@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>投註明細</title>
+    <script src="../public/js/base.js"></script>
+</head>
+<body>
+	<script src="../public/js/header.js"></script>
+<div id="agentBetDetail" class="proxy">
+    <section id="main">
+        <div id="mainBody" class="wrapper">
+            <div id="mainContent" class="clearfix">
+                <nav class="left">
+                        <div class="member">
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>會員中心</blockquote>
+                                <li>
+                                    <a href="/myCenter/member.html">會員中心</a>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/betrecord.html">投註記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/lotteryrecord.html">中獎記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/accountDetails.html">賬號明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/userInfo.html">賬號信息</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li v-if="agencyType!=6">
+                                    <a href="/myCenter/draw.html">提款</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <div class="hr"></div>
+                                </li>
+                    
+                            </ul>
+                        </div>
+                        <div class="agency" v-if="agencyType==1" v-cloak>
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <li>
+                                    <a href="/agency/agentIntro.html">代理說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentReport.html">代理報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/lowerReport.html">下級報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/downAccount.html">下級開戶</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentMember.html">會員管理</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li class="on">
+                                    <a href="/agency/agencyBetDetail.html">投注說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyDealDetail.html">交易明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    
+                    </nav>
+                <div class="right">
+                    <div class="title">投注明细</div>
+                    <div id="agentBet" class="proxy_main">
+                        <div class="edit">
+                            <div id="timeType" class="newTab">
+                                <a href="javascript:;" class="curr" @click="changeType(currSearchType=0)">今天</a>
+                                <a href="javascript:;" @click="changeType(currSearchType=1)">昨天</a>
+                                <a href="javascript:;" @click="changeType(currSearchType=2)">近七天</a>
+                            </div>
+                            <div class="search">
+                                <span>
+                                    类型 :
+                                    <a href="javascript:" :class="status==0?'active':''" @click="changeStatus(0)">全部</a>
+                                    <a href="javascript:" :class="status==2?'active':''" @click="changeStatus(2)">已中奖</a>
+                                    <a href="javascript:" :class="status==1?'active':''" @click="changeStatus(1)">未中奖</a>
+                                    <a href="javascript:" :class="status==3?'active':''" @click="changeStatus(3)">撤单</a>
+                                    <a href="javascript:" :class="status==4?'active':''" @click="changeStatus(4)">等待开奖</a>
+                                </span>&nbsp;&nbsp;&nbsp;
+                                <span>账号 : </span>
+                                <input type="text" placeholder="下级投注查询" v-model="lowerUserName">
+                                <a class="submitBtn ClickShade" @click="getdatas">搜索</a>
+                            </div>
+                            <div class="searchDetail">
+                                <table>
+                                    <tr>
+                                        <th width="20%">账号</th>
+                                        <th width="20%">彩种</th>
+                                        <th width="20%">订单号</th>
+                                        <th width="20%">奖金状态</th>
+                                        <th width="20%">投注时间</th>
+                                    </tr>
+                                    <tr v-if="recordData.length!==0" v-for="item in recordData">
+                                        <td v-cloak>{{item.userName?item.userName:'沙发客'}}</td>
+                                        <td v-cloak>{{item.gameName}}</td>
+                                        <td v-cloak @click="showPopup(item.userId,item.betId,item.type)"><a href="javascript:" style="color: red;text-decoration:underline">{{item.orderId}}</a></td>
+                                        <td v-cloak>  {{item.status==0?'未中奖':item.status==1?"¥"+item.bonus:item.status==2?'已撤单':'未开奖'}}</td>
+                                        <td v-cloak>{{item.actionTime}}</td>
+                                    </tr>
+                                    <tr  v-if="!recordData||recordData.length==0" >
+                                        <td colspan="5">暂无数据</td>
+                                    </tr>
+                                </table>
+
+                                <div id="fenye"></div>
+
+                            </div>
+                            <div class="pl_tips">
+                                <p>
+                                    <i></i>
+                                    温馨提示：投注明细非即时显示，可能有5-10分钟的延迟，请稍等片刻。<br/>　　　　　投注明细最多保留7天。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--数字彩订单详情列表-->
+    <transition name="transition">
+        <div class="concealDivOrders ordersTwo" style="display: none;">
+            <table class="layui-table" lay-skin="nob" style="word-wrap: break-word; word-break: break-all;">
+                <tr>
+                    <td colspan="4"
+                        style="background-color: white;text-align: left;padding-left: 18px;font-weight: bold;">订单详情
+                    </td>
+                </tr>
+                <tr>
+                    <td>订单号:</td>
+                    <td v-cloak>{{ordersTwo.orderId}}</td>
+                    <td>彩种:</td>
+                    <td v-cloak>{{ordersTwo.gameName}}</td>
+
+                </tr>
+                <tr style="border-bottom: 1px #E0E0E0 solid;">
+                    <td>投注时间:</td>
+                    <td v-cloak>{{ordersTwo.actionTime}}</td>
+                    <td>期号:</td>
+                    <td>{{ordersTwo.actionIssue}}</td>
+                </tr>
+                <tr>
+                    <td colspan="4"
+                        style="background-color: white;text-align: left;padding-left: 18px;font-weight: bold;">投注详情
+                    </td>
+                </tr>
+                <tbody  style="border-bottom: 1px #E0E0E0 solid;">
+                <tr>
+                    <td>投注号码:</td>
+                    <td>
+                        <div>{{ordersTwo.actionData}}</div>
+                    </td>
+                    <td>开奖号码:</td>
+                    <td>{{ordersTwo.openNo}}</td>
+                </tr>
+                <tr>
+                    <td>投注金额:</td>
+                    <td>{{ordersTwo.amount}}{{coinUnit}}</td>
+                    <td>中奖金额:</td>
+                    <td>
+                        <span v-if="ordersTwo.isCal==0">未开奖</span>
+                        <span v-else-if="ordersTwo.isCal==1&&ordersTwo.status==0" style="color: green;">未中奖</span>
+                        <span v-else-if="ordersTwo.isCal==1&&ordersTwo.status==1" style="color: red;">{{ordersTwo.bonus}}{{coinUnit}}</span>
+
+                    </td>
+                </tr>
+                <tr>
+                   
+                    <td>投注赔率:</td>
+                    <td>{{ordersTwo.betOdds}}倍</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </transition>
+
+
+    <!--竞技彩订单详情-->
+    <transition name="transition">
+        <div class="concealDivOrders ordersOne" style="display: none;">
+            <table class="layui-table" lay-skin="nob">
+                <tr>
+                    <td colspan="4"
+                        style="background-color: white;text-align: left;padding-left: 18px;font-weight: bold;">订单详情
+                    </td>
+                </tr>
+                <tr>
+                    <td>订单号:</td>
+                    <td v-cloak>{{orders.orderId}}</td>
+                    <td>出票状态:</td>
+                    <td v-cloak>{{orders.ticketStatus==0?"出票中":"出票成功"}}</td>
+                </tr>
+                <tr  style="border-bottom: 1px #E0E0E0 solid;">
+                    <td><span v-if="orders.type==2">时间:</span><span v-else>预计奖金:</span></td>
+                    <td v-cloak>
+                        <span v-if="orders.type==2">{{orders.sourceTime}}</span>
+                        <span v-else>{{orders.expectBonuses}}{{coinUnit}}</span>
+                    </td>
+                    <td><span v-if="orders.show==true">期号:</span>
+                        <span v-else>投注方式:</span>
+                    </td>
+                    <td>
+                        <span v-if="orders.show==true" v-cloak>{{orders.actionNo}}</span>
+                        <span v-else v-cloak>{{orders.betType}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"
+                        style="background-color: white;text-align: left;padding-left: 18px;font-weight: bold;">投注详情
+                    </td>
+                    <td colspan="2" style="text-align: right;padding-right: 16px;text-decoration: underline;color: gray;cursor: pointer;" @click="getTicket(orders.betId,orders.type)">
+                        出票明细
+                    </td>
+                </tr>
+                <tbody v-for="item in ordersById" style="border-bottom: 1px #E0E0E0 solid;">
+                <tr>
+                    <td>投注项:</td>
+                    <td v-cloak>
+                        {{item.homeTeamName}}　vs　{{item.awayTeamName}} <span v-if="item.guts==1"
+                                                                             class="isDan">胆</span>
+                    </td>
+                    <td>竞猜项:</td>
+                    <td>
+	                    	<span v-if='item.guessList&&item.guessList.length>0' v-cloak>
+	                    		<span v-for="gus in item.guessList"  style="margin-right: 5px;display: inline-block;" >
+	                    			<span style="color: red;" v-if="gus.quizResults==1" v-cloak>{{gus.quizName}}{{gus.letScore}}<span
+                                            v-if="!orders.show&&gus.odds" v-cloak>({{gus.odds}})</span></span>
+									<span v-else v-cloak>{{gus.quizName}}{{gus.letScore}}<span v-if="!orders.show&&gus.odds" v-cloak>({{gus.odds}})</span></span>
+	                    		</span>
+
+							</span>
+                        <span v-else>--</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>比分:</td>
+                    <td><span v-if="item.courtScore!=null" v-cloak>{{item.courtScore}}</span><span v-else>--</span></td>
+                    <td>赛果:</td>
+                    <td>
+	                    	<span v-if='item.resultList&&item.resultList.length>0' v-cloak>
+								<span v-for="res in item.resultList"  style="margin-right: 5px;display: inline-block;" >
+									<span style="color: red;" v-if="res.quizResults==1" v-cloak>{{res.quizName}}</span>
+									<span v-else v-cloak>{{res.quizName}}</span>
+								</span>
+							</span>
+                        <span v-else>--</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </transition>
+
+    <!--出票明细-->
+    <transition>
+        <div class="ticket" style="display: none;">
+            <section id="ticketDetailsStr" v-if="orders.type==2">
+                <table  class="layui-table" lay-skin="nob">
+                    <tr>
+                        <td v-for="item in ticketDetailsStr" v-cloak>
+                            {{item}}
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <section id="ticDetails" v-else>
+                <table  class="layui-table" lay-skin="nob">
+                    <thead>
+                    <tr>
+                        <th width="15%">过关</th>
+                        <th width="15%">倍数</th>
+                        <th width="70%">票面信息</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(item,index) in ticketDetailsList">
+                        <td v-cloak>{{item.seriesName}}</td>
+                        <td v-cloak>{{item.times}}倍</td>
+                        <td v-cloak>
+									<span v-for="items in ticketDetailsList[index].list" v-cloak class="list">
+										<em class="fenge">/</em>{{items.matchDate}}<span v-if="items.matchSessions!=null" v-cloak>({{items.matchSessions}})</span>
+										<span v-if="items.quizOptions!=null" v-cloak>:[{{items.quizOptions}}<span v-if="items.odds!=null" v-cloak>={{items.odds}}</span>]</span>
+									</span>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </section>
+        </div>
+    </transition>
+    <script src="../public/js/footer.js"></script>
+</div>
+
+
+<script type="text/javascript" src="../public/js/jqPaginator.js"></script>
+<script type="text/javascript" src="js/agencyBetDetail.js"></script>
+</body>
+</html>

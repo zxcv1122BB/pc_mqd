@@ -1,0 +1,912 @@
+.red {
+  color: red;
+}
+
+.must {
+  color: red;
+  position: absolute;
+  left: -10px;
+}
+
+.prompt {
+  color: red;
+}
+
+.tips {
+  color: #ff8400;
+}
+
+.isDan {
+  border: 1px solid #ba142b;
+  color: #ba142b;
+}
+
+.clear {
+  clear: both;
+}
+.pl_tips {
+  margin: 0 15px;
+  border: 1px solid #f8e2b9;
+  background: #fffdeb;
+  color: #f46e00;
+  padding: 0 10px;
+  line-height: 24px;
+  font-size: 12px;
+}
+.pl_tips p {
+  margin: 10px !important;
+}
+
+/*#showBetRecord{
+	display: none;
+}*/
+
+#betResultOrder {
+  display: none;
+}
+
+#mainContent>.left {
+  width: 200px;
+  margin-right: 10px;
+  float: left;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+#mainContent>.left ul {
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid #ffecdc;
+  min-height: 0px;
+  padding: 5px;
+}
+
+#mainContent>.left ul li {
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px 0;
+}
+
+#mainContent>.left ul li:hover {
+  background: #fafafa;
+}
+
+#mainContent>.left ul li a {
+  font-size: 16px;
+  color: #555;
+}
+
+#mainContent>.left ul li a:hover {
+  text-decoration: none;
+}
+
+#mainContent>.left ul li h3 {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.iconfont {
+  font-style: normal;
+  font-family: iconfont;
+  font-size: inherit;
+  color: inherit;
+}
+
+#mainContent>.left ul li .iconfont {
+  position: absolute;
+  left: 25px;
+  margin: 0;
+  font-size: 18px;
+}
+
+#mainContent>.left ul li a:hover {
+  /* text-decoration: #eb6100; */
+  text-decoration: underline;
+  color: red;
+  text-decoration-color: red;
+}
+
+#mainContent>.left ul li.on a {
+  color: red;
+}
+
+#mainContent>.left .agency ul {
+  border-top: none;
+}
+
+#mainContent>.left .member ul {
+  border-bottom: none;
+}
+
+body {
+  background-color: #F6F6F6;
+}
+
+.nav-link:hover .select-lottery {
+  display: block;
+  box-shadow: 0 1px 1px #888888;
+}
+
+.head-nav .nav-link.active h2 em {
+  display: inline-block;
+}
+
+/*主要内容*/
+
+#main {
+  margin: 15px auto;
+}
+
+#main .wrapper {
+  width: 1090px;
+  margin: auto;
+}
+
+#main .breadcrumb {
+  margin: 10px 0;
+}
+
+#main .right {
+  float: left;
+  display: inline-block;
+  width: 880px;
+  margin-right: 0;
+  color: #333;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+.welcome {
+  line-height: 40px;
+  padding-left: 4px;
+}
+
+
+
+#top .btn>a {
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  width: 40px;
+  /*height: 20px;*/
+  padding: 5px 10px;
+  border-radius: 5px;
+  line-height: 18px;
+}
+
+/*充值按鈕*/
+
+#top .btn.recharge>a {
+  background: #FC9C1F;
+  color: #fff;
+  /*padding: 2px;*/
+  margin-left: 4px;
+}
+
+/*提現按鈕*/
+
+#top .btn.withdrawal>a {
+  background: #FFEBCD;
+  color: #eb6100;
+  /*padding: 2px;*/
+  margin-left: 4px;
+}
+
+#top .topNav {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  font-size: 12px;
+  height: 35px;
+  line-height: 35px;
+}
+
+#top .topNav span {
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+  height: 34px;
+  color: #eb6100;
+  cursor: pointer;
+}
+
+#top .topNav span.active {
+  color: #333;
+  border: 1px solid #ddd;
+  border-bottom-color: #fff;
+  border-top: 1px #eb6100 solid;
+}
+
+#record {
+  border-top: 0;
+  min-height: 200px;
+  height: auto !important;
+  height: 200px;m
+}
+
+#record .condition {
+  margin-left: 10px;
+  height: 35px;
+  margin-top: 10px;
+}
+
+#record .condition select {
+  width: 100px;
+  line-height: 30px;
+  height: 30px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px #ddd;
+}
+
+#record td, #record th {
+    padding: 5px 0;
+}
+
+#input_id {
+  padding-left: 8px;
+}
+
+.col {
+  display: inline-block;
+  position: relative;
+  font-size: 13px;
+  margin-right: 12px;
+}
+
+.type {
+  display: inline-block;
+  line-height: 30px;
+  height: 30px;
+  width: 120px;
+  border: 1px solid #c2c2c2;
+  padding: 0 5px 0 10px;
+  /*box-shadow: 1px 1px 1px #ddd;*/
+  position: relative;
+  cursor: pointer;
+}
+
+.type>b {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background: url(../images/triangle.png) repeat;
+  position: absolute;
+  right: 5px;
+  /*z-index: -1;*/
+}
+
+.typeContent {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  max-height: 150px;
+  background: #fff;
+  z-index: 9999;
+  overflow-y: scroll;
+  border-bottom: 1px solid #c2c2c2;
+}
+
+.typeContent li {
+  width: 135px;
+  text-align: center;
+  border: 1px solid #c2c2c2;
+  border-top: 0;
+  border-bottom: 0;
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.typeContent li:hover {
+  color: #fff;
+  background: #FC9C1F;
+}
+
+.col {
+  height: 30px;
+  line-height: 30px;
+}
+
+.col label {
+  position: relative;
+}
+
+.col label>b {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -2px;
+  left: 6px;
+  background: url(../images/dateTime.png) no-repeat;
+}
+
+.col input {
+  border: 1px solid #ddd;
+  font-size: 12px;
+  width: 135px;
+  padding-right: 5px;
+  padding-left: 26px;
+  height: 30px;
+  /*border-radius: 5px;*/
+  /*box-shadow: 1px 1px 1px #ddd;*/
+  margin-bottom: 4px;
+}
+
+.col .btn {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  border: 1px solid #ddd;
+  height: 25px;
+  line-height: 25px;
+  background: #fc951a;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.detail_explain {
+  height: 50px;
+  padding: 5px 0 0 10px;
+}
+
+.detail_explain ul li {
+  padding-left: 10px;
+  line-height: 22px;
+  color: #727272;
+}
+
+/*表格内容*/
+
+#tz_table {
+  border: 2px solid #ddd;
+  border-top: 0;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+#tz_table .title {
+  background-color: #e1e1e1;
+  text-align: center;
+  height: 30px;
+}
+
+.betResultOrder {
+  display: none;
+}
+
+.betResultOrder tr {
+  text-align: center;
+  padding: 5px 0;
+  border-left: 1px #FFF solid;
+}
+
+.betResultOrder a:link,
+.betResultOrder a:hover,
+.betResultOrder a:visited {
+  color: #005aa0;
+  text-decoration: none;
+}
+
+#orderId {
+  color: #29abe2;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#show_1,
+#show_2 {
+  display: none;
+}
+
+#fenye_1,
+#fenye_2 {
+  text-align: right;
+}
+
+.concealDivOrders {
+  min-height: 300px;
+  height: auto !important;
+  height: 300px;
+}
+
+.concealDivOrders td span {
+  display: inline-block;
+}
+
+.concealDivOrders td:nth-of-type(odd) {
+  padding-right: 5px;
+  background-color: #E3E3E3;
+  text-align: right;
+  width: 20%
+}
+
+.concealDivOrders td:nth-of-type(even) {
+  padding-left: 5px;
+  text-align: left;
+  width: 30%;
+}
+
+.odds {
+  color: #ba142b;
+}
+
+/*账户明细账户总览*/
+
+.memberMsg {
+  margin-bottom: 10px;
+  border: 1px solid #ececec;
+}
+
+.memberMsg .title {
+  text-align: left;
+  /* background: url(../images/my_lottery_title.gif) repeat-x; */
+  /* border-bottom: 1px solid #fff; */
+  height: 40px;
+  position: relative;
+  z-index: 4;
+  line-height: 40px;
+  text-indent: 15px;
+  background-color: #f1f1f1;
+}
+
+.memberMsg .content ul {
+  padding: 15px 0 15px 25px;
+}
+
+.memberMsg .content li {
+  float: left;
+  color: #333;
+  width: 400px;
+  border-right: 1px solid #dadada;
+  border-left: 1px solid #fff;
+  text-align: center;
+}
+
+/*.memberMsg .content li.profit_loss{
+ 	border-right:0;
+ }*/
+
+.memberMsg .content li.lottery_Coin {
+  border-left: 0;
+}
+
+/*用户信息*/
+
+.mainList {
+  padding: 20px;
+  font-size: 16px;
+}
+
+#show .mainList p {
+  line-height: 30px;
+  position: relative
+}
+
+#show .mainList p span:last-of-type {
+  position: absolute;
+  left: 10%
+}
+
+#show tr td {
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  width: 200px;
+}
+
+#show tr td:first-of-type {
+  text-align: right;
+}
+
+#show tr td:nth-of-type(2) {
+  width: 350px;
+}
+
+#show tr .changeCol {
+  color: #999;
+}
+
+#show tr a {
+  color: #005aa0;
+  cursor: pointer;
+}
+
+#show tr input[type=password],
+#show tr input[type=text] {
+  border: 1px solid #999;
+  width: 180px;
+  padding: 4px;
+}
+
+#show tr input[type=button] {
+  padding: 4px 25px;
+  border-radius: 5px;
+  border: 1px solid #999;
+  cursor: pointer;
+  background: url(../images/my_lottery_title.gif) 50px;
+  color: #333;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+#show tr span a {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+#show tr select {
+  width: 200px;
+  padding: 4px;
+  border-radius: 5px;
+  background: url(../images/my_lottery_title.gif) 50px;
+}
+
+#show tr select option {
+  padding: 5px 15px;
+  line-height: 50px;
+}
+
+#show .updatepwd,
+#show .bank,
+#show .updateCoinpwd,
+#show .addCoinpwd,
+#show .firname {
+  display: none;
+}
+
+/*充值*/
+
+.chooseYes {
+  border-top: 1px #ef7163 solid;
+  border-left: 1px #E3E3E3 solid;
+  border-right: 1px #E3E3E3 solid;
+  border-bottom: 1px white solid;
+}
+
+.iconImg ul .img {
+  float: left;
+  margin-right: 5px;
+}
+
+.iconImg ul .img img {
+  width: 45px;
+}
+
+.navMes ul {
+  padding: 15px;
+}
+
+.paySuccess {
+  display: none;
+}
+
+.payError {
+  display: none;
+}
+
+.paySuccess,
+.payError {
+  border: 1px #E3E3E3 solid;
+  line-height: 40px;
+  margin: 40px;
+  padding: 5% 20%;
+}
+
+.btnSure {
+  background: #FC9C1F;
+  padding: 5px 40px;
+  border: 1px solid #D45702;
+  color: white;
+  cursor: pointer;
+}
+
+.navYes {
+  background: #fff7eb;
+}
+
+.iconImg ul {
+  border-bottom: 1px #E3E3E3 solid;
+  color: gray;
+  cursor: pointer;
+}
+
+.iconImg ul:last-child {
+  border-bottom: none;
+}
+
+.iconImg ul li.payTitle {
+  font-size: 22px;
+  line-height: 35px;
+  color: #333333;
+}
+
+.navMes ul:hover {
+  border: 1px solid #0af;
+}
+
+/*提款*/
+
+#draw {
+  font-size: 13px;
+}
+
+#draw #show_0,
+#draw #show_1,
+#draw #show_2 {
+  display: none;
+}
+
+#title {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  font-size: 12px;
+  border: 1px solid #ececec;
+  background: url(../images/infobox_line.png) 0 0 repeat-x;
+}
+
+#draw #title strong {
+  font-size: 15px;
+}
+
+#draw #title .userinfotit {
+  background-color: #fe9612;
+  color: #fff;
+  border-radius: 3px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 3px;
+}
+
+#draw .yue {
+  margin-left: 75px;
+}
+
+#draw .yue em {
+  color: #eb6100
+}
+
+#draw #record {
+  padding: 40px;
+}
+
+#draw .draw {
+  margin: 0 20px;
+  padding: 10px 15%;
+}
+
+#draw #show_3 .draw {
+  text-align: center;
+}
+
+#draw .draw input[type=password],
+#draw .draw input[type=text] {
+  border: 1px solid #ccc;
+  line-height: 30px;
+  padding-left: 10px;
+  width: 200px;
+}
+
+.liulcheng {
+  height: 50px;
+  position: relative;
+}
+
+.liutextbox {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: -10px;
+}
+
+.liulist {
+  float: left;
+  width: 25%;
+  height: 7px;
+  background: #ccc;
+}
+
+.liulist.for-cur {
+  background: #ff9500;
+}
+
+.liutext {
+  float: left;
+  width: 25%;
+  text-align: center;
+  font-size: 12px;
+}
+
+.liutext strong {
+  font-weight: normal;
+  line-height: 26px;
+}
+
+.liutext.for-cur {
+  color: #ff9500;
+}
+
+.liutextbox .liutext em {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  -moz-border-radius: 24px;
+  -webkit-border-radius: 24px;
+  border-radius: 24px;
+  background: #ccc;
+  text-align: center;
+  font-size: 14px;
+  line-height: 24px;
+  font-style: normal;
+  font-weight: bold;
+  color: #fff;
+}
+
+.liutextbox .liutext.for-cur em {
+  background: #ff9500;
+}
+
+#draw table td {
+  width: 40%;
+  line-height: 30px;
+  height: 50px;
+}
+
+/*合买记录*/
+
+.pro_td {
+  padding-left: 20px;
+}
+
+.pro_td p:nth-of-type(1) {
+  text-align: left;
+  height: 12px;
+  padding-top: 3px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.pro_td p span {
+  background: rgb(185, 0, 0);
+  color: #fff;
+  padding: 0 5px;
+}
+
+.pro_td p:nth-of-type(2) {
+  margin-top: 5px;
+  margin-right: 3px;
+  height: 7px;
+  border: 1px solid red;
+  padding: 0;
+  padding-bottom: 1px;
+}
+
+.pro_td p:nth-of-type(2) b {
+  display: block;
+  height: 8px;
+  background: rgb(185, 0, 0);
+}
+
+.showBetRecord .isShow {
+  display: none;
+}
+
+.moreMes {
+  border: 5px #E3E3E3 solid;
+  width: 100%;
+  text-align: center;
+}
+
+.show-if {
+  display: none;
+}
+
+.moreMes td {
+  border: 1px #D3D3D3 solid;
+}
+
+.moreMes tr {
+  height: 28px;
+  line-height: 28px;
+}
+
+.moreMes tr:first-of-type {
+  background: #fff4d1;
+}
+
+.bytypeId {
+  display: none;
+}
+
+/*账号信息*/
+
+#personalArea {
+  display: none;
+}
+
+#personalArea td em {
+  display: table-cell;
+  font-size: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+}
+
+#personalArea td em input {
+  display: table-cell;
+  width: 100%;
+  vertical-align: middle;
+  border: 0;
+  outline: none;
+  background: #fff;
+  padding: 2% 15%;
+  font-size: 16px;
+}
+
+#personalArea .tips {
+  font-size: 12px;
+  position: absolute;
+  right: -20px;
+  height: 12px;
+  color: #e23a3a;
+  top: 2px;
+}
+
+.list:nth-of-type(1) .fenge {
+  display: none;
+}
+
+#ticDetails {
+  height: 480px;
+}
+
+#ticketDetailsStr {
+  margin-top: 5%;
+  height: 50px;
+}
+
+#ticketDetailsStr td {
+  background: #e23a3a;
+  color: white;
+  border-right: 1px solid #E3E3E3;
+}
+
+/*分享好友*/
+
+#share .mainList {
+  min-height: 280px;
+  height: auto !important;
+  height: 280px;
+}
+
+#share .headerTit {
+  margin-top: 5%;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#share .procode {
+  height: 100px;
+  border: 1px solid #E3E3E3;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 50%;
+  text-align: center;
+  line-height: 100px;
+  font-size: 20px;
+}
+
+.mainList .layui-btn {
+    padding: 3px 15px;
+    height: auto;
+    line-height: inherit;
+    margin-left: 10px;
+}
+
+.layui-form-mid {
+    padding-left: 10px !important;
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>下级开户</title>
+    <script src="../public/js/base.js"></script>
+    <script src="../public/js/clipboard.min.js"></script>
+</head>
+<body>
+	<script src="../public/js/header.js"></script>
+<div id="downAccount" class="proxy">
+    <section id="main">
+        <div id="mainBody" class="wrapper">
+            <div id="mainContent" class="clearfix">
+                <nav class="left">
+                        <div class="member">
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>會員中心</blockquote>
+                                <li>
+                                    <a href="/myCenter/member.html">會員中心</a>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/betrecord.html">投註記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/lotteryrecord.html">中獎記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/accountDetails.html">賬號明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/userInfo.html">賬號信息</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li v-if="agencyType!=6">
+                                    <a href="/myCenter/draw.html">提款</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <div class="hr"></div>
+                                </li>
+                    
+                            </ul>
+                        </div>
+                        <div class="agency" v-if="agencyType==1" v-cloak>
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <li>
+                                    <a href="/agency/agentIntro.html">代理說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentReport.html">代理報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/lowerReport.html">下級報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li class="on">
+                                    <a href="/agency/downAccount.html">下級開戶</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentMember.html">會員管理</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyBetDetail.html">投注說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyDealDetail.html">交易明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    
+                    </nav>
+                <div class="right">
+                    <div class="title">下级开户</div>
+                    <div id="openAgent" class="proxy_main">
+                        <div class="edit">
+                            <div id="timeType" class="newTab">
+                                <a href="javascript:;" class="curr" @click="topStatus=0">下级开户</a>
+                                <a href="javascript:;" @click="topStatus=1">邀请码管理</a>
+                            </div>
+                            <div class="TabLi" v-if="topStatus==0">
+                                <ul class="searchFirst">
+                                    <li>
+                                        <span>开户类型:</span>
+                                        <a href="javascript:;" :class="['khType',userType==1?'active':'']" @click="userType=1">代理</a>
+                                        <a href="javascript:;" :class="['khType',userType==2?'active':'']"  @click="userType=2" >玩家</a> <br />
+                                        返点设置：请先为下级设置返点。<a href="agencyRebateList.html" class="rebateDesLink">点击查看返点赔率表</a>
+                                    </li>
+                                </ul>
+                                <div id="NextOpen"  class="bonusTable"  v-if="topStatus==0">
+                                    <ul v-for="(item,index) in nameRebatesList" >
+                                        <li>{{item.codeName}}</li>
+                                        <li>
+                                            <input type="number" min="0.0" step="0.1" max="8.0" class="userInput mgl20" @blur="checkData(index,item.nowRebate)"  v-model="modelRebatesList[index]"/>
+                                            <span>（自身返点{{item.nowRebate}}，可为下级设置返点范围0.0-{{item.nowRebate}}）</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a class="submitBtn" @click="creadtedCode"  v-if="topStatus==0">生成邀请码</a>
+                                <div class="pl_tips">
+                                    <p>
+                                        <i></i>
+                                        ※ 温馨提示： <br/>
+                                        1、不同的返点赔率不同，返点越高赔率越高。<br/>
+                                        2、代理可获得的佣金等于代理自身返点与下级返点的差值，如代理自身返点6，下级返点4，代理可获得下级投注金额的2%，即下级下注100元，代理可获得2元。<br/>
+                                        3、下级返点值设得越低，下级的赔率就越低，建议给下级设置的返点不要过低。
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="TabLi" v-if="topStatus==1">
+                                <ul class="searchFirst">
+                                    <li>
+                                        <span>开户类型:</span>
+                                        <a href="javascript:;" :class="['khType',userType==1?'active':'']" @click="userType=1">代理</a>
+                                        <a href="javascript:;" :class="['khType',userType==2?'active':'']" @click="userType=2">玩家</a> <br />
+                                    </li>
+                                </ul>
+                                <div class="invitationCode" >
+                                    <table class="manageInvite" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <th width="18%">邀请码</th>
+                                            <th width="32%">注册链接</th>
+                                            <th width="20%">短链接</th>
+                                            <th  width="12%">生成时间</th>
+                                            <th  width="8%">状态</th>
+                                            <th  width="10%">操作</th>
+                                        </tr>
+                                        <tr v-for="(item,index) in downList">
+                                            <td v-cloak>
+                                                <input type="text" class="code invitateCode" :value="item.invitateCode" readonly/>
+                                                <span type="button" class="copybtn" data-clipboard-action="copy" data-clipboard-target=".invitateCode">复制</span>
+                                            </td>
+                                            <td v-cloak>
+                                                <input type="text" class="invitateUrl" style="width: 220px;" :value="item.invitateUrl" readonly/>
+                                                <span class="copybtn" data-clipboard-action="copy" data-clipboard-target=".invitateUrl" >复制</span>
+                                            </td>
+                                            <td v-cloak>
+                                                <input type="text"  class="code shortUrl" :value="item.shortUrl" readonly/>
+                                                <span class="copybtn" data-clipboard-action="copy" data-clipboard-target=".shortUrl" >复制</span>
+                                            </td>
+                                            <td v-cloak>{{item.createDate}}</td>
+                                            <td v-cloak>{{"注册("+item.regNum+")"}}</td>
+                                            <td v-cloak>
+                                                <a href="javascript:" class="detail" @click="showPopover(index)">详情</a>|
+                                                <a href="javascript:" class="del" @click="delItemRebate(index)">删除</a>
+                                            </td>
+                                        </tr>
+                                        <tr v-if="!downList||downList.length==0" v-cloak><td colspan="6">暂无数据</td></tr>
+                                    </table>
+
+                                </div>
+                                <div id="fenye"></div>
+                                <div class="pl_tips">
+                                    <p>
+                                        <i></i>
+                                        温馨提示：“邀请码” 与 “注册链接” 功能一致，可以使用邀请码，也可以使用注册链接。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="popover">
+        <div class="agency">
+            <div class="popover">
+                <ul>
+                    <li v-for="item in itemRebateList">
+                        <span class="gameName">{{item[0]}}</span>
+                        <input class="rebate" type="button" readonly :value="item[1]">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+</div>
+<script src="../public/js/footer.js"></script>
+<script type="text/javascript" src="../public/js/jqPaginator.js"></script>
+<script type="text/javascript" src="js/downAccount.js"></script>
+<script>
+
+    var clipboard = new ClipboardJS('.copybtn');
+
+    clipboard.on('success', function(e) {
+        window.parent.layui.use('layer',function(){
+            var layer= window.parent.layui.layer;
+            layer.msg("复制成功！");
+        });
+
+        e.clearSelection();
+    });
+
+    clipboard.on('error', function(e) {
+        window.parent.layui.use('layer',function(){
+            var layer=window.parent.layui.layer;
+            layer.msg("复制失败！");
+        });
+    });
+
+
+
+
+</script>
+</body>
+</html>

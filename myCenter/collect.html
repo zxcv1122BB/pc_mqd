@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>我的收藏</title>
+    <link rel="stylesheet" href="../myCenter/css/collect.css"/>
+    <script type="text/javascript" src="../public/js/base.js"></script>
+</head>
+
+<body>
+<script src="../public/js/header.js"></script>
+<div class="main" id="collect_pg" style="position: relative" style="min-height: 100px;" >
+
+    <div class="mainArea" style="min-height: 100px;">
+        <div class="lcbox"  v-if="collectListHeight.length!=0">
+            <div class="lctit">
+                <div class="jingcai" id="jc_lottery_area">
+                    <h2>高频</h2>
+                </div>
+            </div>
+            <div class="lcmain" style="min-height: 50px;">
+                <ul class="lot_ul clearfix" >
+                    <li v-for="item in collectListHeight">
+                        <div class="btnbox_top clearfix">
+                            <a :href="'/'+item.bet_url">
+                                <img :src="'/'+item.pic_url" />
+                            </a>
+                            <div class="info">
+                                <h3>
+                                    <a :href="'/'+item.bet_url" v-cloak>{{item.gameName}}</a>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="btnbox">
+                            <a href="javascript:;" @click="cancelCollect(item.gameID)">取消收藏</a>
+                            <a :href="'/'+item.bet_url"  class="buybtn">前往投注</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="lcbox" v-if="collectListLow.length!=0">
+            <div class="lctit">
+                <div class="jingcai" >
+                    <h2>低频</h2>
+                </div>
+            </div>
+            <div class="lcmain" style="min-height: 50px;">
+                <ul class="lot_ul clearfix"  >
+                    <li v-for="item in collectListLow">
+                        <div class="btnbox_top clearfix" >
+                            <a :href="'/'+item.bet_url">
+                                <img :src="'/'+item.pic_url" />
+                            </a>
+                            <div class="info">
+                                <h3>
+                                    <a :href="'/'+item.bet_url" v-cloak>{{item.gameName}}</a>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="btnbox">
+                            <a href="javascript:;" @click="cancelCollect(item.gameID)">取消收藏</a>
+                            <a :href="'/'+item.bet_url"  class="buybtn">前往投注</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<div>
+    <script src="/public/js/footer.js"></script>
+</div>
+
+<script type="text/javascript" src="/public/js/jqPaginator.js"></script>
+<script src="js/collect.js"></script>
+</body>
+
+</html>

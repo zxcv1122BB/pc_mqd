@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>走势图</title>
+		<link rel="stylesheet" href="css/trend.css" />
+		<script src="../public/js/base.js"></script>
+	</head>
+
+	<body>
+		<div class="main">
+			<script src="../public/js/header.js"></script>
+			<div class="trend" id="trend">
+				<ul id="tr_title">
+					<li v-for="item in alllottery" :id="['li_'+item.gameID]" class="chooseNo" @click="selectType(item.code,item.gameID)">{{item.gameName}}</li>
+				</ul>
+				<div class="clear"></div>
+				<div id="chart">
+					<div class="chart_float">
+						<div class="chart_left" v-if='chartId==5||chartId==19'>
+							<span class="chart_left_else">定位:</span>
+							<span  class="chart_left_1" class="cho_yes" @click="selectNum(1,chartId)">百位</span>
+							|<span  class="chart_left_2" @click="selectNum(2,chartId)">十位</span>
+							|<span  class="chart_left_3" @click="selectNum(3,chartId)">个位</span>
+						</div>
+						<div class="chart_left" v-else-if='chartId==6||chartId==13||chartId==14'>
+							<span class="chart_left_else">定位:</span>
+							<span class="chart_left_1" class="cho_yes" @click="selectNum(1,chartId)">万位</span>
+							|<span  class="chart_left_2" @click="selectNum(2,chartId)">千位</span>
+							|<span  class="chart_left_3" @click="selectNum(3,chartId)">百位</span>
+							|<span  class="chart_left_4" @click="selectNum(4,chartId)">十位</span>
+							|<span  class="chart_left_5" @click="selectNum(5,chartId)">个位</span>
+						</div>
+						<div class="chart_left" v-else-if='chartId==8||chartId==15'>
+							<span class="chart_left_else">定位:</span>
+							<span class="chart_left_1" class="cho_yes" @click="selectNum(1,chartId)">第一位</span>
+							|<span  class="chart_left_2" @click="selectNum(2,chartId)">第二位</span>
+							|<span  class="chart_left_3" @click="selectNum(3,chartId)">第三位</span>
+							|<span  class="chart_left_4" @click="selectNum(4,chartId)">第四位</span>
+							|<span  class="chart_left_5" @click="selectNum(5,chartId)">第五位</span>
+							|<span  class="chart_left_6" @click="selectNum(6,chartId)">第六位</span>
+							|<span  class="chart_left_7" @click="selectNum(7,chartId)">第七位</span>
+							|<span  class="chart_left_8" @click="selectNum(8,chartId)">第八位</span>
+							|<span   class="chart_left_9" @click="selectNum(9,chartId)">第九位</span>
+							|<span   class="chart_left_10" @click="selectNum(10,chartId)">第十位</span>
+						</div>
+						<div class="chart_left" v-else-if='chartId==12'>
+							<span class="chart_left_else">定位:</span>
+							<span class="chart_left_1" class="cho_yes" @click="selectNum(1,12)">第一位</span>
+							|<span  class="chart_left_2" @click="selectNum(2,12)">第二位</span>
+							|<span  class="chart_left_3" @click="selectNum(3,12)">第三位</span>
+							|<span  class="chart_left_4" @click="selectNum(4,12)">第四位</span>
+							<!--|<span  class="chart_left_5" @click="selectNum(5,12)">第五位</span>
+							|<span  class="chart_left_6" @click="selectNum(6,12)">第六位</span>
+							|<span  class="chart_left_7" @click="selectNum(7,12)">第七位</span>-->
+						</div>
+						<div class="chart_left" v-else-if='chartId==7||chartId==16||chartId==17||chartId==18'>
+							<span class="chart_left_else">定位:</span>
+							<span class="chart_left_1" class="cho_yes" @click="selectNum(1,chartId)">第一位</span>
+							|<span  class="chart_left_2" @click="selectNum(2,chartId)">第二位</span>
+							|<span  class="chart_left_3" @click="selectNum(3,chartId)">第三位</span>
+							|<span  class="chart_left_4" @click="selectNum(4,chartId)">第四位</span>
+							|<span  class="chart_left_5" @click="selectNum(5,chartId)">第五位</span>
+						</div>
+						<div class="chart_left_else" v-else-if='chartId==9||chartId==40||chartId==41'>特码</div>
+						<div class="chart_left_else" v-else-if='chartId==11||(chartId>=20&&chartId<=25)'>和值走势</div>
+					</div>
+					<div class="clear"></div>
+					<article id="article">
+						<form id="form" runat="server">
+							<div style=" top:260px;left:0px; position:absolute; width:100%; " id="div_thr">
+								<table class="dingweiDan">
+									<thead>
+										<tr>
+											<th class="title" rowspan="2">开奖日期</th>
+											<th class="title" rowspan="2">期号</th>
+											<th class="title" rowspan="2">奖号</th>
+											<th class="title" v-if="chartId==5||chartId==11||(chartId>=20&&chartId<=25)||chartId==19">和值</th>
+											<th class="title" v-if="chartId==5||chartId==11||(chartId>=20&&chartId<=25)||chartId==19">跨度</th>
+											<th class="title" v-if="chartId==5||chartId==11||(chartId>=20&&chartId<=25)||chartId==19">形态</th>
+											<th class="title" v-if="chartId==7||chartId==16||chartId==17||chartId==18">总和</th>
+											<th class="title" v-if="chartId==6||chartId==7||chartId==13||chartId==14||chartId==16||chartId==17||chartId==18">前三</th>
+											<th class="title" v-if="chartId==6||chartId==7||chartId==13||chartId==14||chartId==16||chartId==17||chartId==18">中三</th>
+											<th class="title" v-if="chartId==6||chartId==7||chartId==13||chartId==14||chartId==16||chartId==17||chartId==18">后三</th>
+											<th class="title" v-if="chartId==8||chartId==15">冠亚和</th>
+											<th class="title" v-if="chartId==9||chartId==40||chartId==41">大小单双</th>
+											<th class="title" v-if="chartId==9||chartId==40||chartId==41">色波</th>
+											<th class="title_else" v-if='chartId!=31&&chartId!=37&&datas[0].num' v-for="(obj,index) in arr" >
+												<span v-if="chartId==8||chartId==7||chartId==15||chartId==16||chartId==17||chartId==18">{{index+1}}</span>
+												<span v-else-if="chartId==11||(chartId>=20&&chartId<=25)">{{index+3}}</span>
+												<span v-else>{{index}}</span>
+											</th>
+											<th v-if='chartId==31||chartId==37' colspan="4">
+												总和
+											</th>
+											<th v-if='chartId==31||chartId==37' colspan="5">
+												特码
+											</th>
+										</tr>
+										<tr>
+											<th v-if='chartId==31||chartId==37'>总数</th>
+											<th v-if='chartId==31||chartId==37'>单双</th>
+											<th v-if='chartId==31||chartId==37'>大小</th>
+											<th v-if='chartId==31||chartId==37'>七色彩</th>
+											<th v-if='chartId==31||chartId==37'>单双</th>
+											<th v-if='chartId==31||chartId==37'>大小</th>
+											<th v-if='chartId==31||chartId==37'>合单双</th>
+											<th v-if='chartId==31||chartId==37'>合大小</th>
+											<th v-if='chartId==31||chartId==37'>大小尾</th>
+										</tr>
+									</thead>
+									<tbody id="testtd">
+										<tr v-for="(item,index) in datas" v-cloak>
+											<td  style="font-size: 16px;">{{item.open_time}}</td>
+											<td>{{item.issue}}</td>
+											<td class="luckNum" v-if="gameCode=='PK10'"><span :class="['square','square-'+item]" v-for="item in item.luck_number.split(',')"></span></td>
+											<!--<td class="luckNum" v-else-if="chartId==5||chartId==6||chartId==11||chartId==7||chartId==12||chartId==13||chartId==14||chartId==16||chartId==17||chartId==18||chartId==19||(chartId>=20&&chartId<=25)">{{item.luck_number}}</td>-->
+											<td class="luckNum" v-else-if="gameCode=='hk6'">
+												<span v-for="item in item.luck_number.split(',')" :class="['box',colorList[parseInt(item)-1]]" >
+													{{item}}
+												</span>
+											</td>
+											<td class="luckNum banner_num" v-else-if="gameCode=='PCDD'"><span v-for="it in item.recentlyNum" :class="it=='='||it=='+'?'':bj28CL[it]"v-cloak>{{it}}</span></td>
+											<td class="luckNum" v-else-if="gameCode=='k3'"><span v-for="item in item.luck_number.split(',')" :class="['dice','dice-'+item]" v-cloak></span></td>
+											<td class="luckNum" v-else-if="gameCode=='ssc' || gameCode=='11x5' || gameCode=='3D' || gameCode == 'kl10f'"><span class="r_bage" v-for="item in item.luck_number.split(',')" v-cloak v-if="history.length > 0">{{item}}</span></td>
+											<td v-if="chartId==31||chartId==37||chartId==5||chartId==11||chartId==19||(chartId>=20&&chartId<=25)">{{item.total}}</td>
+											<td v-if="chartId==5||chartId==11||chartId==19||(chartId>=20&&chartId<=25)">{{item.difference}}</td>
+											<td v-if="chartId==8||chartId==5||chartId==6||chartId==11||chartId==13||chartId==14||chartId==9||chartId==15||chartId==19||chartId==40||chartId==41||(chartId>=20&&chartId<=25)">{{item.shape}}</td>
+											<td v-if="chartId==7||chartId==16||chartId==17||chartId==18">{{item.shape}}{{item.shape1}}</td>
+											<td v-if="chartId==6||chartId==9||chartId==13||chartId==14||chartId==40||chartId==41">{{item.shape1}}</td>
+											<td v-if="chartId==6||chartId==13||chartId==14">{{item.shape2}}</td>
+											<td v-if="chartId==7||chartId==16||chartId==17||chartId==18">{{item.thr_left}}</td>
+											<td v-if="chartId==7||chartId==16||chartId==17||chartId==18">{{item.thr_center}}</td>
+											<td v-if="chartId==7||chartId==16||chartId==17||chartId==18">{{item.thr_right}}</td>
+											<td :style="item.ds.slice(2)=='双'?'color:red':''" v-if="chartId==31||chartId==37">{{item.ds}}</td>
+											<td :style="item.dx.slice(2)=='大'?'color:red':''" v-if="chartId==31||chartId==37">{{item.dx}}</td>
+											<td :style="{'color':item.colorSpec}" v-if="chartId==31||chartId==37">{{item.colorSort}}</td>
+											<td :style="item.tmds.slice(0)=='双'?'color:red':''" v-if="chartId==31||chartId==37">{{item.tmds}}</td>
+											<td :style="item.tmdx.slice(0)=='大'?'color:red':''" v-if="chartId==31||chartId==37">{{item.tmdx}}</td>
+											<td :style="item.tmhds.slice(1)=='双'?'color:red':''" v-if="chartId==31||chartId==37">{{item.tmhds}}</td>
+											<td :style="item.tmhdx.slice(1)=='大'?'color:red':''" v-if="chartId==31||chartId==37">{{item.tmhdx}}</td>
+											<td :style="item.tmdxw.slice(1)=='大'?'color:red':''" v-if="chartId==31||chartId==37">{{item.tmdxw}}</td>
+
+											<td class="message" v-for="items in datas[index].num">{{items}}</td>
+										</tr>
+									</tbody>
+								</table>
+								<!--<p class="p_tit" v-if="chartId!=31&&chartId!=37">图表指标统计</p>-->
+								<!--<table style="width: 100%;" v-if="chartId!=31&&chartId!=37">-->
+								<!--	<thead>-->
+								<!--		<tr>-->
+								<!--			<th class="title">合计</th>-->
+								<!--			<th  v-for="(obj,index) in arr" class="title_else">-->
+								<!--				<span v-if="chartId==8||chartId==7||chartId==15||chartId==16||chartId==17||chartId==18">{{index+1}}</span>-->
+								<!--				<span v-else-if="chartId==11||(chartId>=20&&chartId<=25)">{{index+3}}</span>-->
+								<!--				<span v-else>{{index}}</span>-->
+								<!--			</th>-->
+								<!--		</tr>-->
+								<!--	</thead>-->
+								<!--	<tbody id="total">-->
+								<!--		<tr id="count">-->
+								<!--			<td>出现次数</td>-->
+								<!--			<td class="haveS" v-for="obj in arr"></td>-->
+								<!--		</tr>-->
+								<!--		<tr id="avg">-->
+								<!--			<td>平均遗漏</td>-->
+								<!--			<td class="haveS" v-for="obj in arr"></td>-->
+								<!--		</tr>-->
+								<!--		<tr id="missMax">-->
+								<!--			<td>最大遗漏</td>-->
+								<!--			<td class="haveS" v-for="obj in arr"></td>-->
+								<!--		</tr>-->
+								<!--		<tr id="lineOut">-->
+								<!--			<td>最大连出</td>-->
+								<!--			<td class="haveS" v-for="obj in arr"></td>-->
+								<!--		</tr>-->
+								<!--	</tbody>-->
+								<!--</table>-->
+								<div class="b_explain" v-if="chartId!=31&&chartId!=37">
+									<p class="b_tit">参数说明</p>
+										<ul>
+										<li><指标类></li>
+										<li class="b_mess">和值：开奖号码相加之和，范围为0-27。示例：号码785，和值为20。</li>
+										<li class="b_mess">跨度：开奖号码中最大号码减去最小号码后的差值。示例：奖号785，跨度值为3(8-5=3)。</li>
+										<li class="b_mess">重号类型：3个开奖号码均不相同即为组六形态，有且仅有2个开奖号码相同为组三形态，3个开奖号码全部相同为豹子形态。</li>
+										<li><图表参数></li>
+										<li class="b_mess">出现总次数：统计期数内实际出现的次数。</li>
+										<li class="b_mess">平均遗漏值：统计期数内遗漏的平均值。计算公式：平均遗漏=每次遗漏期数之和/出现次数。</li>
+										<li class="b_mess">最大遗漏值：统计期数内遗漏的最大值。</li>
+										<li class="b_mess">最大连出值：统计期数内连续开出的最大值。</li>
+									</ul>
+								</div>
+							</div>
+						</form>
+					</article>
+				</div>
+			</div>
+			<script src="../public/js/footer.js"></script>
+		</div>
+		<script src="../public/js/bettingCountUtils.js"></script>
+		<script src="js/trend.js"></script>
+	</body>
+
+</html>

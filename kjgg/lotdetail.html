@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>開獎詳情</title>
+    <script src="../public/js/base.js"></script>
+</head>
+
+<body class="fiexd">
+<script src="../public/js/header.js"></script>
+<div class="lotdetail-container unable_select" id="lotdetail" v-cloak>
+    <div class="detail-info">
+        <div class="refer">
+            <span>玩法:</span>
+            <div class="select_type">
+                <p >{{playTypeName}}
+                    <b :class="isShowType?'down':'up'"></b>
+                </p>
+                <ul class="select_list">
+                    <li v-for="item in DigitalGameList" @click="searchAnother(item.gameID)">{{item.show_name}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="prize-head clearfix">
+            <div class="img fl">
+                <img :src="ImgSrc" alt="">
+            </div>
+            <div class="info">
+                <div class="banner-info fl">
+                    <p class="fz-b fl">{{Title}}</p>
+                    <div class="fl select_banner" v-show="playType == 'sfc'|| playType=='rxj'||playType=='dc'">
+                        <p @click="isShowBanner=!isShowBanner;isShowType=false;">{{selBanner}}期
+                            <b></b>
+                        </p>
+                        <ul v-show="isShowBanner">
+                            <li v-for='(item,index) in datas.totalQi' @click='ClickQiByData(item)'>{{item}}期</li>
+                        </ul>
+                        </span>
+                    </div>
+                    <div class="fl select_date" v-show="playType=='jczq'||playType=='jclq'">
+                        <div class="date-plug">
+                            <input type="text" id="selDate">
+                        </div>
+                    </div>
+                    <p class="fl" v-show="playType!='sfc'&&playType!='rxj'&&playType!='dc'&&playType!='jczq'&&playType!='jclq'" style="padding-left: 10px">開獎日期:{{open_time}} </p>
+                    <p class="fz-s fl" style="display: none">{{SubTitle}}</p>
+                </div>
+                <div class="prize-number fl"  v-show="playType!='sfc'&&playType!='rxj'&&playType!='dc'&&playType!='jczq'&&playType!='jclq'" >
+                    <p v-if="gameCode=='PCDD'" :class="recentlyNum.slice(-1)" v-cloak>
+                        <span v-cloak v-for="it in recentlyNum" :class="it=='='||it=='+'?'white':bj28CL[it]">{{it}}</span>
+                        <em v-cloak> ( 第{{presentNum}}期 )</em>
+                    </p>
+                    <p v-else-if="gameCode=='k3'" v-cloak>
+                        <span v-for="it in recentlyNum" :class="['dice','dice-'+it]"></span>
+                        <em v-cloak>( 第{{presentNum}}期 )</em>
+                    </p>
+                    <p v-else-if="gameCode=='hk6'" v-cloak>
+                        <span v-for="it in recentlyNum" :class="it=='='?'white':lhcCL[it-1]" v-cloak>{{it}}</span>
+                        <em v-cloak>( 第{{presentNum}}期 )</em>
+                    </p>
+                    <p v-else-if="gameCode=='PK10'" v-cloak>
+                        <span v-for="it in recentlyNum" :class="['square','square-'+it]"  v-cloak></span>
+                        <em v-cloak>( 第{{presentNum}}期 )</em>
+                    </p>
+                    <p v-else  v-cloak>
+                        <span v-cloak v-for="it in recentlyNum">{{it}}</span>
+                        <em v-cloak> ( 第{{presentNum}}期 )</em>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="prize-body">
+            <div v-if="playType === 'sfc'||playType === 'rxj'">
+                <div class="sfc-model" v-if="flag">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>場次</th>
+                            <th v-for='(item,index) in datas.totalGoal'>{{index+1}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- 主队 -->
+                        <tr class="home">
+                            <td>主隊</td>
+                            <td v-for='(item,index) in datas.homeTeamArr'>{{item}}</td>
+                        </tr>
+                        <!-- 客队 -->
+                        <tr class="guest">
+                            <td>客隊</td>
+                            <td v-for='(item,index) in datas.awayTeamArr'>{{item}}</td>
+                        </tr>
+                        <!-- 彩果 -->
+                        <tr class="total">
+                            <td>彩果</td>
+                            <td v-for='(item,index) in datas.totalGoal' class="red">{{item}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table class="prize-info" v-show="prize_store.sfc_prize.second_prize_number&&prize_store.sfc_prize.first_prize_number">
+                        <thead>
+                        <tr v-if="prize_store.sfc_prize.first_prize_number">
+                            <th>獎項</th>
+                            <th>中獎注數</th>
+                            <th>每注獎金</th>
+                            <th>中獎條件</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>一等獎</td>
+                            <td v-text="prize_store.sfc_prize.first_prize_number===null?'-':prize_store.sfc_prize.first_prize_number"></td>
+                            <td class="red" v-text="prize_store.sfc_prize.first_prize_bonus===null?'-':prize_store.sfc_prize.first_prize_bonus"></td>
+                            <td>中14场</td>
+                        </tr>
+                        <tr>
+                            <td>二等獎</td>
+                            <td v-text="prize_store.sfc_prize.second_prize_number===null?'-':prize_store.sfc_prize.second_prize_number"></td>
+                            <td class="red" v-text="prize_store.sfc_prize.second_prize_bonus===null?'-':prize_store.sfc_prize.second_prize_bonus"></td>
+                            <td>中13场</td>
+                        </tr>
+                        <!-- <tr>
+                            <td>任选九</td>
+                            <td v-text="prize_store.rxj_prize.first_prize_number===null?'-':prize_store.rxj_prize.first_prize_number"></td>
+                            <td class="red" v-text="prize_store.rxj_prize.first_prize_bonus===null?'-':prize_store.rxj_prize.first_prize_bonus"></td>
+                            <td>中9场</td>
+                        </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <div  style="text-align: center;height: 200px;line-height: 200px;" v-else="">
+                	<strong>暫無數據</strong>
+                </div>
+            </div>
+            <div v-else-if="playType === 'dc'">
+                <div class="dc-model">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th rowspan="2">序</th>
+                            <th rowspan="2">賽事</th>
+                            <th rowspan="2">開賽</th>
+                            <th rowspan="2">主隊</th>
+                            <th rowspan="2">客隊</th>
+                            <th rowspan="2">全場比分</th>
+                            <th colspan="3">讓球勝平負</th>
+                            <th colspan="2">上下單雙</th>
+                            <!-- <th colspan="2">半全场</th> -->
+                            <th colspan="2">比分</th>
+                            <th colspan="2">總進球</th>
+                        </tr>
+                        <tr>
+                            <th>讓球</th>
+                            <th>彩果</th>
+                            <th>賠率</th>
+                            <th>彩果</th>
+                            <th>賠率</th>
+                            <th>彩果</th>
+                            <th>賠率</th>
+                            <!-- <th>彩果</th>
+                            <th>赔率</th> -->
+                            <th>彩果</th>
+                            <th>賠率</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(item,index) in dcGameData">
+                            <td>{{item.rounds}}</td>
+                            <td>{{item.leagueName}}</td>
+                            <td>{{item.startTime}}</td>
+                            <td>{{item.homeTeam}}</td>
+                            <td>{{item.awayTeam}}</td>
+                            <td v-text="item.court_score!=undefined?item.court_score:'-'"></td>
+                            <td v-text="item.letball_number!=undefined?item.letball_number:'-'"></td>
+                            <td class="win">{{item.letball_number?item.letball_result:item.not_letball_result}}</td>
+                            <td>{{item.letball_number?item.matchOdds:item.gameOdds}}</td>
+                            <td class="win">{{item.upDown}}</td>
+                            <td>{{item.upDownOdds}}</td>
+                            <td class="win">{{item.court_score_result?item.court_score_result:'-'}}</td>
+                            <td>{{item.courtScoreOdds}}</td>
+                            <td class="win">{{item.total_goal_number!=undefined?item.total_goal_number:'暂无'}}</td>
+                            <td>{{item.totalOdds}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div v-else-if="playType==='jczq'">
+                <div class="jczq-model">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th rowspan="2">序</th>
+                            <th rowspan="2">赛事</th>
+                            <th rowspan="2">开赛</th>
+                            <th rowspan="2">主队</th>
+                            <th rowspan="2">客队</th>
+                            <th rowspan="2">全场比分</th>
+                            <th colspan="2">胜平负</th>
+                            <th colspan="3">让球胜平负</th>
+                            <th colspan="2">半全场</th>
+                            <th colspan="2">比分</th>
+                            <th colspan="2">总进球</th>
+                        </tr>
+                        <tr>
+                            <th>彩果</th>
+                            <th>赔率</th>
+                            <th>让球</th>
+                            <th>彩果</th>
+                            <th>赔率</th>
+                            <th>彩果</th>
+                            <th>赔率</th>
+                            <th>彩果</th>
+                            <th>赔率</th>
+                            <th>彩果</th>
+                            <th>赔率</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(item,index) in jczqDatas">
+                            <td>{{item.rounds}}</td>
+                            <td>{{item.leagueName}}</td>
+                            <td>{{item.startTime}}</td>
+                            <td>{{item.homeTeam}}</td>
+                            <td>{{item.awayTeam}}</td>
+                            <td v-text="item.courtScore?item.courtScore:'-'"></td>
+                            <td class="win">{{item.spf}}</td>
+                            <td>{{item.spfP}}</td>
+                            <td>{{item.letballNumber}}</td>
+                            <td class="win">{{item.rqspf}}</td>
+                            <td>{{item.rspfP}}</td>
+                            <td class="win">{{item.banquanchang}}</td>
+                            <td>{{item.banquanchangP}}</td>
+                            <td class="win">{{item.courtScore?item.courtScore:'-'}}</td>
+                            <td>{{item.qbifen}}</td>
+                            <td class="win">{{item.totalCount}}</td>
+                            <td>{{item.totalCountP}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div v-else-if="playType==='jclq'">
+                <div class="jclq-model">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th rowspan="2">序</th>
+                            <th rowspan="2">赛事</th>
+                            <th rowspan="2">开赛</th>
+                            <th rowspan="2">客队</th>
+                            <th rowspan="2">主队</th>
+                            <th rowspan="2">比分</th>
+                            <th colspan="2">胜负</th>
+                            <th colspan="3">让分胜负</th>
+                            <th colspan="3">大小分</th>
+                            <th colspan="2">胜分差</th>
+                        </tr>
+                        <tr>
+                            <th>彩果</th>
+                            <th>赔率</th>
+                            <th>让分</th>
+                            <th>彩果</th>
+                            <th>赔率</th>
+                            <th>界限</th>
+                            <th>彩果</th>
+                            <th>赔率</th>
+                            <th>彩果</th>
+                            <th>赔率</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(item,index) in basketData">
+                            <td>{{item.gameTime}}{{item.sessions.substr(1)}}</td>
+                            <td>{{item.leagueName}}</td>
+                            <td>{{item.startTime}}</td>
+                            <td><a href="javascript:;">{{item.awayTeamName}}</a></td>
+                            <td><a href="javascript:;">{{item.homeTeamName}}</a></td>
+                            <td>{{item.courtScore}}</td>
+                            <td>
+                                        <span class="win" v-if="item.courtScoreResult=='home_win'">
+                                            主胜
+                                        </span>
+                                <span class="lose" v-else>
+                                            主负
+                                        </span>
+                            </td>
+                            <td>{{item.matchOdds?item.matchOdds:'-'}}</td>
+                            <td>
+                                {{item.letScoreResult}}
+                            </td>
+                            <td>
+                                        <span class="win" v-if="item.letResult==1">
+                                            主胜
+                                        </span>
+                                <span class="lose" v-else-if="item.letResult==0">
+                                            主负
+                                        </span>
+                                <span class="lose" v-else>
+                                            暂无
+                                        </span>
+                            </td>
+                            <td>
+                                {{item.letScoreOdds?item.letScoreOdds:'-'}}
+                            </td>
+                            <td colspan="1" width="10%">
+                                {{item.bigSmallScore}}
+                            </td>
+                            <td colspan="1">
+                                <span class="lower_score" v-if="item.bsResult==1">大分</span>
+                                <span class="lower_score" v-else-if="item.bsResult==0">小分</span>
+                                <span class="lower_score" v-else>暂无</span>
+                            </td>
+                            <td>{{item.bigSmallOdds?item.bigSmallOdds:'-'}}</td>
+                            <td width="10%">
+                                            <span class="lower_score">
+                                                {{item.winScoreResult}}
+                                            </span>
+                            </td>
+                            <td width="10%">
+                                {{item.scoreDifferenceOdds?item.scoreDifferenceOdds:'-'}}
+                            </td>
+                        </tr>
+                        </tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div v-else>
+                <div class="table-wrapper">
+                    <table border="0" cellspacing="0" cellpadding="0" v-cloak >
+                        <tr><th>期号</th><th>开奖号码</th></tr>
+                        <tr v-for="(item,index) in history" v-cloak>
+                            <td>第 {{item.issue}} 期</td>
+                            <td v-if="gameCode=='PCDD'">
+                                <span v-for="it in item.luck_number" :class="it=='='||it=='+'?'white':bj28CL[it]">{{it}}</span>
+                            </td>
+                            <td v-else-if="gameCode=='hk6'">
+                                <span v-for="it in item.luck_number" :class="it=='='||it=='+'?'white':lhcCL[it-1]">{{it}}</span>
+                            </td>
+                            <td v-else-if="gameCode=='k3'">
+                                <span v-for="it in item.luck_number" :class="['dice','dice-'+it]" ></span>
+                            </td>
+                            <td v-else-if="gameCode=='PK10'">
+                                <span v-for="it in item.luck_number" :class="['square','square-'+it]" ></span>
+                            </td>
+                            <td v-else>
+                                <span v-for="it in item.luck_number">{{it}}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../public/js/footer.js"></script>
+<script src="./js/lotdetail.js"></script>
+</body>
+
+</html>

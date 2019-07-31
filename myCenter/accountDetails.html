@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>帐号明细</title>
+    <link rel="stylesheet" type="text/css" href="css/betrecord.css"/>
+    <script src="../public/js/base.js"></script>
+</head>
+
+<body>
+<div>
+    <script src="../public/js/header.js"></script>
+    <section id="main">
+        <div class="wrapper">
+            <div id="mainContent" class="clearfix">
+                <!--左边导航-->
+                <nav class="left">
+                        <div class="member">
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>會員中心</blockquote>
+                                <li>
+                                    <a href="/myCenter/member.html">會員中心</a>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/betrecord.html">投註記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/lotteryrecord.html">中獎記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li class="on">
+                                    <a href="/myCenter/accountDetails.html">賬號明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/userInfo.html">賬號信息</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li v-if="agencyType!=6">
+                                    <a href="/myCenter/draw.html">提款</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <div class="hr"></div>
+                                </li>
+                    
+                            </ul>
+                        </div>
+                        <div class="agency" v-if="agencyType==1" v-cloak>
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <li>
+                                    <a href="/agency/agentIntro.html">代理說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentReport.html">代理報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/lowerReport.html">下級報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/downAccount.html">下級開戶</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentMember.html">會員管理</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyBetDetail.html">投注說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyDealDetail.html">交易明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    
+                    </nav>
+                <!--右边主体内容-->
+                <div class="right">
+                    <!--顶部用户信息-->
+                    <div id="top">
+                        <div>
+                            <div class="welcome">您好：<strong class="userName red"
+                                                            id="userName"> </strong>&nbsp;账号余额：<span
+                                    class="red coin" id="coin11">0.00</span>{{coinUnit}}<span class="btn recharge"><a
+                                    href="recharge.html">充值</a></span><span class="btn withdrawal" v-if="agencyType!=6"><a
+                                    href="draw.html">提款</a></span></div>
+                            <!--账号总览-->
+                            <div class="memberMsg ">
+                                <div class="title">
+                                    <div><strong>账户总览</strong></div>
+                                </div>
+                                <div class="content">
+                                    <ul class="clearfix" v-cloak>
+                                        <li class="xz_Coin">充值总额: <span class="red" v-cloak>{{coinAvg.depositAmount || 0}}</span>{{coinUnit}}</li>
+                                        <li class="lottery_Coin">提款总额: <span class="red" v-cloak>{{coinAvg.withdrawAmount || 0}}</span>{{coinUnit}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="detail_explain">
+                            </div>
+                            <nav class="topNav"><span class="active" id="choose_0" data-index="0"
+                                                      @click="choose_nav(0)">充值记录</span><span
+                                    data-index="1" id="choose_1" @click="choose_nav(1)">取款记录</span><span data-index="2"
+                                                                                                         id="choose_2"
+                                                                                                         @click="choose_nav(2)">账变记录</span>
+                            </nav>
+                            <section id="record">
+                                <div id="show_0">
+                                    <div class="condition row">
+                                        <div class="allType col">
+                                        <span id="allType" class="type" @click="openType($event,1)"
+                                              @mouseout="openType($event,3)" v-cloak>{{typeContent}}<b></b></span>
+                                            <ul class="typeContent hide" @mouseover="hoverTypeUl($event,1)"
+                                                @mouseout="hoverTypeUl($event,2)">
+                                                <li v-for="(item,index) in allTypeContent" :value="index"
+                                                    @click="getCondition(0,index,$event)" v-cloak>{{item}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="allState col">
+                                        <span id="allState" class="type" @click="openType($event,1)"
+                                              @mouseout="openType($event,3)" v-cloak>{{stateContent}}<b></b></span>
+                                            <ul class="typeContent hide" @mouseover="hoverTypeUl($event,1)"
+                                                @mouseout="hoverTypeUl($event,2)">
+                                                <li v-for="(item,index) in allStateContent" :value="index"
+                                                    @click="getCondition(1,index,$event)" v-cloak>{{item}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col">
+                                        <span id="changeDate" class="type" @click="openType($event,1)"
+                                              @mouseout="openType($event,3)" v-cloak>{{dateContent}}<b></b></span>
+                                            <ul class="typeContent hide" @mouseover="hoverTypeUl($event,1)"
+                                                @mouseout="hoverTypeUl($event,2)">
+                                                <li v-for="(item,index) in changeDateContent" :value="index"
+                                                    @click="getCondition(2,index,$event)" v-cloak>{{item}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col" id="time" v-cloak>
+                                            <span class="btn" id="select" @click="getdatas(1)">查询</span>
+                                        </div>
+                                    </div>
+                                    <div class="mainList">
+                                        <table class="layui-table" lay-even="" lay-skin="nob" style="border: none;"
+                                               width="100%" cellspacing="0" cellpadding="0" border="0">
+                                            <thead>
+                                            <tr class="title">
+                                                <td>日期</td>
+                                                <td>交易类别</td>
+                                                <td>支付名称</td>
+                                                <td>交易额度</td>
+                                                <td>状态</td>
+                                                <td>说明</td>
+                                                <td>订单号</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="betResultOrder" v-cloak>
+                                            <tr>
+                                                <td colspan="10" class="nodate" height="150">暂无数据</td>
+                                            </tr>
+                                            </tbody>
+                                            <tbody class="showBetRecord">
+                                            <tr v-for="item in arrs" v-cloak>
+                                                <td v-cloak>{{item.applyTime}}</td>
+                                                <td v-cloak>{{item.tradeType==1?"在线存款":(item.tradeType==2?"快速入款":(item.tradeType==3?"一般存款":"--"))}}</td>
+                                                <td v-cloak>{{item.payType==1?"支付宝":(item.payType==2?"微信":"银行卡")}}</td>
+                                                <td v-cloak>{{item.amount}}{{coinUnit}}</td>
+                                                <td v-cloak>
+                                                    {{item.state==1?'未处理':(item.state==2?'处理中':(item.state==3?'成功到帐':(item.state==4?'充值失败':'--')))}}
+                                                </td>
+                                                <td style="width: 12%;" v-cloak>{{item.info}}</td>
+                                                <td v-cloak>{{item.orderId}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="show_1">
+                                    <div class="condition row">
+                                        <div class="allState col">
+                                        <span id="allState" class="type" @click="openType($event,1)"
+                                              @mouseout="openType($event,3)" v-cloak>{{stateContent}}<b></b></span>
+                                            <ul class="typeContent hide" @mouseover="hoverTypeUl($event,1)"
+                                                @mouseout="hoverTypeUl($event,2)">
+                                                <li v-for="(item,index) in allStateContent" :value="index"
+                                                    @click="getCondition(1,index,$event)" v-cloak>{{item}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col">
+                                        <span id="changeDate" class="type" @click="openType($event,1)"
+                                              @mouseout="openType($event,3)" v-cloak>{{dateContent}}<b></b></span>
+                                            <ul class="typeContent hide" @mouseover="hoverTypeUl($event,1)"
+                                                @mouseout="hoverTypeUl($event,2)">
+                                                <li v-for="(item,index) in changeDateContent" :value="index"
+                                                    @click="getCondition(2,index,$event)" v-cloak>{{item}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col" id="time" v-cloak>
+                                            <span class="btn" id="select" @click="getDrawdatas(1)">查询</span>
+                                        </div>
+                                    </div>
+                                    <div class="mainList">
+                                        <table class="layui-table" lay-even="" lay-skin="nob" style="border: none;"
+                                               width="100%" cellspacing="0" cellpadding="0" border="0">
+                                            <thead>
+                                            <tr class="title">
+                                                <td>日期</td>
+                                                <td>交易类别</td>
+                                                <td>交易额度</td>
+                                                <td>状态</td>
+                                                <td>说明</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="betResultOrder" v-cloak>
+                                            <tr>
+                                                <td colspan="10" class="nodate" height="150">暂无数据</td>
+                                            </tr>
+                                            </tbody>
+                                            <tbody class="showBetRecord">
+                                            <tr v-for="item in drawDatas" v-cloak>
+                                                <td v-cloak>{{item.sourceTime}}</td>
+                                                <td v-cloak>{{item.tradeType=0?"在线取款":(item.tradeType=1?"快速取款":"一般取款")}}</td>
+                                                <td v-cloak>{{item.amount}}{{coinUnit}}</td>
+                                                <td v-cloak>
+                                                	 {{item.state==1?'未处理':(item.state==2?'处理中':(item.state==3?'取款成功':(item.state==4?'取款失败':'--')))}}
+                                                </td>
+                                                <td v-cloak>{{item.info}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="show_2">
+                                    <div class="condition row">
+                                        <div class="allState col">
+                                            <input type="text" placeholder="订单号" id="input_id" v-model="input_id"/>
+                                        </div>
+                                        <div class="col">
+                                        <span id="changeDate" class="type" @click="openType($event,1)"
+                                              @mouseout="openType($event,3)" v-cloak>{{dateContent}}<b></b></span>
+                                            <ul class="typeContent hide" @mouseover="hoverTypeUl($event,1)"
+                                                @mouseout="hoverTypeUl($event,2)">
+                                                <li v-for="(item,index) in changeDateContent" :value="index"
+                                                    @click="getCondition(2,index,$event)" v-cloak>{{item}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col" id="time" v-cloak>
+                                            <span class="btn" id="select" @click="getchangedatas(1)">查询</span>
+                                        </div>
+                                    </div>
+                                    <div class="mainList">
+                                        <table class="layui-table" lay-even="" lay-skin="nob" style="border: none;"
+                                               width="100%" cellspacing="0" cellpadding="0" border="0">
+                                            <thead>
+                                            <tr class="title">
+                                                <td>订单号</td>
+                                                <td>日期</td>
+                                                <td>交易类别</td>
+                                                <td>变动前金额</td>
+                                                <td>变动金额</td>
+                                                <td>变动后余额</td>
+                                                <td>备注</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="betResultOrder" v-cloak>
+                                            <tr>
+                                                <td colspan="10" class="nodate" height="150">暂无数据</td>
+                                            </tr>
+                                            </tbody>
+                                            <tbody class="showBetRecord">
+                                            <tr v-for="item in datas" v-cloak>
+                                                <td v-cloak>{{item.orderId?item.orderId:'----'}}</td>
+                                                <td v-cloak>{{item.sourceTime}}</td>
+                                                <td v-cloak>{{item.coinOperateType}}</td>
+                                                <td v-cloak>{{item.coinBefore}}{{coinUnit}}</td>
+                                                <td v-cloak>
+                                                	<span style="color: forestgreen;"  v-if="item.coinOperateType=='提现'||item.coinOperateType=='投注'||item.coinOperateType=='人工扣除'" >-{{item.coin}}{{coinUnit}}</span>
+                                                	<span style="color: #f05618;"  v-else v-cloak>{{item.coin}}{{coinUnit}}</span>
+                                                </td>
+                                                <td v-cloak>{{item.userCoin}}{{coinUnit}}</td>
+                                                <td v-cloak>{{item.info}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+                            <div id="fenye"></div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="pl_tips">
+                                <p>
+                                    <i></i>
+                                    	温馨提示：交易明细非即时显示，可能有5-10分钟的延迟，请稍等片刻。<br/>
+                                    	　　　　　交易明细最多保留7天。
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../public/js/footer.js"></script>
+</div>
+
+<script type="text/javascript" src="../public/js/jqPaginator.js"></script>
+<script src="js/accountDetails.js"></script>
+</body>
+
+</html>

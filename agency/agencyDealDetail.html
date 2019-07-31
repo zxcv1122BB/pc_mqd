@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>交易明细</title>
+    <script src="../public/js/base.js"></script>
+</head>
+<body>
+	<script src="../public/js/header.js"></script>
+<div id="agentDealDetail" class="proxy">
+    <section id="main">
+        <div id="mainBody" class="wrapper">
+            <div id="mainContent" class="clearfix">
+                <nav class="left">
+                        <div class="member">
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>會員中心</blockquote>
+                                <li>
+                                    <a href="/myCenter/member.html">會員中心</a>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/betrecord.html">投註記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/lotteryrecord.html">中獎記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/accountDetails.html">賬號明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/userInfo.html">賬號信息</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li v-if="agencyType!=6">
+                                    <a href="/myCenter/draw.html">提款</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <div class="hr"></div>
+                                </li>
+                    
+                            </ul>
+                        </div>
+                        <div class="agency" v-if="agencyType==1" v-cloak>
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <li>
+                                    <a href="/agency/agentIntro.html">代理說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentReport.html">代理報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/lowerReport.html">下級報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/downAccount.html">下級開戶</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentMember.html">會員管理</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyBetDetail.html">投注說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li class="on">
+                                    <a href="/agency/agencyDealDetail.html">交易明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    
+                    </nav>
+                <div class="right">
+                    <div class="title">交易明细</div>
+                    <div id="agentBet" class="proxy_main">
+                        <div class="edit">
+                            <div id="timeType" class="newTab">
+                                <a href="javascript:;" class="curr" @click="changeType(currSearchType=0)">今天</a>
+                                <a href="javascript:;" @click="changeType(currSearchType=1)">昨天</a>
+                                <a href="javascript:;" @click="changeType(currSearchType=2)">近七天</a>
+                            </div>
+                            <div class="search">
+                                <span>
+                                    类型 :
+                                    <a href="javascript:" :class="status==0?'active':''" @click="changeStatus(0)">账户明细</a>
+                                    <a href="javascript:" :class="status==2?'active':''" @click="changeStatus(2)">提现记录</a>
+                                    <a href="javascript:" :class="status==1?'active':''" @click="changeStatus(1)">充值记录</a>
+                                </span>
+                                &nbsp;&nbsp;&nbsp;
+                                <span v-if="status==1||status==2">
+                                    状态:
+                                    <select style="min-height: 25px;"  v-model="val">
+                                        <option value="">所有状态</option>
+                                        <option   v-for="(item,index) in stateOpt" :value="index+1">{{item}}</option>
+                                    </select>
+                                </span>
+                                &nbsp;&nbsp;&nbsp;
+                                <span>账号 : </span>
+                                <input type="text" placeholder="下级投注查询" v-model="lowerUserName" />
+                                <a v-show='status ==0 ' class="submitBtn ClickShade" @click="getdatas">搜索</a>
+                                <a v-show='status ==1||status ==2 ' class="submitBtn ClickShade" @click="getDrawdatas(status)">搜索</a>
+                            </div>
+                            <div class="searchDetail">
+                                <table v-if="status==0">
+                                <tr>
+                                    <th>账号</th>
+                                    <th>时间</th>
+                                    <th>交易类型</th>
+                                    <th>变动前金额</th>
+                                    <th>变动后金额</th>
+                                    <!--<th>可用余额</th>-->
+                                    <th>备注</th>
+                                </tr>
+                                <tr v-if="recordData.length!==0"  v-for="item in recordData">
+                                    <td v-cloak>{{item.user_name?item.user_name:'沙发客'}}</td>
+                                    <td v-cloak>{{item.sourceTime}}</td>
+                                    <td v-cloak>{{item.coinOperate}}</td>
+                                    <td v-cloak>{{item.coinBefore}}</td>
+                                    <td v-cloak>{{item.coinAfter}}</td>
+                                    <td v-cloak>{{item.info}}</td>
+                                </tr>
+                                <tr v-if="!recordData||recordData.length==0">
+                                    <td colspan="6">暂无数据</td>
+                                </tr>
+                            </table>
+                                <!--充值-->
+                                <table v-if="status==1">
+                                    <tr>
+                                        <th>账号</th>
+                                        <th>交易类别</th>
+                                        <th>支付名称</th>
+                                        <th>交易额度</th>
+                                        <th>状态</th>
+                                        <th>说明</th>
+                                        <th>订单号</th>
+                                    </tr>
+                                    <tr v-if="DepOrDraw.length!==0"  v-for="item in DepOrDraw">
+                                        <td>{{item.user_name?item.user_name:'沙发客'}}</td>
+                                        <td>{{item.tradeType==1?"在线存款":(item.tradeType==2?"快速入款":(item.tradeType==3?"一般存款":"--"))}}</td>
+                                        <td>{{item.pay_type==1?"支付宝":(item.pay_type==2?"微信":"银行卡")}}</td>
+                                        <td>{{item.amount}}</td>
+                                        <td>{{item.state}}</td>
+                                        <td>{{item.info}}</td>
+                                        <td>{{item.order_id}}</td>
+                                    </tr>
+                                    <tr v-if="DepOrDraw.length==0">
+                                        <td colspan="5">暂无数据</td>
+                                    </tr>
+                                </table>
+                                <!--提现-->
+                                <table v-if="status==2">
+                                    <tr>
+                                        <th>账号</th>
+                                        <th>交易类别</th>
+                                        <th>交易额度</th>
+                                        <th>状态</th>
+                                        <th>说明</th>
+                                    </tr>
+                                    <tr v-if="DepOrDraw.length!==0"  v-for="item in DepOrDraw">
+                                        <td>{{item.user_name}}</td>
+                                        <td>{{item.tradeType==0?"在线取款":(item.tradeType=1?"快速取款":"一般取款")}}</td>
+                                        <td>{{item.amount}}</td>
+                                        <td>{{item.state}}</td>
+                                        <td>{{item.info}}</td>
+                                    </tr>
+                                    <tr v-if="DepOrDraw.length==0">
+                                        <td colspan="5">暂无数据</td>
+                                    </tr>
+                                </table>
+
+                                <div id="fenye"></div>
+
+                            </div>
+                            <div class="pl_tips">
+                                <p>
+                                    <i></i>
+                                    温馨提示：交易明细非即时显示，可能有5-10分钟的延迟，请稍等片刻。<br/>　　　　　交易明细最多保留7天。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</div>
+<script src="../public/js/footer.js"></script>
+<script type="text/javascript" src="../public/js/jqPaginator.js"></script>
+<script type="text/javascript" src="js/agencyDealDetail.js"></script>
+</body>
+</html>

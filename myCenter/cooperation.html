@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>合买记录</title>
+		<link rel="stylesheet" href="../public/css/base.css" />
+		<script type="text/javascript" src="../public/js/base.js"></script>
+	</head>
+
+	<body>
+		<script src="../public/js/header.js"></script>
+		<section id="main">
+			<div class="wrapper">
+				<div id="mainContent">
+					<!--左边导航-->
+					<nav class="left">
+                        <div class="member">
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>會員中心</blockquote>
+                                <li>
+                                    <a href="/myCenter/member.html">會員中心</a>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/betrecord.html">投註記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/lotteryrecord.html">中獎記錄</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li class="on">
+                                    <a href="/myCenter/accountDetails.html">賬號明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/userInfo.html">賬號信息</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li v-if="agencyType!=6">
+                                    <a href="/myCenter/draw.html">提款</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <div class="hr"></div>
+                                </li>
+                    
+                            </ul>
+                        </div>
+                        <div class="agency" v-if="agencyType==1" v-cloak>
+                            <ul>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <li>
+                                    <a href="/agency/agentIntro.html">代理說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentReport.html">代理報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/lowerReport.html">下級報表</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/downAccount.html">下級開戶</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agentMember.html">會員管理</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyBetDetail.html">投注說明</a>
+                                    <div class="hr"></div>
+                                </li>
+                                <li>
+                                    <a href="/agency/agencyDealDetail.html">交易明細</a>
+                                    <div class="hr"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    
+                    </nav>
+					<!--右边主体内容-->
+					<div class="right">
+						<!--顶部用户信息-->
+						<div id="top">
+							<div>
+								<div class="welcome">您好：<strong class="userName red" id="userName"> </strong>&nbsp;账号余额：<span class="red coin" id="coin11">0.00</span>元<span class="btn recharge"><a href="recharge.html">充值</a></span><span class="btn withdrawal" v-if="agencyType!=6"><a href="draw.html">提款</a></span></div>
+								<nav class="topNav"><span class="active" id="choose_0" data-index="0" @click="choose_nav(0)">发起合买</span><span data-index="1" id="choose_1" @click="choose_nav(1)">参与合买</span></nav>
+								<section id="record">
+									<div id="show_0">
+										<div class="condition row">
+											<div class="allType col">
+												<span id="allType" class="type" @click="openType($event,1)" @mouseout="openType($event,3)" v-cloak>{{typeContent}}<b></b></span>
+												<ul class="typeContent hide" @mouseover="hoverTypeUl($event,1)" @mouseout="hoverTypeUl($event,2)">
+													<li v-for="(item,index) in allTypeContent" :value="index" @click="getCondition(0,index,$event)">{{item}}</li>
+												</ul>
+											</div>
+											<div class="allState col">
+												<span id="allState" class="type" @click="openType($event,1)" @mouseout="openType($event,3)" v-cloak>{{stateContent}}<b></b></span>
+												<ul class="typeContent hide" @mouseover="hoverTypeUl($event,1)" @mouseout="hoverTypeUl($event,2)">
+													<li v-for="(item,index) in allStateContent" :value="index" @click="getCondition(1,index,$event)">{{item}}</li>
+												</ul>
+											</div>
+											<div class="col">
+												<span id="changeDate" class="type" @click="openType($event,1)" @mouseout="openType($event,3)" v-cloak>{{dateContent}}<b></b></span>
+												<ul class="typeContent hide" @mouseover="hoverTypeUl($event,1)" @mouseout="hoverTypeUl($event,2)">
+													<li v-for="(item,index) in changeDateContent" :value="index" @click="getCondition(2,index,$event)">{{item}}</li>
+												</ul>
+											</div>
+											<div class="col" id="time" v-cloak>
+												<label><b></b><input type="text" id="startTime_0" v-model="startTime" readonly placeholder="开始时间"/></label>&nbsp;至&nbsp;
+												<label><b></b><input type="text" id="endTime_0" v-model="endTime" readonly placeholder="结束时间"/></label>&nbsp;
+												<span class="btn" id="select" @click="getdatas(1)">查询</span>
+											</div>
+										</div>
+										<!--<div class="detail_explain">
+											<ul>
+												<li>彩种：<span id="lotNames">所有彩种</span>&nbsp;&nbsp;报表日期：<span id="orderBetListBetween">2017-11-29——2017-11-29</span></li>
+												<li>贴心小提醒：点击显示详情能查看详细的合买订单</li>
+											</ul>
+										</div>-->
+										<div class="mainList">
+											<table class="layui-table" lay-even="" lay-skin="nob" style="border: none;" width="100%" cellspacing="0" cellpadding="0" border="0">
+												<thead>
+													<tr class="title">
+														<td>方案编号</td>
+														<td>发起时间</td>
+														<td>方案金额</td>
+														<td>方案提成</td>
+														<td>每份金额</td>
+														<td>进度</td>
+														<td>中奖金额</td>
+														<td>状态</td>
+														<td>详情</td>
+													</tr>
+												</thead>
+												<tbody class="betResultOrder" v-cloak>
+													<tr>
+														<td colspan="10" class="nodate" height="200">暂无数据，
+															<a href="/lotteryV3/lottery.do">立即购彩</a>
+														</td>
+													</tr>
+												</tbody>
+												<tbody class="showBetRecord" v-for="(item,index) in datasArr" v-cloak>
+													<tr>
+														<td v-cloak>{{item.lotParId}}</td>
+														<td v-cloak>{{item.createDate}}</td>
+														<td v-cloak>
+															<font color="red">{{item.totalMoney}}</font> 元</td>
+														<td v-cloak>
+															<font color="red">{{item.percentage}}</font> 元</td>
+														<td v-cloak>
+															<font color="red">{{item.price}}</font>元</td>
+														<td class="pro_td">
+															<div>
+																<p v-cloak>{{item.percent}}+
+																	<span>{{item.guaranteedPieces}}保</span>
+																</p>
+																<p class="pro_bar">
+																	<b class="solid" v-bind:style="{width:item.percent}"></b>
+																</p>
+															</div>
+														</td>
+														<td v-cloak>{{item.price}}元</td>
+														<td v-cloak>{{item.isSuccess==0?"合买失效":(item.isSuccess==1?"合买成功":"处于合买中")}}</td>
+														<td><button class="layui-btn layui-btn-mini" @click="selectMore(index)">显示详情</button>
+														</td>
+
+													</tr>
+													<tr class="show-if" isClick="1" v-cloak>
+														<td colspan="9">
+															<table class="moreMes">
+																<tr>
+																	<td>玩法</td>
+																	<td>投注期号</td>
+																	<td>倍数</td>
+																	<td>投注金额</td>
+																	<td>出票状态</td>
+																	<td>投注详情</td>
+																	<td>中奖情况</td>
+																	<td>总奖金</td>
+																	<td>每份奖金</td>
+																</tr>
+																<tr>
+																	<td v-cloak>{{moreArr.gameName}}</td>
+																	<td v-cloak>{{moreArr.actionNo}}</td>
+																	<td v-cloak>{{moreArr.times}}</td>
+																	<td v-cloak>{{moreArr.amount}}元</td>
+																	<td v-cloak>{{moreArr.ticketStatus==1?"已出票":"未出票"}}</td>
+																	<td><button class="layui-btn layui-btn-mini" @click="selectdatasById(moreArr.actionDataStr,moreArr.type)">查看详情</button></td>
+																	<td v-cloak>{{moreArr.lotStatus==0?"未中奖":"已中奖"}}</td>
+																	<td v-cloak>{{moreArr.totalBonus}}</td>
+																	<td v-cloak>{{moreArr.oneBonus}}</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+
+												</tbody>
+
+											</table>
+											<div class="bytypeId">
+												<table class="layui-table">
+													<tbody>
+														<tr>
+															<td>比赛场次</td>
+															<td>主队名称</td>
+															<td>客队名称</td>
+															<td>赛果</td>
+															<td>比赛时间</td>
+															<td>比分</td>
+															<td>竞猜项</td>
+															<td>竞猜结果</td>
+															<td>赔率</td>
+															<td>胆</td>
+														</tr>
+														<tr v-for="item in orders">
+															<td v-cloak>{{item.matchSessions}}</td>
+															<td v-cloak>{{item.homeTeamName}}</td>
+															<td v-cloak>{{item.awayTeamName}}</td>
+															<td v-cloak>{{item.matchResult==0?'负':(item.matchResult==1?'平':'胜')}}</td>
+															<td v-cloak>{{item.matchDate}}</td>
+															<td v-cloak>{{item.courtScore}}</td>
+															<td v-cloak>{{item.quizOptions}}</td>
+															<td v-cloak>{{item.quizResults==0?"没猜中":"猜中了"}}</td>
+															<td v-cloak>{{item.odds}}</td>
+															<td v-cloak>
+																<span class="isDan" v-if="item.guts==1">胆</span>
+																<span v-else>--</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+
+									<div id="show_1">
+										<div class="condition row">
+											<div class="allState col">
+												<span id="allState" class="type" @click="openType($event,1)" @mouseout="openType($event,3)" v-cloak>{{stateContent}}<b></b></span>
+												<ul class="typeContent hide" @mouseover="hoverTypeUl($event,1)" @mouseout="hoverTypeUl($event,2)">
+													<li v-for="(item,index) in allStateContent" :value="index" @click="getCondition(1,index,$event)">{{item}}</li>
+												</ul>
+											</div>
+											<div class="col">
+												<span id="changeDate" class="type" @click="openType($event,1)" @mouseout="openType($event,3)" v-cloak>{{dateContent}}<b></b></span>
+												<ul class="typeContent hide" @mouseover="hoverTypeUl($event,1)" @mouseout="hoverTypeUl($event,2)">
+													<li v-for="(item,index) in changeDateContent" :value="index" @click="getCondition(2,index,$event)">{{item}}</li>
+												</ul>
+											</div>
+											<div class="col" id="time" v-cloak>
+												<label><b></b><input type="text" id="startTime_1" v-model="startTime" readonly placeholder="开始时间"/></label>&nbsp;至&nbsp;
+												<label><b></b><input type="text" id="endTime_1" v-model="endTime" readonly placeholder="结束时间"/></label>&nbsp;
+												<span class="btn" id="select" @click="selectdatas(1)">查询</span>
+											</div>
+										</div>
+										<!--<div class="detail_explain">
+											<ul>
+												<li>彩种：<span id="lotNames">所有彩种</span>&nbsp;&nbsp;报表日期：<span id="orderBetListBetween">2017-11-29——2017-11-29</span></li>
+												<li>贴心小提醒：点击显示详情能查看详细的合买订单</li>
+											</ul>
+										</div>-->
+										<div class="mainList">
+											<table class="layui-table" lay-even="" lay-skin="nob" style="border: none;" width="100%" cellspacing="0" cellpadding="0" border="0">
+												<thead>
+													<tr class="title">
+														<td>方案编号</td>
+														<td>参与时间</td>
+														<td>认购份数</td>
+														<td>认购金额</td>
+														<td>所占比例</td>
+														<td>中奖金额</td>
+														<td>状态</td>
+													</tr>
+												</thead>
+												<tbody class="betResultOrder">
+													<tr>
+														<td colspan="10" class="nodate" height="200">暂无数据，
+															<a href="/lotteryV3/lottery.do">立即购彩</a>
+														</td>
+													</tr>
+												</tbody>
+												<tbody class="showBetRecord">
+													<tr v-for="item in ordersData">
+														<td v-cloak>{{item.lotParId}}</td>
+														<td v-cloak>{{item.createDate}}</td>
+														<td v-cloak>
+															<font color="red">{{item.buyPieces}}</font> 份</td>
+														<td v-cloak>
+															<font color="red">{{item.buyTotalMoney}}</font> 元</td>
+														<td v-cloak>{{item.scale}}</td>
+														<td v-cloak>
+															<span v-if="item.lotStatus==1"><font color="red">{{item.bonus}}</font>元</span>
+															<span v-else>--</span>
+														</td>
+														<td v-cloak>{{item.isSuccess==0?"合买失效":(item.isSuccess==1?"合买成功":"处于合买中")}}</td>
+														<!--<td><button class="layui-btn-disabled layui-btn-mini" v-if="item.status==2||item.isCal==1">撤单</button>
+																<button class="layui-btn layui-btn-mini" v-else>撤单</button></td>-->
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+
+								</section>
+								<div id="fenye"></div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script type="text/javascript" src="../public/js/jqPaginator.js"></script>
+		<script src="js/cooperation.js"></script>
+	</body>
+
+</html>

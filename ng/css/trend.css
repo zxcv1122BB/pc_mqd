@@ -1,0 +1,174 @@
+.trend{
+	 width: 1090px;
+	 margin: 0 auto;
+	 padding:10px 0;
+	 position: relative;
+}
+.clear{
+	clear: both;
+}
+.trend #tr_title{
+	font-size: 16px;
+}
+.trend #tr_title li{
+	float: left;
+	/*width: 10%;*/
+	height: 35px;
+	line-height: 35px;
+	margin-right: 10px;
+	text-align: center;
+	/*border-bottom: 0;*/
+	cursor: pointer;
+	position: relative;
+	z-index: 2;
+	margin-bottom: 15px;
+	padding: 5px 10px;
+    border-radius: 5px;
+}
+.trend #tr_title li:hover{
+	border-color: #e23a3a;
+	background-color: #fcebeb;
+}
+.trend #chart{
+	height: 1400px;
+	border: 1px solid #e5e5e5;
+	margin-top: 20px;
+}
+.trend .chooseYes{
+	border: 0;
+	font-weight: bold;
+	border: 1px #e23a3a solid;
+	background-color: #fcebeb;
+	/*top: 1px;*/
+}
+.message{
+	color:#999;
+}
+.trend .chooseNo{
+	background-color:  white;
+	border: 1px solid #e5e5e5;
+	top: 0px;
+}
+.trend #chart table{
+	text-align: center;
+	font-size: 14px;
+	background: #f7f7f7;
+}
+.trend #chart th,.trend #chart td{
+	border: 1px solid #E3E3E3;
+	white-space:nowrap;
+}
+.trend #chart th{
+	height: 40px;
+	line-height: 40px;
+	background: #fbfbfb;
+}
+.trend #chart .title{
+	width: 5%;
+	/*border-right: 2px solid #E3E3E3;*/
+}
+.trend #chart .title_else{
+	width: 5%
+}
+.trend #chart td{
+	position: relative;
+	z-index: 2;
+	padding: 1px 3px;
+}
+.guessYes{
+	color:white;
+	background: url(../../images/yuan_back.png) no-repeat center;
+	background-size:25px;
+}
+.trend .chart_float{
+	height: 50px;
+	line-height: 50px;
+	padding: 0 10px;
+}
+.trend .chart_float span{
+	margin: 0 10px;
+	padding:3px;
+	cursor: pointer;
+}
+.trend #chart_left{
+	float: left;
+}
+.trend .chart_left_else{
+	font-size: 16px;
+	font-weight: bold;
+}
+.trend .chart_right{
+	float: right;
+}
+.trend .chart_left .cho_yes{
+	font-weight: bold;
+	color: #0580f3;
+}
+.trend .chart_right .cho_no{
+	border:1px solid #e1e1e1;
+	color: #666;;
+}
+.trend .chart_right .cho_yes{
+	border: 1px solid #ffe8cb;
+	color: #f65d00;
+	background: #fff7da;
+}
+.trend #total tr:nth-of-type(odd){
+	background: white;
+}
+.p_tit{
+	height: 40px;
+	line-height: 40px;
+	padding-left: 15px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.b_explain{
+	padding:20px 0 0 20px ;
+}
+.b_explain ul{
+	color: gray;
+}
+.b_explain li{
+	line-height: 30px;
+	padding-left: 15px;
+}
+.b_explain .b_tit{
+	font-weight: bold;
+}
+.b_explain .b_mess{
+	padding-left: 40px;
+}
+.luckNum{
+	font-size: 16px;
+	color: #e23a3a;
+	border-right: 2px solid #E3E3E3; 
+}
+
+
+.box{
+	width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+    margin-right: 8px;
+    border-radius: 50%;
+}
+
+
+/*.red{*/
+/*	background: #e23a3a;*/
+/*}*/
+
+.green{
+	background: #38be4f;
+}
+
+.blue{
+	background: #0e86e3;
+}
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>帮助中心</title>
+    <link rel="stylesheet" href="css/favorable.css"/>
+    <script src="../public/js/base.js"></script>
+</head>
+
+<body>
+    <script src="../public/js/header.js"></script>
+    <div class="game-bg">
+        <section id="cqssc-container">
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+              <ul class="layui-tab-title">
+                <li>關於我們</li>
+                <li class="layui-this">取款幫助</li>
+                <li>存款幫助</li>
+                <li>常見問題</li>
+              </ul>
+              <div class="layui-tab-content">
+                <div class="layui-tab-item">
+                	<p>
+                    	<span>SSG 彩票起步于2014年6月。通过全体员工一年多的共同努力，</span><span>SSG 彩票</span><span>创造了无数个优异的新记录。自主开发的交易平台、持续增长的销售业绩、细致入微的客户服务和始终如一地追求客户体验度，踏踏实实的工作得到社会的高度肯定，也赢得了彩民的广泛信任。</span><span>乐购手游</span><span>倡导“化繁为简、化难为易、化易为趣”的创新精神，在网络产品的布局中，多角度多方位考虑客户需求，形成了“安全、实用、严谨、创新、团结”的良好作风。秉承“以彩民为中心、一切为彩民”的服务宗旨，</span><span>愿为全国广大彩民提供最快速的开奖信息、最优质的彩票服务、最值得期待的关注、跟投系统、最受欢迎的客户端开发等服务。</span><span>正处于高速发展阶段。如果您拥有过人的才智，如果您致力于彩票事业的发展，如果您愿意施展一技之长，请加入我们吧!敞开我们的心扉，真诚欢迎您加入我们的团队。</span>
+                    </p>
+                </div>
+                <div class="layui-tab-item layui-show">
+                	<p><span>如何取款</span><br><br><span>1.进入网站，登录会员，然后点击提款</span><br><br><span>2.核对姓名和银行账号</span><br><br><span>3.输入要提款的金额，最低提款金额为100</span><br><br><span>4.输入自己设置的资金密码</span><br><br><span>5.点击提交&nbsp;</span><br><br><span>6.等待财务审核和安排出款，正常3分钟可以提现到银行卡，六合彩开奖日出款速度会稍微慢点，请耐心等待几分钟</span><br><br></p>
+                </div>
+                <div class="layui-tab-item">
+                	<p><span>一 在线存款</span><br><br><span>1 在线存款---网银充值</span><br><br><span>a进入网站，登录会员，然后点击&nbsp;&nbsp; 充值</span><br><br><span>b点击&nbsp;&nbsp; 在线充值</span><br><br><span>c选择支付方式 ---- 选择网银支付</span><br><br><span>d输入要充值的金额</span><br><br><span>e选择网银进入付款&nbsp;</span><br><br><span>付款成功后，金额会自动加到会员账号上</span><br><br><br><span>在线存款-----微信充值</span><br><br><span>a 进入网站，登录会员，然后点击&nbsp;&nbsp; 充值</span><br><br><span>b 点击&nbsp;&nbsp; 在线充值</span><br><br><span>c 选择支付方式 ---- 选择微信支付</span><br><br><span>d 输入要充值的金额</span><br><br><span>e 点击&nbsp;&nbsp;&nbsp;&nbsp; 下一步</span><br><br><span>f	直接用微信扫描二维码付款，或者将二维码截图保存到手机，用微信扫一扫从相册中选取二维码识别付款</span><br><br><span>g付款完成后，&nbsp; 点击 我已完成支付&nbsp;&nbsp;，金额会自动加到会员账号</span><br></p>
+                </div>
+                <div class="layui-tab-item">
+                    <p><span>&nbsp;常见问题</span><br><br><span>1、如何注册成为会员？</span><br><span>·用户进入彩票网站首页，在首页右侧点击"注册"，进入用户注册页面。</span><br><span>· 在注册页面阅读并同意《彩票网络服务协议》。</span><br><span>· 在注册页面填写相关信息并提交。</span><br><span>· 系统返回成功信息，恭喜注册成功。</span><br><span>2、在彩票网站注册要收费吗？</span><br><span>·注册新用户是免费的，不收取任何费用。</span><br><span>3、忘记了登录密码怎么办？</span><br><span>·请及时提供相应信息给客服。系统将重置一个新密码，并把新密码发送到用户注册时提交的电子邮箱中，为保障账户安全，建议用户登录后立即修改密码。</span><br><span>4、有银行卡就可以充值了吗？</span><br><span>用户拥有了银行卡后，即有多种充值方式可以充值：</span><br><span>·已开通网上银行，使用第三方支付平台进行充值，方便、快捷。</span><br><span>· 未开通网银，可以使用银行转账、微信或支付宝等方式进行充值。</span></p>
+                </div>
+              </div>
+            </div> 
+        </section>
+    </div>
+    <script src="../public/js/footer.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(function () {
+            let url = window.location.search;
+    		if (url != "") {
+    			let code = url.split("?").join(""); //截取？后的注册码
+    			setTimeout(function() {
+    			$('.layui-tab-title li').eq(code.substring(0, code.length)).click();
+    			}, 1000);
+    		}
+        });
+    </script>
+</body>
+</html>

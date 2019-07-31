@@ -1,0 +1,332 @@
+.red {
+  color: red;
+}
+
+a:active,
+a:visited {
+  color: #ff8400;
+}
+
+.tips {
+  color: #ff8400;
+}
+
+.clear {
+  clear: both;
+}
+.pl_tips {
+  margin: 0 15px;
+  border: 1px solid #f8e2b9;
+  background: #fffdeb;
+  color: #f46e00;
+  padding: 0 10px;
+  line-height: 24px;
+  font-size: 12px;
+}
+.pl_tips p {
+  margin: 10px !important;
+}
+#orderId {
+    color: #29abe2;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.concealDivOrders {
+  display: none;
+  min-height: 300px;
+  height: auto !important;
+  height: 300px;
+}
+.concealDivOrders table {
+  width: 100%;
+}
+.concealDivOrders table td {
+  /*white-space: pre-wrap;*/
+  word-wrap: break-word;
+  word-break: break-all;
+  height: 30px;
+  line-height: 30px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.concealDivOrders table td span {
+  display: inline-block;
+}
+.concealDivOrders table td:nth-of-type(even) {
+  padding-left: 5px;
+  text-align: left;
+  width: 30%;
+}
+.concealDivOrders table td:nth-of-type(odd) {
+  padding-right: 5px;
+  background-color: #E3E3E3;
+  text-align: right;
+  width: 20%;
+}
+.concealDivOrders table .odds {
+  color: #ba142b;
+}
+
+#mainContent>.left {
+  width: 200px;
+  margin-right: 10px;
+  float: left;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+#mainContent>.left ul {
+  background-color: #fff;
+  text-align: center;
+  border: 1px solid #ffecdc;
+  min-height: 0px;
+  padding: 5px;
+}
+
+#mainContent>.left ul li {
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px 0;
+}
+
+#mainContent>.left ul li:hover {
+  background: #fafafa;
+}
+
+#mainContent>.left ul li a:hover {
+  text-decoration: none;
+}
+
+#mainContent>.left ul li a {
+  font-size: 16px;
+  color: #555;
+}
+
+#mainContent>.left ul li h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.iconfont {
+  font-style: normal;
+  font-family: iconfont;
+  font-size: inherit;
+  color: inherit;
+}
+
+#mainContent>.left ul li .iconfont {
+  position: absolute;
+  left: 25px;
+  margin: 0;
+  font-size: 18px;
+}
+
+#mainContent>.left ul li a:hover {
+  /* text-decoration: #eb6100; */
+  text-decoration: underline;
+  color: red;
+  text-decoration-color: red;
+}
+
+#mainContent>.left ul li.on a {
+  color: red;
+}
+
+#mainContent>.left .agency ul {
+  border-top: none;
+}
+
+#mainContent>.left .member ul {
+  border-bottom: none;
+}
+
+body {
+  background-color: #F6F6F6;
+}
+
+/*主要内容*/
+
+.nav-link:hover .select-lottery {
+  display: block;
+  box-shadow: 0 1px 1px #888888;
+}
+
+.head-nav .nav-link.active h2 em {
+  display: inline-block;
+}
+
+#main {
+  margin: 15px auto;
+}
+
+#main .wrapper {
+  width: 1090px;
+  margin: auto;
+}
+
+#main .breadcrumb {
+  margin: 10px 0;
+}
+
+#main .right {
+  float: left;
+  display: inline-block;
+  width: 880px;
+  margin-right: 0;
+  color: #333;
+}
+
+#main .topTitle {
+  /* font-weight: bold; */
+  /* padding-left: 10px; */
+  width: 880px;
+  /* height: 23px; */
+  line-height: 29px;
+  color: #494949;
+  /* border-bottom: 1px solid #d3d3d3; */
+  /* background: url(../images/my_lottery_title.gif) repeat-x; */
+  background-color: #F3F3F3;
+  font-size: 20px;
+}
+
+#top .detail {
+  width: 880px;
+  float: left;
+  background: #fff;
+}
+
+#top ul {
+  padding-left: 10px;
+  line-height: 28px;
+  font-size: 16px;
+}
+
+#top ul li {
+  padding-top: 5px;
+}
+
+#top .showLevel {
+  /*width: 240px;*/
+  padding: 8px 0 8px 10px;
+  font-size: 16px;
+}
+
+#top .btn>a {
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  line-height: 18px;
+}
+
+#msgNum a {
+  color: red;
+}
+
+/*充值按鈕*/
+
+#top .btn.recharge>a {
+  background: #FC9C1F;
+  color: #fff;
+  padding: 2px;
+  margin-left: 4px;
+}
+
+/*提現按鈕*/
+
+#top .btn.withdrawal>a {
+  background: #FFEBCD;
+  color: #eb6100;
+  padding: 2px;
+  margin-left: 4px;
+}
+
+/*进度条*/
+
+#level_progress_num>span {
+  float: right;
+  border: 0;
+  color: #ff8400;
+}
+
+#level_progress_num .clear {
+  line-height: 1px;
+  font-size: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.level_progress_bar {
+  height: 20px;
+  position: relative;
+  background-color: #FC9C1F;
+}
+
+.now_progress_bar {
+  height: 20px;
+  width: 240px;
+  border: 1px solid #ff8400;
+}
+
+#level_progress_bar>div {
+  color: #ff8400;
+  font-size: 13px;
+  font-family: Arial;
+  font-weight: bold;
+  height: 15px;
+  left: 28px;
+  top: -18px;
+  width: 178px;
+  text-align: center;
+  position: absolute;
+  line-height: 15px;
+}
+
+#level_progress_credit {
+  color: #ff8400;
+  font-size: 13px;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+#top .showLevel .need_coin {
+  margin: 6px 0 15px 0;
+}
+
+.right .newLottery {
+  width: 880px;
+  color: #333;
+  margin-top: 10px;
+  /*border: 1px solid #d3d3d3;*/
+  min-height: 248px;
+  background-color: #fff;
+}
+
+.right .newLottery_title {
+  font-weight: bold;
+  /*padding-left: 10px;*/
+  width: 880px;
+  /*height: 23px;*/
+  line-height: 40px;
+  color: #494949;
+  /*border-bottom: 1px solid #d3d3d3;*/
+  /*background: url(../images/my_lottery_title.gif) repeat-x;*/
+  font-size: 16px;
+  text-indent: 10px;
+}
+
+.newLottery .new_lottery_tab {
+  width: 100%;
+  font-size: 12px;
+}
+
+.newLottery td {
+  height: 30px;
+}
+
+.newLottery tr {
+  border-bottom: 1px #E1E1E1 solid;
+}
