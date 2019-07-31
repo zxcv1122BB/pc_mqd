@@ -156,27 +156,6 @@ document.writeln("  </div>");
 
 initIsLogin();
 
-$(function(){
-	$.getScript("https://unpkg.com/vue-i18n/dist/vue-i18n.js", function() {
-		console.log(11111);
-		Vue.use(VueI18n) // 通过插件的形式挂载
-		const i18n = new VueI18n({
-		  locale: 'tr',
-		  messages: {
-		    'cn': cn,   // 中文简体语言包
-		    'tr': tr    // 繁体语言包
-		  },
-		  silentTranslationWarn: true
-		})
-
-		/* eslint-disable no-new */
-		new Vue({
-			el: "#main",
-			i18n,  // 不要忘记
-		})
-	});
-})
-
 
 layui.use(['layer', 'element', 'form'], function() {
 	var layer = layui.layer,
@@ -719,7 +698,26 @@ var nav = new Vue({
 
     }
 });
-
+$.getScript("./common/i18n.js", function() {
+	$.getScript("./common/lang/cn.js", function() {
+		$.getScript("./common/lang/tr.js", function() {
+			console.log(11111);
+			Vue.use(VueI18n) // 通过插件的形式挂载
+			let i18n = new VueI18n({
+			  locale: 'tr',
+			  messages: {
+			    'cn': window.cn,   // 中文简体语言包
+			    'tr': window.tr    // 繁体语言包
+			  },
+			  silentTranslationWarn: true
+			})
+			Vue.prototype.i18n = i18n;
+			// Vue.prototype.$i18n = i18n;
+			// console.log(i18n.t, '===');
+		})
+	})
+});
+console.log(nav, 'navnavnavnavnavnavnavnavnavnavnavnavnav');
 // 拿二维码
 if (localStorage.config != undefined) {
     var obj = JSON.parse(localStorage.config);
