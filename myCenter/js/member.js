@@ -235,6 +235,28 @@ window.parent.layer.closeAll();
 				this.selectOrders(id);
 			}
 		},
+		cancleOrd:function(id){
+          var that = this;
+          var params = {
+            'betId': id
+          };
+          var obj = {
+            type: 'post',
+            data: params,
+            dataType: 'json',
+            url: '/authApi/bets/cancelTheOrder',
+            success: function(data) {
+                layui.use('layer', function() {
+					var layer = layui.layer;
+                    layer.msg(data.msg);
+				})
+                if(data.code == 200){
+                  window.location.reload();
+                }
+            }
+          }
+          base.callAuthApi(obj);
+        },
 		//查询订单详情
 		selectByOrderId: function(id) {
 			var index= this.layer.load(2);
@@ -251,7 +273,6 @@ window.parent.layer.closeAll();
 				success: function(data) {
 					window.parent.layer.closeAll();
 					if(data.code == 200) {
-
 						window.parent.layui.use('layer', function() {
 							var layer = window.parent.layui.layer;
 							layer.open({

@@ -68,7 +68,7 @@ let cqssc = new Vue({
         //测试
         testNameList: ["前一", "定位胆", "前二", "前三"],
         testNameList2: ["前一", "定位胆", "前二", "前三"],
-        testNumber: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"],
+        // testNumber: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"],
         testNumberCommon: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"],
 
         //和值
@@ -87,6 +87,7 @@ let cqssc = new Vue({
         samenum: [],
         //不同号
         diffnum: [],
+		testNumber: [10, 50, 100, 200, 500, 1000, 5000, 10000, 50000],
 
         //控制显示的数字数列区域，0为不显示
         presentAreaList: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0],
@@ -101,7 +102,7 @@ let cqssc = new Vue({
         bets: 0,
 
         // 单注金额
-        singleCoins: 2,
+        singleCoins: '',
 
         // 玩法提示相关
         game_tips: '',
@@ -221,6 +222,7 @@ let cqssc = new Vue({
         previousIssue:'',
         previousIssue_tips:'',
         userName: localStorage.userName,
+        show_dd: false
     },
     created: function() {
         this.getSearchValue();
@@ -238,6 +240,16 @@ let cqssc = new Vue({
     mounted: function() {
     },
     methods: {
+	    dianji: function() {
+	      this.show_dd = true
+	    },
+	    hide_dd: function() {
+	        this.show_dd = false;
+	    },
+	    select_money: function(num) {
+	        this.singleCoins = num
+	        this.show_dd = false
+	    },
         refresh:function(){
             this.getHistoryBannerInfo();
             $(".record p .refresh .iconfont").css({
@@ -501,7 +513,7 @@ let cqssc = new Vue({
             _this.typeName = data[0].name1;
             _this.pic_url = data[0].pic_url;
 			_this.orderOdds = _this.maxPrize;
-			_this.singleCoins = data[0].minAmount;
+// 			_this.singleCoins = data[0].minAmount;
             if(_this.present_playId == 177){
                 _this.orderOdds = _this.maxPrize.split('|')[0];
             }

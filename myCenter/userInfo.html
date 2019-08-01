@@ -101,7 +101,7 @@
                             <section id="record" class="mainList layui-form layui-form-pane">
                                   <div class="layui-form-item">
                                     <label class="layui-form-label">用户名</label>
-                                    <div class="layui-form-mid">{{datas.USER_NAME}}</div>
+                                    <div class="layui-form-mid" v-cloak>{{datas.USER_NAME}}</div>
                                   </div>
                                   <div class="layui-form-item">
                                     <label class="layui-form-label">真实姓名</label>
@@ -115,7 +115,7 @@
                                   </div>
                                   <div class="layui-form-item">
                                     <label class="layui-form-label">登陆密码</label>
-                                    <div class="layui-form-mid layui-word-aux">{{isTrue.passwordLevel==2?"中":(isTrue.passwordLevel==3?"高":"低")}} <button class="layui-btn layui-btn-normal layui-btn-radius" @click="openLayer" data-id=".updatepwd">修改</button></div>
+                                    <div class="layui-form-mid layui-word-aux" v-cloak>{{isTrue.passwordLevel==2?"中":(isTrue.passwordLevel==3?"高":"低")}} <button class="layui-btn layui-btn-normal layui-btn-radius" @click="openLayer" data-id=".updatepwd">修改</button></div>
                                   </div>
                                   <div class="layui-form-item">
                                     <label class="layui-form-label">提款密码</label>
@@ -142,7 +142,7 @@
 														<div class="tips" v-if="item.msgTipsFlag" v-cloak>{{item.msgTipsMsg}}</div>
 	                                            		</td>
 	                                            	</tr>
-	                                            	<tr><td></td> <td><input type="button" value="确认" @click="submit_validate"><span><a class="cancel">取消</a></span></td> <td></td></tr>
+	                                            	<tr><td></td> <td><input type="button" value="确认" @click="submit_validate"><span><a class="cancel" @click="layerCancel">取消</a></span></td> <td></td></tr>
 	                                            </tbody>
 	                                            <tbody class="bank">
 		                                            <tr>
@@ -179,7 +179,7 @@
 		                                            <tr>
 		                                                <td></td>
 		                                                <td><input type="button" value="確認"
-		                                                           @click="addBank"><span><a>取消</a></span>
+		                                                           @click="addBank"><span><a @click="layerCancel">取消</a></span>
 		                                                </td>
 		                                                <td></td>
 		                                            </tr>
@@ -214,7 +214,7 @@
 		                                            <tr>
 		                                                <td></td>
 		                                                <td><input type="button" value="确认"
-		                                                           @click="updatePwd"><span><a>取消</a></span></td>
+		                                                           @click="updatePwd"><span><a @click="layerCancel">取消</a></span></td>
 		                                                <td></td>
 		                                            </tr>
 	                                            </tbody>
@@ -270,7 +270,7 @@
 		                                            <tr>
 		                                                <td></td>
 		                                                <td><input type="button" value="确认"
-		                                                           @click="updateCoinPwd"><span><a>取消</a></span></td>
+		                                                           @click="updateCoinPwd"><span><a @click="layerCancel">取消</a></span></td>
 		                                                <td></td>
 		                                            </tr>
 	                                            </tbody>

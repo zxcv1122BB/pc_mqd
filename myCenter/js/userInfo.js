@@ -381,8 +381,6 @@ var app = new Vue({
         },
         //绑定银行卡
         addBank: function () {
-            console.log(this.bankName);
-            return false;
             let uname = localStorage.getItem("userName");
             let fullNamePattern = /^[\u4e00-\u9fa5]*$/; //只能输入中文
             let bankAccountPattern = /\d{10}|\d{16}/; //银行卡号
@@ -432,6 +430,9 @@ var app = new Vue({
                 }
             };
             base.callAuthApi(obj);
+        },
+        layerCancel: function() {
+            layer.closeAll();
         },
         NickNameLength_validate: function (item, index) {
             var that = this;
@@ -531,7 +532,7 @@ var app = new Vue({
 	                    Vue.set(that.userInfoList[index], "msgTipsFlag", false);
 	                    Vue.set(that.userInfoList[index], "isCheckFlag", true);
                 	}else{
-                		Vue.set(that.userInfoList[index], "msgTipsMsg", "请输入11位正确的手机号");
+                		Vue.set(that.userInfoList[index], "msgTipsMsg", "请输入10位正确的手机号");
 	                    Vue.set(that.userInfoList[index], "isCheckFlag", false);
 	                    Vue.set(that.userInfoList[index], "msgTipsFlag", true);
 	                    that.isCheckFlag = false;
@@ -758,6 +759,7 @@ var app = new Vue({
                         "EMAIL": $("#EMAIL").val(),
                         "PHONE_NUMBER": $("#PHONE_NUMBER").val(),
                         "QQ": $("#QQ").val(),
+                        "LINE": $("#LINE").val(),
                         "WEIXIN": $("#WEIXIN").val(),
 						'perfectMarker':that.perfectMarker
                     },

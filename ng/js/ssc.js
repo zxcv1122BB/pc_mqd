@@ -52,6 +52,7 @@ let ssc = new Vue({
         typeName:'',
         pic_url:'', // 图片路径
 
+		testNumber: [10, 50, 100, 200, 500, 1000, 5000, 10000, 50000],
         //储存接受的数据
         menu: [],
         //当前的数字列(默认为定位胆的0~9)
@@ -73,7 +74,7 @@ let ssc = new Vue({
         //测试
         testNameList: ["定位胆", "五星", "四星", "后三", "前三", "前二", "不定位", "大小单双", "任选二", "任选三", "任选四", "龙虎"],
         testNameList2: ["定位胆", "五星", "四星", "后三", "前三", "前二", "不定位", "大小单双", "任选二", "任选三", "任选四", "龙虎"],
-        testNumber: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+        // testNumber: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
         testNumberCommon: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26],
 
 
@@ -103,7 +104,7 @@ let ssc = new Vue({
         bets:0,
 
         // 单注金额
-        singleCoins: 2,
+        singleCoins: '',
 
         // 玩法提示相关
         game_tips: '',
@@ -545,7 +546,7 @@ let ssc = new Vue({
         previousIssue_tips:'',
 
         userName: localStorage.userName,
-
+        show_dd: false
 
 
     },
@@ -571,6 +572,16 @@ let ssc = new Vue({
 
     },
     methods: {
+	    dianji: function() {
+	      this.show_dd = true
+	    },
+	    hide_dd: function() {
+	        this.show_dd = false;
+	    },
+	    select_money: function(num) {
+	        this.singleCoins = num
+	        this.show_dd = false
+	    },
         refresh:function(){
             this.getHistoryBannerInfo();
             $(".record p .refresh .iconfont").css({

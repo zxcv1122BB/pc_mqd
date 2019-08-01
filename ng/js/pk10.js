@@ -58,7 +58,7 @@ let cqssc = new Vue({
 		//测试
 		testNameList: ["前一", "定位胆", "前二", "前三"],
 		testNameList2: ["前一", "定位胆", "前二", "前三"],
-		testNumber: [10, 50, 100, 200, 500, 1000, 5000, 10000, 100000],
+		testNumber: [10, 50, 100, 200, 500, 1000, 5000, 10000, 50000],
 		testNumberCommon: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"],
 
 		//第一位
@@ -98,7 +98,7 @@ let cqssc = new Vue({
 		bets: 0,
 
 		// 单注金额
-		singleCoins: 2,
+		singleCoins: '',
 		
 
 		// 玩法提示相关
@@ -207,6 +207,9 @@ let cqssc = new Vue({
 	methods: {
 	    dianji: function() {
 	      this.show_dd = true
+	    },
+	    hide_dd: function() {
+	        this.show_dd = false;
 	    },
 	    select_money: function(num) {
 	        this.singleCoins = num
@@ -901,11 +904,12 @@ let cqssc = new Vue({
 		},
 		//单笔单注奖金限制
 		handleCoins: function() {
-		    console.log(1111)
+		  //  console.log(1111)
 			this.singleCoins = this.singleCoins.replace(/\D+/g, '');
 			if(this.singleCoins && this.singleCoins < 1) {
 				this.singleCoins = 1;
 			}
+			this.show_dd = false;
 			// if(this.present_playId == 61 || this.present_playId == 71) {
 			// 	this.setSpecialSum();
 			// }

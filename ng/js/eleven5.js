@@ -83,6 +83,7 @@ let cqssc = new Vue({
 
         //控制机选的数字列表
         ranNumList: [1, 1, 1, 1, 1, 1, 1, 1],
+		testNumber: [10, 50, 100, 200, 500, 1000, 5000, 10000, 50000],
 
         //存储当前的下标
         presentIndexList: [0, 0],
@@ -91,7 +92,7 @@ let cqssc = new Vue({
         bets: 0,
 
         // 单注金额
-        singleCoins: 2,
+        singleCoins: '',
 
         // 玩法提示相关
         game_tips: '',
@@ -340,6 +341,7 @@ let cqssc = new Vue({
         previousIssue_tips:'',
 
         userName: localStorage.userName,
+        show_dd: false
     },
     created: function() {
         this.getSearchValue();
@@ -358,7 +360,16 @@ let cqssc = new Vue({
 
     },
     methods: {
-
+	    dianji: function() {
+	      this.show_dd = true
+	    },
+	    hide_dd: function() {
+	        this.show_dd = false;
+	    },
+	    select_money: function(num) {
+	        this.singleCoins = num
+	        this.show_dd = false
+	    },
         refresh:function(){
             this.getHistoryBannerInfo();
             $(".record p .refresh .iconfont").css({

@@ -85,7 +85,7 @@
 // document.writeln("  </div>");
 // document.writeln("</div>");
 
-document.writeln('<div class="footer"><div class="w-1200"><div class="bottom-nav fl"><div class="footer-nav"><a href="/help.html?0" class="">關於我們</a><a href="javascript:;" onclick="showLine()">聯繫我們</a><a href="/help.html?1" class="">取款幫助</a><a href="/help.html?2" class="">存款幫助</a><a href="/help.html?3" class="">常見問題</a></div> <p>© 2011-2020 <strong class="platform">SSG 彩票</strong>版權所有</p> <p><strong class="platform">SSG 彩票</strong>鄭重提示：彩票有風險，投注需謹慎，不向未滿 18 周歲的青少年出售彩票</p></div> <div class="authorized fr"><div id="qrcode2"></div><p>掃碼下載手機版</p> </div></div></div>');
+document.writeln('<div class="footer"><div class="w-1200"><div class="bottom-nav fl"><div class="footer-nav"><a href="/help.html?0" class="">關於我們</a><a href="/help.html?1" class="">聯繫我們</a><a href="/help.html?2" class="">常見問題</a><a href="/help.html?3" class="">取款幫助</a><a href="/help.html?4" class="">存款幫助</a><a href="/help.html?5" class="">隱私保護規則</a><a href="/help.html?6" class="">規則與條款</a></div> <p>© 2011-2020 <strong class="platform">SSG 彩票</strong>版權所有</p> <p><strong class="platform">SSG 彩票</strong>鄭重提示：彩票有風險，投注需謹慎，不向未滿 18 周歲的青少年出售彩票</p></div> <div class="authorized fr"><div id="qrcode2"></div><p>掃碼下載手機版</p> </div></div></div>');
 
 if (localStorage.config != undefined) {
     var obj = JSON.parse(localStorage.config);

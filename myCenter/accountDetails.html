@@ -177,11 +177,11 @@
                                             <tbody class="showBetRecord">
                                             <tr v-for="item in arrs" v-cloak>
                                                 <td v-cloak>{{item.applyTime}}</td>
-                                                <td v-cloak>{{item.tradeType==1?"在线存款":(item.tradeType==2?"快速入款":(item.tradeType==3?"一般存款":"--"))}}</td>
-                                                <td v-cloak>{{item.payType==1?"支付宝":(item.payType==2?"微信":"银行卡")}}</td>
+                                                <td v-cloak>{{item.tradeType==2?"在线存款":(item.tradeType==1?"快速入款":(item.tradeType==3?"一般存款":"--"))}}</td>
+                                                <td v-cloak>{{item.payType==2?"四大超商":"實體ATM"}}</td>
                                                 <td v-cloak>{{item.amount}}{{coinUnit}}</td>
                                                 <td v-cloak>
-                                                    {{item.state==1?'未处理':(item.state==2?'处理中':(item.state==3?'成功到帐':(item.state==4?'充值失败':'--')))}}
+                                                    {{item.state==1?'未处理':(item.state==2?'处理中':(item.state==3?'成功到帐':(item.state==5?'充值失败':'--')))}}
                                                 </td>
                                                 <td style="width: 12%;" v-cloak>{{item.info}}</td>
                                                 <td v-cloak>{{item.orderId}}</td>

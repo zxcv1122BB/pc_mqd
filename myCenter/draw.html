@@ -153,30 +153,30 @@
                                                 <table>
                                                     <tr>
                                                         <td>真實姓名：</td>
-                                                        <td><input type="text" v-model="fullName" id="fullName"></td>
+                                                        <td><input type="text" v-model="fullName" id="fullName" placeholder="請輸入真實姓名"></td>
                                                         <td></td>
                                                     </tr>
                                                     <tr>
                                                         <td>銀行名稱：</td>
                                                         <td>
-                                                       <!--     <select id="bankName" lay-ignore v-model="bankName" style="display: inline-block;border: ;background: none;border: 1px solid #aaa;height: 33px;width: 100%;">-->
-                                                       <!--    <option value="">請選擇銀行名稱</option>-->
-                                                       <!--    <option v-for="item in bankList" :value="item">{{item}}</option>-->
-                                                       <!--</select>-->
-                                                       <el-select
-                                                        v-model="bankName"
-                                                        filterable
-                                                        remote
-                                                        :reserve-keyword="true"
-                                                        placeholder="请输入银行关键词"
-                                                        :remote-method="remoteMethod">
-                                                        <el-option
-                                                          v-for="item in bankListShow"
-                                                          :key="item.itemID"
-                                                          :label="item.itemName"
-                                                          :value="item.itemID">
-                                                        </el-option>
-                                                      </el-select>
+                                                            <select id="bankName" lay-ignore v-model="bankName" style="display: inline-block;border: ;background: none;border: 1px solid #aaa;height: 33px;width: 100%;">
+                                                                   <option value="">請選擇銀行名稱</option>
+                                                                   <option v-for="item in bankList" :value="item">{{item}}</option>
+                                                               </select>
+                                                      <!-- <el-select-->
+                                                      <!--  v-model="bankName"-->
+                                                      <!--  filterable-->
+                                                      <!--  remote-->
+                                                      <!--  :reserve-keyword="true"-->
+                                                      <!--  placeholder="请输入银行关键词"-->
+                                                      <!--  :remote-method="remoteMethod">-->
+                                                      <!--  <el-option-->
+                                                      <!--    v-for="item in bankListShow"-->
+                                                      <!--    :key="item.itemID"-->
+                                                      <!--    :label="item.itemName"-->
+                                                      <!--    :value="item.itemID">-->
+                                                      <!--  </el-option>-->
+                                                      <!--</el-select>-->
                                                        <!-- <select id="bankName" lay-ignore v-model="bankName" style="display: inline-block;border: ;background: none;border: 1px solid #aaa;height: 33px;width: 100%;">
                                                            <option value="">请选择银行名称</option>
                                                            <option v-for="item in bankList" :value="item">{{item}}</option>
@@ -191,7 +191,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td>開戶分行：</td>
-                                                        <td><input type="text" v-model="bankAddress" id="bankAddress"></td>
+                                                        <td><input type="text" v-model="bankAddress" id="bankAddress" placeholder="請輸入開戶分行"></td>
                                                         <td></td>
                                                     </tr>
                                                     <tr>

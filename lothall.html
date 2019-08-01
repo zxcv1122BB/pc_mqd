@@ -46,10 +46,10 @@
                                     <div v-if="item.msg">
                                     </div>
                                     <div v-else-if="item.saleStatus=='ON_SALE'">
-                                        <span class="leaveh-1" v-html="item.deadlineStr">{{item.deadlineStr}}</span>
+                                        <span class="leaveh-1" v-html="item.deadlineStr" v-cloak>{{item.deadlineStr}}</span>
                                     </div>
                                     <div  v-else>
-                                        <span class="leaveh-1" v-html="item.deadlineStr">{{item.deadlineStr}}</span>
+                                        <span class="leaveh-1" v-html="item.deadlineStr" v-cloak>{{item.deadlineStr}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -62,11 +62,11 @@
                             <div class="show-gd1">
                                 <ul class="big_ball" v-if="item.code=='PCDD'">
                                     <!--<span>正在开奖...</span>-->
-                                    <li  v-for="it in item.luck_number" :class="it=='='||it=='+'?'white':bj28CL[it]">{{it}}</li>
+                                    <li  v-for="it in item.luck_number" :class="it=='='||it=='+'?'white':bj28CL[it]" v-cloak>{{it}}</li>
                                 </ul>
                                 <ul class="big_ball" v-else-if="item.gameID==37">
                                     <!--<span>正在开奖...</span>-->
-                                    <li  v-for="it in item.luck_number" :class="it=='='||it=='+'?'white':lhcCL[it]">{{it}}</li>
+                                    <li  v-for="it in item.luck_number" :class="it=='='||it=='+'?'white':lhcCL[it]" v-cloak>{{it}}</li>
                                 </ul>
                                 <ul class="big_ball" v-else-if="item.gameID==8||item.gameID==15||item.gameID==34">
                                     <!--<span>正在开奖...</span>-->
@@ -74,7 +74,7 @@
                                 </ul>
                                 <ul class="big_ball" v-else>
                                     <!--<span>正在开奖...</span>-->
-                                    <li v-for="it in item.luck_number" >{{it}}</li>
+                                    <li v-for="it in item.luck_number" v-cloak>{{it}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -96,17 +96,17 @@
             </div>
             <div class="lcmain" style="min-height: 100px;">
                 <ul class="lot_ul clearfix">
-                    <li v-for="item in low">
+                    <li v-for="item in low" v-cloak>
                         <div class="btnbox_top clearfix" >
                             <a :href="item.bet_url" class="item-pic" :style="item.pic_url">
                                 <!--<img :src="item.pic_url" />-->
                             </a>
                             <div class="info">
                                 <h3>
-                                    <a :href="item.bet_url">{{item.show_name}}</a>
+                                    <a :href="item.bet_url" v-cloak>{{item.show_name}}</a>
                                 </h3>
                                 <span>
-                                    第<font color="red"> {{item.new_issue}} </font>期
+                                    第<font color="red" v-cloak> {{item.new_issue}} </font>期
                                 </span>
                                 <div class="gct_time_now_l" v-if="item.msg">
                                     <span class="leaveh-2">暂停销售</span>
@@ -122,10 +122,10 @@
                                     <div v-if="item.msg">
                                     </div>
                                     <div v-else-if="item.saleStatus=='ON_SALE'">
-                                        <span class="leaveh-1" v-html="item.deadlineStr">{{item.deadlineStr}}</span>
+                                        <span class="leaveh-1" v-html="item.deadlineStr" v-cloak>{{item.deadlineStr}}</span>
                                     </div>
                                     <div  v-else>
-                                        <span class="leaveh-1" v-html="item.deadlineStr">{{item.deadlineStr}}</span>
+                                        <span class="leaveh-1" v-html="item.deadlineStr" v-cloak>{{item.deadlineStr}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -133,14 +133,14 @@
                         <div class="lot-fore" >
                             <span class="fl" >
                                 <!--&nbsp;&nbsp; 近 期 开 奖<br>-->
-                                第 <span style="color:red">{{item.issue}}</span> 期
+                                第 <span style="color:red" v-cloak>{{item.issue}}</span> 期
                             </span>
                             <div class="show-gd1">
                                 <ul class="big_ball" v-if="item.gameID==31">
-                                    <li  v-for="it in item.luck_number" :class="it=='='||it=='+'?'white':lhcCL[it]">{{it}}</li>
+                                    <li  v-for="it in item.luck_number" :class="it=='='||it=='+'?'white':lhcCL[it]" v-cloak>{{it}}</li>
                                 </ul>
                                 <ul class="big_ball" v-else>
-                                    <li v-for="it in item.luck_number" >{{it}}</li>
+                                    <li v-for="it in item.luck_number" v-cloak>{{it}}</li>
                                 </ul>
                             </div>
                         </div>

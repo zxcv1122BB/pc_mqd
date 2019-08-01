@@ -32,7 +32,6 @@ document.writeln("                  </div>");
 document.writeln("              </div>");
 document.writeln("          </div>");
 document.writeln("          <a href='javascript:void(0)' onclick='recharge()'>充值</a>");
-document.writeln("          <a href='javascript:void(0)'  onclick='myCollect()'>我的收藏</a>");
 // document.writeln("          <a href='javascript:void(0)' onclick='togoChat()' class='c-red'>聊天室</a>");
 // document.writeln("          <a href='javascript:void(0)' class='c-red'><i class=\"iconfont\" id='close' onclick='danMu(0)'>&#xe7bf;</i><i class=\"iconfont\" id='open' onclick='danMu(1)'>&#xe607;</i>彈幕</a>");
 document.writeln("      </div>");
@@ -41,6 +40,8 @@ document.writeln("      <div class='bar-r clearfix'>");
 document.writeln("          <a id='logBtn' href='/login/login.html'  class='login_btn' \>登錄</a>");
 document.writeln("          <a id='regBtn' href='/login/register.html' class='reg_btn'>註冊</a>");
 document.writeln("          <a href='/agency/agentIntro.html' class='agent_center'>代理中心</a>");
+document.writeln("          <em>|</em>");
+document.writeln("          <a href='javascript:void(0)'  onclick='myCollect()'>我的收藏</a>");
 document.writeln("          <em>|</em>");
 document.writeln("          <a href='javascript:;' onclick='showLine()'><img src='/images/IMG_9848.PNG' style='width: 20px;margin-right: 5px;' />客服中心</a>");
 document.writeln("          <em>|</em>");
@@ -156,6 +157,25 @@ document.writeln("  </div>");
 
 initIsLogin();
 
+$.getScript("./common/i18n.js", function() {
+	$.getScript("./common/lang/cn.js", function() {
+		$.getScript("./common/lang/tr.js", function() {
+			console.log(11111);
+			Vue.use(VueI18n) // 通过插件的形式挂载
+			let i18n = new VueI18n({
+			  locale: 'tr',
+			  messages: {
+			    'cn': window.cn,   // 中文简体语言包
+			    'tr': window.tr    // 繁体语言包
+			  },
+			  silentTranslationWarn: true
+			})
+			Vue.prototype.i18n = i18n;
+			// Vue.prototype.$i18n = i18n;
+			// console.log(i18n.t, '===');
+		})
+	})
+});
 
 layui.use(['layer', 'element', 'form'], function() {
 	var layer = layui.layer,
@@ -197,15 +217,21 @@ function showRecord() {
 	$('.record-box').toggle();
 }
 
+$('*').click(function(e) {
+    if (e.target.className !== 'lucky-nav-box' && $('.record-box').css('display') == 'block') {
+        $('.record-box').hide();
+    }
+});
+
 function myCollect() {
-	if (localStorage.collectGame) {
-		openPage('/myCenter/collect.html');
-	} else {
-		layui.use('layer', function () {
-			var layer = layui.layer;
-			layer.msg('暂无收藏!');
-		});
-	}
+// 	if (localStorage.collectGame) {
+		goPage('/myCenter/collect.html');
+// 	} else {
+// 		layui.use('layer', function () {
+// 			var layer = layui.layer;
+// 			layer.msg('暂无收藏!');
+// 		});
+// 	}
 }
 
 function collectNum() {
@@ -698,26 +724,7 @@ var nav = new Vue({
 
     }
 });
-$.getScript("./common/i18n.js", function() {
-	$.getScript("./common/lang/cn.js", function() {
-		$.getScript("./common/lang/tr.js", function() {
-			console.log(11111);
-			Vue.use(VueI18n) // 通过插件的形式挂载
-			let i18n = new VueI18n({
-			  locale: 'tr',
-			  messages: {
-			    'cn': window.cn,   // 中文简体语言包
-			    'tr': window.tr    // 繁体语言包
-			  },
-			  silentTranslationWarn: true
-			})
-			Vue.prototype.i18n = i18n;
-			// Vue.prototype.$i18n = i18n;
-			// console.log(i18n.t, '===');
-		})
-	})
-});
-console.log(nav, 'navnavnavnavnavnavnavnavnavnavnavnavnav');
+
 // 拿二维码
 if (localStorage.config != undefined) {
     var obj = JSON.parse(localStorage.config);

@@ -14,7 +14,7 @@ var pc = new Vue({
 	el: "#main",
 	data: {
 		allTypeContent: ["所有类型","在线存款", "快速入款","一般存款"],
-		allStateContent: ["所有状态","未处理", "处理中", "处理成功", "处理失败"],
+		allStateContent: ["所有状态", "处理中", "处理成功", "处理失败"],
 		changeDateContent: ["近7天","今天", "昨天", "本周", "上周", "7天之前"],
 		startTime:"",
 		endTime:"",

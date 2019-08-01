@@ -13,16 +13,17 @@
 <body>
 <script src="../public/js/header.js"></script>
   <div class="game-bg">
-<section id="cqssc-container">
+<section id="cqssc-container" @click="hide_dd">
     <div class="cqssc-header">
     	<div class="countdown">
     		<ul style="display: flex;align-items: center;">
     			<li class="icon"><img :src="'../'+pic_url"></li>
-    			<li><h2 class="title">{{typeName}}</h2></li>
+    			<li><h2 class="title" v-cloak>{{typeName}}</h2></li>
+    			<div class="welcome" style="padding: 8px 40px;">賬號餘額: <span id="coin11" class="red coin" style="font-size: 20px;" v-cloak>{{pack_coin}}</span>元</div>
     		</ul>
     	</div>
     	<div class="trendOpenBtn" style="display: flex;align-items: center;">
-    		<div style="margin: 0 15px;" @click="collectFn"><i :class="['iconfont',isCollect==1?'coll_succ':'coll_fail']">{{(isCollect==1?'&#xe666;':'&#xe7ce;')}}</i></div>
+    		<div style="margin: 0 15px;" @click="collectFn" v-cloak><i :class="['iconfont',isCollect==1?'coll_succ':'coll_fail']">{{(isCollect==1?'&#xe666;':'&#xe7ce;')}}</i></div>
     		<a style="margin: 0 15px;" @click="togoChart(oneTypeId)">开奖走势</a>
     		<a style="margin: 0;" @click="togoSkip(oneTypeId)">开奖详情</a>
     		<!--<div class="video" onclick="videoFn('https://kj.kai861.com/view/video/fc3DVideo/index.html?10041?www.1680380.com')" v-if="oneTypeId == 5">-->
@@ -35,7 +36,7 @@
     </div>
     <header style="display: flex;justify-content: space-between;align-items: center;">
 		<div style="text-align: center;">
-			<div style="font-size: 20px;color: #f00;" v-if="preventBanner">
+			<div style="font-size: 20px;color: #f00;" v-if="preventBanner" v-cloak>
 				第{{preventBanner}}期
 			</div>
             <div class="time" v-if="!isNaN(preventBanner)">
@@ -48,7 +49,7 @@
 		<div class="countdown">
 			<span v-cloak v-html="deadlineStr" v-if="deadlineStr" :class="[deadlineStr == '封盘' || deadlineStr == '暂停销售' ? 'red' : '']">{{deadlineStr}}</span>
 		</div>
-        <p class="banner_num" v-cloak>
+        <p class="banner_num">
             <span v-if="previousIssue_tips" style="font-size: 1.5rem;color: red;">开奖中...</span>
             <span v-else-if="recentlyNum.length==0" style="font-size: 1.5rem;color: red;">数据获取中...</span>
 		    <a v-if="previousIssue_tips" href="javascript:;" class="refresh" @click="refresh"><i class="iconfont" style="font-size: 15px;color: #f67620">&#xe667;</i></a>
@@ -56,9 +57,9 @@
 		<div class="record" style="padding-left: 0;">
             <ul class="layui-nav" lay-filter="" v-if="history.length > 0">
               <li class="layui-nav-item banner_num">
-                <a href="javascript:;" class="lucky-nav-box" v-if="history.length > 0" onclick="showRecord()">第{{history[0]['issue']}}期<span class="r_bage" v-for="item in history[0].recentlyNum" v-cloak v-if="history.length > 0">{{item}}</span></a>
+                <a href="javascript:;" class="lucky-nav-box" v-if="history.length > 0" onclick="showRecord()" v-cloak>第{{history[0]['issue']}}期<span class="r_bage" v-for="item in history[0].recentlyNum" v-cloak v-if="history.length > 0">{{item}}</span></a>
                 <dl class="record-box"> 
-                  <dd v-for="val in history" v-if="history.length > 0"><a href="javascript:;">第{{val.issue}}期<span class="r_bage" v-for="item in val.recentlyNum" v-cloak v-if="history.length > 0">{{item}}</span></a></dd>
+                  <dd v-for="val in history" v-if="history.length > 0" v-cloak><a href="javascript:;">第{{val.issue}}期<span class="r_bage" v-for="item in val.recentlyNum" v-cloak v-if="history.length > 0">{{item}}</span></a></dd>
                 </dl>
               </li>
             </ul>
@@ -219,7 +220,7 @@
                                 共
                                 <span class="red ">{{bets}}</span> 注
                                 <span class="red ">{{parseFloat(bets*singleCoins).toFixed(2)}}</span> {{coinUnit}} 单注
-                                <input type="text " v-model="singleCoins" @keyup="handleCoins" maxlength="6" class="betSum ">{{coinUnit}}
+                                <input type="text " @click.stop="dianji" v-model="singleCoins" @keyup="handleCoins" maxlength="6" class="betSum ">{{coinUnit}}
                                 <span class="clearTopBtn " @click="clearSelectData(0,0)">清空上方选号</span>
                                 <span class="odds"  v-cloak> 赔率:<em :title='orderOdds' class="orderOdds">{{orderOdds}}</em></span>
                                 <!-- <span id="odds">{{orderOdds}}</span> -->
@@ -229,6 +230,14 @@
                                     <span class="addBtn " @click="handleConfirm">选好了</span>
                                 </div>
                             </div>
+						<div style="ceng" class="ceng" v-show="show_dd">
+    					    <div class="box">
+    					        <h1 style="text-align:center;padding: 15px 0;">点击选择金额:</h1>
+                                <ul>
+                                    <li v-for="(item, inx) in testNumber" :key="inx" @click="select_money(item)" v-cloak><span>{{item}}</span></li>
+                                </ul>
+                            </div>
+    					</div>
                         </div>
 
                         <!-- 投注列表 -->

@@ -169,7 +169,8 @@
                                                 <td>投注金额</td>
                                                 <td>中奖金额</td>
                                                 <td>状态</td>
-                                                <td>操作</td>
+                                                <td>查看</td>
+                                                <td>撤单</td>
                                             </tr>
                                             </thead>
                                             <tbody id="betResultOrder" v-cloak>
@@ -194,8 +195,7 @@
                                                     <span v-else v-cloak>{{item.bonus}}</span></td>
                                                 <td v-cloak>{{item.status}}</td>
                                                 <td v-cloak><button class="layui-btn layui-btn-mini" @click="selectHH(item.betId,item.type)">查看</button></td>
-                                                <!--<td><button class="layui-btn-disabled layui-btn-mini" v-if="item.status==2||item.isCal==1">撤单</button>
-                                                    <button class="layui-btn layui-btn-mini" v-else>撤单</button></td>-->
+                                                <td><button class="layui-btn-disabled layui-btn-mini" v-if="item.status!=='成功'" style="width: 36px;">撤单</button><button class="layui-btn layui-btn-mini" @click="cancleOrd(item.betId)" v-else>撤单</button></td>
                                             </tr>
                                             </tbody>
                                         </table>

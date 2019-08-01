@@ -64,6 +64,28 @@ var pc = new Vue({
 			}
 
 		},
+		cancleOrd:function(id){
+          var that = this;
+          var params = {
+            'betId': id
+          };
+          var obj = {
+            type: 'post',
+            data: params,
+            dataType: 'json',
+            url: '/authApi/bets/cancelTheOrder',
+            success: function(data) {
+                layui.use('layer', function() {
+					var layer = layui.layer;
+                    layer.msg(data.msg);
+				})
+                if(data.code == 200){
+                  window.location.reload();
+                }
+            }
+          }
+          base.callAuthApi(obj);
+        },
 		getTypes: function () {
             var _this = this;
             var obj = {

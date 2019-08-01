@@ -10,7 +10,7 @@
 <body class="fiexd">
     <script src="../public/js/header.js"></script>
 <div class="main" id="app">
-    <div class="favorable_container unable_select banner" id="fav" v-cloak>
+    <div class="favorable_container unable_select banner" id="fav">
         <div class="wel">
             <h3>
                 歡迎光臨
@@ -28,7 +28,7 @@
                 <div class="fav_detail" style="text-align: center;">
                     <img :src="item.contentUrl">
                 </div>
-                <div class="fav_footer">
+                <div class="fav_footer" v-cloak>
                     <div>
                         {{item.title}}
                     </div>
