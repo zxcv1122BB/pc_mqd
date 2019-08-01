@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>返点详情</title>
+  <title>{{i18n.t('返点详情')}}</title>
   <script src="../public/js/base.js"></script>
 </head>
 
@@ -19,14 +19,14 @@
             </div>
           </nav>
           <div class="right">
-            <div class="title">返点详情</div>
+            <div class="title">{{i18n.t('返点详情')}}</div>
             <div class="wrapper">
               <div class="codeName">
                 <ul>
                   <li>
-                    <i>玩法</i>
+                    <i>{{i18n.t('玩法')}}</i>
                     <span></span>
-                    <em>返点</em>
+                    <em>{{i18n.t('返点')}}</em>
                   </li>
                   <li v-for="item in gameItemList">{{item}}</li>
                 </ul>

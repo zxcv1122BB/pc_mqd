@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>充值</title>
+    <title>{{i18n.t('充值')}}</title>
     <link rel="stylesheet" type="text/css" href="css/betrecord.css"/>
     <script type="text/javascript" src="../public/js/base.js"></script>
 </head>
@@ -18,36 +18,36 @@
                 <nav class="left">
                         <div class="member">
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>会员中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>{{i18n.t('会员中心')}}</blockquote>
                                 <li>
-                                    <a href="/myCenter/member.html">会员中心</a>
+                                    <a href="/myCenter/member.html">{{i18n.t('会员中心')}}</a>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/betrecord.html">投注记录</a>
+                                    <a href="/myCenter/betrecord.html">{{i18n.t('投注记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/lotteryrecord.html">中奖记录</a>
+                                    <a href="/myCenter/lotteryrecord.html">{{i18n.t('中奖记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/accountDetails.html">账号明细</a>
+                                    <a href="/myCenter/accountDetails.html">{{i18n.t('账号明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/userInfo.html">账号信息</a>
+                                    <a href="/myCenter/userInfo.html">{{i18n.t('账号信息')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li class="on">
-                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <a href="/myCenter/recharge.html">{{i18n.t('充值')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li v-if="agencyType!=6">
-                                    <a href="/myCenter/draw.html">提款</a>
+                                    <a href="/myCenter/draw.html">{{i18n.t('提款')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <a href="/myCenter/message.html">{{i18n.t('消息中心')}}</a>
                                     <div class="hr"></div>
                                 </li>
                     
@@ -55,33 +55,33 @@
                         </div>
                         <div class="agency" v-if="agencyType==1" v-cloak>
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>{{i18n.t('代理中心')}}</blockquote>
                                 <li>
-                                    <a href="/agency/agentIntro.html">代理说明</a>
+                                    <a href="/agency/agentIntro.html">{{i18n.t('代理说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentReport.html">代理报表</a>
+                                    <a href="/agency/agentReport.html">{{i18n.t('代理报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/lowerReport.html">下级报表</a>
+                                    <a href="/agency/lowerReport.html">{{i18n.t('下级报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/downAccount.html">下级开户</a>
+                                    <a href="/agency/downAccount.html">{{i18n.t('下级开户')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentMember.html">会员管理</a>
+                                    <a href="/agency/agentMember.html">{{i18n.t('会员管理')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyBetDetail.html">投注说明</a>
+                                    <a href="/agency/agencyBetDetail.html">{{i18n.t('投注说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyDealDetail.html">交易明细</a>
+                                    <a href="/agency/agencyDealDetail.html">{{i18n.t('交易明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                             </ul>
@@ -93,11 +93,11 @@
                     <!--顶部用户信息-->
                     <div id="top">
                         <div>
-                            <div class="welcome" style="padding: 8px 20px;">您好：<strong class="userName red" id="userName" style="margin-right: 10px;"> </strong>&nbsp;账号余额：<span class="red coin" id="coin11" style="font-size: 20px;">0.00</span>{{coinUnit}}<span class="btn recharge" style="margin-left: 20px;margin-right: 10px;"><a href="recharge.html">充值</a></span><span class="btn withdrawal" v-if="agencyType!=6"><a href="draw.html">提款</a></span></div>
+                            <div class="welcome" style="padding: 8px 20px;">您好：<strong class="userName red" id="userName" style="margin-right: 10px;"> </strong>&nbsp;账号余额：<span class="red coin" id="coin11" style="font-size: 20px;">0.00</span>{{coinUnit}}<span class="btn recharge" style="margin-left: 20px;margin-right: 10px;"><a href="recharge.html">{{i18n.t('充值')}}</a></span><span class="btn withdrawal" v-if="agencyType!=6"><a href="draw.html">{{i18n.t('提款')}}</a></span></div>
                             <!--账号总览-->
                             <div class="memberMsg">
                                 <div class="title">
-                                    <div><strong>充值</strong></div>
+                                    <div><strong>{{i18n.t('充值')}}</strong></div>
                                 </div>
                             </div>
                             <div id="record">
@@ -236,6 +236,9 @@ var pc = new Vue({
 		this.getPayWay();
 	},
 	methods: {
+		init: function () {
+
+		},
 		getChanel: function() {
 			var chanel = 0;
 			if(navigator.userAgent.indexOf("lsApp") != -1) {
@@ -730,6 +733,7 @@ var pc = new Vue({
 
     },
 });
+// pc.init();
 </script>
 </body>
 

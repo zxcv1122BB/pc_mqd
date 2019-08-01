@@ -18,13 +18,13 @@
     		<ul style="display: flex;align-items: center;">
     			<li class="icon"><img :src="'../'+pic_url"></li>
     			<li><h2 class="title" v-cloak>{{typeName}}</h2></li>
-    			<div class="welcome" style="padding: 8px 40px;">账号余额: <span id="coin11" class="red coin" style="font-size: 20px;" v-cloak>{{pack_coin}}</span>元</div>
+    			<div class="welcome" style="padding: 8px 40px;">账号余额: <span id="coin11" class="red coin" style="font-size: 20px;" v-cloak>{{pack_coin}}</span>{{i18n.t('元')}}</div>
     		</ul>
     	</div>
     	<div class="trendOpenBtn" style="display: flex;align-items: center;">
     		<div style="margin: 0 15px;" @click="collectFn" v-cloak><i :class="['iconfont',isCollect==1?'coll_succ':'coll_fail']">{{(isCollect==1?'&#xe666;':'&#xe7ce;')}}</i></div>
-    		<a style="margin: 0 15px;" @click="togoChart(oneTypeId)">开奖走势</a>
-    		<a style="margin: 0;" @click="togoSkip(oneTypeId)">开奖详情</a>
+    		<a style="margin: 0 15px;" @click="togoChart(oneTypeId)">{{i18n.t('开奖走势')}}</a>
+    		<a style="margin: 0;" @click="togoSkip(oneTypeId)">{{i18n.t('开奖详情')}}</a>
     		<div class="video" onclick="videoFn('https://kj.kai861.com/view/video/jisuft_video/index.html?10057?www.1680380.com')" v-if="oneTypeId == 15">
     		    <img src="/images/video.jpg" />
     		</div>
@@ -104,8 +104,8 @@
 										<li v-for="(item,index) in myriabit" @click="changeRandomNum(0,index+1)">{{index+1}}</li>
 									</ul>
 								</div>
-								<span class="btn" @click="randomNum(0,0)">机选</span>
-								<span class="btn" @click="randomNum(0,1)">全选</span>
+								<span class="btn" @click="randomNum(0,0)">{{i18n.t('机选')}}</span>
+								<span class="btn" @click="randomNum(0,1)">{{i18n.t('全选')}}</span>
 							</div>
 						</div>
 						<!-- 亚军 -->
@@ -123,8 +123,8 @@
 										<li v-for="(item,index) in kilobit" @click="changeRandomNum(1,index+1)">{{index+1}}</li>
 									</ul>
 								</div>
-								<span class="btn" @click="randomNum(1,0)">机选</span>
-								<span class="btn" @click="randomNum(1,1)">全选</span>
+								<span class="btn" @click="randomNum(1,0)">{{i18n.t('机选')}}</span>
+								<span class="btn" @click="randomNum(1,1)">{{i18n.t('全选')}}</span>
 							</div>
 						</div>
 						<!-- 季军 -->
@@ -142,13 +142,13 @@
 										<li v-for="(item,index) in hundreds" @click="changeRandomNum(2,index+1)">{{index+1}}</li>
 									</ul>
 								</div>
-								<span class="btn" @click="randomNum(2,0)">机选</span>
-								<span class="btn" @click="randomNum(2,1)">全选</span>
+								<span class="btn" @click="randomNum(2,0)">{{i18n.t('机选')}}</span>
+								<span class="btn" @click="randomNum(2,1)">{{i18n.t('全选')}}</span>
 							</div>
 						</div>
 						<!-- 第四位 -->
 						<div class="four_area clearfix" v-if="presentAreaList[3]==1" v-cloak>
-							<span class="leftTitle">第四位</span>
+							<span class="leftTitle">{{i18n.t('第四位')}}</span>
 							<div class="numberList" v-cloak>
 								<span :class="['circle',{'sel':item.isSel}]" v-for="item in decade" @click="item.isSel=!item.isSel">{{item.num}}</span>
 							</div>
@@ -161,13 +161,13 @@
 										<li v-for="(item,index) in decade" @click="changeRandomNum(3,index+1)">{{index+1}}</li>
 									</ul>
 								</div>
-								<span class="btn" @click="randomNum(3,0)">机选</span>
-								<span class="btn" @click="randomNum(3,1)">全选</span>
+								<span class="btn" @click="randomNum(3,0)">{{i18n.t('机选')}}</span>
+								<span class="btn" @click="randomNum(3,1)">{{i18n.t('全选')}}</span>
 							</div>
 						</div>
 						<!-- 第五位 -->
 						<div class="five_area clearfix" v-if="presentAreaList[4]==1" v-cloak>
-							<span class="leftTitle">第五位</span>
+							<span class="leftTitle">{{i18n.t('第五位')}}</span>
 							<div class="numberList" v-cloak>
 								<span :class="['circle',{'sel':item.isSel}]" v-for="item in unit" @click="item.isSel=!item.isSel">{{item.num}}</span>
 							</div>
@@ -180,13 +180,13 @@
 										<li v-for="(item,index) in unit" @click="changeRandomNum(4,index+1)">{{index+1}}</li>
 									</ul>
 								</div>
-								<span class="btn" @click="randomNum(4,0)">机选</span>
-								<span class="btn" @click="randomNum(4,1)">全选</span>
+								<span class="btn" @click="randomNum(4,0)">{{i18n.t('机选')}}</span>
+								<span class="btn" @click="randomNum(4,1)">{{i18n.t('全选')}}</span>
 							</div>
 						</div>
 						<!-- 第六位 -->
 						<div class="five_area clearfix" v-if="presentAreaList[5]==1" v-cloak>
-							<span class="leftTitle">第六位</span>
+							<span class="leftTitle">{{i18n.t('第六位')}}</span>
 							<div class="numberList" v-cloak>
 								<span :class="['circle',{'sel':item.isSel}]" v-for="item in sixth" @click="item.isSel=!item.isSel">{{item.num}}</span>
 							</div>
@@ -199,13 +199,13 @@
 										<li v-for="(item,index) in sixth" @click="changeRandomNum(5,index+1)">{{index+1}}</li>
 									</ul>
 								</div>
-								<span class="btn" @click="randomNum(5,0)">机选</span>
-								<span class="btn" @click="randomNum(5,1)">全选</span>
+								<span class="btn" @click="randomNum(5,0)">{{i18n.t('机选')}}</span>
+								<span class="btn" @click="randomNum(5,1)">{{i18n.t('全选')}}</span>
 							</div>
 						</div>
 						<!-- 第七位 -->
 						<div class="five_area clearfix" v-if="presentAreaList[6]==1" v-cloak>
-							<span class="leftTitle">第七位</span>
+							<span class="leftTitle">{{i18n.t('第七位')}}</span>
 							<div class="numberList" v-cloak>
 								<span :class="['circle',{'sel':item.isSel}]" v-for="item in seventh" @click="item.isSel=!item.isSel">{{item.num}}</span>
 							</div>
@@ -218,13 +218,13 @@
 										<li v-for="(item,index) in seventh" @click="changeRandomNum(6,index+1)">{{index+1}}</li>
 									</ul>
 								</div>
-								<span class="btn" @click="randomNum(6,0)">机选</span>
-								<span class="btn" @click="randomNum(6,1)">全选</span>
+								<span class="btn" @click="randomNum(6,0)">{{i18n.t('机选')}}</span>
+								<span class="btn" @click="randomNum(6,1)">{{i18n.t('全选')}}</span>
 							</div>
 						</div>
 						<!-- 第八位 -->
 						<div class="five_area clearfix" v-if="presentAreaList[7]==1" v-cloak>
-							<span class="leftTitle">第八位</span>
+							<span class="leftTitle">{{i18n.t('第八位')}}</span>
 							<div class="numberList" v-cloak>
 								<span :class="['circle',{'sel':item.isSel}]" v-for="item in eighth" @click="item.isSel=!item.isSel">{{item.num}}</span>
 							</div>
@@ -237,13 +237,13 @@
 										<li v-for="(item,index) in eighth" @click="changeRandomNum(7,index+1)">{{index+1}}</li>
 									</ul>
 								</div>
-								<span class="btn" @click="randomNum(7,0)">机选</span>
-								<span class="btn" @click="randomNum(7,1)">全选</span>
+								<span class="btn" @click="randomNum(7,0)">{{i18n.t('机选')}}</span>
+								<span class="btn" @click="randomNum(7,1)">{{i18n.t('全选')}}</span>
 							</div>
 						</div>
 						<!-- 第九位 -->
 						<div class="five_area clearfix" v-if="presentAreaList[8]==1" v-cloak>
-							<span class="leftTitle">第九位</span>
+							<span class="leftTitle">{{i18n.t('第九位')}}</span>
 							<div class="numberList">
 								<span :class="['circle',{'sel':item.isSel}]" v-for="item in nineth" @click="item.isSel=!item.isSel">{{item.num}}</span>
 							</div>
@@ -256,13 +256,13 @@
 										<li v-for="(item,index) in nineth" @click="changeRandomNum(8,index+1)">{{index+1}}</li>
 									</ul>
 								</div>
-								<span class="btn" @click="randomNum(8,0)">机选</span>
-								<span class="btn" @click="randomNum(8,1)">全选</span>
+								<span class="btn" @click="randomNum(8,0)">{{i18n.t('机选')}}</span>
+								<span class="btn" @click="randomNum(8,1)">{{i18n.t('全选')}}</span>
 							</div>
 						</div>
 						<!-- 第十位 -->
 						<div class="five_area clearfix" v-if="presentAreaList[9]==1" v-cloak>
-							<span class="leftTitle">第十位</span>
+							<span class="leftTitle">{{i18n.t('第十位')}}</span>
 							<div class="numberList" v-cloak>
 								<span :class="['circle',{'sel':item.isSel}]" v-for="item in tenth" @click="item.isSel=!item.isSel">{{item.num}}</span>
 							</div>
@@ -275,8 +275,8 @@
 										<li v-for="(item,index) in tenth" @click="changeRandomNum(9,index+1)">{{index+1}}</li>
 									</ul>
 								</div>
-								<span class="btn" @click="randomNum(9,0)">机选</span>
-								<span class="btn" @click="randomNum(9,1)">全选</span>
+								<span class="btn" @click="randomNum(9,0)">{{i18n.t('机选')}}</span>
+								<span class="btn" @click="randomNum(9,1)">{{i18n.t('全选')}}</span>
 							</div>
 						</div>
 						<!-- 冠亚和 -->
@@ -293,8 +293,8 @@
 										<li v-for="(item,index) in topAsia" @click="changeRandomNum(10,index+1)">{{index+1}}</li>
 									</ul>
 								</div>
-								<span class="btn" @click="randomNum(10,0)">机选</span>
-								<span class="btn" @click="randomNum(10,1)">全选</span>
+								<span class="btn" @click="randomNum(10,0)">{{i18n.t('机选')}}</span>
+								<span class="btn" @click="randomNum(10,1)">{{i18n.t('全选')}}</span>
 							</div>
 						</div>
 					</div>
@@ -307,10 +307,10 @@
 							<div style="display: inline-block;">
 							    <input type="text " @click.stop="dianji" v-model="singleCoins" @keyup="handleCoins" maxlength="6" class="betSum " v-cloak>{{coinUnit}}
 							</div>
-							<span class="clearTopBtn " @click="clearSelectData(0)" v-cloak>清空上方选号</span>
+							<span class="clearTopBtn " @click="clearSelectData(0)" v-cloak>{{i18n.t('清空上方选号')}}</span>
 							<span class="odds"  v-cloak> 赔率:<em :title='orderOdds' class="orderOdds">{{orderOdds}}</em></span>
 							<div class=" ">
-								<span class="addBtn " @click="handleConfirm">选好了</span>
+								<span class="addBtn " @click="handleConfirm">{{i18n.t('选好了')}}</span>
 							</div>
 						</div>
 						<div style="ceng" v-show="show_dd">
@@ -347,8 +347,8 @@
 							<div class="btns_item line" v-if="BetsList.length==0"></div>
 						</div>
 						<div class="btnList " v-cloak>
-							<span class="btn " @click="randomBets(1)">机选添加</span>
-							<span class="btn " @click="clearSelectData(2,0)">清空列表</span>
+							<span class="btn " @click="randomBets(1)">{{i18n.t('机选添加')}}</span>
+							<span class="btn " @click="clearSelectData(2,0)">{{i18n.t('清空列表')}}</span>
 						</div>
 					</div>
 
@@ -357,9 +357,9 @@
 							共
 							<span class="red" v-cloak>{{totalBets*(continue_periods?parseInt(continue_periods):'')}}</span>注 共
 							<span class="red" v-cloak>{{totalCoins}}</span>{{coinUnit}}&nbsp;&nbsp;&nbsp;
-							<!--<span>追号</span>-->
+							<!--<span>{{i18n.t('追号')}}</span>-->
 							<!--<input type="text" maxlength="2" v-model="continue_periods" @click="focus" @keyup="handleChase" @blur="continue_periods?'':continue_periods=1"> 期(最大10期)&nbsp;&nbsp;&nbsp;-->
-							<!--<span :class="['circle',{'active':after_no&&continue_periods!=1},{'gray':continue_periods==1}]" @click="after_no==0?after_no=1:after_no=0"></span> <span :class="continue_periods==1?'gray':''">中奖后停止追号</span>-->
+							<!--<span :class="['circle',{'active':after_no&&continue_periods!=1},{'gray':continue_periods==1}]" @click="after_no==0?after_no=1:after_no=0"></span> <span :class="continue_periods==1?'gray':''">{{i18n.t('中奖后停止追号')}}</span>-->
 						</div>
 						<div class="btnList">
 							<div class="submitBtn" @click="handleBets">
@@ -373,14 +373,14 @@
 				<div id="betMesTips" class="tips hide" v-cloak>
 					<div class="tips_wrap"></div>
 					<div class="content">
-						<div class="tips_title">提示</div>
+						<div class="tips_title">{{i18n.t('提示')}}</div>
 						<span class="tips_close">
 						<a href="javascript:;" @click="closeTips($event,tipsContent.showSecond)"></a>
 					</span>
 						<div class="tips_content" v-cloak>
 							<div class="tips_msg">{{tipsContent.tzState}}</div>
 							<div class="tips_second" v-if="tipsContent.showSecond">{{tenSecond}}秒后{{tipsContent.showSecond==2?"自动跳转到充值页面":"自动刷新本页"}}</div>
-							<a class="tips_errorBtn"  v-if="tipsContent.showSecond==2" href="../myCenter/recharge.html">直接前往</a>
+							<a class="tips_errorBtn"  v-if="tipsContent.showSecond==2" href="../myCenter/recharge.html">{{i18n.t('直接前往')}}</a>
                                 <div class="tips_errorBtn" v-if="tipsContent.showSecond&&tipsContent.showSecond!=2"
                                      @click="closeTips($event,tipsContent.showSecond)">返回
                                 </div>
@@ -389,12 +389,12 @@
 								<li>投注注数：{{tipsContent.tzNum}}注</li>
 								<li>投注金额：{{tipsContent.tzMoney+coinUnit}}</li>
 								<li>剩余金额：{{tipsContent.lastCoin+coinUnit}}
-									<a href="../myCenter/betrecord.html">前往查看</a>
+									<a href="../myCenter/betrecord.html">{{i18n.t('前往查看')}}</a>
 								</li>
 								<li>{{tenSecond}}秒后自动刷新本页</li>
 							</ul>
 							<div class="btnList" v-if="!tipsContent.showSecond">
-								<span class="goCenter"><a href="../myCenter/betrecord.html">前往会员中心查看</a></span><span class="continue"><a href="javascript:;" @click="closeTips($event,3)">继续投注</a></span>
+								<span class="goCenter"><a href="../myCenter/betrecord.html">{{i18n.t('前往会员中心查看')}}</a></span><span class="continue"><a href="javascript:;" @click="closeTips($event,3)">{{i18n.t('继续投注')}}</a></span>
 							</div>
 						</div>
 					</div>

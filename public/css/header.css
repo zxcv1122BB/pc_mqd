@@ -380,8 +380,42 @@ a:active, a:visited {
     display: block;
 }
 .language {
+    width: 60px;
     display: inline-block;
-    position: relative;
+    position: absolute;
+    z-index: 999999;
+}
+.language a {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background: #3A8B87;
+}
+.language a span {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    background: #3A8B87;
+}
+.language a:hover > ul {
+    display: block;
+}
+.language ul:hover {
+    display: block!important;
+}
+.language ul {
+    display: none;
+}
+.language li {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background: #3A8B87;
+}
+.language li:nth-child(1) {
+    border-bottom: 1px solid #fff;
 }
 .lang-box {
     z-index: 9999 !important;

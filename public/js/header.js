@@ -48,16 +48,16 @@ document.writeln("          <em>|</em>");
 document.writeln("          <a href='/'>首页</a>");
 document.writeln("          <em>|</em>");
 document.writeln("          <a href='/help.html'>帮助</a>");
-// document.writeln("          <em>|</em>");
-// document.writeln("          <div class='language'>");
-// document.writeln("              <dt>");
-// document.writeln("                  <a href='javascript:void(0)'>语言</a><i></i>");
-// document.writeln("              </dt>");
-// document.writeln("              <a id='gb2big5'><span>繁</span></a>");
-// document.writeln("                      ");
-// document.writeln("                      <div class='cz-btn' onclick='Simplized('简')'>简体</div>");
-// document.writeln("              </div>");
-// document.writeln("          </div>");
+document.writeln("          <em>|</em>");
+document.writeln("          <div class='language'>");
+document.writeln("              ");
+document.writeln("                  <a href='javascript:void(0)'><span>语言</span>");
+document.writeln("              ");
+document.writeln("              <ul><li onclick=\"checkWord('tr')\"><span>繁体</span></li>");
+document.writeln("                      ");
+document.writeln("              <li onclick=\"checkWord('zh')\"><span>简体</span></li></ul></a><i></i>");
+document.writeln("              </div>");
+document.writeln("          </div>");
 document.writeln("      </div>");
 document.writeln("  </div>");
 document.writeln("</div>");
@@ -156,28 +156,22 @@ document.writeln("      <div class='hoverDiv' onclick='showLine()'><img style='w
 document.writeln("  </div>");
 
 initIsLogin();
-Vue.prototype.i18n = {
-	t: () => {}
+Vue.use(VueI18n) // 通过插件的形式挂载
+let locale = localStorage.getItem('lang') ? localStorage.getItem('lang') : 'tr';
+let i18n = new VueI18n({
+  locale: locale,
+  messages: {
+    'cn': window.cn,   // 中文简体语言包
+    'tr': window.tr    // 繁体语言包
+  },
+  silentTranslationWarn: true
+})
+Vue.prototype.i18n = i18n;
+
+function checkWord (key) {
+	Vue.prototype.i18n.locale = key;
+	localStorage.setItem('lang', key);
 }
-$.getScript("../../common/i18n.js", function() {
-	$.getScript("../../common/lang/cn.js", function() {
-		$.getScript("../../common/lang/tr.js", function() {
-			console.log(11111);
-			Vue.use(VueI18n) // 通过插件的形式挂载
-			let i18n = new VueI18n({
-			  locale: 'tr',
-			  messages: {
-			    'cn': window.cn,   // 中文简体语言包
-			    'tr': window.tr    // 繁体语言包
-			  },
-			  silentTranslationWarn: true
-			})
-			Vue.prototype.i18n = i18n;
-			// Vue.prototype.$i18n = i18n;
-			// console.log(i18n.t, '===');
-		})
-	})
-});
 
 layui.use(['layer', 'element', 'form'], function() {
 	var layer = layui.layer,

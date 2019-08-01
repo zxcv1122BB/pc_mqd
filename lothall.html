@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>购彩大厅</title>
+    <title>{{i18n.t('购彩大厅')}}</title>
     <script type="text/javascript" src="public/js/base.js"></script>
 </head>
 
@@ -15,7 +15,7 @@
         <div class="lcbox">
             <div class="lctit">
                 <div class="jingcai" id="jc_lottery_area">
-                    <h2>高频</h2>
+                    <h2>{{i18n.t('高频')}}</h2>
                 </div>
             </div>
             <div class="lcmain" style="min-height: 100px;">
@@ -33,13 +33,13 @@
                                     第<font color="red" v-cloak> {{item.new_issue}} </font>期
                                 </span>
                                 <div class="gct_time_now_l" v-if="item.msg">
-                                    <span class="leaveh-2">暂停销售</span>
+                                    <span class="leaveh-2">{{i18n.t('暂停销售')}}</span>
                                 </div>
                                 <div class="gct_time_now_l" v-else-if="item.saleStatus=='ON_SALE'">
-                                    <span class="leaveh-2">距离投注截止</span>
+                                    <span class="leaveh-2">{{i18n.t('距离投注截止')}}</span>
                                 </div>
                                 <div class="gct_time_now_l"  v-else>
-                                    <span class="leaveh-2">距离下一期开售</span>
+                                    <span class="leaveh-2">{{i18n.t('距离下一期开售')}}</span>
                                 </div>
                                 <br/>
                                 <div class="gct_time">
@@ -79,9 +79,9 @@
                             </div>
                         </div>
                         <div class="btnbox">
-                            <a href="javascript:;" @click="togoChart(item.gameID)">走势图</a>
-                            <a href="javascript:;" @click="togoSkip(item)">开奖详情</a>
-                            <a href="javascript:;" @click="togoBuy(item.bet_url)"  class="buybtn">立即投注</a>
+                            <a href="javascript:;" @click="togoChart(item.gameID)">{{i18n.t('走势图')}}</a>
+                            <a href="javascript:;" @click="togoSkip(item)">{{i18n.t('开奖详情')}}</a>
+                            <a href="javascript:;" @click="togoBuy(item.bet_url)"  class="buybtn">{{i18n.t('立即投注')}}</a>
                         </div>
                     </li>
 
@@ -91,7 +91,7 @@
         <div class="lcbox">
             <div class="lctit">
                 <div class="jingcai" >
-                    <h2>低频</h2>
+                    <h2>{{i18n.t('低频')}}</h2>
                 </div>
             </div>
             <div class="lcmain" style="min-height: 100px;">
@@ -109,13 +109,13 @@
                                     第<font color="red" v-cloak> {{item.new_issue}} </font>期
                                 </span>
                                 <div class="gct_time_now_l" v-if="item.msg">
-                                    <span class="leaveh-2">暂停销售</span>
+                                    <span class="leaveh-2">{{i18n.t('暂停销售')}}</span>
                                 </div>
                                 <div class="gct_time_now_l" v-else-if="item.saleStatus=='ON_SALE'">
-                                    <span class="leaveh-2">距离投注截止</span>
+                                    <span class="leaveh-2">{{i18n.t('距离投注截止')}}</span>
                                 </div>
                                 <div class="gct_time_now_l"  v-else>
-                                    <span class="leaveh-2">距离下一期开售</span>
+                                    <span class="leaveh-2">{{i18n.t('距离下一期开售')}}</span>
                                 </div>
                                 <br/>
                                 <div class="gct_time">
@@ -145,9 +145,9 @@
                             </div>
                         </div>
                         <div class="btnbox">
-                            <a href="javascript:;" @click="togoChart(item.gameID)">走势图</a>
-                            <a href="javascript:;" @click="togoSkip(item)">开奖详情</a>
-                            <a href="javascript:;" @click="togoBuy(item.bet_url)" class="buybtn">立即投注</a>
+                            <a href="javascript:;" @click="togoChart(item.gameID)">{{i18n.t('走势图')}}</a>
+                            <a href="javascript:;" @click="togoSkip(item)">{{i18n.t('开奖详情')}}</a>
+                            <a href="javascript:;" @click="togoBuy(item.bet_url)" class="buybtn">{{i18n.t('立即投注')}}</a>
                         </div>
                     </li>
                 </ul>

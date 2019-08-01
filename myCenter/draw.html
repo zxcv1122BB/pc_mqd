@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>提款</title>
+    <title>{{i18n.t('提款')}}</title>
     <link rel="stylesheet" type="text/css" href="css/betrecord.css" />
     <script type="text/javascript" src="../public/js/base.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
@@ -20,36 +20,36 @@
                     <nav class="left">
                         <div class="member">
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>会员中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>{{i18n.t('会员中心')}}</blockquote>
                                 <li>
-                                    <a href="/myCenter/member.html">会员中心</a>
+                                    <a href="/myCenter/member.html">{{i18n.t('会员中心')}}</a>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/betrecord.html">投注记录</a>
+                                    <a href="/myCenter/betrecord.html">{{i18n.t('投注记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/lotteryrecord.html">中奖记录</a>
+                                    <a href="/myCenter/lotteryrecord.html">{{i18n.t('中奖记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/accountDetails.html">账号明细</a>
+                                    <a href="/myCenter/accountDetails.html">{{i18n.t('账号明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/userInfo.html">账号信息</a>
+                                    <a href="/myCenter/userInfo.html">{{i18n.t('账号信息')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <a href="/myCenter/recharge.html">{{i18n.t('充值')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li class="on" v-if="agencyType!=6">
-                                    <a href="/myCenter/draw.html">提款</a>
+                                    <a href="/myCenter/draw.html">{{i18n.t('提款')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <a href="/myCenter/message.html">{{i18n.t('消息中心')}}</a>
                                     <div class="hr"></div>
                                 </li>
 
@@ -57,33 +57,33 @@
                         </div>
                         <div class="agency" v-if="agencyType==1" v-cloak>
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>{{i18n.t('代理中心')}}</blockquote>
                                 <li>
-                                    <a href="/agency/agentIntro.html">代理说明</a>
+                                    <a href="/agency/agentIntro.html">{{i18n.t('代理说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentReport.html">代理报表</a>
+                                    <a href="/agency/agentReport.html">{{i18n.t('代理报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/lowerReport.html">下级报表</a>
+                                    <a href="/agency/lowerReport.html">{{i18n.t('下级报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/downAccount.html">下级开户</a>
+                                    <a href="/agency/downAccount.html">{{i18n.t('下级开户')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentMember.html">会员管理</a>
+                                    <a href="/agency/agentMember.html">{{i18n.t('会员管理')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyBetDetail.html">投注说明</a>
+                                    <a href="/agency/agencyBetDetail.html">{{i18n.t('投注说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyDealDetail.html">交易明细</a>
+                                    <a href="/agency/agencyDealDetail.html">{{i18n.t('交易明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                             </ul>
@@ -97,8 +97,8 @@
                             <div>
                                 <!--账号总览-->
                                 <div id="title">
-                                    <strong>提款金额</strong> <span class="userinfotit">0{{coinUnit}}手续费</span>
-                                    <span class="yue">您当前账户余额<em v-cloak>{{coin}}</em>{{coinUnit}}</span>
+                                    <strong>{{i18n.t('提款金额')}}</strong> <span class="userinfotit">0{{coinUnit}}手续费</span>
+                                    <span class="yue">{{i18n.t('您当前账户余额')}}<em v-cloak>{{coin}}</em>{{coinUnit}}</span>
                                 </div>
 
                                 <section id="record" v-cloak>
@@ -110,10 +110,10 @@
                                             <div class="liulist"></div>
                                         </div>
                                         <div class="liutextbox">
-                                            <div class="liutext for-cur"><em>1</em><br><strong>设置取款密码</strong></div>
-                                            <div class="liutext"><em>2</em><br><strong>完善出款银行信息</strong></div>
-                                            <div class="liutext"><em>3</em><br><strong>取款</strong></div>
-                                            <div class="liutext"><em>4</em><br><strong>完成</strong></div>
+                                            <div class="liutext for-cur"><em>1</em><br><strong>{{i18n.t('设置取款密码')}}</strong></div>
+                                            <div class="liutext"><em>2</em><br><strong>{{i18n.t('完善出款银行信息')}}</strong></div>
+                                            <div class="liutext"><em>3</em><br><strong>{{i18n.t('取款')}}</strong></div>
+                                            <div class="liutext"><em>4</em><br><strong>{{i18n.t('完成')}}</strong></div>
                                         </div>
                                     </nav>
                                     <div id="navTab">
@@ -160,7 +160,7 @@
                                                         <td>银行名称：</td>
                                                         <td>
                                                             <select id="bankName" lay-ignore v-model="bankName" style="display: inline-block;border: ;background: none;border: 1px solid #aaa;height: 33px;width: 100%;">
-                                                                   <option value="">请选择银行名称</option>
+                                                                   <option value="">{{i18n.t('请选择银行名称')}}</option>
                                                                    <option v-for="item in bankList" :value="item">{{item}}</option>
                                                                </select>
                                                       <!-- <el-select-->
@@ -178,7 +178,7 @@
                                                       <!--  </el-option>-->
                                                       <!--</el-select>-->
                                                        <!-- <select id="bankName" lay-ignore v-model="bankName" style="display: inline-block;border: ;background: none;border: 1px solid #aaa;height: 33px;width: 100%;">
-                                                           <option value="">请选择银行名称</option>
+                                                           <option value="">{{i18n.t('请选择银行名称')}}</option>
                                                            <option v-for="item in bankList" :value="item">{{item}}</option>
                                                        </select> -->
                                                         </td>
@@ -211,9 +211,9 @@
                                             <div style="text-align: center;color: gray;border: 1px #E3E3E3 solid;border-radius: 5px;padding: 5px;">
                                                 <div v-if="config.onlineCSStatus==1">每天的取款处理时间为：<span v-cloak>{{config.onlineCSStartTime}}至{{config.onlineCSEndTime}}</span>;</div>
                                                 <div>取款1-3分钟内到帐。（如遇高峰期，可能需要延迟到5-10分钟内到帐）</div>
-                                                <div><span v-if="config.drawingSumlowerLimit">用户每次最小提现<span v-cloak>{{config.drawingSumlowerLimit}}</span>{{coinUnit}}，</span><span v-if="config.drawingSumUpperLimit">最大提现<span v-cloak>{{config.drawingSumUpperLimit}}</span>{{coinUnit}}</span>
+                                                <div><span v-if="config.drawingSumlowerLimit">{{i18n.t('用户每次最小提现')}}<span v-cloak>{{config.drawingSumlowerLimit}}</span>{{coinUnit}}，</span><span v-if="config.drawingSumUpperLimit">{{i18n.t('最大提现')}}<span v-cloak>{{config.drawingSumUpperLimit}}</span>{{coinUnit}}</span>
                                                 </div>
-                                                <div>今日<em v-if="config.drawingCountLimit">可取款<span v-cloak>{{config.drawingCountLimit}}</span>次，</em>已取款<span v-cloak>{{isTrue.withdrawTimes}}</span>次</div>
+                                                <div>{{i18n.t('今日')}}<em v-if="config.drawingCountLimit">{{i18n.t('可取款')}}<span v-cloak>{{config.drawingCountLimit}}</span>次，</em>{{i18n.t('已取款')}}<span v-cloak>{{isTrue.withdrawTimes}}</span>{{i18n.t('次')}}</div>
                                             </div>
                                             <div class="draw">
                                                 <table>
@@ -252,9 +252,9 @@
                                                         <div class="typeWay">
                                                             <div>
                                                                 <span>验证方式- <select name="" id="" v-model="is_wqf" v-show="is_wqf!=4" style="padding: 5px 10px;">
-                                                                    <option value="1" v-if="userInfoList.WEIXIN">微信</option>
+                                                                    <option value="1" v-if="userInfoList.WEIXIN">{{i18n.t('微信')}}</option>
                                                                     <option value="2" v-if="userInfoList.QQ">QQ</option>
-                                                                    <option value="3" v-if="userInfoList.PHONE_NUMBER">手机号</option>
+                                                                    <option value="3" v-if="userInfoList.PHONE_NUMBER">{{i18n.t('手机号')}}</option>
                                                                 </select> ：</span>
                                                             </div>
                                                             
@@ -280,7 +280,7 @@
                                         <div id="show_3">
                                             <div class="draw">
                                                 <div><img src="images/success.jpg" />提交成功！</div>
-                                                <a @click="choose_nav(2)" style="color: blue;text-decoration: underline;cursor: pointer;">继续取款</a>
+                                                <a @click="choose_nav(2)" style="color: blue;text-decoration: underline;cursor: pointer;">{{i18n.t('继续取款')}}</a>
                                             </div>
                                         </div>
                                     </div>

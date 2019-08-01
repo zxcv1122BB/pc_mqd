@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>开奖详情</title>
+    <title>{{i18n.t('开奖详情')}}</title>
     <script src="../public/js/base.js"></script>
 </head>
 
@@ -77,24 +77,24 @@
                     <table>
                         <thead>
                         <tr>
-                            <th>场次</th>
+                            <th>{{i18n.t('场次')}}</th>
                             <th v-for='(item,index) in datas.totalGoal'>{{index+1}}</th>
                         </tr>
                         </thead>
                         <tbody>
                         <!-- 主队 -->
                         <tr class="home">
-                            <td>主队</td>
+                            <td>{{i18n.t('主队')}}</td>
                             <td v-for='(item,index) in datas.homeTeamArr'>{{item}}</td>
                         </tr>
                         <!-- 客队 -->
                         <tr class="guest">
-                            <td>客队</td>
+                            <td>{{i18n.t('客队')}}</td>
                             <td v-for='(item,index) in datas.awayTeamArr'>{{item}}</td>
                         </tr>
                         <!-- 彩果 -->
                         <tr class="total">
-                            <td>彩果</td>
+                            <td>{{i18n.t('彩果')}}</td>
                             <td v-for='(item,index) in datas.totalGoal' class="red">{{item}}</td>
                         </tr>
                         </tbody>
@@ -102,27 +102,27 @@
                     <table class="prize-info" v-show="prize_store.sfc_prize.second_prize_number&&prize_store.sfc_prize.first_prize_number">
                         <thead>
                         <tr v-if="prize_store.sfc_prize.first_prize_number">
-                            <th>奖项</th>
-                            <th>中奖注数</th>
-                            <th>每注奖金</th>
-                            <th>中奖条件</th>
+                            <th>{{i18n.t('奖项')}}</th>
+                            <th>{{i18n.t('中奖注数')}}</th>
+                            <th>{{i18n.t('每注奖金')}}</th>
+                            <th>{{i18n.t('中奖条件')}}</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>一等奖</td>
+                            <td>{{i18n.t('一等奖')}}</td>
                             <td v-text="prize_store.sfc_prize.first_prize_number===null?'-':prize_store.sfc_prize.first_prize_number"></td>
                             <td class="red" v-text="prize_store.sfc_prize.first_prize_bonus===null?'-':prize_store.sfc_prize.first_prize_bonus"></td>
                             <td>中14场</td>
                         </tr>
                         <tr>
-                            <td>二等奖</td>
+                            <td>{{i18n.t('二等奖')}}</td>
                             <td v-text="prize_store.sfc_prize.second_prize_number===null?'-':prize_store.sfc_prize.second_prize_number"></td>
                             <td class="red" v-text="prize_store.sfc_prize.second_prize_bonus===null?'-':prize_store.sfc_prize.second_prize_bonus"></td>
                             <td>中13场</td>
                         </tr>
                         <!-- <tr>
-                            <td>任选九</td>
+                            <td>{{i18n.t('任选九')}}</td>
                             <td v-text="prize_store.rxj_prize.first_prize_number===null?'-':prize_store.rxj_prize.first_prize_number"></td>
                             <td class="red" v-text="prize_store.rxj_prize.first_prize_bonus===null?'-':prize_store.rxj_prize.first_prize_bonus"></td>
                             <td>中9场</td>
@@ -131,7 +131,7 @@
                     </table>
                 </div>
                 <div  style="text-align: center;height: 200px;line-height: 200px;" v-else="">
-                	<strong>暂无数据</strong>
+                	<strong>{{i18n.t('暂无数据')}}</strong>
                 </div>
             </div>
             <div v-else-if="playType === 'dc'">
@@ -139,30 +139,30 @@
                     <table>
                         <thead>
                         <tr>
-                            <th rowspan="2">序</th>
-                            <th rowspan="2">赛事</th>
-                            <th rowspan="2">开赛</th>
-                            <th rowspan="2">主队</th>
-                            <th rowspan="2">客队</th>
-                            <th rowspan="2">全场比分</th>
-                            <th colspan="3">让球胜平负</th>
-                            <th colspan="2">上下单双</th>
-                            <!-- <th colspan="2">半全场</th> -->
-                            <th colspan="2">比分</th>
-                            <th colspan="2">总进球</th>
+                            <th rowspan="2">{{i18n.t('序')}}</th>
+                            <th rowspan="2">{{i18n.t('赛事')}}</th>
+                            <th rowspan="2">{{i18n.t('开赛')}}</th>
+                            <th rowspan="2">{{i18n.t('主队')}}</th>
+                            <th rowspan="2">{{i18n.t('客队')}}</th>
+                            <th rowspan="2">{{i18n.t('全场比分')}}</th>
+                            <th colspan="3">{{i18n.t('让球胜平负')}}</th>
+                            <th colspan="2">{{i18n.t('上下单双')}}</th>
+                            <!-- <th colspan="2">{{i18n.t('半全场')}}</th> -->
+                            <th colspan="2">{{i18n.t('比分')}}</th>
+                            <th colspan="2">{{i18n.t('总进球')}}</th>
                         </tr>
                         <tr>
-                            <th>让球</th>
-                            <th>彩果</th>
-                            <th>赔率</th>
-                            <th>彩果</th>
-                            <th>赔率</th>
-                            <th>彩果</th>
-                            <th>赔率</th>
-                            <!-- <th>彩果</th>
-                            <th>赔率</th> -->
-                            <th>彩果</th>
-                            <th>赔率</th>
+                            <th>{{i18n.t('让球')}}</th>
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
+                            <!-- <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th> -->
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -192,30 +192,30 @@
                     <table>
                         <thead>
                         <tr>
-                            <th rowspan="2">序</th>
-                            <th rowspan="2">赛事</th>
-                            <th rowspan="2">开赛</th>
-                            <th rowspan="2">主队</th>
-                            <th rowspan="2">客队</th>
-                            <th rowspan="2">全场比分</th>
-                            <th colspan="2">胜平负</th>
-                            <th colspan="3">让球胜平负</th>
-                            <th colspan="2">半全场</th>
-                            <th colspan="2">比分</th>
-                            <th colspan="2">总进球</th>
+                            <th rowspan="2">{{i18n.t('序')}}</th>
+                            <th rowspan="2">{{i18n.t('赛事')}}</th>
+                            <th rowspan="2">{{i18n.t('开赛')}}</th>
+                            <th rowspan="2">{{i18n.t('主队')}}</th>
+                            <th rowspan="2">{{i18n.t('客队')}}</th>
+                            <th rowspan="2">{{i18n.t('全场比分')}}</th>
+                            <th colspan="2">{{i18n.t('胜平负')}}</th>
+                            <th colspan="3">{{i18n.t('让球胜平负')}}</th>
+                            <th colspan="2">{{i18n.t('半全场')}}</th>
+                            <th colspan="2">{{i18n.t('比分')}}</th>
+                            <th colspan="2">{{i18n.t('总进球')}}</th>
                         </tr>
                         <tr>
-                            <th>彩果</th>
-                            <th>赔率</th>
-                            <th>让球</th>
-                            <th>彩果</th>
-                            <th>赔率</th>
-                            <th>彩果</th>
-                            <th>赔率</th>
-                            <th>彩果</th>
-                            <th>赔率</th>
-                            <th>彩果</th>
-                            <th>赔率</th>
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
+                            <th>{{i18n.t('让球')}}</th>
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -247,28 +247,28 @@
                     <table>
                         <thead>
                         <tr>
-                            <th rowspan="2">序</th>
-                            <th rowspan="2">赛事</th>
-                            <th rowspan="2">开赛</th>
-                            <th rowspan="2">客队</th>
-                            <th rowspan="2">主队</th>
-                            <th rowspan="2">比分</th>
-                            <th colspan="2">胜负</th>
-                            <th colspan="3">让分胜负</th>
-                            <th colspan="3">大小分</th>
-                            <th colspan="2">胜分差</th>
+                            <th rowspan="2">{{i18n.t('序')}}</th>
+                            <th rowspan="2">{{i18n.t('赛事')}}</th>
+                            <th rowspan="2">{{i18n.t('开赛')}}</th>
+                            <th rowspan="2">{{i18n.t('客队')}}</th>
+                            <th rowspan="2">{{i18n.t('主队')}}</th>
+                            <th rowspan="2">{{i18n.t('比分')}}</th>
+                            <th colspan="2">{{i18n.t('胜负')}}</th>
+                            <th colspan="3">{{i18n.t('让分胜负')}}</th>
+                            <th colspan="3">{{i18n.t('大小分')}}</th>
+                            <th colspan="2">{{i18n.t('胜分差')}}</th>
                         </tr>
                         <tr>
-                            <th>彩果</th>
-                            <th>赔率</th>
-                            <th>让分</th>
-                            <th>彩果</th>
-                            <th>赔率</th>
-                            <th>界限</th>
-                            <th>彩果</th>
-                            <th>赔率</th>
-                            <th>彩果</th>
-                            <th>赔率</th>
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
+                            <th>{{i18n.t('让分')}}</th>
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
+                            <th>{{i18n.t('界限')}}</th>
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
+                            <th>{{i18n.t('彩果')}}</th>
+                            <th>{{i18n.t('赔率')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -309,9 +309,9 @@
                                 {{item.bigSmallScore}}
                             </td>
                             <td colspan="1">
-                                <span class="lower_score" v-if="item.bsResult==1">大分</span>
-                                <span class="lower_score" v-else-if="item.bsResult==0">小分</span>
-                                <span class="lower_score" v-else>暂无</span>
+                                <span class="lower_score" v-if="item.bsResult==1">{{i18n.t('大分')}}</span>
+                                <span class="lower_score" v-else-if="item.bsResult==0">{{i18n.t('小分')}}</span>
+                                <span class="lower_score" v-else>{{i18n.t('暂无')}}</span>
                             </td>
                             <td>{{item.bigSmallOdds?item.bigSmallOdds:'-'}}</td>
                             <td width="10%">
@@ -331,7 +331,7 @@
             <div v-else>
                 <div class="table-wrapper">
                     <table border="0" cellspacing="0" cellpadding="0" v-cloak >
-                        <tr><th>期号</th><th>开奖号码</th></tr>
+                        <tr><th>{{i18n.t('期号')}}</th><th>{{i18n.t('开奖号码')}}</th></tr>
                         <tr v-for="(item,index) in history" v-cloak>
                             <td>第 {{item.issue}} 期</td>
                             <td v-if="gameCode=='PCDD'">

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>会员管理</title>
+    <title>{{i18n.t('会员管理')}}</title>
     <script src="../public/js/base.js"></script>
 </head>
 <body>
@@ -14,36 +14,36 @@
                 <nav class="left">
                         <div class="member">
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>会员中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>{{i18n.t('会员中心')}}</blockquote>
                                 <li>
-                                    <a href="/myCenter/member.html">会员中心</a>
+                                    <a href="/myCenter/member.html">{{i18n.t('会员中心')}}</a>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/betrecord.html">投注记录</a>
+                                    <a href="/myCenter/betrecord.html">{{i18n.t('投注记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/lotteryrecord.html">中奖记录</a>
+                                    <a href="/myCenter/lotteryrecord.html">{{i18n.t('中奖记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/accountDetails.html">账号明细</a>
+                                    <a href="/myCenter/accountDetails.html">{{i18n.t('账号明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/userInfo.html">账号信息</a>
+                                    <a href="/myCenter/userInfo.html">{{i18n.t('账号信息')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <a href="/myCenter/recharge.html">{{i18n.t('充值')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li v-if="agencyType!=6">
-                                    <a href="/myCenter/draw.html">提款</a>
+                                    <a href="/myCenter/draw.html">{{i18n.t('提款')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <a href="/myCenter/message.html">{{i18n.t('消息中心')}}</a>
                                     <div class="hr"></div>
                                 </li>
                     
@@ -51,33 +51,33 @@
                         </div>
                         <div class="agency" v-if="agencyType==1" v-cloak>
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>{{i18n.t('代理中心')}}</blockquote>
                                 <li>
-                                    <a href="/agency/agentIntro.html">代理说明</a>
+                                    <a href="/agency/agentIntro.html">{{i18n.t('代理说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentReport.html">代理报表</a>
+                                    <a href="/agency/agentReport.html">{{i18n.t('代理报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/lowerReport.html">下级报表</a>
+                                    <a href="/agency/lowerReport.html">{{i18n.t('下级报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/downAccount.html">下级开户</a>
+                                    <a href="/agency/downAccount.html">{{i18n.t('下级开户')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li class="on">
-                                    <a href="/agency/agentMember.html">会员管理</a>
+                                    <a href="/agency/agentMember.html">{{i18n.t('会员管理')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyBetDetail.html">投注说明</a>
+                                    <a href="/agency/agencyBetDetail.html">{{i18n.t('投注说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyDealDetail.html">交易明细</a>
+                                    <a href="/agency/agencyDealDetail.html">{{i18n.t('交易明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                             </ul>
@@ -86,7 +86,7 @@
                     </nav>
                 <div class="right">
                     <div class="title">
-                        <span>会员管理</span>
+                        <span>{{i18n.t('会员管理')}}</span>
                         <ul class="navTab" v-if="userNameList.length!==0">
                             <li v-for="(item,index) in userNameList"><em>&gt;</em> <a href="javascript:;" @click="upDataBack(item,index)" v-cloak>{{item.userName}}</a></li>
                         </ul>
@@ -100,22 +100,22 @@
                                 &nbsp;&nbsp;&nbsp;
                                 <span>用户类型 : </span>
                                 <select class="userSelect" style="min-height: 30px;" v-model="userType">
-                                    <option value="">全部</option>
-                                    <option value="1">代理</option>
-                                    <option value="2">会员</option>
+                                    <option value="">{{i18n.t('全部')}}</option>
+                                    <option value="1">{{i18n.t('代理')}}</option>
+                                    <option value="2">{{i18n.t('会员')}}</option>
                                 </select>
                                 &nbsp;&nbsp;
-                                <a href="javascript:" class="submitBtn" @click="loadMemberList" >搜索</a>
+                                <a href="javascript:" class="submitBtn" @click="loadMemberList" >{{i18n.t('搜索')}}</a>
                             </div>
                             <div class="searchDetail">
                                 <table>
                                     <tr>
-                                        <th>账号</th>
-                                        <th>用户类型</th>
-                                        <th>下级人数</th>
-                                        <th>余额</th>
-                                        <th>最后登录</th>
-                                        <th>操作</th>
+                                        <th>{{i18n.t('账号')}}</th>
+                                        <th>{{i18n.t('用户类型')}}</th>
+                                        <th>{{i18n.t('下级人数')}}</th>
+                                        <th>{{i18n.t('余额')}}</th>
+                                        <th>{{i18n.t('最后登录')}}</th>
+                                        <th>{{i18n.t('操作')}}</th>
                                     </tr>
                                     <tr v-for="(item,index) in nowloadList">
                                         <td v-cloak>{{item.userName}}</td>
@@ -126,9 +126,9 @@
                                         </td>
                                         <td v-cloak>{{item.amount}}</td>
                                         <td v-cloak> {{item.lastLoginTime}}</td>
-                                        <td v-cloak ><a href="javascript:" @click="showPopover(index,1)" style="color: red;text-decoration: underline">查看返点</a></td>
+                                        <td v-cloak ><a href="javascript:" @click="showPopover(index,1)" style="color: red;text-decoration: underline">{{i18n.t('查看返点')}}</a></td>
                                     </tr>
-                                    <tr v-if="!nowloadList||nowloadList.length==0" v-cloak><td colspan="6">暂无数据</td></tr>
+                                    <tr v-if="!nowloadList||nowloadList.length==0" v-cloak><td colspan="6">{{i18n.t('暂无数据')}}</td></tr>
                                 </table>
                                 <div id="fenye"></div>
                                 <div class="pl_tips">

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>投注明细</title>
+    <title>{{i18n.t('投注明细')}}</title>
     <script src="../public/js/base.js"></script>
 </head>
 <body>
@@ -14,36 +14,36 @@
                 <nav class="left">
                         <div class="member">
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>会员中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>{{i18n.t('会员中心')}}</blockquote>
                                 <li>
-                                    <a href="/myCenter/member.html">会员中心</a>
+                                    <a href="/myCenter/member.html">{{i18n.t('会员中心')}}</a>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/betrecord.html">投注记录</a>
+                                    <a href="/myCenter/betrecord.html">{{i18n.t('投注记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/lotteryrecord.html">中奖记录</a>
+                                    <a href="/myCenter/lotteryrecord.html">{{i18n.t('中奖记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/accountDetails.html">账号明细</a>
+                                    <a href="/myCenter/accountDetails.html">{{i18n.t('账号明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/userInfo.html">账号信息</a>
+                                    <a href="/myCenter/userInfo.html">{{i18n.t('账号信息')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <a href="/myCenter/recharge.html">{{i18n.t('充值')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li v-if="agencyType!=6">
-                                    <a href="/myCenter/draw.html">提款</a>
+                                    <a href="/myCenter/draw.html">{{i18n.t('提款')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <a href="/myCenter/message.html">{{i18n.t('消息中心')}}</a>
                                     <div class="hr"></div>
                                 </li>
                     
@@ -51,33 +51,33 @@
                         </div>
                         <div class="agency" v-if="agencyType==1" v-cloak>
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>{{i18n.t('代理中心')}}</blockquote>
                                 <li>
-                                    <a href="/agency/agentIntro.html">代理说明</a>
+                                    <a href="/agency/agentIntro.html">{{i18n.t('代理说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentReport.html">代理报表</a>
+                                    <a href="/agency/agentReport.html">{{i18n.t('代理报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/lowerReport.html">下级报表</a>
+                                    <a href="/agency/lowerReport.html">{{i18n.t('下级报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/downAccount.html">下级开户</a>
+                                    <a href="/agency/downAccount.html">{{i18n.t('下级开户')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentMember.html">会员管理</a>
+                                    <a href="/agency/agentMember.html">{{i18n.t('会员管理')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li class="on">
-                                    <a href="/agency/agencyBetDetail.html">投注说明</a>
+                                    <a href="/agency/agencyBetDetail.html">{{i18n.t('投注说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyDealDetail.html">交易明细</a>
+                                    <a href="/agency/agencyDealDetail.html">{{i18n.t('交易明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                             </ul>
@@ -85,35 +85,35 @@
                     
                     </nav>
                 <div class="right">
-                    <div class="title">投注明细</div>
+                    <div class="title">{{i18n.t('投注明细')}}</div>
                     <div id="agentBet" class="proxy_main">
                         <div class="edit">
                             <div id="timeType" class="newTab">
-                                <a href="javascript:;" class="curr" @click="changeType(currSearchType=0)">今天</a>
-                                <a href="javascript:;" @click="changeType(currSearchType=1)">昨天</a>
-                                <a href="javascript:;" @click="changeType(currSearchType=2)">近七天</a>
+                                <a href="javascript:;" class="curr" @click="changeType(currSearchType=0)">{{i18n.t('今天')}}</a>
+                                <a href="javascript:;" @click="changeType(currSearchType=1)">{{i18n.t('昨天')}}</a>
+                                <a href="javascript:;" @click="changeType(currSearchType=2)">{{i18n.t('近七天')}}</a>
                             </div>
                             <div class="search">
                                 <span>
                                     类型 :
-                                    <a href="javascript:" :class="status==0?'active':''" @click="changeStatus(0)">全部</a>
-                                    <a href="javascript:" :class="status==2?'active':''" @click="changeStatus(2)">已中奖</a>
-                                    <a href="javascript:" :class="status==1?'active':''" @click="changeStatus(1)">未中奖</a>
-                                    <a href="javascript:" :class="status==3?'active':''" @click="changeStatus(3)">撤单</a>
-                                    <a href="javascript:" :class="status==4?'active':''" @click="changeStatus(4)">等待开奖</a>
+                                    <a href="javascript:" :class="status==0?'active':''" @click="changeStatus(0)">{{i18n.t('全部')}}</a>
+                                    <a href="javascript:" :class="status==2?'active':''" @click="changeStatus(2)">{{i18n.t('已中奖')}}</a>
+                                    <a href="javascript:" :class="status==1?'active':''" @click="changeStatus(1)">{{i18n.t('未中奖')}}</a>
+                                    <a href="javascript:" :class="status==3?'active':''" @click="changeStatus(3)">{{i18n.t('撤单')}}</a>
+                                    <a href="javascript:" :class="status==4?'active':''" @click="changeStatus(4)">{{i18n.t('等待开奖')}}</a>
                                 </span>&nbsp;&nbsp;&nbsp;
                                 <span>账号 : </span>
                                 <input type="text" placeholder="下级投注查询" v-model="lowerUserName">
-                                <a class="submitBtn ClickShade" @click="getdatas">搜索</a>
+                                <a class="submitBtn ClickShade" @click="getdatas">{{i18n.t('搜索')}}</a>
                             </div>
                             <div class="searchDetail">
                                 <table>
                                     <tr>
-                                        <th width="20%">账号</th>
-                                        <th width="20%">彩种</th>
-                                        <th width="20%">订单号</th>
-                                        <th width="20%">奖金状态</th>
-                                        <th width="20%">投注时间</th>
+                                        <th width="20%">{{i18n.t('账号')}}</th>
+                                        <th width="20%">{{i18n.t('彩种')}}</th>
+                                        <th width="20%">{{i18n.t('订单号')}}</th>
+                                        <th width="20%">{{i18n.t('奖金状态')}}</th>
+                                        <th width="20%">{{i18n.t('投注时间')}}</th>
                                     </tr>
                                     <tr v-if="recordData.length!==0" v-for="item in recordData">
                                         <td v-cloak>{{item.userName?item.userName:'沙发客'}}</td>
@@ -123,7 +123,7 @@
                                         <td v-cloak>{{item.actionTime}}</td>
                                     </tr>
                                     <tr  v-if="!recordData||recordData.length==0" >
-                                        <td colspan="5">暂无数据</td>
+                                        <td colspan="5">{{i18n.t('暂无数据')}}</td>
                                     </tr>
                                 </table>
 
@@ -184,8 +184,8 @@
                     <td>{{ordersTwo.amount}}{{coinUnit}}</td>
                     <td>中奖金额:</td>
                     <td>
-                        <span v-if="ordersTwo.isCal==0">未开奖</span>
-                        <span v-else-if="ordersTwo.isCal==1&&ordersTwo.status==0" style="color: green;">未中奖</span>
+                        <span v-if="ordersTwo.isCal==0">{{i18n.t('未开奖')}}</span>
+                        <span v-else-if="ordersTwo.isCal==1&&ordersTwo.status==0" style="color: green;">{{i18n.t('未中奖')}}</span>
                         <span v-else-if="ordersTwo.isCal==1&&ordersTwo.status==1" style="color: red;">{{ordersTwo.bonus}}{{coinUnit}}</span>
 
                     </td>
@@ -243,7 +243,7 @@
                     <td>投注项:</td>
                     <td v-cloak>
                         {{item.homeTeamName}}　vs　{{item.awayTeamName}} <span v-if="item.guts==1"
-                                                                             class="isDan">胆</span>
+                                                                             class="isDan">{{i18n.t('胆')}}</span>
                     </td>
                     <td>竞猜项:</td>
                     <td>
@@ -293,9 +293,9 @@
                 <table  class="layui-table" lay-skin="nob">
                     <thead>
                     <tr>
-                        <th width="15%">过关</th>
-                        <th width="15%">倍数</th>
-                        <th width="70%">票面信息</th>
+                        <th width="15%">{{i18n.t('过关')}}</th>
+                        <th width="15%">{{i18n.t('倍数')}}</th>
+                        <th width="70%">{{i18n.t('票面信息')}}</th>
                     </tr>
                     </thead>
                     <tbody>

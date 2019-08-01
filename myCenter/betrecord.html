@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>投注记录</title>
+    <title>{{i18n.t('投注记录')}}</title>
     <link rel="stylesheet" type="text/css" href="css/betrecord.css"/>
     <script type="text/javascript" src="../public/js/base.js"></script>
 </head>
@@ -18,36 +18,36 @@
                 <nav class="left">
                         <div class="member">
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>会员中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>{{i18n.t('会员中心')}}</blockquote>
                                 <li>
-                                    <a href="/myCenter/member.html">会员中心</a>
+                                    <a href="/myCenter/member.html">{{i18n.t('会员中心')}}</a>
                                 </li>
                                 <li class="on">
-                                    <a href="/myCenter/betrecord.html">投注记录</a>
+                                    <a href="/myCenter/betrecord.html">{{i18n.t('投注记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/lotteryrecord.html">中奖记录</a>
+                                    <a href="/myCenter/lotteryrecord.html">{{i18n.t('中奖记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/accountDetails.html">账号明细</a>
+                                    <a href="/myCenter/accountDetails.html">{{i18n.t('账号明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/userInfo.html">账号信息</a>
+                                    <a href="/myCenter/userInfo.html">{{i18n.t('账号信息')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <a href="/myCenter/recharge.html">{{i18n.t('充值')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li v-if="agencyType!=6">
-                                    <a href="/myCenter/draw.html">提款</a>
+                                    <a href="/myCenter/draw.html">{{i18n.t('提款')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <a href="/myCenter/message.html">{{i18n.t('消息中心')}}</a>
                                     <div class="hr"></div>
                                 </li>
                     
@@ -55,33 +55,33 @@
                         </div>
                         <div class="agency" v-if="agencyType==1" v-cloak>
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>{{i18n.t('代理中心')}}</blockquote>
                                 <li>
-                                    <a href="/agency/agentIntro.html">代理说明</a>
+                                    <a href="/agency/agentIntro.html">{{i18n.t('代理说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentReport.html">代理报表</a>
+                                    <a href="/agency/agentReport.html">{{i18n.t('代理报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/lowerReport.html">下级报表</a>
+                                    <a href="/agency/lowerReport.html">{{i18n.t('下级报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/downAccount.html">下级开户</a>
+                                    <a href="/agency/downAccount.html">{{i18n.t('下级开户')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentMember.html">会员管理</a>
+                                    <a href="/agency/agentMember.html">{{i18n.t('会员管理')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyBetDetail.html">投注说明</a>
+                                    <a href="/agency/agencyBetDetail.html">{{i18n.t('投注说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyDealDetail.html">交易明细</a>
+                                    <a href="/agency/agencyDealDetail.html">{{i18n.t('交易明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                             </ul>
@@ -96,11 +96,11 @@
                             <div class="welcome">您好：<strong class="userName red"
                                                             id="userName"> </strong>&nbsp;账号余额：<span
                                     class="red coin" id="coin11">0.00</span>{{coinUnit}}<span class="btn recharge"><a
-                                    href="recharge.html">充值</a></span><span class="btn withdrawal" v-if="agencyType!=6"><a
-                                    href="draw.html">提款</a></span></div>
+                                    href="recharge.html">{{i18n.t('充值')}}</a></span><span class="btn withdrawal" v-if="agencyType!=6"><a
+                                    href="draw.html">{{i18n.t('提款')}}</a></span></div>
                             <nav class="topNav"><span class="active" id="choose_0" data-index="0"
-                                                      @click="choose_nav(0)">全部投注</span><span
-                                    data-index="1" id="choose_1" @click="choose_nav(1)">我的撤单</span></nav>
+                                                      @click="choose_nav(0)">{{i18n.t('全部投注')}}</span><span
+                                    data-index="1" id="choose_1" @click="choose_nav(1)">{{i18n.t('我的撤单')}}</span></nav>
                             <section id="record">
                                 <div id="all">
                                     <div class="condition row">
@@ -145,15 +145,15 @@
                                                                  placeholder="开始时间"/></label>&nbsp;至&nbsp;
                                             <label><b></b><input type="text" id="endTime" v-model="endTime" readonly
                                                                  placeholder="结束时间"/></label>&nbsp;
-                                            <span class="btn" id="select" @click="getdatas(1)">查询</span>
+                                            <span class="btn" id="select" @click="getdatas(1)">{{i18n.t('查询')}}</span>
                                         </div>-->
                                     </div>
                                     <!--<div class="detail_explain">
                                         <ul>
-                                            <li>彩种：<span id="lotNames">所有彩种</span>&nbsp;&nbsp;报表日期：<span id="orderBetListBetween">2017-11-08——2017-11-08</span></li>
+                                            <li>彩种：<span id="lotNames">{{i18n.t('所有彩种')}}</span>&nbsp;&nbsp;报表日期：<span id="orderBetListBetween">2017-11-08——2017-11-08</span></li>
                                             <li>贴心小提醒：点击注单号能查询详细投注明细,标明“
-                                                <font color="red">合</font>”属于合买订单，标明“
-                                                <font color="red">追</font>”属于追号订单</li>
+                                                <font color="red">{{i18n.t('合')}}</font>”属于合买订单，标明“
+                                                <font color="red">{{i18n.t('追')}}</font>”属于追号订单</li>
                                         </ul>
                                     </div>-->
                                     <div class="mainList">
@@ -161,22 +161,22 @@
                                                width="100%" cellspacing="0" cellpadding="0" border="0">
                                             <thead>
                                             <tr class="title">
-                                                <td>订单号</td>
-                                                <td>期号</td>
-                                                <td>投注日期</td>
-                                                <td>彩种</td>
-                                                <td>玩法</td>
-                                                <td>投注金额</td>
-                                                <td>中奖金额</td>
-                                                <td>状态</td>
-                                                <td>查看</td>
-                                                <td>撤单</td>
+                                                <td>{{i18n.t('订单号')}}</td>
+                                                <td>{{i18n.t('期号')}}</td>
+                                                <td>{{i18n.t('投注日期')}}</td>
+                                                <td>{{i18n.t('彩种')}}</td>
+                                                <td>{{i18n.t('玩法')}}</td>
+                                                <td>{{i18n.t('投注金额')}}</td>
+                                                <td>{{i18n.t('中奖金额')}}</td>
+                                                <td>{{i18n.t('状态')}}</td>
+                                                <td>{{i18n.t('查看')}}</td>
+                                                <td>{{i18n.t('撤单')}}</td>
                                             </tr>
                                             </thead>
                                             <tbody id="betResultOrder" v-cloak>
                                             <tr>
                                                 <td colspan="10" class="nodate" height="150" style="text-align: center;">暂无数据，
-                                                    <a href="/lothall.html">立即购彩</a>
+                                                    <a href="/lothall.html">{{i18n.t('立即购彩')}}</a>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -190,12 +190,12 @@
                                                 <td v-cloak>{{item.groupName}}<span v-if="item.type>4">-{{item.playedName}}</span></td>
                                                 <td v-cloak>{{item.amount}}{{coinUnit}}</td>
                                                 <td v-cloak><font color="red" v-if="item.status=='已中奖'" v-cloak>{{item.bonus}}<span v-if="item.type!=2">{{coinUnit}}</span></font>
-                                                    <span v-else-if="item.status=='未中奖'" style="color: green;">未中奖</span>
+                                                    <span v-else-if="item.status=='未中奖'" style="color: green;">{{i18n.t('未中奖')}}</span>
                                                     <span v-else-if="item.bonus=='待开奖'">{{item.bonus}}</span>
                                                     <span v-else v-cloak>{{item.bonus}}</span></td>
                                                 <td v-cloak>{{item.status}}</td>
-                                                <td v-cloak><button class="layui-btn layui-btn-mini" @click="selectHH(item.betId,item.type)">查看</button></td>
-                                                <td><button class="layui-btn-disabled layui-btn-mini" v-if="item.status!=='成功'" style="width: 36px;">撤单</button><button class="layui-btn layui-btn-mini" @click="cancleOrd(item.betId)" v-else>撤单</button></td>
+                                                <td v-cloak><button class="layui-btn layui-btn-mini" @click="selectHH(item.betId,item.type)">{{i18n.t('查看')}}</button></td>
+                                                <td><button class="layui-btn-disabled layui-btn-mini" v-if="item.status!=='成功'" style="width: 36px;">{{i18n.t('撤单')}}</button><button class="layui-btn layui-btn-mini" @click="cancleOrd(item.betId)" v-else>{{i18n.t('撤单')}}</button></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -256,7 +256,7 @@
                             <td>投注项:</td>
                             <td v-cloak>
                                 {{item.homeTeamName}}　vs　{{item.awayTeamName}} <span v-if="item.guts==1"
-                                                                                    class="isDan">胆</span>
+                                                                                    class="isDan">{{i18n.t('胆')}}</span>
                             </td>
                             <td>竞猜项:</td>
                             <td>
@@ -307,9 +307,9 @@
 					<table  class="layui-table" lay-skin="nob">
 						<thead>
 							<tr>
-								<th width="15%">过关</th>
-								<th width="15%">倍数</th>
-								<th width="70%">票面信息</th>
+								<th width="15%">{{i18n.t('过关')}}</th>
+								<th width="15%">{{i18n.t('倍数')}}</th>
+								<th width="70%">{{i18n.t('票面信息')}}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -362,8 +362,8 @@
                                     <td>{{ordersTwo.amount}}{{coinUnit}}</td>
                                     <td>中奖金额:</td>
                                     <td>
-                                        <span v-if="ordersTwo.isCal==0">未开奖</span>
-                                        <span v-else-if="ordersTwo.isCal==1&&ordersTwo.status==0" style="color: green;">未中奖</span>
+                                        <span v-if="ordersTwo.isCal==0">{{i18n.t('未开奖')}}</span>
+                                        <span v-else-if="ordersTwo.isCal==1&&ordersTwo.status==0" style="color: green;">{{i18n.t('未中奖')}}</span>
                                         <span v-else-if="ordersTwo.isCal==1&&ordersTwo.status==1" style="color: red;">{{ordersTwo.bonus}}{{coinUnit}}</span>
                                         
                                     </td>
@@ -383,8 +383,8 @@
                         <td>{{ordersTwo.amount}}{{coinUnit}}</td>
                         <td>中奖金额:</td>
                         <td>
-                        	<span v-if="ordersTwo.isCal==0">未开奖</span>
-                        	<span v-else-if="ordersTwo.isCal==1&&ordersTwo.status==0" style="color: green;">未中奖</span>
+                        	<span v-if="ordersTwo.isCal==0">{{i18n.t('未开奖')}}</span>
+                        	<span v-else-if="ordersTwo.isCal==1&&ordersTwo.status==0" style="color: green;">{{i18n.t('未中奖')}}</span>
                         	<span v-else-if="ordersTwo.isCal==1&&ordersTwo.status==1" style="color: red;">{{ordersTwo.bonus}}{{coinUnit}}</span>
                         	
                         </td>
@@ -392,7 +392,7 @@
                     <tr v-if="ordersTwo.gameType!=2">
                         <td>投注赔率:</td>
                         <td>{{ordersTwo.betOdds}}倍</td>
-                        <td v-if='ordersTwo.isCal==0&&ordersTwo.expect_open'>预计开奖时间</td>
+                        <td v-if='ordersTwo.isCal==0&&ordersTwo.expect_open'>{{i18n.t('预计开奖时间')}}</td>
                         <td v-if='ordersTwo.isCal==0&&ordersTwo.expect_open'>{{ordersTwo.expect_open}}</td>
                     </tr>
                     </tbody>

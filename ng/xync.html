@@ -19,13 +19,13 @@
     		<ul style="display: flex;align-items: center;">
     			<li class="icon"><img :src="'../'+pic_url"></li>
     			<li><h2 class="title" v-cloak>{{typeName}}</h2></li>
-    			<div class="welcome" style="padding: 8px 40px;">账号余额: <span id="coin11" class="red coin" style="font-size: 20px;" v-cloak>{{pack_coin}}</span>元</div>
+    			<div class="welcome" style="padding: 8px 40px;">账号余额: <span id="coin11" class="red coin" style="font-size: 20px;" v-cloak>{{pack_coin}}</span>{{i18n.t('元')}}</div>
     		</ul>
     	</div>
     	<div class="trendOpenBtn" style="display: flex;align-items: center;">
     		<div style="margin: 0 15px;" @click="collectFn" v-cloak><i :class="['iconfont',isCollect==1?'coll_succ':'coll_fail']">{{(isCollect==1?'&#xe666;':'&#xe7ce;')}}</i></div>
-    		<a style="margin: 0 15px;" @click="togoChart(oneTypeId)">开奖走势</a>
-    		<a style="margin: 0;" @click="togoSkip(oneTypeId)">开奖详情</a>
+    		<a style="margin: 0 15px;" @click="togoChart(oneTypeId)">{{i18n.t('开奖走势')}}</a>
+    		<a style="margin: 0;" @click="togoSkip(oneTypeId)">{{i18n.t('开奖详情')}}</a>
     		<div class="video" onclick="videoFn('https://kj.kai861.com/view/video/GDklsf/index.html?10005?www.1680380.com')" v-if="oneTypeId == 26">
     		    <img src="/images/video.jpg" />
     		</div>
@@ -107,8 +107,8 @@
                     <li v-for="(item,index) in randomList" @click="changeRandomNum(0,item)">{{item}}</li>
                   </ul>
                 </div>
-                <span class="btn" @click="randomNum(0,0)">机选</span>
-                <span v-if="selectall" class="btn" @click="randomNum(0,1)">全选</span>
+                <span class="btn" @click="randomNum(0,0)">{{i18n.t('机选')}}</span>
+                <span v-if="selectall" class="btn" @click="randomNum(0,1)">{{i18n.t('全选')}}</span>
               </div>
             </div>
             <!-- 千位 -->
@@ -126,8 +126,8 @@
                     <li v-for="(item,index) in kilobit" @click="changeRandomNum(1,index+1)">{{index+1}}</li>
                   </ul>
                 </div>
-                <span class="btn" @click="randomNum(1,0)">机选</span>
-                <span class="btn" @click="randomNum(1,1)">全选</span>
+                <span class="btn" @click="randomNum(1,0)">{{i18n.t('机选')}}</span>
+                <span class="btn" @click="randomNum(1,1)">{{i18n.t('全选')}}</span>
               </div>
             </div>
             <!-- 百位 -->
@@ -145,8 +145,8 @@
                     <li v-for="(item,index) in hundreds" @click="changeRandomNum(2,index+1)">{{index+1}}</li>
                   </ul>
                 </div>
-                <span class="btn" @click="randomNum(2,0)">机选</span>
-                <span class="btn" @click="randomNum(2,1)">全选</span>
+                <span class="btn" @click="randomNum(2,0)">{{i18n.t('机选')}}</span>
+                <span class="btn" @click="randomNum(2,1)">{{i18n.t('全选')}}</span>
               </div>
             </div>
             <!-- 公用 -->
@@ -164,8 +164,8 @@
                     <li v-for="(item,index) in numberArr" @click="changeRandomNum(3,index+1)">{{index+1}}</li>
                   </ul>
                 </div>
-                <span class="btn" @click="randomNum(3,0)">机选</span>
-                <span class="btn" @click="randomNum(3,1)">全选</span>
+                <span class="btn" @click="randomNum(3,0)">{{i18n.t('机选')}}</span>
+                <span class="btn" @click="randomNum(3,1)">{{i18n.t('全选')}}</span>
               </div>
             </div>
 
@@ -184,8 +184,8 @@
                     <li v-for="(item,index) in numberArr" @click="changeRandomNum(4,index+1)">{{index+1}}</li>
                   </ul>
                 </div>
-                <span class="btn" @click="randomNum(4,0)">机选</span>
-                <span class="btn" @click="randomNum(4,1)">全选</span>
+                <span class="btn" @click="randomNum(4,0)">{{i18n.t('机选')}}</span>
+                <span class="btn" @click="randomNum(4,1)">{{i18n.t('全选')}}</span>
               </div>
             </div>
           </div>
@@ -196,13 +196,13 @@
               <span class="red ">{{bets}}</span> 注
               <span class="red ">{{parseFloat(bets*singleCoins).toFixed(2)}}</span> {{coinUnit}} 单注
               <input type="text " @click.stop="dianji" v-model="singleCoins" @keyup="handleCoins" maxlength="6" class="betSum ">{{coinUnit}}
-              <span class="clearTopBtn " @click="clearSelectData(0,0)">清空上方选号</span>
+              <span class="clearTopBtn " @click="clearSelectData(0,0)">{{i18n.t('清空上方选号')}}</span>
               <span class="odds"  v-cloak> 赔率:<em :title='orderOdds' class="orderOdds">{{orderOdds}}</em></span>
               <!-- <span id="odds">{{orderOdds}}</span> -->
               <!-- <input class="range" type="range" max="100" min="0" v-model="rebateNum" @input="changeRebate">
               <span class="rebate">返利:{{rebate}}%</span> -->
               <div class=" ">
-                <span class="addBtn " @click="handleConfirm">选好了</span>
+                <span class="addBtn " @click="handleConfirm">{{i18n.t('选好了')}}</span>
               </div>
             </div>
 						<div style="ceng" class="ceng" v-show="show_dd">
@@ -241,15 +241,15 @@
               <!--<div class="list-footer"></div>-->
             </div>
             <div class="btnList ">
-              <span class="btn " @click="randomBets(1,0)">机选添加</span>
-              <span class="btn " @click="clearSelectData(2,0)">清空列表</span>
+              <span class="btn " @click="randomBets(1,0)">{{i18n.t('机选添加')}}</span>
+              <span class="btn " @click="clearSelectData(2,0)">{{i18n.t('清空列表')}}</span>
             </div>
           </div>
           <!-- 投注信息 -->
           <!--<div class="bet_group">
            <div class="bet_info">
 
-             <div class="sum">共<span class="red">0</span>注 共<span class="red">0</span>{{coinUnit}}</div>
+             <div class="sum">{{i18n.t('共')}}<span class="red">0</span>注 共<span class="red">0</span>{{coinUnit}}</div>
              <div class="periods">
                <input type="text"> 期(最大10期) <span class="circle"></span> 中奖后停止追号
              </div>
@@ -263,7 +263,7 @@
               <span class="red">{{totalBets*(continue_periods?parseInt(continue_periods):'')}}</span>注 共
               <span class="red">{{totalCoins}}</span>{{coinUnit}}&nbsp;&nbsp;&nbsp;
               <!--<input type="text" maxlength="2" v-model="continue_periods" @keyup="handleChase" @blur="continue_periods?'':continue_periods=1"> 期(最大10期)&nbsp;&nbsp;&nbsp;-->
-              <!--<span :class="['circle',{'active':after_no&&continue_periods!=1},{'gray':continue_periods==1}]" @click="after_no==0?after_no=1:after_no=0"></span> <span :class="continue_periods==1?'gray':''">中奖后停止追号</span>-->
+              <!--<span :class="['circle',{'active':after_no&&continue_periods!=1},{'gray':continue_periods==1}]" @click="after_no==0?after_no=1:after_no=0"></span> <span :class="continue_periods==1?'gray':''">{{i18n.t('中奖后停止追号')}}</span>-->
             </div>
             <div class="btnList">
               <div class="submitBtn" @click="handleBets">
@@ -276,14 +276,14 @@
           <div id="betMesTips" class="tips hide" v-cloak>
             <div class="tips_wrap"></div>
             <div class="content">
-              <div class="tips_title">提示</div>
+              <div class="tips_title">{{i18n.t('提示')}}</div>
               <span class="tips_close">
 						<a href="javascript:;" @click="closeTips($event,tipsContent.showSecond)"></a>
 					</span>
               <div class="tips_content">
                 <div class="tips_msg">{{tipsContent.tzState}}</div>
                 <div class="tips_second" v-if="tipsContent.showSecond">{{tenSecond}}秒后{{tipsContent.showSecond==2?"自动跳转到充值页面":"自动刷新本页"}}</div>
-                <a class="tips_errorBtn"  v-if="tipsContent.showSecond==2" href="../myCenter/recharge.html">直接前往</a>
+                <a class="tips_errorBtn"  v-if="tipsContent.showSecond==2" href="../myCenter/recharge.html">{{i18n.t('直接前往')}}</a>
                                 <div class="tips_errorBtn" v-if="tipsContent.showSecond&&tipsContent.showSecond!=2"
                                      @click="closeTips($event,tipsContent.showSecond)">返回
                                 </div>
@@ -291,11 +291,11 @@
                   <li>投注类型：{{tipsContent.tzType}}</li>
                   <li>投注注数：{{tipsContent.tzNum}}注</li>
                   <li>投注金额：{{tipsContent.tzMoney+coinUnit}}</li>
-                  <li>剩余金额：{{tipsContent.lastCoin+coinUnit}}<a href="../myCenter/betrecord.html">前往查看</a></li>
+                  <li>剩余金额：{{tipsContent.lastCoin+coinUnit}}<a href="../myCenter/betrecord.html">{{i18n.t('前往查看')}}</a></li>
                   <li>{{tenSecond}}秒后自动刷新本页</li>
                 </ul>
                 <div class="btnList" v-if="!tipsContent.showSecond">
-                  <span class="goCenter"><a href="../myCenter/betrecord.html">前往会员中心查看</a></span><span class="continue"><a href="javascript:;" @click="closeTips($event,3)">继续投注</a></span>
+                  <span class="goCenter"><a href="../myCenter/betrecord.html">{{i18n.t('前往会员中心查看')}}</a></span><span class="continue"><a href="javascript:;" @click="closeTips($event,3)">{{i18n.t('继续投注')}}</a></span>
                 </div>
               </div>
             </div>

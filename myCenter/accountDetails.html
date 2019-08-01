@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>帐号明细</title>
+    <title>{{i18n.t('帐号明细')}}</title>
     <link rel="stylesheet" type="text/css" href="css/betrecord.css"/>
     <script src="../public/js/base.js"></script>
 </head>
@@ -18,36 +18,36 @@
                 <nav class="left">
                         <div class="member">
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>会员中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>{{i18n.t('会员中心')}}</blockquote>
                                 <li>
-                                    <a href="/myCenter/member.html">会员中心</a>
+                                    <a href="/myCenter/member.html">{{i18n.t('会员中心')}}</a>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/betrecord.html">投注记录</a>
+                                    <a href="/myCenter/betrecord.html">{{i18n.t('投注记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/lotteryrecord.html">中奖记录</a>
+                                    <a href="/myCenter/lotteryrecord.html">{{i18n.t('中奖记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li class="on">
-                                    <a href="/myCenter/accountDetails.html">账号明细</a>
+                                    <a href="/myCenter/accountDetails.html">{{i18n.t('账号明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/userInfo.html">账号信息</a>
+                                    <a href="/myCenter/userInfo.html">{{i18n.t('账号信息')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <a href="/myCenter/recharge.html">{{i18n.t('充值')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li v-if="agencyType!=6">
-                                    <a href="/myCenter/draw.html">提款</a>
+                                    <a href="/myCenter/draw.html">{{i18n.t('提款')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <a href="/myCenter/message.html">{{i18n.t('消息中心')}}</a>
                                     <div class="hr"></div>
                                 </li>
                     
@@ -55,33 +55,33 @@
                         </div>
                         <div class="agency" v-if="agencyType==1" v-cloak>
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>{{i18n.t('代理中心')}}</blockquote>
                                 <li>
-                                    <a href="/agency/agentIntro.html">代理说明</a>
+                                    <a href="/agency/agentIntro.html">{{i18n.t('代理说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentReport.html">代理报表</a>
+                                    <a href="/agency/agentReport.html">{{i18n.t('代理报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/lowerReport.html">下级报表</a>
+                                    <a href="/agency/lowerReport.html">{{i18n.t('下级报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/downAccount.html">下级开户</a>
+                                    <a href="/agency/downAccount.html">{{i18n.t('下级开户')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentMember.html">会员管理</a>
+                                    <a href="/agency/agentMember.html">{{i18n.t('会员管理')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyBetDetail.html">投注说明</a>
+                                    <a href="/agency/agencyBetDetail.html">{{i18n.t('投注说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyDealDetail.html">交易明细</a>
+                                    <a href="/agency/agencyDealDetail.html">{{i18n.t('交易明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                             </ul>
@@ -96,12 +96,12 @@
                             <div class="welcome">您好：<strong class="userName red"
                                                             id="userName"> </strong>&nbsp;账号余额：<span
                                     class="red coin" id="coin11">0.00</span>{{coinUnit}}<span class="btn recharge"><a
-                                    href="recharge.html">充值</a></span><span class="btn withdrawal" v-if="agencyType!=6"><a
-                                    href="draw.html">提款</a></span></div>
+                                    href="recharge.html">{{i18n.t('充值')}}</a></span><span class="btn withdrawal" v-if="agencyType!=6"><a
+                                    href="draw.html">{{i18n.t('提款')}}</a></span></div>
                             <!--账号总览-->
                             <div class="memberMsg ">
                                 <div class="title">
-                                    <div><strong>账户总览</strong></div>
+                                    <div><strong>{{i18n.t('账户总览')}}</strong></div>
                                 </div>
                                 <div class="content">
                                     <ul class="clearfix" v-cloak>
@@ -113,10 +113,10 @@
                             <div class="detail_explain">
                             </div>
                             <nav class="topNav"><span class="active" id="choose_0" data-index="0"
-                                                      @click="choose_nav(0)">充值记录</span><span
-                                    data-index="1" id="choose_1" @click="choose_nav(1)">取款记录</span><span data-index="2"
+                                                      @click="choose_nav(0)">{{i18n.t('充值记录')}}</span><span
+                                    data-index="1" id="choose_1" @click="choose_nav(1)">{{i18n.t('取款记录')}}</span><span data-index="2"
                                                                                                          id="choose_2"
-                                                                                                         @click="choose_nav(2)">账变记录</span>
+                                                                                                         @click="choose_nav(2)">{{i18n.t('账变记录')}}</span>
                             </nav>
                             <section id="record">
                                 <div id="show_0">
@@ -152,7 +152,7 @@
                                             </ul>
                                         </div>
                                         <div class="col" id="time" v-cloak>
-                                            <span class="btn" id="select" @click="getdatas(1)">查询</span>
+                                            <span class="btn" id="select" @click="getdatas(1)">{{i18n.t('查询')}}</span>
                                         </div>
                                     </div>
                                     <div class="mainList">
@@ -160,18 +160,18 @@
                                                width="100%" cellspacing="0" cellpadding="0" border="0">
                                             <thead>
                                             <tr class="title">
-                                                <td>日期</td>
-                                                <td>交易类别</td>
-                                                <td>支付名称</td>
-                                                <td>交易额度</td>
-                                                <td>状态</td>
-                                                <td>说明</td>
-                                                <td>订单号</td>
+                                                <td>{{i18n.t('日期')}}</td>
+                                                <td>{{i18n.t('交易类别')}}</td>
+                                                <td>{{i18n.t('支付名称')}}</td>
+                                                <td>{{i18n.t('交易额度')}}</td>
+                                                <td>{{i18n.t('状态')}}</td>
+                                                <td>{{i18n.t('说明')}}</td>
+                                                <td>{{i18n.t('订单号')}}</td>
                                             </tr>
                                             </thead>
                                             <tbody class="betResultOrder" v-cloak>
                                             <tr>
-                                                <td colspan="10" class="nodate" height="150">暂无数据</td>
+                                                <td colspan="10" class="nodate" height="150">{{i18n.t('暂无数据')}}</td>
                                             </tr>
                                             </tbody>
                                             <tbody class="showBetRecord">
@@ -213,7 +213,7 @@
                                             </ul>
                                         </div>
                                         <div class="col" id="time" v-cloak>
-                                            <span class="btn" id="select" @click="getDrawdatas(1)">查询</span>
+                                            <span class="btn" id="select" @click="getDrawdatas(1)">{{i18n.t('查询')}}</span>
                                         </div>
                                     </div>
                                     <div class="mainList">
@@ -221,16 +221,16 @@
                                                width="100%" cellspacing="0" cellpadding="0" border="0">
                                             <thead>
                                             <tr class="title">
-                                                <td>日期</td>
-                                                <td>交易类别</td>
-                                                <td>交易额度</td>
-                                                <td>状态</td>
-                                                <td>说明</td>
+                                                <td>{{i18n.t('日期')}}</td>
+                                                <td>{{i18n.t('交易类别')}}</td>
+                                                <td>{{i18n.t('交易额度')}}</td>
+                                                <td>{{i18n.t('状态')}}</td>
+                                                <td>{{i18n.t('说明')}}</td>
                                             </tr>
                                             </thead>
                                             <tbody class="betResultOrder" v-cloak>
                                             <tr>
-                                                <td colspan="10" class="nodate" height="150">暂无数据</td>
+                                                <td colspan="10" class="nodate" height="150">{{i18n.t('暂无数据')}}</td>
                                             </tr>
                                             </tbody>
                                             <tbody class="showBetRecord">
@@ -263,7 +263,7 @@
                                             </ul>
                                         </div>
                                         <div class="col" id="time" v-cloak>
-                                            <span class="btn" id="select" @click="getchangedatas(1)">查询</span>
+                                            <span class="btn" id="select" @click="getchangedatas(1)">{{i18n.t('查询')}}</span>
                                         </div>
                                     </div>
                                     <div class="mainList">
@@ -271,18 +271,18 @@
                                                width="100%" cellspacing="0" cellpadding="0" border="0">
                                             <thead>
                                             <tr class="title">
-                                                <td>订单号</td>
-                                                <td>日期</td>
-                                                <td>交易类别</td>
-                                                <td>变动前金额</td>
-                                                <td>变动金额</td>
-                                                <td>变动后余额</td>
-                                                <td>备注</td>
+                                                <td>{{i18n.t('订单号')}}</td>
+                                                <td>{{i18n.t('日期')}}</td>
+                                                <td>{{i18n.t('交易类别')}}</td>
+                                                <td>{{i18n.t('变动前金额')}}</td>
+                                                <td>{{i18n.t('变动金额')}}</td>
+                                                <td>{{i18n.t('变动后余额')}}</td>
+                                                <td>{{i18n.t('备注')}}</td>
                                             </tr>
                                             </thead>
                                             <tbody class="betResultOrder" v-cloak>
                                             <tr>
-                                                <td colspan="10" class="nodate" height="150">暂无数据</td>
+                                                <td colspan="10" class="nodate" height="150">{{i18n.t('暂无数据')}}</td>
                                             </tr>
                                             </tbody>
                                             <tbody class="showBetRecord">

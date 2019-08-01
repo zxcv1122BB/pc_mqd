@@ -37,30 +37,30 @@
 						</div>
 
 						<div class="user-name">Hi，欢迎来到彩票网</div>
-						<a class="user-btn" href="login/login.html">用户登录</a>
-						<a class="user-btn" href="login/register.html">免费注册</a>
+						<a class="user-btn" href="login/login.html">{{i18n.t('用户登录')}}</a>
+						<a class="user-btn" href="login/register.html">{{i18n.t('免费注册')}}</a>
 					</div>
 				</div>
 				<!--已登录显示-->
 				<div v-else class="welcome-jdd logined  login_box active">
 					<div class="box">
 						<div class="quit-btn">
-							<a class="show" @click="quitLogin">退出</a>
+							<a class="show" @click="quitLogin">{{i18n.t('退出')}}</a>
 						</div>
 						<div class="user-face">
 							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAABWVBMVEUAAAD/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP9lzP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP5lDP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTP/mTPkhTP/mTPykDPfgjPSeDP/mTMEAAD/ZmZCIQ3oijBvLxv/ljb9lzLQeykPBgL/a2H/h0X7ljL4lDHdgiy8byUXDAT/fk7/jz31kTLhhC3SfSrNdyqiXyCNUxtJKQ7/b13RdzP5lTKqWiSwaSOWUx53RhdXLxFULxAIAgH/cln/elH/gkr/g0nSeDPsjTHwkDDVeizUfyrJcSrBcia1YiamYyGRSCGPRiCdXR+IQR96Nx11Mxx9RRloORVhORNeNRJDJg0zHQowGwkmFQf/dFjXezOaXB9xQxZje+14AAAAMHRSTlMA0wnv6AX28pZvZUIPfvzsw7mwXzYe+dxzB/u1k4liVkY8JybVclxgMxoD6bu4fVsZhBkCAAADAUlEQVRYw7XYV1fiQBgG4IRQRaooKNiwrtu+URApUpVi773XVVe3/P+LhYnCkhkmDZ7L9+S8J2TCZGY4hpnpoUEvb7QAWIy8d3BoeobToNfmFUBC8No+qWsx9LgBYO24AFLOr9/7Fdd0O4xQVThaPUoBYfHzt25FNf0BAbDI6upvoHIFFNyV3Q/vYpFIClrw2+UejhUUshpYPWM8KMaPte4ZEUAFy0irnskBUGWgh97TBap10XqGnaCac5gy7H2gQZ+dGC8BNBEkY2fgQaPx5vfJCppZ/+8ZBR1GGz0mHnTgTfWiCdBloj7/CKCL8DE/OUAnx/vQu0Anl/gK9Ejz5fLFIrRysrFJhuK/1y2NywjFn86AInVVQSh7QuRu/N0BQmRjZ3d3i5xnM28ou5Wh3W1vtcgGpLMsyqJKTJL+QXGESkBjqxZ5yHjxDdVcNacxHO4uAIWn+labyfgWYeXmdEFMt4HCbOJ8QNpB2N/mdENM4zGg8FEn2J8I25I8aiSK0CfdUOuikmQsWUUhLgikJ/E3HEviFxxnqT8tyPFAWo6jqlt6XAYanjPS4uL2ayVDxunn15cSUBk5C7SFhZME8/srib0kMCT3Eiu5eSLmJJ+zldmaPKMHX/CLLHI139AsdtD4t6QXqpYbQ76PL0iQP83fHOTwZfU7L1bmRD8+knyidsUh8bCJ4c8f5JKNJ3AxJy2C+WTuME8Z/iAwPYo9O0vAFuRCwJTarPU8y/VASH5VlH7cLq0pWCn5QM5lNA2yfHhiY7uOroMcswlPtUxL0YeHAsjw4Mmfae3u/lT+lmz4c8RSuImewno0A2y9kg8kIX0fPQeIbUbvisDglnyyScUb8Q06v74Ehqm2LSLataxp70JL/9Iv0ObFqP7lcScW7JxhHAiathBcWOumJtyJbZb+jZ/+rWgHN8fYiEXbdp0UVnOAEO7okQZ5yMLmtys89mETAv2KD6IYjI5u5UdjU26gc36ZNKg9rPOYie+pBx/WqWby4eNDc7UBHx/6TIyL/wEicAd3LxzPFwAAAABJRU5ErkJggg==" />
 						</div>
 						<div class="user-name" v-cloak>Hi,{{localStorage.userName}}</div>
 						<div class="is-show-money show">
-							<span @click="show_money">点击显示余额</span>
+							<span @click="show_money">{{i18n.t('点击显示余额')}}</span>
 						</div>
-						<a class="recharge-btn" href="#" @click="recharge">充值</a>
+						<a class="recharge-btn" href="#" @click="recharge">{{i18n.t('充值')}}</a>
 						<div class="other-handle">
-							<a href="myCenter/betrecord.html">投注记录</a>
+							<a href="myCenter/betrecord.html">{{i18n.t('投注记录')}}</a>
 							<em>|</em>
-							<a href="myCenter/lotteryrecord.html">中奖记录</a>
+							<a href="myCenter/lotteryrecord.html">{{i18n.t('中奖记录')}}</a>
 							<em>|</em>
-							<a href="#" @click="draw">提款</a>
+							<a href="#" @click="draw">{{i18n.t('提款')}}</a>
 						</div>
 					</div>
 				</div>
@@ -87,13 +87,13 @@
 						         </div>        
 						     </div>
 						    <div class="hot_lottery">
-						         <h2 class="public-title">热门彩种<span>Hot Lottery</span></h2>
+						         <h2 class="public-title">{{i18n.t('热门彩种')}}<span>Hot Lottery</span></h2>
 						         <div class="lottery-list">
 						                 <ul>
 						                   <li v-for="item in hotlottery" @click='openPage(item.bet_url)'>
 						                         <div class="shadow"></div>
 						                         <img :src="item.pic_url" alt="" class="lottery-img">
-						                         <a  href="javascript:void(0);" class="go-game" @click='window.opendpg(item.bet_url)'>进入游戏</a>
+						                         <a  href="javascript:void(0);" class="go-game" @click='window.opendpg(item.bet_url)'>{{i18n.t('进入游戏')}}</a>
 						                     </li>
 						                 </ul>
 						         </div>
@@ -101,18 +101,18 @@
 						</div>
 						<div class="ssg_all_wrap">
 							<div class="all_left">
-								<h2 class="public-title">玩家动態<span>Dynamic</span></h2>
+								<h2 class="public-title">{{i18n.t('玩家动態')}}<span>Dynamic</span></h2>
 								<div class="dtbox">
 								    <ul>
 										<li style="display: flex;justify-content: space-between;padding: 0px 15px 10px;font-size: 16px;color: #555;">
 											<div class="u_name">
-												<span>用户</span>
+												<span>{{i18n.t('用户')}}</span>
 											</div>
 											<div class="u_gj">
-												<span>彩种</span>
+												<span>{{i18n.t('彩种')}}</span>
 											</div>
 											<div class="u_amount">
-												<span>奖金</span>
+												<span>{{i18n.t('奖金')}}</span>
 											</div>
 										</li>
 									</ul>
@@ -132,9 +132,9 @@
 										</ul>
 									</div>
 									<div class="announce_middle">
-										<h1><span class="newAnn">行业新闻</span>
+										<h1><span class="newAnn">{{i18n.t('行业新闻')}}</span>
 										    <!--<span class="more">-->
-										    <!--<a href="javascript:;">更多</a></span>-->
+										    <!--<a href="javascript:;">{{i18n.t('更多')}}</a></span>-->
 										</h1>
 										<div class="margin_top" id="bannernews">
 											<p v-for="(item, i) in news_list" @click="show_news(i)">
@@ -147,7 +147,7 @@
 								</div>
 							</div>
 							<div class="all_right">
-								<h2 class="public-title">全部彩种<span>All Lotteries</span></h2>
+								<h2 class="public-title">{{i18n.t('全部彩种')}}<span>All Lotteries</span></h2>
 								<div class="lottery-list all-list">
 									<ul>
 										<li v-for="item in alllottery">
@@ -164,7 +164,7 @@
 						</div>
 						<div class="ssg_databox">
 							<div class="ssg_databox_left">
-								<h2 class="public-title">快捷通道<span>Fast Channel</span></h2>
+								<h2 class="public-title">{{i18n.t('快捷通道')}}<span>Fast Channel</span></h2>
 								<div class="row_list clearfix">
 									<table width="100%">
 										<tr>
@@ -172,7 +172,7 @@
 												<div class="item first">
 													<a href="javascript:void(0);" @click="goPage('/agency/agentIntro.html')">
 														<i class="icon"></i>
-														<p>代理说明</p>
+														<p>{{i18n.t('代理说明')}}</p>
 													</a>
 												</div>
 											</td>
@@ -180,7 +180,7 @@
 												<div class="item second">
 													<a href="javascript:void(0);" @click="openPage('/agency/lowerReport.html')">
 														<i class="icon"></i>
-														<p>下级报表</p>
+														<p>{{i18n.t('下级报表')}}</p>
 													</a>
 												</div>
 											</td>
@@ -190,7 +190,7 @@
 												<div class="item third">
 													<a href="javascript:void(0);" @click="openPage('/agency/downAccount.html')">
 														<i class="icon"></i>
-														<p>下级开户</p>
+														<p>{{i18n.t('下级开户')}}</p>
 													</a>
 												</div>
 											</td>
@@ -198,7 +198,7 @@
 												<div class="item four">
 													<a href="javascript:void(0);" @click="openPage('/agency/agentMember.html')">
 														<i class="icon"></i>
-														<p>会员管理</p>
+														<p>{{i18n.t('会员管理')}}</p>
 													</a>
 												</div>
 											</td>
@@ -207,20 +207,20 @@
 								</div>
 							</div>
 							<div class="ssg_databox_right">
-								<h2 class="public-title">平台数据<span>Platform Data</span></h2>
+								<h2 class="public-title">{{i18n.t('平台数据')}}<span>Platform Data</span></h2>
 								<div class="platform-data" style="padding: 28px 0;">
 									<div class="flex">
 										<!--<div class="item gotyb">-->
-										<!--	<p><i class="icon"></i>用户已赚元宝</p>-->
+										<!--	<p><i class="icon"></i>{{i18n.t('用户已赚元宝')}}</p>-->
 										<!--	<h4><span class="arktitle" id="count_number">800</span></h4>-->
 											<!--<count-to :startVal='startVal' :endVal='endVal' :duration='3000'></count-to>-->
 										<!--</div>-->
 										<div class="item zql">
-											<p><i class="icon"></i>用户赚钱率</p>
+											<p><i class="icon"></i>{{i18n.t('用户赚钱率')}}</p>
 											<h4><span class="arktitle2">65%</span></h4>
 										</div>
 										<div class="item regnum">
-											<p><i class="icon"></i>用户注册人数</p>
+											<p><i class="icon"></i>{{i18n.t('用户注册人数')}}</p>
 											<h4><span class="arktitle3">292</span></h4>
 										</div>
 									</div>

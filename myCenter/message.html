@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>消息中心</title>
+    <title>{{i18n.t('消息中心')}}</title>
     <link rel="stylesheet" type="text/css" href="css/message.css"/>
     <script type="text/javascript" src="../public/js/base.js"></script>
 </head>
@@ -18,36 +18,36 @@
                 <nav class="left">
                         <div class="member">
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>会员中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>{{i18n.t('会员中心')}}</blockquote>
                                 <li>
-                                    <a href="/myCenter/member.html">会员中心</a>
+                                    <a href="/myCenter/member.html">{{i18n.t('会员中心')}}</a>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/betrecord.html">投注记录</a>
+                                    <a href="/myCenter/betrecord.html">{{i18n.t('投注记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/lotteryrecord.html">中奖记录</a>
+                                    <a href="/myCenter/lotteryrecord.html">{{i18n.t('中奖记录')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/accountDetails.html">账号明细</a>
+                                    <a href="/myCenter/accountDetails.html">{{i18n.t('账号明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/userInfo.html">账号信息</a>
+                                    <a href="/myCenter/userInfo.html">{{i18n.t('账号信息')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/recharge.html">充值</a>
+                                    <a href="/myCenter/recharge.html">{{i18n.t('充值')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li v-if="agencyType!=6">
-                                    <a href="/myCenter/draw.html">提款</a>
+                                    <a href="/myCenter/draw.html">{{i18n.t('提款')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li class="on">
-                                    <a href="/myCenter/message.html">消息中心</a>
+                                    <a href="/myCenter/message.html">{{i18n.t('消息中心')}}</a>
                                     <div class="hr"></div>
                                 </li>
                     
@@ -55,33 +55,33 @@
                         </div>
                         <div class="agency" v-if="agencyType==1" v-cloak>
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>{{i18n.t('代理中心')}}</blockquote>
                                 <li>
-                                    <a href="/agency/agentIntro.html">代理说明</a>
+                                    <a href="/agency/agentIntro.html">{{i18n.t('代理说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentReport.html">代理报表</a>
+                                    <a href="/agency/agentReport.html">{{i18n.t('代理报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/lowerReport.html">下级报表</a>
+                                    <a href="/agency/lowerReport.html">{{i18n.t('下级报表')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/downAccount.html">下级开户</a>
+                                    <a href="/agency/downAccount.html">{{i18n.t('下级开户')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentMember.html">会员管理</a>
+                                    <a href="/agency/agentMember.html">{{i18n.t('会员管理')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyBetDetail.html">投注说明</a>
+                                    <a href="/agency/agencyBetDetail.html">{{i18n.t('投注说明')}}</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyDealDetail.html">交易明细</a>
+                                    <a href="/agency/agencyDealDetail.html">{{i18n.t('交易明细')}}</a>
                                     <div class="hr"></div>
                                 </li>
                             </ul>
@@ -96,7 +96,7 @@
                         <div class="mylottery_section3" style="margin: 0;">
                             <div class="new_lottery">
                                 <div class="new_lottery_title title">
-                                    <h1>消息中心</h1>
+                                    <h1>{{i18n.t('消息中心')}}</h1>
                                     <div class="clear"></div>
                                 </div>
                                 <div class="message_tip">
@@ -109,15 +109,15 @@
                                     <thead>
                                     <tr>
                                         <th width="100"></th>
-                                        <th>状态</th>
-                                        <th>短信标题</th>
-                                        <th>发布时间</th>
-                                        <th>操作</th>
+                                        <th>{{i18n.t('状态')}}</th>
+                                        <th>{{i18n.t('短信标题')}}</th>
+                                        <th>{{i18n.t('发布时间')}}</th>
+                                        <th>{{i18n.t('操作')}}</th>
                                     </tr>
                                     </thead>
                                     <tbody id="record_tb" v-cloak>
                                     <tr v-if="ContentList.length==0">
-                                        <td colspan="7">暂无数据</td>
+                                        <td colspan="7">{{i18n.t('暂无数据')}}</td>
                                     </tr>
                                     <tr v-for="(item,index) in ContentList">
                                         <td>
@@ -128,10 +128,10 @@
 													</span>
                                         </td>
                                         <td v-if="item.readStatus==0">
-                                            <span style="color: blue;">已读</span>
+                                            <span style="color: blue;">{{i18n.t('已读')}}</span>
                                         </td>
                                         <td v-if="item.readStatus==1">
-                                            <span style="color: red;">未读</span>
+                                            <span style="color: red;">{{i18n.t('未读')}}</span>
                                         </td>
                                         <td>
                                             <a href="JavaScript:void(0)" style="color:#005aa0;"
@@ -143,9 +143,9 @@
                                         </td>
                                         <td style="color:#005aa0;">
                                             <a href="JavaScript:void(0)" style="color:#005aa0;"
-                                               @click="getMessageInfo(item.id,item.title,item.contents,item.readStatus,index)">详情</a>
+                                               @click="getMessageInfo(item.id,item.title,item.contents,item.readStatus,index)">{{i18n.t('详情')}}</a>
                                             <a href="JavaScript:void(0)" style="color:#005aa0;"
-                                               @click="delMsg(item.id,item.readStatus)">删除</a>
+                                               @click="delMsg(item.id,item.readStatus)">{{i18n.t('删除')}}</a>
                                         </td>
                                     </tr>
 
@@ -156,15 +156,15 @@
                                     <thead>
                                     <tr>
                                         <th width="100"></th>
-                                        <th>状态</th>
-                                        <th>短信标题</th>
-                                        <th>发布时间</th>
-                                        <th>操作</th>
+                                        <th>{{i18n.t('状态')}}</th>
+                                        <th>{{i18n.t('短信标题')}}</th>
+                                        <th>{{i18n.t('发布时间')}}</th>
+                                        <th>{{i18n.t('操作')}}</th>
                                     </tr>
                                     </thead>
                                     <tbody id="record_tb" v-cloak>
                                     <tr v-if="ContentList==0||ContentList.length==0">
-                                        <td colspan="7">暂无数据</td>
+                                        <td colspan="7">{{i18n.t('暂无数据')}}</td>
                                     </tr>
                                     <tr v-for="(item,index) in ContentList">
                                         <td>
@@ -175,10 +175,10 @@
 													</span>
                                         </td>
                                         <td v-if="item.readStatus==0">
-                                            <span style="color: blue;">已读</span>
+                                            <span style="color: blue;">{{i18n.t('已读')}}</span>
                                         </td>
                                         <td v-if="item.readStatus==1">
-                                            <span style="color: red;">未读</span>
+                                            <span style="color: red;">{{i18n.t('未读')}}</span>
                                         </td>
                                         <td>
                                             <a href="JavaScript:void(0)" style="color:#005aa0;"
@@ -190,9 +190,9 @@
                                         </td>
                                         <td style="color:#005aa0;">
                                             <a href="JavaScript:void(0)" style="color:#005aa0;"
-                                               @click="getMessageInfo(item.id,item.title,item.contents,item.readStatus,index)">详情</a>
+                                               @click="getMessageInfo(item.id,item.title,item.contents,item.readStatus,index)">{{i18n.t('详情')}}</a>
                                             <a href="JavaScript:void(0)" style="color:#005aa0;"
-                                               @click="delMsg(item.id,item.readStatus)">删除</a>
+                                               @click="delMsg(item.id,item.readStatus)">{{i18n.t('删除')}}</a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -206,8 +206,8 @@
 												</span>
                                             全选
                                         </label>
-                                        <span class="btn" id="del_all_message" @click="delMsg()"><em></em>删除</span>
-                                        <span class="btn" id="mark_read" @click="remarkRead(1)"><em></em>标记为已读</span>
+                                        <span class="btn" id="del_all_message" @click="delMsg()"><em></em>{{i18n.t('删除')}}</span>
+                                        <span class="btn" id="mark_read" @click="remarkRead(1)"><em></em>{{i18n.t('标记为已读')}}</span>
                                         <!--==================================-->
                                     </div>
                                 </div>
