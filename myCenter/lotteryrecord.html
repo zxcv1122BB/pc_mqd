@@ -18,24 +18,24 @@
                 <nav class="left">
                         <div class="member">
                             <ul>
-                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>會員中心</blockquote>
+                                <blockquote class="layui-elem-quote"><span class="iconfont">&#xe643;</span>会员中心</blockquote>
                                 <li>
-                                    <a href="/myCenter/member.html">會員中心</a>
+                                    <a href="/myCenter/member.html">会员中心</a>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/betrecord.html">投註記錄</a>
+                                    <a href="/myCenter/betrecord.html">投注记录</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li class="on">
-                                    <a href="/myCenter/lotteryrecord.html">中獎記錄</a>
+                                    <a href="/myCenter/lotteryrecord.html">中奖记录</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/accountDetails.html">賬號明細</a>
+                                    <a href="/myCenter/accountDetails.html">账号明细</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/myCenter/userInfo.html">賬號信息</a>
+                                    <a href="/myCenter/userInfo.html">账号信息</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
@@ -57,31 +57,31 @@
                             <ul>
                                 <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>代理中心</blockquote>
                                 <li>
-                                    <a href="/agency/agentIntro.html">代理說明</a>
+                                    <a href="/agency/agentIntro.html">代理说明</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentReport.html">代理報表</a>
+                                    <a href="/agency/agentReport.html">代理报表</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/lowerReport.html">下級報表</a>
+                                    <a href="/agency/lowerReport.html">下级报表</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/downAccount.html">下級開戶</a>
+                                    <a href="/agency/downAccount.html">下级开户</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agentMember.html">會員管理</a>
+                                    <a href="/agency/agentMember.html">会员管理</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyBetDetail.html">投注說明</a>
+                                    <a href="/agency/agencyBetDetail.html">投注说明</a>
                                     <div class="hr"></div>
                                 </li>
                                 <li>
-                                    <a href="/agency/agencyDealDetail.html">交易明細</a>
+                                    <a href="/agency/agencyDealDetail.html">交易明细</a>
                                     <div class="hr"></div>
                                 </li>
                             </ul>
@@ -101,19 +101,19 @@
                     <!--账号总览-->
                     <div class="memberMsg ">
                         <div class="title">
-                            <div><strong>賬戶總覽</strong></div>
+                            <div><strong>账户总览</strong></div>
                         </div>
                         <div class="content">
                             <ul class="clearfix" v-cloak>
-                                <li class="xz_Coin">下註總額: <span class="red" v-cloak>{{coinAvg.betAmount}}</span>{{coinUnit}}</li>
-                                <li class="lottery_Coin">中獎總額: <span class="red" v-cloak>{{coinAvg.prizeAmount}}</span>{{coinUnit}}</li>
-                                <li class="profit_loss">盈虧: <span class="red" v-cloak>{{coinAvg.winLose}}</span>{{coinUnit}}</li>
+                                <li class="xz_Coin">下注总额: <span class="red" v-cloak>{{coinAvg.betAmount}}</span>{{coinUnit}}</li>
+                                <li class="lottery_Coin">中奖总额: <span class="red" v-cloak>{{coinAvg.prizeAmount}}</span>{{coinUnit}}</li>
+                                <li class="profit_loss">盈亏: <span class="red" v-cloak>{{coinAvg.winLose}}</span>{{coinUnit}}</li>
                             </ul>
                         </div>
                     </div>
                     <!--中奖记录-->
                     <div class="lotteryRecord">
-                        <div class="title"><strong>中獎記錄</strong></div>
+                        <div class="title"><strong>中奖记录</strong></div>
                         <div class="clear"></div>
                         <div class="content">
                             <div class="filter">
@@ -145,21 +145,21 @@
                                        cellpadding="0" border="0">
                                     <thead>
                                     <tr class="title">
-                                        <td>訂單號</td>
-                                        <td>期號</td>
-                                        <td>投註日期</td>
-                                        <td>彩種</td>
+                                        <td>订单号</td>
+                                        <td>期号</td>
+                                        <td>投注日期</td>
+                                        <td>彩种</td>
                                         <td>玩法</td>
-                                        <td>投註金額</td>
-                                        <td>中獎金額</td>
-                                        <td>狀態</td>
+                                        <td>投注金额</td>
+                                        <td>中奖金额</td>
+                                        <td>状態</td>
                                         <td>查看</td>
-                                        <td>撤單</td>
+                                        <td>撤单</td>
                                     </tr>
                                     </thead>
                                     <tbody id="betResultOrder" v-cloak>
                                     <tr>
-                                        <td colspan="10" class="nodate" height="150">暫無數據
+                                        <td colspan="10" class="nodate" height="150">暂无数据
                                         </td>
                                     </tr>
                                     </tbody>
@@ -197,17 +197,17 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>訂單號:</td>
+                            <td>订单号:</td>
                             <td v-cloak>{{orders.orderId}}</td>
-                            <td>出票狀態:</td>
+                            <td>出票状態:</td>
                             <td v-cloak>{{orders.ticketStatus==0?"出票中":"出票成功"}}</td>
                         </tr>
                         <tr style="border-bottom: 1px #E0E0E0 solid;">
-                            <td>預計獎金:</td>
+                            <td>预计奖金:</td>
                             <td v-cloak>{{orders.expectBonuses}}{{coinUnit}}</td>
                             <td>
-                                <span v-if="orders.show==true">期號:</span>
-                                <span v-else>投註方式:</span>
+                                <span v-if="orders.show==true">期号:</span>
+                                <span v-else>投注方式:</span>
                             </td>
                             <td>
                                 <span v-if="orders.show==true" v-cloak>{{orders.actionNo}}</span>

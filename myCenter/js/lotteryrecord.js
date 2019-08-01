@@ -7,7 +7,7 @@ var pc = new Vue({
 		endTime:"",
 		type:"",
 		dateContent: "近7天",
-		typeContent: "所有彩種",
+		typeContent: "所有彩种",
 		outOfThrity:"",
 		page_num:5,
 		totalPage:'',

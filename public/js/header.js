@@ -5,57 +5,57 @@ document.writeln("<div class='top-bar'>");
 document.writeln("  <div class='wrap'>");
 // 未登录时显示
 document.writeln("      <div class='bar-l clearfix' id='user_name_0'>");
-document.writeln("<span>Hi，歡迎來到 SSG 彩票網!</span>");
+document.writeln("<span>Hi，欢迎来到 SSG 彩票网!</span>");
 document.writeln("      </div>");
 // 已登录时显示
 document.writeln("      <div class='bar-l clearfix' id='user_name_1' style='display: none;'>");
-document.writeln("          <div class='user-name'>Hi，歡迎");
+document.writeln("          <div class='user-name'>Hi，欢迎");
 document.writeln("              <a href='/myCenter/member.html'  id='user_name_'></a>");
 document.writeln("          </div>");
 document.writeln("          <a href='javascript:void(0)' onclick='quitLogin()'>退出</a>");
 document.writeln("          <div class='my-count'>");
 document.writeln("              <dt>");
-document.writeln("                  <a href='javascript:void(0)'>我的賬戶</a><i></i>");
+document.writeln("                  <a href='javascript:void(0)'>我的账户</a><i></i>");
 document.writeln("              </dt>");
 document.writeln("              <div class='count-infor'>");
-document.writeln("                  <div class='count-money'>餘額:");
+document.writeln("                  <div class='count-money'>余额:");
 document.writeln("                      <span id='money' style='color: #e23a3a;'></span>");
 document.writeln("                  </div>");
 document.writeln("                  <div class='count-btn clearfix'>");
-document.writeln("                      <a href='#' onclick='draw()' class='tx-btn'>提現</a>");
+document.writeln("                      <a href='#' onclick='draw()' class='tx-btn'>提现</a>");
 document.writeln("                      <a href='#' onclick='recharge()' class='cz-btn'>充值</a>");
 document.writeln("                  </div>");
 document.writeln("                  <div class='count-link clearfix'>");
-document.writeln("                      <a href='/myCenter/betrecord.html'>投注記錄</a>");
+document.writeln("                      <a href='/myCenter/betrecord.html'>投注记录</a>");
 document.writeln("                      <a href='javascript:void(0)' onclick='quitLogin()'>退出</a>");
 document.writeln("                  </div>");
 document.writeln("              </div>");
 document.writeln("          </div>");
 document.writeln("          <a href='javascript:void(0)' onclick='recharge()'>充值</a>");
 // document.writeln("          <a href='javascript:void(0)' onclick='togoChat()' class='c-red'>聊天室</a>");
-// document.writeln("          <a href='javascript:void(0)' class='c-red'><i class=\"iconfont\" id='close' onclick='danMu(0)'>&#xe7bf;</i><i class=\"iconfont\" id='open' onclick='danMu(1)'>&#xe607;</i>彈幕</a>");
+// document.writeln("          <a href='javascript:void(0)' class='c-red'><i class=\"iconfont\" id='close' onclick='danMu(0)'>&#xe7bf;</i><i class=\"iconfont\" id='open' onclick='danMu(1)'>&#xe607;</i>弹幕</a>");
 document.writeln("      </div>");
 // 右侧部份
 document.writeln("      <div class='bar-r clearfix'>");
-document.writeln("          <a id='logBtn' href='/login/login.html'  class='login_btn' \>登錄</a>");
-document.writeln("          <a id='regBtn' href='/login/register.html' class='reg_btn'>註冊</a>");
+document.writeln("          <a id='logBtn' href='/login/login.html'  class='login_btn' \>登录</a>");
+document.writeln("          <a id='regBtn' href='/login/register.html' class='reg_btn'>注册</a>");
 document.writeln("          <a href='/agency/agentIntro.html' class='agent_center'>代理中心</a>");
 document.writeln("          <em>|</em>");
 document.writeln("          <a href='javascript:void(0)'  onclick='myCollect()'>我的收藏</a>");
 document.writeln("          <em>|</em>");
 document.writeln("          <a href='javascript:;' onclick='showLine()'><img src='/images/IMG_9848.PNG' style='width: 20px;margin-right: 5px;' />客服中心</a>");
 document.writeln("          <em>|</em>");
-document.writeln("          <a href='/'>首頁</a>");
+document.writeln("          <a href='/'>首页</a>");
 document.writeln("          <em>|</em>");
-document.writeln("          <a href='/help.html'>幫助</a>");
+document.writeln("          <a href='/help.html'>帮助</a>");
 // document.writeln("          <em>|</em>");
 // document.writeln("          <div class='language'>");
 // document.writeln("              <dt>");
-// document.writeln("                  <a href='javascript:void(0)'>語言</a><i></i>");
+// document.writeln("                  <a href='javascript:void(0)'>语言</a><i></i>");
 // document.writeln("              </dt>");
 // document.writeln("              <a id='gb2big5'><span>繁</span></a>");
 // document.writeln("                      ");
-// document.writeln("                      <div class='cz-btn' onclick='Simplized('简')'>簡體</div>");
+// document.writeln("                      <div class='cz-btn' onclick='Simplized('简')'>简体</div>");
 // document.writeln("              </div>");
 // document.writeln("          </div>");
 document.writeln("      </div>");
@@ -69,7 +69,7 @@ document.writeln("      </div>");
 document.writeln("      <div class='nav'>");
 document.writeln("          <ul class='clearfix selecz'>");
 document.writeln("              <li>");
-document.writeln("                  <a href='javascript:;' >選擇彩種</a>");
+document.writeln("                  <a href='javascript:;' >选择彩种</a>");
 document.writeln("          <div class='select-lottery drop_down'>");
 document.writeln("              <ul class='cz-list'>");
 document.writeln("                  <li v-for='item in fixedDisplay' v-cloak>");
@@ -84,7 +84,7 @@ document.writeln("              </ul>");
 // document.writeln("              <ul class='other-lottery' v-cloak>");
 // document.writeln("                  <li>");
 // document.writeln("                      <h3>");
-// document.writeln("                          <span>高頻");
+// document.writeln("                          <span>高频");
 // document.writeln("                              <i></i>");
 // document.writeln("                          </span>");
 // document.writeln("                      </h3>");
@@ -102,7 +102,7 @@ document.writeln("              </ul>");
 // document.writeln("                  </li>");
 // document.writeln("                  <li>");
 // document.writeln("                      <h3>");
-// document.writeln("                          <span>低頻");
+// document.writeln("                          <span>低频");
 // document.writeln("                              <i></i>");
 // document.writeln("                          </span>");
 // document.writeln("                      </h3>");
@@ -122,22 +122,22 @@ document.writeln("              </ul>");
 document.writeln("          </div>");
 document.writeln("              </li>");
 document.writeln("              <li>");
-document.writeln("                  <a href='/lothall.html'>購彩大廳</a>");
+document.writeln("                  <a href='/lothall.html'>购彩大厅</a>");
 document.writeln("              </li>");
 document.writeln("              <li>");
-document.writeln("                  <a href='/kjgg/lottery.html'>開獎公告</a>");
+document.writeln("                  <a href='/kjgg/lottery.html'>开奖公告</a>");
 document.writeln("              </li>");
 document.writeln("              <li>");
-document.writeln("                  <a  href='/favorable.html'>優惠活動</a>");
+document.writeln("                  <a  href='/favorable.html'>优惠活动</a>");
 document.writeln("              </li>");
 document.writeln("              <li class='phone-code'>");
 document.writeln("                  <a>");
 document.writeln("                      <i class='phone-icon'></i>");
-document.writeln("                      <span>手機購彩</span>");
+document.writeln("                      <span>手机购彩</span>");
 document.writeln("                  </a>");
 document.writeln("                  <div class='two-code'>");
 document.writeln("                      <p id='qrcode'></p>");
-document.writeln("                      <h3>掃碼下載手機版</h3>");
+document.writeln("                      <h3>扫码下载手机版</h3>");
 document.writeln("                  </div>");
 document.writeln("              </li>");
 document.writeln("          </ul>");
@@ -197,13 +197,13 @@ function showLine() {
     layer.open({
         type: 1,
         title: '客服',
-        content: "<div class='two-code' style='padding:30px;'><img src='/images/IMG_9849.PNG'></p><h3 style='margin-top: 20px;text-align:center;'>客服二維碼</h3></div>",
+        content: "<div class='two-code' style='padding:30px;'><img src='/images/IMG_9849.PNG'></p><h3 style='margin-top: 20px;text-align:center;'>客服二维码</h3></div>",
         success: function() {
             jQuery('#kfCode').qrcode({
                 render: "canvas", // 渲染方式有table方式和canvas方式
                 width: 150, //默认宽度
                 height: 150, //默认高度
-                text: '提供二維碼地址', //二维码内容
+                text: '提供二维码地址', //二维码内容
                 typeNumber: -1, //计算模式一般默认为-1
                 correctLevel: 0, //二维码纠错级别
                 background: "#ffffff", //背景颜色
@@ -345,7 +345,7 @@ function initIsLogin() {
 
 function recharge() {
 	if (localStorage.userType == 2) {
-		alert('試玩賬號不能充值');
+		alert('试玩账号不能充值');
 	} else {
 		openPage('/myCenter/recharge.html');
 	}
@@ -353,7 +353,7 @@ function recharge() {
 
 function togoChat() {
 	if (localStorage.userType == 2) {
-		alert('試玩賬號不能進入聊天室');
+		alert('试玩账号不能进入聊天室');
 	} else {
 		openPage('/chat/chat.html');
 	}
@@ -361,7 +361,7 @@ function togoChat() {
 
 function draw() {
 	if (localStorage.userType == 2) {
-		alert('試玩賬號不能提款');
+		alert('试玩账号不能提款');
 	} else {
 		openPage('/myCenter/draw.html');
 	}

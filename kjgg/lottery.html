@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>開獎公告</title>
+    <title>开奖公告</title>
     <script src="../public/js/base.js"></script>
 </head>
 
@@ -42,13 +42,13 @@
                                         <span v-for="it in  item.luck_number">{{it}}</span>
                                     </p>
                                 </div>
-                                <div class="prize-number" v-else><span class="league">暫無數據</span></div>
+                                <div class="prize-number" v-else><span class="league">暂无数据</span></div>
                                 <div class="option">
-                                    <a href="javascript:;" @click="togoSkip(item)" class="kj-detail">開獎詳情</a>|
-                                    <a @click="togoChart(item.gameID)" class="kj-detail">走勢圖</a>
+                                    <a href="javascript:;" @click="togoSkip(item)" class="kj-detail">开奖详情</a>|
+                                    <a @click="togoChart(item.gameID)" class="kj-detail">走势图</a>
                                 </div>
                                 <div class="buy">
-                                    <a href="javascript:;" @click="togoBuy(item.bet_url)" class="border-btn">購買</a>
+                                    <a href="javascript:;" @click="togoBuy(item.bet_url)" class="border-btn">购买</a>
                                 </div>
                             </li>
                         </ul>
