@@ -156,10 +156,12 @@ document.writeln("      <div class='hoverDiv' onclick='showLine()'><img style='w
 document.writeln("  </div>");
 
 initIsLogin();
-
-$.getScript("./common/i18n.js", function() {
-	$.getScript("./common/lang/cn.js", function() {
-		$.getScript("./common/lang/tr.js", function() {
+Vue.prototype.i18n = {
+	t: () => {}
+}
+$.getScript("../../common/i18n.js", function() {
+	$.getScript("../../common/lang/cn.js", function() {
+		$.getScript("../../common/lang/tr.js", function() {
 			console.log(11111);
 			Vue.use(VueI18n) // 通过插件的形式挂载
 			let i18n = new VueI18n({
