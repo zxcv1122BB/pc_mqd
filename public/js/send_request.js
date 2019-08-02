@@ -99,6 +99,8 @@ var base = {
 
 		options.data.timeStamp = new Date().getTime();
 
+		options.data.lang = localStorage.getItem('lang') || 'tr';
+
 		// alert(JSON.stringify(options.data));
 
 		var self = this,
@@ -258,6 +260,8 @@ var base = {
 		//    $('.loading_wait').show();
 		//  }
         options.data.timeStamp = new Date().getTime();
+
+		options.data.lang = localStorage.getItem('lang') || 'tr';
 
 		var self = this;
 		//  self.BASE_URL +=  this.BASE_IP;
