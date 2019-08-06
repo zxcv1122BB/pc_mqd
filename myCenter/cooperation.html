@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>{{i18n.t('合买记录')}}</title>
+		<title>合买记录</title>
 		<link rel="stylesheet" href="../public/css/base.css" />
 		<script type="text/javascript" src="../public/js/base.js"></script>
 	</head>
@@ -92,7 +92,7 @@
 						<!--顶部用户信息-->
 						<div id="top">
 							<div>
-								<div class="welcome">您好：<strong class="userName red" id="userName"> </strong>&nbsp;账号余额：<span class="red coin" id="coin11">0.00</span>{{i18n.t('元')}}<span class="btn recharge"><a href="recharge.html">{{i18n.t('充值')}}</a></span><span class="btn withdrawal" v-if="agencyType!=6"><a href="draw.html">{{i18n.t('提款')}}</a></span></div>
+								<div class="welcome">{{i18n.t('您好')}}：<strong class="userName red" id="userName"> </strong>&nbsp;{{i18n.t('账号余额')}}：<span class="red coin" id="coin11">0.00</span>{{i18n.t('元')}}<span class="btn recharge"><a href="recharge.html">{{i18n.t('充值')}}</a></span><span class="btn withdrawal" v-if="agencyType!=6"><a href="draw.html">{{i18n.t('提款')}}</a></span></div>
 								<nav class="topNav"><span class="active" id="choose_0" data-index="0" @click="choose_nav(0)">{{i18n.t('发起合买')}}</span><span data-index="1" id="choose_1" @click="choose_nav(1)">{{i18n.t('参与合买')}}</span></nav>
 								<section id="record">
 									<div id="show_0">
@@ -144,7 +144,7 @@
 												</thead>
 												<tbody class="betResultOrder" v-cloak>
 													<tr>
-														<td colspan="10" class="nodate" height="200">暂无数据，
+														<td colspan="10" class="nodate" height="200">{{i18n.t('暂无数据')}}，
 															<a href="/lotteryV3/lottery.do">{{i18n.t('立即购彩')}}</a>
 														</td>
 													</tr>
@@ -154,9 +154,9 @@
 														<td v-cloak>{{item.lotParId}}</td>
 														<td v-cloak>{{item.createDate}}</td>
 														<td v-cloak>
-															<font color="red">{{item.totalMoney}}</font> 元</td>
+															<font color="red">{{item.totalMoney}}</font> {{i18n.t('元')}}</td>
 														<td v-cloak>
-															<font color="red">{{item.percentage}}</font> 元</td>
+															<font color="red">{{item.percentage}}</font> {{i18n.t('元')}}</td>
 														<td v-cloak>
 															<font color="red">{{item.price}}</font>{{i18n.t('元')}}</td>
 														<td class="pro_td">
@@ -169,7 +169,7 @@
 																</p>
 															</div>
 														</td>
-														<td v-cloak>{{item.price}}元</td>
+														<td v-cloak>{{item.price}}{{i18n.t('元')}}</td>
 														<td v-cloak>{{item.isSuccess==0?"合买失效":(item.isSuccess==1?"合买成功":"处于合买中")}}</td>
 														<td><button class="layui-btn layui-btn-mini" @click="selectMore(index)">{{i18n.t('显示详情')}}</button>
 														</td>
@@ -193,7 +193,7 @@
 																	<td v-cloak>{{moreArr.gameName}}</td>
 																	<td v-cloak>{{moreArr.actionNo}}</td>
 																	<td v-cloak>{{moreArr.times}}</td>
-																	<td v-cloak>{{moreArr.amount}}元</td>
+																	<td v-cloak>{{moreArr.amount}}{{i18n.t('元')}}</td>
 																	<td v-cloak>{{moreArr.ticketStatus==1?"已出票":"未出票"}}</td>
 																	<td><button class="layui-btn layui-btn-mini" @click="selectdatasById(moreArr.actionDataStr,moreArr.type)">{{i18n.t('查看详情')}}</button></td>
 																	<td v-cloak>{{moreArr.lotStatus==0?"未中奖":"已中奖"}}</td>
@@ -284,7 +284,7 @@
 												</thead>
 												<tbody class="betResultOrder">
 													<tr>
-														<td colspan="10" class="nodate" height="200">暂无数据，
+														<td colspan="10" class="nodate" height="200">{{i18n.t('暂无数据')}}，
 															<a href="/lotteryV3/lottery.do">{{i18n.t('立即购彩')}}</a>
 														</td>
 													</tr>
@@ -296,7 +296,7 @@
 														<td v-cloak>
 															<font color="red">{{item.buyPieces}}</font> 份</td>
 														<td v-cloak>
-															<font color="red">{{item.buyTotalMoney}}</font> 元</td>
+															<font color="red">{{item.buyTotalMoney}}</font> {{i18n.t('元')}}</td>
 														<td v-cloak>{{item.scale}}</td>
 														<td v-cloak>
 															<span v-if="item.lotStatus==1"><font color="red">{{item.bonus}}</font>{{i18n.t('元')}}</span>

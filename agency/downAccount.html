@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>{{i18n.t('下级开户')}}</title>
+    <title>下级开户</title>
     <script src="../public/js/base.js"></script>
     <script src="../public/js/clipboard.min.js"></script>
 </head>
@@ -96,10 +96,10 @@
                             <div class="TabLi" v-if="topStatus==0">
                                 <ul class="searchFirst">
                                     <li>
-                                        <span>开户类型:</span>
+                                        <span>{{i18n.t('开户类型')}}:</span>
                                         <a href="javascript:;" :class="['khType',userType==1?'active':'']" @click="userType=1">{{i18n.t('代理')}}</a>
                                         <a href="javascript:;" :class="['khType',userType==2?'active':'']"  @click="userType=2" >{{i18n.t('玩家')}}</a> <br />
-                                        返点设置：请先为下级设置返点。<a href="agencyRebateList.html" class="rebateDesLink">{{i18n.t('点击查看返点赔率表')}}</a>
+                                        {{i18n.t('返点设置')}}：{{i18n.t('请先为下级设置返点')}}。<a href="agencyRebateList.html" class="rebateDesLink">{{i18n.t('点击查看返点赔率表')}}</a>
                                     </li>
                                 </ul>
                                 <div id="NextOpen"  class="bonusTable"  v-if="topStatus==0">
@@ -107,7 +107,7 @@
                                         <li>{{item.codeName}}</li>
                                         <li>
                                             <input type="number" min="0.0" step="0.1" max="8.0" class="userInput mgl20" @blur="checkData(index,item.nowRebate)"  v-model="modelRebatesList[index]"/>
-                                            <span>（自身返点{{item.nowRebate}}，可为下级设置返点范围0.0-{{item.nowRebate}}）</span>
+                                            <span>（{{i18n.t('自身返点')}}{{item.nowRebate}}，{{i18n.t('可为下级设置返点范围')}}0.0-{{item.nowRebate}}）</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -115,10 +115,10 @@
                                 <div class="pl_tips">
                                     <p>
                                         <i></i>
-                                        ※ 温馨提示： <br/>
-                                        1、不同的返点赔率不同，返点越高赔率越高。<br/>
-                                        2、代理可获得的佣金等于代理自身返点与下级返点的差值，如代理自身返点6，下级返点4，代理可获得下级投注金额的2%，即下级下注100元，代理可获得2元。<br/>
-                                        3、下级返点值设得越低，下级的赔率就越低，建议给下级设置的返点不要过低。
+                                        ※ {{i18n.t('温馨提示')}}： <br/>
+                                        1、{{i18n.t('不同的返点赔率不同')}}，{{i18n.t('返点越高赔率越高')}}。<br/>
+                                        2、{{i18n.t('代理可获得的佣金等于代理自身返点与下级返点的差值')}}，{{i18n.t('如代理自身返点')}}6，{{i18n.t('下级返点')}}4，{{i18n.t('代理可获得下级投注金额的')}}2%，{{i18n.t('即下级下注')}}100{{i18n.t('元')}}，代理可获得')}}2{{i18n.t('元')}}。<br/>
+                                        3、{{i18n.t('下级返点值设得越低')}}，{{i18n.t('下级的赔率就越低')}}，{{i18n.t('建议给下级设置的返点不要过低')}}。
 
                                     </p>
                                 </div>
@@ -126,7 +126,7 @@
                             <div class="TabLi" v-if="topStatus==1">
                                 <ul class="searchFirst">
                                     <li>
-                                        <span>开户类型:</span>
+                                        <span>{{i18n.t('开户类型')}}:</span>
                                         <a href="javascript:;" :class="['khType',userType==1?'active':'']" @click="userType=1">{{i18n.t('代理')}}</a>
                                         <a href="javascript:;" :class="['khType',userType==2?'active':'']" @click="userType=2">{{i18n.t('玩家')}}</a> <br />
                                     </li>
@@ -169,7 +169,7 @@
                                 <div class="pl_tips">
                                     <p>
                                         <i></i>
-                                        温馨提示：“邀请码” 与 “注册链接” 功能一致，可以使用邀请码，也可以使用注册链接。
+                                        {{i18n.t('温馨提示')}}：“{{i18n.t('邀请码')}}” {{i18n.t('与')}} “{{i18n.t('注册链接')}}” {{i18n.t('功能一致')}}，{{i18n.t('可以使用邀请码')}}，{{i18n.t('也可以使用注册链接')}}。
                                     </p>
                                 </div>
                             </div>

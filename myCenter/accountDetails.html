@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{i18n.t('帐号明细')}}</title>
+    <title>帐号明细</title>
     <link rel="stylesheet" type="text/css" href="css/betrecord.css"/>
     <script src="../public/js/base.js"></script>
 </head>
@@ -93,8 +93,8 @@
                     <!--顶部用户信息-->
                     <div id="top">
                         <div>
-                            <div class="welcome">您好：<strong class="userName red"
-                                                            id="userName"> </strong>&nbsp;账号余额：<span
+                            <div class="welcome">{{i18n.t('您好')}}：<strong class="userName red"
+                                                            id="userName"> </strong>&nbsp;{{i18n.t('账号余额')}}：<span
                                     class="red coin" id="coin11">0.00</span>{{coinUnit}}<span class="btn recharge"><a
                                     href="recharge.html">{{i18n.t('充值')}}</a></span><span class="btn withdrawal" v-if="agencyType!=6"><a
                                     href="draw.html">{{i18n.t('提款')}}</a></span></div>
@@ -105,8 +105,8 @@
                                 </div>
                                 <div class="content">
                                     <ul class="clearfix" v-cloak>
-                                        <li class="xz_Coin">充值总额: <span class="red" v-cloak>{{coinAvg.depositAmount || 0}}</span>{{coinUnit}}</li>
-                                        <li class="lottery_Coin">提款总额: <span class="red" v-cloak>{{coinAvg.withdrawAmount || 0}}</span>{{coinUnit}}</li>
+                                        <li class="xz_Coin">{{i18n.t('充值总额')}}: <span class="red" v-cloak>{{coinAvg.depositAmount || 0}}</span>{{coinUnit}}</li>
+                                        <li class="lottery_Coin">{{i18n.t('提款总额')}}: <span class="red" v-cloak>{{coinAvg.withdrawAmount || 0}}</span>{{coinUnit}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -309,8 +309,8 @@
                         <div class="pl_tips">
                                 <p>
                                     <i></i>
-                                    	温馨提示：交易明细非即时显示，可能有5-10分钟的延迟，请稍等片刻。<br/>
-                                    	　　　　　交易明细最多保留7天。
+                                    {{i18n.t('温馨提示')}}：{{i18n.t('交易明细非即时显示')}}，{{i18n.t('可能有')}}5-10{{i18n.t('分钟的延迟')}}，{{i18n.t('请稍等片刻')}}。<br/>
+                                    　　　　　{{i18n.t('交易明细最多保留')}}7天。
                                 </p>
                         </div>
                     </div>

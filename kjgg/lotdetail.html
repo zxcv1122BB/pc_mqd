@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>{{i18n.t('开奖详情')}}</title>
+    <title>开奖详情</title>
     <script src="../public/js/base.js"></script>
 </head>
 
@@ -12,7 +12,7 @@
 <div class="lotdetail-container unable_select" id="lotdetail" v-cloak>
     <div class="detail-info">
         <div class="refer">
-            <span>玩法:</span>
+            <span>{{i18n.t('玩法')}}:</span>
             <div class="select_type">
                 <p >{{playTypeName}}
                     <b :class="isShowType?'down':'up'"></b>
@@ -43,7 +43,7 @@
                             <input type="text" id="selDate">
                         </div>
                     </div>
-                    <p class="fl" v-show="playType!='sfc'&&playType!='rxj'&&playType!='dc'&&playType!='jczq'&&playType!='jclq'" style="padding-left: 10px">开奖日期:{{open_time}} </p>
+                    <p class="fl" v-show="playType!='sfc'&&playType!='rxj'&&playType!='dc'&&playType!='jczq'&&playType!='jclq'" style="padding-left: 10px">{{i18n.t('开奖日期')}}:{{open_time}} </p>
                     <p class="fz-s fl" style="display: none">{{SubTitle}}</p>
                 </div>
                 <div class="prize-number fl"  v-show="playType!='sfc'&&playType!='rxj'&&playType!='dc'&&playType!='jczq'&&playType!='jclq'" >
@@ -113,13 +113,13 @@
                             <td>{{i18n.t('一等奖')}}</td>
                             <td v-text="prize_store.sfc_prize.first_prize_number===null?'-':prize_store.sfc_prize.first_prize_number"></td>
                             <td class="red" v-text="prize_store.sfc_prize.first_prize_bonus===null?'-':prize_store.sfc_prize.first_prize_bonus"></td>
-                            <td>中14场</td>
+                            <td>{{i18n.t('中')}}14{{i18n.t('场')}}</td>
                         </tr>
                         <tr>
                             <td>{{i18n.t('二等奖')}}</td>
                             <td v-text="prize_store.sfc_prize.second_prize_number===null?'-':prize_store.sfc_prize.second_prize_number"></td>
                             <td class="red" v-text="prize_store.sfc_prize.second_prize_bonus===null?'-':prize_store.sfc_prize.second_prize_bonus"></td>
-                            <td>中13场</td>
+                            <td>{{i18n.t('中')}}13{{i18n.t('场')}}</td>
                         </tr>
                         <!-- <tr>
                             <td>{{i18n.t('任选九')}}</td>
@@ -281,10 +281,10 @@
                             <td>{{item.courtScore}}</td>
                             <td>
                                         <span class="win" v-if="item.courtScoreResult=='home_win'">
-                                            主胜
+                                            {{i18n.t('主胜')}}
                                         </span>
                                 <span class="lose" v-else>
-                                            主负
+                                    {{i18n.t('主负')}}
                                         </span>
                             </td>
                             <td>{{item.matchOdds?item.matchOdds:'-'}}</td>
@@ -293,13 +293,13 @@
                             </td>
                             <td>
                                         <span class="win" v-if="item.letResult==1">
-                                            主胜
+                                            {{i18n.t('主胜')}}
                                         </span>
                                 <span class="lose" v-else-if="item.letResult==0">
-                                            主负
+                                    {{i18n.t('主负')}}
                                         </span>
                                 <span class="lose" v-else>
-                                            暂无
+                                    {{i18n.t('暂无')}}
                                         </span>
                             </td>
                             <td>

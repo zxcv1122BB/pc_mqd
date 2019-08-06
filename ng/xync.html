@@ -19,7 +19,7 @@
     		<ul style="display: flex;align-items: center;">
     			<li class="icon"><img :src="'../'+pic_url"></li>
     			<li><h2 class="title" v-cloak>{{typeName}}</h2></li>
-    			<div class="welcome" style="padding: 8px 40px;">账号余额: <span id="coin11" class="red coin" style="font-size: 20px;" v-cloak>{{pack_coin}}</span>{{i18n.t('元')}}</div>
+    			<div class="welcome" style="padding: 8px 40px;">{{i18n.t('账号余额')}}: <span id="coin11" class="red coin" style="font-size: 20px;" v-cloak>{{pack_coin}}</span>{{i18n.t('元')}}</div>
     		</ul>
     	</div>
     	<div class="trendOpenBtn" style="display: flex;align-items: center;">
@@ -37,7 +37,7 @@
 				第{{preventBanner}}期
 			</div>
             <div class="time" v-if="!isNaN(preventBanner)">
-                <span v-cloak>距投注截止 还剩下:</span>
+                <span v-cloak>{{i18n.t('距投注截止')}} {{i18n.t('还剩下')}}:</span>
             </div>
             <div class="time" v-else>
                 <span v-cloak>{{preventBanner}}</span>
@@ -47,8 +47,8 @@
 			<span v-cloak v-html="deadlineStr" v-if="deadlineStr" :class="[deadlineStr == '封盘' || deadlineStr == '暂停销售' ? 'red' : '']">{{deadlineStr}}</span>
 		</div>
         <p class="banner_num">
-            <span v-if="previousIssue_tips" style="font-size: 1.5rem;color: red;">开奖中...</span>
-            <span v-else-if="recentlyNum.length==0" style="font-size: 1.5rem;color: red;">数据获取中...</span>
+            <span v-if="previousIssue_tips" style="font-size: 1.5rem;color: red;">{{i18n.t('开奖中')}}...</span>
+            <span v-else-if="recentlyNum.length==0" style="font-size: 1.5rem;color: red;">{{i18n.t('数据获取中')}}...</span>
 		    <a v-if="previousIssue_tips" href="javascript:;" class="refresh" @click="refresh"><i class="iconfont" style="font-size: 15px;color: #f67620">&#xe667;</i></a>
         </p>
 		<div class="record" style="padding-left: 0;">
@@ -86,7 +86,7 @@
     <section class="mainArea">
       <div class="playArea">
         <div class="title">
-          <span v-cloak>玩法说明：{{game_tips}}</span>
+          <span v-cloak>{{i18n.t('玩法说明')}}：{{game_tips}}</span>
         </div>
         <div class="area">
           <!-- 投注区域 -->
@@ -197,7 +197,7 @@
               <span class="red ">{{parseFloat(bets*singleCoins).toFixed(2)}}</span> {{coinUnit}} 单注
               <input type="text " @click.stop="dianji" v-model="singleCoins" @keyup="handleCoins" maxlength="6" class="betSum ">{{coinUnit}}
               <span class="clearTopBtn " @click="clearSelectData(0,0)">{{i18n.t('清空上方选号')}}</span>
-              <span class="odds"  v-cloak> 赔率:<em :title='orderOdds' class="orderOdds">{{orderOdds}}</em></span>
+              <span class="odds"  v-cloak> {{i18n.t('赔率')}}:<em :title='orderOdds' class="orderOdds">{{orderOdds}}</em></span>
               <!-- <span id="odds">{{orderOdds}}</span> -->
               <!-- <input class="range" type="range" max="100" min="0" v-model="rebateNum" @input="changeRebate">
               <span class="rebate">返利:{{rebate}}%</span> -->
@@ -207,7 +207,7 @@
             </div>
 						<div style="ceng" class="ceng" v-show="show_dd">
     					    <div class="box">
-    					        <h1 style="text-align:center;padding: 15px 0;">点击选择金额:</h1>
+    					        <h1 style="text-align:center;padding: 15px 0;">{{i18n.t('点击选择金额')}}:</h1>
                                 <ul>
                                     <li v-for="(item, inx) in testNumber" :key="inx" @click="select_money(item)" v-cloak><span>{{item}}</span></li>
                                 </ul>
@@ -267,7 +267,7 @@
             </div>
             <div class="btnList">
               <div class="submitBtn" @click="handleBets">
-                立即投注
+                {{i18n.t('立即投注')}}
               </div>
             </div>
           </div>
@@ -288,11 +288,11 @@
                                      @click="closeTips($event,tipsContent.showSecond)">返回
                                 </div>
                 <ul class="tips_msgContent" v-if="tipsContent.tzType">
-                  <li>投注类型：{{tipsContent.tzType}}</li>
-                  <li>投注注数：{{tipsContent.tzNum}}注</li>
-                  <li>投注金额：{{tipsContent.tzMoney+coinUnit}}</li>
-                  <li>剩余金额：{{tipsContent.lastCoin+coinUnit}}<a href="../myCenter/betrecord.html">{{i18n.t('前往查看')}}</a></li>
-                  <li>{{tenSecond}}秒后自动刷新本页</li>
+                  <li>{{i18n.t('投注类型')}}：{{tipsContent.tzType}}</li>
+                  <li>{{i18n.t('投注注数')}}：{{tipsContent.tzNum}}注</li>
+                  <li>{{i18n.t('投注金额')}}：{{tipsContent.tzMoney+coinUnit}}</li>
+                  <li>{{i18n.t('剩余金额')}}：{{tipsContent.lastCoin+coinUnit}}<a href="../myCenter/betrecord.html">{{i18n.t('前往查看')}}</a></li>
+                  <li>{{tenSecond}}{{i18n.t('秒后自动刷新本页')}}</li>
                 </ul>
                 <div class="btnList" v-if="!tipsContent.showSecond">
                   <span class="goCenter"><a href="../myCenter/betrecord.html">{{i18n.t('前往会员中心查看')}}</a></span><span class="continue"><a href="javascript:;" @click="closeTips($event,3)">{{i18n.t('继续投注')}}</a></span>

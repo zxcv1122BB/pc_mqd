@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>{{i18n.t('投注明细')}}</title>
+    <title>投注明细</title>
     <script src="../public/js/base.js"></script>
 </head>
 <body>
@@ -95,7 +95,7 @@
                             </div>
                             <div class="search">
                                 <span>
-                                    类型 :
+                                    {{i18n.t('类型')}} :
                                     <a href="javascript:" :class="status==0?'active':''" @click="changeStatus(0)">{{i18n.t('全部')}}</a>
                                     <a href="javascript:" :class="status==2?'active':''" @click="changeStatus(2)">{{i18n.t('已中奖')}}</a>
                                     <a href="javascript:" :class="status==1?'active':''" @click="changeStatus(1)">{{i18n.t('未中奖')}}</a>
@@ -180,7 +180,7 @@
                     <td>{{ordersTwo.openNo}}</td>
                 </tr>
                 <tr>
-                    <td>投注金额:</td>
+                    <td>{{i18n.t('投注金额')}}:</td>
                     <td>{{ordersTwo.amount}}{{coinUnit}}</td>
                     <td>中奖金额:</td>
                     <td>

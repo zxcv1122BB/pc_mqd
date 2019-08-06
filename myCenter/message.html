@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{i18n.t('消息中心')}}</title>
+    <title>消息中心</title>
     <link rel="stylesheet" type="text/css" href="css/message.css"/>
     <script type="text/javascript" src="../public/js/base.js"></script>
 </head>
@@ -101,9 +101,9 @@
                                 </div>
                                 <div class="message_tip">
                                     <span class="on" @click="showMessage(0)" id="on_0"><a t="0"
-                                                                                          href="javascript:void(0);">全部(<em
-                                            id="all_all">0</em>封）</a></span> <span @click="showMessage(1)" id="on_1"><a
-                                        t="1" href="javascript:void(0);">未读(<em id="all_unread">0</em>封）</a></span>
+                                                                                          href="javascript:void(0);">{{i18n.t('全部')}}(<em
+                                            id="all_all">0</em>{{i18n.t('封')}}）</a></span> <span @click="showMessage(1)" id="on_1"><a
+                                        t="1" href="javascript:void(0);">{{i18n.t('未读')}}(<em id="all_unread">0</em>{{i18n.t('封')}}）</a></span>
                                 </div>
                                 <table class="new_lottery_tab" cellspacing="0" cellpadding="0" id="new_lottery_tab_0">
                                     <thead>
@@ -204,7 +204,7 @@
 													<input type="checkbox" class="checkAll" @click="checkAll"
                                                            id="checkAll">
 												</span>
-                                            全选
+                                                {{i18n.t('全选')}}
                                         </label>
                                         <span class="btn" id="del_all_message" @click="delMsg()"><em></em>{{i18n.t('删除')}}</span>
                                         <span class="btn" id="mark_read" @click="remarkRead(1)"><em></em>{{i18n.t('标记为已读')}}</span>
@@ -228,7 +228,7 @@
             <!--提示是否删除-->
             <div class="popDel">
                 <div>
-                    <i class="layui-layer-ico layui-layer-ico3"></i>确定删除此信息？
+                    <i class="layui-layer-ico layui-layer-ico3"></i>{{i18n.t('确定删除此信息')}}？
                 </div>
             </div>
         </div>

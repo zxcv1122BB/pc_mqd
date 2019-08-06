@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>{{i18n.t('优惠活动')}}</title>
+    <title>优惠活动</title>
     <link rel="stylesheet" href="css/favorable.css"/>
     <script src="../public/js/base.js"></script>
 </head>
@@ -13,7 +13,7 @@
     <div class="favorable_container unable_select banner" id="fav">
         <div class="wel">
             <h3>
-                欢迎光临
+                {{i18n.t('欢迎光临')}}
                 <span>/WELCOME</span>
             </h3>
         </div>
@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="no_data" v-else>
-            <p>暂无活动，敬请期待</p>
+            <p>{{i18n.t('暂无活动')}}，{{i18n.t('敬请期待')}}</p>
         </div>
     </div>
     <script src="../public/js/footer.js"></script>

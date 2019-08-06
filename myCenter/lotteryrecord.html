@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{i18n.t('中奖记录')}}</title>
+    <title>中奖记录</title>
     <link rel="stylesheet" type="text/css" href="css/lotteryrecord.css"/>
     <script type="text/javascript" src="../public/js/base.js"></script>
 </head>
@@ -92,7 +92,7 @@
                 <div class="right">
                     <!--会员信息--头部-->
                     <div class="summary">
-                        <div class="welcome">您好：<strong class="userName red" id="userName"> </strong>&nbsp;账号余额：<span
+                        <div class="welcome">{{i18n.t('您好')}}：<strong class="userName red" id="userName"> </strong>&nbsp;{{i18n.t('账号余额')}}：<span
                                 class="red coin" id="coin11">0.00</span>{{coinUnit}}<span class="btn recharge"><a
                                 href="recharge.html">{{i18n.t('充值')}}</a></span><span
                                 class="btn withdrawal" v-if="agencyType!=6"><a href="draw.html">{{i18n.t('提款')}}</a></span></div>
@@ -105,9 +105,9 @@
                         </div>
                         <div class="content">
                             <ul class="clearfix" v-cloak>
-                                <li class="xz_Coin">下注总额: <span class="red" v-cloak>{{coinAvg.betAmount}}</span>{{coinUnit}}</li>
-                                <li class="lottery_Coin">中奖总额: <span class="red" v-cloak>{{coinAvg.prizeAmount}}</span>{{coinUnit}}</li>
-                                <li class="profit_loss">盈亏: <span class="red" v-cloak>{{coinAvg.winLose}}</span>{{coinUnit}}</li>
+                                <li class="xz_Coin">{{i18n.t('下注总额')}}: <span class="red" v-cloak>{{coinAvg.betAmount}}</span>{{coinUnit}}</li>
+                                <li class="lottery_Coin">{{i18n.t('中奖总额')}}: <span class="red" v-cloak>{{coinAvg.prizeAmount}}</span>{{coinUnit}}</li>
+                                <li class="profit_loss">{{i18n.t('盈亏')}}: <span class="red" v-cloak>{{coinAvg.winLose}}</span>{{coinUnit}}</li>
                             </ul>
                         </div>
                     </div>
@@ -159,7 +159,7 @@
                                     </thead>
                                     <tbody id="betResultOrder" v-cloak>
                                     <tr>
-                                        <td colspan="10" class="nodate" height="150">暂无数据
+                                        <td colspan="10" class="nodate" height="150">{{i18n.t('暂无数据')}}
                                         </td>
                                     </tr>
                                     </tbody>
@@ -193,21 +193,21 @@
                 <div class="concealDivOrders ordersOne" style="display: none;">
                     <table class="layui-table" lay-skin="nob" v-cloak>
                         <tr>
-                            <td colspan="4" style="background-color: white;text-align: left;padding-left: 18px;font-weight: bold;">订单详情
+                            <td colspan="4" style="background-color: white;text-align: left;padding-left: 18px;font-weight: bold;">{{i18n.t('订单详情')}}
                             </td>
                         </tr>
                         <tr>
-                            <td>订单号:</td>
+                            <td>{{i18n.t('订单号')}}:</td>
                             <td v-cloak>{{orders.orderId}}</td>
-                            <td>出票状態:</td>
+                            <td>{{i18n.t('出票状態')}}:</td>
                             <td v-cloak>{{orders.ticketStatus==0?"出票中":"出票成功"}}</td>
                         </tr>
                         <tr style="border-bottom: 1px #E0E0E0 solid;">
-                            <td>预计奖金:</td>
+                            <td>{{i18n.t('预计奖金')}}:</td>
                             <td v-cloak>{{orders.expectBonuses}}{{coinUnit}}</td>
                             <td>
-                                <span v-if="orders.show==true">期号:</span>
-                                <span v-else>投注方式:</span>
+                                <span v-if="orders.show==true">{{i18n.t('期号')}}:</span>
+                                <span v-else>{{i18n.t('投注方式')}}:</span>
                             </td>
                             <td>
                                 <span v-if="orders.show==true" v-cloak>{{orders.actionNo}}</span>
@@ -215,20 +215,20 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" style="background-color: white;text-align: left;padding-left: 18px;font-weight: bold;">投注详情
+                            <td colspan="2" style="background-color: white;text-align: left;padding-left: 18px;font-weight: bold;">{{i18n.t('投注详情')}}
                             </td>
                             <td colspan="2" style="text-align: right;padding-right: 16px;text-decoration: underline;color: gray;cursor: pointer;" @click="getTicket(orders.betId,orders.type)">
-                                出票明细
+                                {{i18n.t('出票明细')}}
                             </td>
                         </tr>
                         <tbody v-for="item in ordersById" style="border-bottom: 1px #E0E0E0 solid;">
                             <tr>
-                                <td>投注项:</td>
+                                <td>{{i18n.t('投注项')}}:</td>
                                 <td v-cloak>
                                     {{item.homeTeamName}}　vs　{{item.awayTeamName}}
                                     <span v-if="item.guts==1" class="isDan">{{i18n.t('胆')}}</span>
                                 </td>
-                                <td>竞猜项:</td>
+                                <td>{{i18n.t('竞猜项')}}:</td>
                                 <td>
                                     <span v-if='item.guessList&&item.guessList.length>0' v-cloak>
                                         <span v-for="gus in item.guessList" style="margin-right: 5px;display: inline-block;">
@@ -245,12 +245,12 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>比分:</td>
+                                <td>{{i18n.t('比分')}}:</td>
                                 <td>
                                     <span v-if="item.courtScore!=null" v-cloak>{{item.courtScore}}</span>
                                     <span v-else>--</span>
                                 </td>
-                                <td>赛果:</td>
+                                <td>{{i18n.t('赛果')}}:</td>
                                 <td>
                                     <span v-if='item.resultList&&item.resultList.length>0' v-cloak>
                                         <span v-for="res in item.resultList" style="margin-right: 5px;display: inline-block;">
@@ -310,40 +310,40 @@
                 <table class="layui-table" lay-skin="nob"  style="word-wrap: break-word; word-break: break-all;">
                     <tr>
                         <td colspan="4"
-                            style="background-color: white;text-align: left;padding-left: 18px;font-weight: bold;">订单详情
+                            style="background-color: white;text-align: left;padding-left: 18px;font-weight: bold;">{{i18n.t('订单详情')}}
                         </td>
                     </tr>
                     <tr>
-                        <td>订单号:</td>
+                        <td>{{i18n.t('订单号')}}:</td>
                         <td v-cloak>{{ordersTwo.orderId}}</td>
-                        <td>彩种:</td>
+                        <td>{{i18n.t('彩种')}}:</td>
                         <td v-cloak>{{ordersTwo.gameName}}</td>
                         
                     </tr>
                     <tr style="border-bottom: 1px #E0E0E0 solid;">
-                        <td>投注时间:</td>
+                        <td>{{i18n.t('投注时间')}}:</td>
                         <td v-cloak>{{ordersTwo.actionTime}}</td>
-                        <td>期号:</td>
+                        <td>{{i18n.t('期号')}}:</td>
                         <td>{{ordersTwo.actionIssue}}</td>
                     </tr>
                     <tr>
                         <td colspan="4"
-                            style="background-color: white;text-align: left;padding-left: 18px;font-weight: bold;">投注详情
+                            style="background-color: white;text-align: left;padding-left: 18px;font-weight: bold;">{{i18n.t('投注详情')}}
                         </td>
                     </tr>
                     <tbody  style="border-bottom: 1px #E0E0E0 solid;">
                     <tr>
-                        <td>投注号码:</td>
+                        <td>{{i18n.t('投注号码')}}:</td>
                         <td v-cloak>{{ordersTwo.actionData}}
                         </td>
-                        <td>开奖号码:</td>
+                        <td>{{i18n.t('开奖号码')}}:</td>
                         <td>{{ordersTwo.openNo}}
                         </td>
                     </tr>
                     <tr>
-                        <td>投注金额:</td>
+                        <td>{{i18n.t('投注金额')}}:</td>
                         <td>{{ordersTwo.amount}}{{coinUnit}}</td>
-                        <td>中奖金额:</td>
+                        <td>{{i18n.t('中奖金额')}}:</td>
                         <td>
                         	<span v-if="ordersTwo.isCal==0">{{i18n.t('未开奖')}}</span>
                         	<span v-else-if="ordersTwo.isCal==1&&ordersTwo.status==0" style="color: green;">{{i18n.t('未中奖')}}</span>
@@ -351,7 +351,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>投注赔率:</td>
+                        <td>{{i18n.t('投注赔率')}}:</td>
                         <td>{{ordersTwo.betOdds}}</td>
                     </tr>
                     </tbody>

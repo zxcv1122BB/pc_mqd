@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{i18n.t('提款')}}</title>
+    <title>提款</title>
     <link rel="stylesheet" type="text/css" href="css/betrecord.css" />
     <script type="text/javascript" src="../public/js/base.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
@@ -97,7 +97,7 @@
                             <div>
                                 <!--账号总览-->
                                 <div id="title">
-                                    <strong>{{i18n.t('提款金额')}}</strong> <span class="userinfotit">0{{coinUnit}}手续费</span>
+                                    <strong>{{i18n.t('提款金额')}}</strong> <span class="userinfotit">0{{coinUnit}}{{i18n.t('手续费')}}</span>
                                     <span class="yue">{{i18n.t('您当前账户余额')}}<em v-cloak>{{coin}}</em>{{coinUnit}}</span>
                                 </div>
 
@@ -122,17 +122,17 @@
                                                 <table>
                                                     <tr>
                                                         <td></td>
-                                                        <td colspan="2">1. 密码须由
-                                                            <font color="red">6个数字(0-9)</font>组成。 且您的新密码不能和现用的密码相同
-                                                            <br> 2. 提款密码为提款金额时的凭证请会员务必填写详细资料
+                                                        <td colspan="2">1. {{i18n.t('密码须由')}}
+                                                            <font color="red">6{{i18n.t('个数字')}}(0-9)</font>{{i18n.t('组成')}}。 {{i18n.t('且您的新密码不能和现用的密码相同')}}
+                                                            <br> 2. {{i18n.t('提款密码为提款金额时的凭证请会员务必填写详细资料')}}
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>密码：</td>
+                                                        <td>{{i18n.t('密码')}}：</td>
                                                         <td colspan="2"><input type="password" placeholder="请输入提款密码" id="coinpwd"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>确认密码：</td>
+                                                        <td>{{i18n.t('确认密码')}}：</td>
                                                         <td colspan="2"><input type="password" placeholder="请确认提款密码" id="coinpwdAgain"></td>
                                                     </tr>
                                                     <tr>
@@ -152,12 +152,12 @@
                                             <div class="draw">
                                                 <table>
                                                     <tr>
-                                                        <td>真实姓名：</td>
+                                                        <td>{{i18n.t('真实姓名')}}：</td>
                                                         <td><input type="text" v-model="fullName" id="fullName" placeholder="请输入真实姓名"></td>
                                                         <td></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>银行名称：</td>
+                                                        <td>{{i18n.t('银行名称')}}：</td>
                                                         <td>
                                                             <select id="bankName" lay-ignore v-model="bankName" style="display: inline-block;border: ;background: none;border: 1px solid #aaa;height: 33px;width: 100%;">
                                                                    <option value="">{{i18n.t('请选择银行名称')}}</option>
@@ -185,12 +185,12 @@
                                                         <td></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>银行账号：</td>
+                                                        <td>{{i18n.t('银行账号')}}：</td>
                                                         <td><input type="text" placeholder="请输入正確的银行账号" v-model="bankAccount" id="bankAccount"></td>
                                                         <td></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>开户分行：</td>
+                                                        <td>{{i18n.t('开户分行')}}：</td>
                                                         <td><input type="text" v-model="bankAddress" id="bankAddress" placeholder="请输入开户分行"></td>
                                                         <td></td>
                                                     </tr>
@@ -209,8 +209,8 @@
                                         </div>
                                         <div id="show_2">
                                             <div style="text-align: center;color: gray;border: 1px #E3E3E3 solid;border-radius: 5px;padding: 5px;">
-                                                <div v-if="config.onlineCSStatus==1">每天的取款处理时间为：<span v-cloak>{{config.onlineCSStartTime}}至{{config.onlineCSEndTime}}</span>;</div>
-                                                <div>取款1-3分钟内到帐。（如遇高峰期，可能需要延迟到5-10分钟内到帐）</div>
+                                                <div v-if="config.onlineCSStatus==1">{{i18n.t('每天的取款处理时间为')}}：<span v-cloak>{{config.onlineCSStartTime}}至{{config.onlineCSEndTime}}</span>;</div>
+                                                <div>{{i18n.t('取款1-3{{i18n.t('分钟内到帐')}}。（{{i18n.t('如遇高峰期')}}，{{i18n.t('可能需要延迟到')}}5-10{{i18n.t('分钟内到帐')}}）</div>
                                                 <div><span v-if="config.drawingSumlowerLimit">{{i18n.t('用户每次最小提现')}}<span v-cloak>{{config.drawingSumlowerLimit}}</span>{{coinUnit}}，</span><span v-if="config.drawingSumUpperLimit">{{i18n.t('最大提现')}}<span v-cloak>{{config.drawingSumUpperLimit}}</span>{{coinUnit}}</span>
                                                 </div>
                                                 <div>{{i18n.t('今日')}}<em v-if="config.drawingCountLimit">{{i18n.t('可取款')}}<span v-cloak>{{config.drawingCountLimit}}</span>次，</em>{{i18n.t('已取款')}}<span v-cloak>{{isTrue.withdrawTimes}}</span>{{i18n.t('次')}}</div>
@@ -218,32 +218,32 @@
                                             <div class="draw">
                                                 <table>
                                                     <tr>
-                                                        <td>银行名称：</td>
+                                                        <td>{{i18n.t('银行名称')}}：</td>
                                                         <td>{{bankName}}</td>
                                                         <td></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>银行卡号：</td>
+                                                        <td>{{i18n.t('银行卡号')}}：</td>
                                                         <td>{{bankAccount}}</td>
                                                         <td></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>提款所需投注量：</td>
+                                                        <td>{{i18n.t('提款所需投注量')}}：</td>
                                                         <td>{{isTrue.withdrawNeedSum}}{{coinUnit}}</td>
                                                         <td></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>已达投注量：</td>
+                                                        <td>{{i18n.t('已达投注量')}}：</td>
                                                         <td>{{isTrue.betsum}}{{coinUnit}}</td>
                                                         <td></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>请输入提款金额：</td>
+                                                        <td>{{i18n.t('请输入提款金额')}}：</td>
                                                         <td><input type="text" id="cash" pattern placeholder="请输入提款金额" />
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>请输入提款密码：</td>
+                                                        <td>{{i18n.t('请输入提款密码')}}：</td>
                                                         <td><input type="password" v-model="pwd" pattern placeholder="请输入提款密码"></td>
                                                         <td></td>
                                                     </tr>
@@ -279,7 +279,7 @@
                                         </div>
                                         <div id="show_3">
                                             <div class="draw">
-                                                <div><img src="images/success.jpg" />提交成功！</div>
+                                                <div><img src="images/success.jpg" />{{i18n.t('提交成功')}}！</div>
                                                 <a @click="choose_nav(2)" style="color: blue;text-decoration: underline;cursor: pointer;">{{i18n.t('继续取款')}}</a>
                                             </div>
                                         </div>
