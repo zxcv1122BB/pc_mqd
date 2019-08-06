@@ -72,7 +72,7 @@
                                     <a href="/myCenter/recharge.html">{{i18n.t('充值')}}</a>
                                     <div class="hr"></div>
                                 </li>
-                                <li v-if="agencyType!=6">
+                                <li>
                                     <a href="/myCenter/draw.html">{{i18n.t('提款')}}</a>
                                     <div class="hr"></div>
                                 </li>
@@ -147,6 +147,11 @@
     
 </section>
 <script src="../public/js/footer.js"></script>
+<script>
+    new Vue({
+        el: '#main'
+    })
+</script>
 </div>
 </body>
 </html>

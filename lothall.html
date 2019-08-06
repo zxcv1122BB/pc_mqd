@@ -238,7 +238,7 @@ var app = new Vue({
                 _this.dataList[index].deadlineStr = _this.deadlineStr;
             } else {
                 // _this.deadlineStr = '正在请求数据...';
-                _this.deadlineStr = '{{i18n.t('开奖中')}}...';
+                _this.deadlineStr = '开奖中...';
                 _this.dataList[index].deadlineStr = _this.deadlineStr;
                 clearInterval(_this.dataList[index].deadlineTiming);
                 _this.dataList[index].deadlineTiming = '';

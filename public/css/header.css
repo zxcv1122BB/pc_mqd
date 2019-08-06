@@ -53,9 +53,11 @@ box-sizing: border-box;
 }
 
 .fiexd .header {
+    height: 30px;
     position: fixed;
 top: 0;
 left: 0;
+height: 0;
 width: 100%;
 z-index: 9999;
 }
@@ -306,7 +308,7 @@ z-index: 9999;
     color: #fff;
 }
 .top-bar .bar-l {
-    width: 50%;
+    width: 40%;
     float: left;
     font-size: 14px;
 }
@@ -334,7 +336,7 @@ z-index: 9999;
 }
 
 .top-bar .bar-r {
-    width: 50%;
+    width: 60%;
     float: right;
     font-size: 14px;
     text-align: right;
@@ -550,6 +552,7 @@ a:active, a:visited {
     color: #fff;
 }
 .top-bar a.reg_btn{
+    min-width: 1200px;
    padding: 0 10px;
     line-height: 20px;
     transition: color .2s ease;
@@ -571,6 +574,7 @@ a:active, a:visited {
     width: 100%;
     height: 50px;
     line-height: 50px;
+    margin-top: 30px;
     padding: 10px 0;
     background: #e23a3a;
     font: 14px/1.5 Microsoft Yahei,Helvetica Neue,Helvetica,Arial,STHeiTi,sans-serif;
