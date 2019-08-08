@@ -317,7 +317,7 @@ z-index: 9999;
     padding-right: 10px;
 }
 .top-bar .bar-l a.c-red, .top-bar .bar-r a:hover {
-    color: #e23a3a;
+    color: #e23a3a !important;
 }
 .top-bar .bar-l a.c-red .iconfont{
 	font-size: 15px ;
@@ -549,7 +549,7 @@ a:active, a:visited {
 }
 .top-bar a.login_btn:hover{
     background: #ee4740;
-    color: #fff;
+    color: #fff !important;
 }
 .top-bar a.reg_btn{
    padding: 0 10px;
@@ -565,7 +565,10 @@ a:active, a:visited {
 }
 .top-bar a.reg_btn:hover{
     background: #5abbff;
-    color: #fff;
+    color: #fff !important;
+}
+#user_name_1 a:hover {
+    color: #e23a3a !important;
 }
 
 /*导航栏*/
@@ -850,7 +853,6 @@ a:active, a:visited {
  }
 .other-lottery li .inner .more ul li:hover a{
     color: red;
-
 }
 
 .head-nav .nav {

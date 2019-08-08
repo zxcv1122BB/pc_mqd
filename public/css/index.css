@@ -1892,7 +1892,7 @@ overflow: hidden;
 .news-con img{
   float: left;
     width: 84px;
-    height: 62px;
+    margin-top: 20px;
 }
 .hot-news-info{
   margin-left: 100px;
