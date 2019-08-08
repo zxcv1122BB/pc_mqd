@@ -64,7 +64,7 @@ document.writeln("</div>");
 document.writeln("<div class='head-nav' id='head-nav'>");
 document.writeln("  <div class='wrap'>");
 document.writeln("      <div class='nav-link active'>");
-document.writeln("   <a href='/' ><img src='/images/xiao/logo.png' class='logo_img' /> </a>");
+document.writeln("   <a href='/' ><img src='/images/xiao/logo2.png' class='logo_img' /> </a>");
 document.writeln("      </div>");
 document.writeln("      <div class='nav'>");
 document.writeln("          <ul class='clearfix selecz'>");
