@@ -41,6 +41,8 @@ document.writeln("          <a id='logBtn' href='/login/login.html'  class='logi
 document.writeln("          <a id='regBtn' href='/login/register.html' class='reg_btn'>注册</a>");
 document.writeln("          <a href='/agency/agentIntro.html' class='agent_center'>代理中心</a>");
 document.writeln("          <em>|</em>");
+document.writeln("          <a href='http://ssg97.webnode.tw/' target='_bank' class='agent_center'>合營簡介</a>");
+document.writeln("          <em>|</em>");
 document.writeln("          <a href='javascript:void(0)'  onclick='myCollect()'>我的收藏</a>");
 document.writeln("          <em>|</em>");
 document.writeln("          <a href='javascript:;' onclick='showLine()'><img src='/images/IMG_9848.PNG' style='width: 20px;margin-right: 5px;' />客服中心</a>");
