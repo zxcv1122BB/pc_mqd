@@ -51,7 +51,7 @@
 		<div class="record" style="padding-left: 0;">
             <ul class="layui-nav" lay-filter="" v-if="history.length > 0">
               <li class="layui-nav-item banner_num">
-                <a href="javascript:;" class="lucky-nav-box" onclick="showRecord()" v-cloak>第{{history[0]['issue']}}期<span class="r_bage" v-for="item in history[0].recentlyNum" v-cloak>{{item}}</span></a>
+                <a href="javascript:;" class="lucky-nav-box" v-if="history[0]" onclick="showRecord()" v-cloak>第{{history[0]['issue']}}期<span class="r_bage" v-for="item in history[0].recentlyNum" v-cloak>{{item}}</span></a>
                 <dl class="record-box"> 
                   <dd v-for="val in history"><a href="javascript:;" v-cloak>第{{val.issue}}期<span class="r_bage" v-for="item in val.recentlyNum" v-cloak>{{item}}</span></a></dd>
                 </dl>
