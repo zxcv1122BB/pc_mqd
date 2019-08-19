@@ -12,10 +12,10 @@ $(function () {
     });
 
     // 控制机选注数控制菜单的显示隐藏
-    $(".mainArea").on("mouseenter", ".draw_menu", function () {
+    $(".btnList").on("mouseenter", ".draw_menu", function () {
         $(this).children("ul").css({ "display": "block" });
     });
-    $(".mainArea").on("mouseleave", ".draw_menu", function () {
+    $(".btnList").on("mouseleave", ".draw_menu", function () {
         $(this).children("ul").css({ "display": "none" });
     });
 
