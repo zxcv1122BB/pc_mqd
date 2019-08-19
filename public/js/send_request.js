@@ -23,7 +23,7 @@ var base = {
 	// BASE_IP: 'jx.831188.com',
 	BASE_IP: 'mqd188.com/lsapi1',
 	// BASE_IP: 'ssg168.net/lsapi1',
-	BASE_URL: "https://",
+	BASE_URL: "http://",
 	// WS_URL: "ws://ssgcp.net/",
 	WS_URL: "ws://mqd188.com/",
 	// 加密ajax,加token
