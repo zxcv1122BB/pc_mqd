@@ -12,22 +12,22 @@ document.writeln("      <div class='bar-l clearfix' id='user_name_1' style='disp
 document.writeln("          <div class='user-name'>Hi，欢迎");
 document.writeln("              <a href='/myCenter/member.html'  id='user_name_'></a>");
 document.writeln("          </div>");
-document.writeln("          <a href='javascript:void(0)' onclick='quitLogin()'>退出</a>");
+document.writeln("          <a href='javascript:void(0)' onclick='quitLogin()' class='header_word'>退出</a>");
 document.writeln("          <div class='my-count'>");
 document.writeln("              <dt>");
-document.writeln("                  <a href='javascript:void(0)'>我的账户</a><i></i>");
+document.writeln("                  <a href='javascript:void(0)' class='header_word'>我的账户</a><i></i>");
 document.writeln("              </dt>");
 document.writeln("              <div class='count-infor'>");
 document.writeln("                  <div class='count-money'>余额:");
 document.writeln("                      <span id='money' style='color: #e23a3a;'></span>");
 document.writeln("                  </div>");
 document.writeln("                  <div class='count-btn clearfix'>");
-document.writeln("                      <a href='#' onclick='draw()' class='tx-btn'>提现</a>");
-document.writeln("                      <a href='#' onclick='recharge()' class='cz-btn'>充值</a>");
+document.writeln("                      <a href='#' onclick='draw()' class='tx-btn header_word'>提现</a>");
+document.writeln("                      <a href='#' onclick='recharge()' class='cz-btn header_word'>充值</a>");
 document.writeln("                  </div>");
 document.writeln("                  <div class='count-link clearfix'>");
-document.writeln("                      <a href='/myCenter/betrecord.html'>投注记录</a>");
-document.writeln("                      <a href='javascript:void(0)' onclick='quitLogin()'>退出</a>");
+document.writeln("                      <a href='/myCenter/betrecord.html' class='header_word'>投注记录</a>");
+document.writeln("                      <a href='javascript:void(0)' onclick='quitLogin()' class='header_word'>退出</a>");
 document.writeln("                  </div>");
 document.writeln("              </div>");
 document.writeln("          </div>");
@@ -37,23 +37,23 @@ document.writeln("          <a href='javascript:void(0)' onclick='recharge()'>�
 document.writeln("      </div>");
 // 右侧部份
 document.writeln("      <div class='bar-r clearfix'>");
-document.writeln("          <a id='logBtn' href='/login/login.html'  class='login_btn' \>登录</a>");
-document.writeln("          <a id='regBtn' href='/login/register.html' class='reg_btn'>注册</a>");
-document.writeln("          <a href='/agency/agentIntro.html' class='agent_center'>代理中心</a>");
+document.writeln("          <a id='logBtn' href='/login/login.html'  class='login_btn header_word' \>登录</a>");
+document.writeln("          <a id='regBtn' href='/login/register.html' class='reg_btn header_word'>注册</a>");
+document.writeln("          <a href='/agency/agentIntro.html' class='agent_center header_word'>代理中心</a>");
 document.writeln("          <em>|</em>");
-document.writeln("          <a href='http://ssg97.webnode.tw/' target='_bank'>合營簡介</a>");
+document.writeln("          <a href='http://ssg97.webnode.tw/' target='_bank' class='header_word'>合营简介</a>");
 document.writeln("          <em>|</em>");
-document.writeln("          <a href='javascript:void(0)'  onclick='myCollect()'>我的收藏</a>");
+document.writeln("          <a href='javascript:void(0)'  onclick='myCollect()' class='header_word'>我的收藏</a>");
 document.writeln("          <em>|</em>");
 document.writeln("          <a href='javascript:;' onclick='showLine()'><img src='/images/IMG_9848.PNG' style='width: 20px;margin-right: 5px;' />客服中心</a>");
 document.writeln("          <em>|</em>");
-document.writeln("          <a href='/'>首页</a>");
+document.writeln("          <a href='/' class='header_word'>首页</a>");
 document.writeln("          <em>|</em>");
-document.writeln("          <a href='/help.html'>帮助</a>");
+document.writeln("          <a href='/help.html' class='header_word'>帮助</a>");
 document.writeln("          <em>|</em>");
 document.writeln("          <div class='language'>");
 document.writeln("              ");
-document.writeln("                  <a href='javascript:void(0)'><span>语言</span>");
+document.writeln("                  <a href='javascript:void(0)'><span class='header_word'>语言</span>");
 document.writeln("              ");
 document.writeln("              <ul><li onclick=\"checkWord('tr')\"><span>繁体</span></li>");
 document.writeln("                      ");
@@ -71,7 +71,7 @@ document.writeln("      </div>");
 document.writeln("      <div class='nav'>");
 document.writeln("          <ul class='clearfix selecz'>");
 document.writeln("              <li>");
-document.writeln("                  <a href='javascript:;' >选择彩种</a>");
+document.writeln("                  <a href='javascript:;' class='header_word'>选择彩种</a>");
 document.writeln("          <div class='select-lottery drop_down'>");
 document.writeln("              <ul class='cz-list'>");
 document.writeln("                  <li v-for='item in fixedDisplay' v-cloak>");
@@ -81,7 +81,7 @@ document.writeln("                          <dt>{{item.show_name}}</dt>");
 document.writeln("                          <dd :style='item.style'>{{item.sys_config1}}</dd>");
 document.writeln("                      </a>");
 document.writeln("                  </li>");
-document.writeln("                  <a class='more' href='/lothall.html'>查看更多 ></a>");
+document.writeln("                  <a class='more header_word' href='/lothall.html'>查看更多 ></a>");
 document.writeln("              </ul>");
 // document.writeln("              <ul class='other-lottery' v-cloak>");
 // document.writeln("                  <li>");
@@ -124,22 +124,22 @@ document.writeln("              </ul>");
 document.writeln("          </div>");
 document.writeln("              </li>");
 document.writeln("              <li>");
-document.writeln("                  <a href='/lothall.html'>购彩大厅</a>");
+document.writeln("                  <a href='/lothall.html' class='header_word'>购彩大厅</a>");
 document.writeln("              </li>");
 document.writeln("              <li>");
-document.writeln("                  <a href='/kjgg/lottery.html'>开奖公告</a>");
+document.writeln("                  <a href='/kjgg/lottery.html' class='header_word'>开奖公告</a>");
 document.writeln("              </li>");
 document.writeln("              <li>");
-document.writeln("                  <a  href='/favorable.html'>优惠活动</a>");
+document.writeln("                  <a  href='/favorable.html' class='header_word'>优惠活动</a>");
 document.writeln("              </li>");
 document.writeln("              <li class='phone-code'>");
 document.writeln("                  <a>");
 document.writeln("                      <i class='phone-icon'></i>");
-document.writeln("                      <span>手机购彩</span>");
+document.writeln("                      <span class='header_word'>手机购彩</span>");
 document.writeln("                  </a>");
 document.writeln("                  <div class='two-code'>");
 document.writeln("                      <p id='qrcode'></p>");
-document.writeln("                      <h3>扫码下载手机版</h3>");
+document.writeln("                      <h3 class='header_word'>扫码下载手机版</h3>");
 document.writeln("                  </div>");
 document.writeln("              </li>");
 document.writeln("          </ul>");
@@ -170,9 +170,28 @@ let i18n = new VueI18n({
 })
 Vue.prototype.i18n = i18n;
 
-function checkWord (key) {
-	Vue.prototype.i18n.locale = key;
-	localStorage.setItem('lang', key);
+$('.header_word').each(function() {
+	let text = $(this).text();
+	for (let key in window.tr) {
+		if ((key === text || window.tr[key] === text)) {
+			$(this).text(locale === 'zh' ? key : window.tr[key]);
+		}
+	}
+	console.log($(this).text(), '==========');
+})
+
+function checkWord (k) {
+	Vue.prototype.i18n.locale = k;
+	localStorage.setItem('lang', k);
+	$('.header_word').each(function() {
+		let text = $(this).text();
+		for (let key in window.tr) {
+			if ((key === text || window.tr[key] === text)) {
+				$(this).text(k === 'zh' ? key : window.tr[key]);
+			}
+		}
+		console.log($(this).text(), '==========');
+	})
 }
 
 layui.use(['layer', 'element', 'form'], function() {
