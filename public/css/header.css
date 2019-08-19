@@ -308,7 +308,7 @@ z-index: 9999;
     color: #fff;
 }
 .top-bar .bar-l {
-    width: 40%;
+    width: 35%;
     float: left;
     font-size: 14px;
 }
@@ -336,7 +336,7 @@ z-index: 9999;
 }
 
 .top-bar .bar-r {
-    width: 60%;
+    width: 65%;
     float: right;
     font-size: 14px;
     text-align: right;

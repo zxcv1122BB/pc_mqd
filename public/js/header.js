@@ -5,7 +5,7 @@ document.writeln("<div class='top-bar'>");
 document.writeln("  <div class='wrap'>");
 // 未登录时显示
 document.writeln("      <div class='bar-l clearfix' id='user_name_0'>");
-document.writeln("<span>Hi，欢迎来到 馬奇朵 彩票网!</span>");
+document.writeln("<span>Hi，欢迎来到 瑪奇朵 彩票网!</span>");
 document.writeln("      </div>");
 // 已登录时显示
 document.writeln("      <div class='bar-l clearfix' id='user_name_1' style='display: none;'>");
@@ -41,7 +41,7 @@ document.writeln("          <a id='logBtn' href='/login/login.html'  class='logi
 document.writeln("          <a id='regBtn' href='/login/register.html' class='reg_btn'>注册</a>");
 document.writeln("          <a href='/agency/agentIntro.html' class='agent_center'>代理中心</a>");
 document.writeln("          <em>|</em>");
-document.writeln("          <a href='http://ssg97.webnode.tw/' target='_bank' class='agent_center'>合營簡介</a>");
+document.writeln("          <a href='http://ssg97.webnode.tw/' target='_bank'>合營簡介</a>");
 document.writeln("          <em>|</em>");
 document.writeln("          <a href='javascript:void(0)'  onclick='myCollect()'>我的收藏</a>");
 document.writeln("          <em>|</em>");
