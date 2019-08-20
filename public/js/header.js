@@ -53,11 +53,11 @@ document.writeln("          <a href='/help.html' class='header_word'>帮助</a>"
 document.writeln("          <em>|</em>");
 document.writeln("          <div class='language'>");
 document.writeln("              ");
-document.writeln("                  <a href='javascript:void(0)'><span class='header_word'>语言</span>");
+document.writeln("                  <a href='javascript:void(0)' onclick=\"checkWord()\"><span class='check_word_text'>简体</span></a>");
 document.writeln("              ");
-document.writeln("              <ul><li onclick=\"checkWord('tr')\"><span>繁体</span></li>");
-document.writeln("                      ");
-document.writeln("              <li onclick=\"checkWord('zh')\"><span>简体</span></li></ul></a><i></i>");
+// document.writeln("              <ul><li onclick=\"checkWord('tr')\"><span>繁体</span></li>");
+// document.writeln("                      ");
+// document.writeln("              <li onclick=\"checkWord('zh')\"><span>简体</span></li></ul></a><i></i>");
 document.writeln("              </div>");
 document.writeln("          </div>");
 document.writeln("      </div>");
@@ -170,6 +170,8 @@ let i18n = new VueI18n({
 })
 Vue.prototype.i18n = i18n;
 
+$('.check_word_text').text(locale === 'zh' ? '简体' : '繁体');
+
 $('.header_word').each(function() {
 	let text = $(this).text();
 	for (let key in window.tr) {
@@ -177,10 +179,12 @@ $('.header_word').each(function() {
 			$(this).text(locale === 'zh' ? key : window.tr[key]);
 		}
 	}
-	console.log($(this).text(), '==========');
 })
 
-function checkWord (k) {
+function checkWord () {
+	let txt = $('.check_word_text').text() === '繁体' ? '简体' : '繁体';
+	let k = $('.check_word_text').text() === '繁体' ? 'zh' : 'tr';
+	$('.check_word_text').text(txt);
 	Vue.prototype.i18n.locale = k;
 	localStorage.setItem('lang', k);
 	$('.header_word').each(function() {
@@ -190,7 +194,6 @@ function checkWord (k) {
 				$(this).text(k === 'zh' ? key : window.tr[key]);
 			}
 		}
-		console.log($(this).text(), '==========');
 	})
 }
 
