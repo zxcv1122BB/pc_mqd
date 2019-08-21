@@ -1738,7 +1738,7 @@ let lhc = new Vue({
                 ////存储localstorage
                 localStorage.BetsList=JSON.stringify(_this.BetsList);
                 _this.stopBanner="";
-                _this.singleCoins=2;
+                _this.singleCoins='';
                 _this.orderOdds = _this.sigleminPrize[0];
                 $("#header").hide();
             }

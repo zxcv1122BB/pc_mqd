@@ -77,7 +77,7 @@
             <div class="tab clearfix">
                 <ul>
                     <li v-for="(item,index) in menu" :class="index==0?'active':''" @click="switchover_play(index,0)">
-                        <a href="javascript:;" v-cloak>{{item.oneType}}</a>
+                        <a href="javascript:;" v-cloak>{{i18n.t(item.oneType)}}</a>
                     </li>
                 </ul>
             </div>
@@ -85,7 +85,7 @@
                 <ul>
                     <li v-for="(item,index) in menu" :class="index==0?'active':''" >
                         <div style="width: 11%" class="radio_group" v-for="(items,indexs) in item.twoType" @click="switchover_play(index,indexs)" :class="indexs==0?'active':''" v-cloak>
-                           {{items.name3}}
+                           {{i18n.t(items.name3)}}
                         </div>
                     </li>
                 </ul>
@@ -97,13 +97,13 @@
             <div class="playArea">
                 <!--玩法说明-->
                 <div class="title" v-cloak>
-                    <span>{{i18n.t('玩法说明')}}：{{game_tips}}</span>
+                    <span>{{i18n.t('玩法说明')}}：{{i18n.t(game_tips)}}</span>
                 </div>
                 <!--玩法选项区-->
                 <div class="area">
                     <div class="bets_one">
                         <!--玩法标题-->
-                        <header class="topTitle" v-cloak><h2>{{present_title}}</h2></header>
+                        <header class="topTitle" v-cloak><h2>{{i18n.t(present_title)}}</h2></header>
 
                         <!-- 第一位 -->
                         <div class="first_area clearfix" v-if="presentAreaList[0]==1" v-cloak>

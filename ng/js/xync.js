@@ -1314,7 +1314,7 @@ let cqssc = new Vue({
                 _this.clearSelectData(0);
                 //存储localstorage
                 _this.stopBanner = "";
-                _this.singleCoins = 2;
+                _this.singleCoins = '';
 
         },
         // 统计合计和总注数信息
