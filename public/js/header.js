@@ -143,7 +143,7 @@ document.writeln("                      <h3 class='header_word'>扫码下载手�
 document.writeln("                  </div>");
 document.writeln("              </li>");
 document.writeln("              <li>");
-document.writeln("                  <a  href='javascript:void(0)'><i class='video-icon'></i>{{i18n.t('影音')}}</a>");
+document.writeln("                  <a  href='https://www.iqiyi.com'><i class='video-icon'></i>{{i18n.t('影音')}}</a>");
 document.writeln("              </li>");
 document.writeln("          </ul>");
 document.writeln("      </div>");
