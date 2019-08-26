@@ -927,6 +927,16 @@ a:active, a:visited {
     margin-right: 7px;
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAZBAMAAADOJ2OnAAAAD1BMVEUAAAD/8/Pz7e3y6ur/9PSw8EhGAAAABHRSTlMA5j1MC36PjQAAADRJREFUCNdjMHSBAGEGERcnBgYGFRdHBhcoy4UBKgliOTCAAMsQYEEBhKUEZolAWY4I/wIA3H8dn4h7g6AAAAAASUVORK5CYII=) no-repeat 50%
 }
+.head-nav .nav li .video-icon {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 7px;
+  margin-right: 7px;
+  background: url(../img/lottery_img/video.png);
+  background-size: 100%;
+}
 .head-nav .nav .phone-code .two-code a, .head-nav .nav .phone-code:hover .two-code {
     display: block;
 }

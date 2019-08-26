@@ -69,7 +69,7 @@
 			<div class="tab clearfix" v-cloak>
 				<ul>
 					<li v-for="(item,index) in menu" :class="index==0?'active':''" @click="switchover_play(index,0)">
-						<a href="javascript:;">{{item.oneType}}</a>
+						<a href="javascript:;">{{i18n.t(item.oneType)}}</a>
 					</li>
 				</ul>
 			</div>
@@ -77,7 +77,7 @@
 				<ul>
 					<li v-for="(item,index) in menu" :class="index==0?'active':''">
 						<div class="radio_group" v-for="(items,indexs) in item.twoType" @click="switchover_play(index,indexs)" :class="indexs==0?'active':''">
-							{{items.name3}}
+							{{i18n.t(items.name3)}}
 						</div>
 					</li>
 				</ul>

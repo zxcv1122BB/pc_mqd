@@ -1018,7 +1018,7 @@ let cqssc = new Vue({
 				_this.rebateNum = 0;
 				//存储localstorage
 				_this.stopBanner = "";
-				_this.singleCoins = 2;
+				_this.singleCoins = '';
 				_this.rebate = 0;
 				if(obj.judgeId == 189){
                     _this.orderOdds = _this.maxPrize.split('|')[0];

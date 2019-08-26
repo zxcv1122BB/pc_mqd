@@ -299,6 +299,8 @@ var pc = new Vue({
 		},
 		//绑定银行卡
 		addBankMes: function(fullName, bankAccount, bankName, bankAddress) {
+			//去掉前面的 数字
+			bankName  = bankName.substring(4)
 			$(".prompt").html("");
 			var _this = this;
 			var uname = localStorage.getItem("userName");
