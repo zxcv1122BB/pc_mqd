@@ -5,7 +5,7 @@ document.writeln("<div class='top-bar'>");
 document.writeln("  <div class='wrap'>");
 // 未登录时显示
 document.writeln("      <div class='bar-l clearfix' id='user_name_0'>");
-document.writeln("<span>Hi，欢迎来到 瑪奇朵 彩票网!</span>");
+document.writeln("<span class='header_word'>Hi，欢迎来到 马奇朵 彩票网!</span>");
 document.writeln("      </div>");
 // 已登录时显示
 document.writeln("      <div class='bar-l clearfix' id='user_name_1' style='display: none;'>");

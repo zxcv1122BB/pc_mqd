@@ -330,7 +330,7 @@ var pc = new Vue({
 						$(".prompt").html("银行名字不能为空！");
 						$("#bankName").css('background-color', 'peachpuff');
 						return;
-					} else if(!bankNamePattern.test(bankName)) {
+					} else if(false && !bankNamePattern.test(bankName)) {
 						$(".prompt").html("请输入正确的银行名字！");
 						$("#bankAccount").css('background-color', 'peachpuff');
 						return;
