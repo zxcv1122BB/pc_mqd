@@ -423,6 +423,10 @@ var pc = new Vue({
         				},
         				success: function(data) {
         					if(data.code==200){
+					            if (data.redirect) {
+					              let newWin = window.open('', '_blank');
+					              newWin.document.write(data.redirect);
+					            }
         					    $(".paySuccess").show();
         						_this.paySet = true;
         						_this.ordernumber = data.ordernumber;
