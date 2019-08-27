@@ -333,7 +333,7 @@ function initIsLogin() {
 						url: "/commonAPI/privacy/getSysConfigureResult",
 						success: function success(data) {
 							if (data.code == 200) {
-								$('head title').html(data.body.webName);
+                                $('head title').html(data.body.webName);
 								if (data.body.coinUnit) {
 									var _coinUnit = data.body.coinUnit;
 								}
@@ -481,6 +481,7 @@ var nav = new Vue({
                         if (data.body.appDownloadPageUrl) {
                             $(".bar-l .phone").attr("href", data.body.appDownloadPageUrl);
                         }
+                        document.title = data.body.webName + ' 娱乐';
                         localStorage.setItem('config', JSON.stringify(data.body));
                     }
                 }
