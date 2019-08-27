@@ -300,7 +300,7 @@ var pc = new Vue({
 		//绑定银行卡
 		addBankMes: function(fullName, bankAccount, bankName, bankAddress) {
 			//去掉前面的 数字
-			bankName  = bankName.substring(4)
+			// bankName  = bankName.substring(4)
 			$(".prompt").html("");
 			var _this = this;
 			var uname = localStorage.getItem("userName");
@@ -332,11 +332,13 @@ var pc = new Vue({
 						$(".prompt").html("银行名字不能为空！");
 						$("#bankName").css('background-color', 'peachpuff');
 						return;
-					} else if(false && !bankNamePattern.test(bankName)) {
-						$(".prompt").html("请输入正确的银行名字！");
-						$("#bankAccount").css('background-color', 'peachpuff');
-						return;
-					} else {
+					}
+					//  else if(false && !bankNamePattern.test(bankName)) {
+					// 	$(".prompt").html("请输入正确的银行名字！");
+					// 	$("#bankAccount").css('background-color', 'peachpuff');
+					// 	return;
+					// } 
+					else {
 						$("#bankName").css('background-color', 'white');
 						if(bankAddress == "") {
 							$(".prompt").html("开户地址不能为空！");
