@@ -96,7 +96,8 @@
                             <ul class="ball-list clearfix">
                                 <li v-for="item in betarea" v-cloak>
                                     <p :class="{'sel_num':item.isSel}" @click="handleAddClass(item)" v-cloak>
-                                        <span v-cloak>{{i18n.t(item.info)}}</span>
+                                        <span v-cloak v-if="item.info">{{i18n.t(item.info)}}</span>
+                                        <span v-cloak v-else>0</span>
                                         <em v-cloak v-if="isbetshow">{{i18n.t('赔率')}}: {{item.num}}</em>
                                     </p>
                                     <span class="odds"  v-if="isCircleBets" v-cloak>{{item.num}}</span>

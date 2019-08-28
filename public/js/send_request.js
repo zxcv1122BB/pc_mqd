@@ -17,14 +17,8 @@
 // });
 
 var base = {
-	// BASE_IP: '198.44.243.23',
-	// BASE_IP: '154.80.253.34',
-	// BASE_IP: '154.80.253.34',
-	// BASE_IP: 'jx.831188.com',
 	BASE_IP: 'mqd188.com/lsapi1',
-	// BASE_IP: 'ssg168.net/lsapi1',
 	BASE_URL: "http://",
-	// WS_URL: "ws://ssgcp.net/",
 	WS_URL: "ws://mqd188.com/",
 	// 加密ajax,加token
 	websock: '',

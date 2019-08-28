@@ -3112,10 +3112,11 @@ border-radius: 5px;
 .prize-head .img {
   margin-right: 15px;
   width: 8%;
+  padding-top: 6px;
 }
 .prize-head .img img {
-  width: 70px;
-  height: 70px;
+  width: auto;
+  height: 60px;
 }
 .prize-head .info {
   width: 90%;
@@ -3755,7 +3756,7 @@ input {
 }
 .mainArea {
   margin: 20px auto;
-  width: 1120px;
+  width: 1090px;
   position: relative;
 }
 .mainArea .lcbox {
@@ -3790,7 +3791,7 @@ input {
   display: inline;
   float: left;
   margin: 10px 5px 0;
-  width: 360px;
+  width: 351px;
   border-radius: 7px;
 }
 .lcmain .lot_ul li img {
