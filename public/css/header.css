@@ -4147,6 +4147,7 @@ border-radius: 5px;
     padding: 20px 0;
 }
 .icon img {
+  border-radius: 50%;
   height: 65px;
   margin: 0 15px;
 }
