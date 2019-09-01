@@ -85,15 +85,20 @@
                     
                     </nav>
                 <div class="right">
-                    <div class="title">{{i18n.t('下级报表')}}</div>
+                    <div class="title">
+                        <span>{{i18n.t('下级报表')}}</span>
+                        <ul class="navTab" v-if="userNameList.length!==0">
+                            <li v-for="(item,index) in userNameList"><em>&gt;</em> <a href="javascript:;" @click="upDataBack(item,index)" v-cloak>{{item.user_name}}</a></li>
+                        </ul>
+                    </div>
                     <div id="proxy_indexPage" class="proxy_main">
                         <div class="edit">
                             <div id="timeType" class="newTab">
-                                <a href="javascript:;" class="curr" @click="changeType(currSearchType=1)">{{i18n.t('今天')}}</a>
-                                <a href="javascript:;" @click="changeType(currSearchType=2)">{{i18n.t('昨天')}}</a>
-                                <a href="javascript:;" @click="changeType(currSearchType='')">{{i18n.t('近七天')}}</a>
-                                <a href="javascript:;" @click="changeType(currSearchType=3)">{{i18n.t('本月')}}</a>
-                                <a href="javascript:;" @click="changeType(currSearchType=4)">{{i18n.t('上月')}}</a>
+                                <a href="javascript:;" class="curr" @click="changeType(1)">{{i18n.t('今天')}}</a>
+                                <a href="javascript:;" @click="changeType(2)">{{i18n.t('昨天')}}</a>
+                                <a href="javascript:;" @click="changeType('')">{{i18n.t('近七天')}}</a>
+                                <a href="javascript:;" @click="changeType(3)">{{i18n.t('本月')}}</a>
+                                <a href="javascript:;" @click="changeType(4)">{{i18n.t('上月')}}</a>
                             </div>
                             <div class="searchDetail">
                                 <table>
@@ -101,6 +106,7 @@
                                         <th>{{i18n.t('账号')}}</th>
                                         <th>{{i18n.t('用户类型')}}</th>
                                         <th>{{i18n.t('投注金额')}}</th>
+                                        <th>{{i18n.t('目前账户余额')}}</th>
                                         <th>{{i18n.t('中奖金额')}}</th>
                                         <th>{{i18n.t('投注返利')}}</th>
                                         <th>{{i18n.t('返点金额')}}</th>
@@ -115,9 +121,12 @@
                                         <!--</td>-->
                                     <!--</tr>-->
                                     <tr v-for="(item,index) in lowerDatas">
-                                        <td v-cloak>{{item.user_name}}</td>
+                                        <td v-cloak>
+                                                <a href="javascript:;" @click="showPopover(index,0)" style="color: red;text-decoration: underline">{{item.user_name}}</a>
+                                        </td>
                                         <td v-cloak>{{item.level}}级{{item.user_type==1?'代理':'玩家'}}</td>
                                         <td v-cloak>{{item.betAmount}} {{coinUnit}}</td>
+                                        <td v-cloak>{{item.coin||'0.00'}} {{coinUnit}}</td>
                                         <td v-cloak>{{item.bonusAmount}}{{coinUnit}}</td>
                                         <td v-cloak>{{item.betRebate}}{{coinUnit}}</td>
                                         <td v-cloak>{{item.rebateAmount}} {{coinUnit}}</td>

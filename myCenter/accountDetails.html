@@ -178,7 +178,7 @@
                                             <tr v-for="item in arrs" v-cloak>
                                                 <td v-cloak>{{item.applyTime}}</td>
                                                 <td v-cloak>{{item.tradeType==2?"在线存款":(item.tradeType==1?"快速入款":(item.tradeType==3?"一般存款":"--"))}}</td>
-                                                <td v-cloak>{{item.payType==2?"四大超商":"实体ATM"}}</td>
+                                                <td v-cloak>{{item.payType?(item.payType==2?"四大超商":"实体ATM"):'--'}}</td>
                                                 <td v-cloak>{{item.amount}}{{coinUnit}}</td>
                                                 <td v-cloak>
                                                     {{item.state==1?'未处理':(item.state==2?'处理中':(item.state==3?'成功到帐':(item.state==5?'充值失败':'--')))}}

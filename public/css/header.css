@@ -4695,3 +4695,8 @@ p.banner_num span {
 .help p {
     line-height: 30px;
 }
+
+/* 活动图片 */
+.fav_detail>img{
+  width: 100%;
+}

@@ -14,8 +14,9 @@ let Report = new Vue({
         totalPage: 1, //总页数
         coinUnit: '',
         indexArr: '',
-
         agencyType: localStorage.agencyType ? localStorage.agencyType:2,//用户类型
+        userNameList:[],
+        user_name:'',
     },
     created: function () {
         this.getdatas();
@@ -26,9 +27,38 @@ let Report = new Vue({
 
     },
     methods: {
-        changeType:function(){
+        changeType:function(type){
+            this.currSearchType = type
             this.getdatas();
         },
+
+        //显示下级
+        showPopover(index,key){
+            let _this = this
+            _this.user_name = _this.lowerDatas[index].user_name;
+            _this.getdatas(0);
+            var uidIndex  =  _this.userNameList.indexOf(_this.user_name);
+            console.log(_this.lowerDatas[index])
+            //console.log(uidIndex);
+            if(uidIndex == -1){
+                _this.userNameList.push(_this.lowerDatas[index]);
+            }
+        },
+        
+        //upDataBack
+        upDataBack(list,index){
+            var _this=this;
+            if(_this.userNameList.length == 1) {
+                _this.user_name = '';
+                _this.userNameList.splice(index,1);
+            }else{
+                _this.user_name = list.user_name;
+                _this.userNameList.splice(index,(_this.userNameList.length-index));
+            }
+
+            _this.getdatas(0);
+        },
+
         // 获取代理报表数据
         getdatas:function () {
             var _this = this;
@@ -41,7 +71,8 @@ let Report = new Vue({
                     'pageIndex': _this.page,
                     'pageNum': 15,
                     'dateType': _this.currSearchType,
-                    'nextAgentName': ''
+                    'nextAgentName': '',
+                    nextAgentName:_this.user_name,
                 },
                 success: function(data) {
                     //console.log(data);
