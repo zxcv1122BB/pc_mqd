@@ -19,6 +19,7 @@
                 </div>
             </div>
             <div class="lcmain" style="min-height: 100px;">
+                <div v-if="!high.length" style="text-align: center;line-height: 100px;">加载中...</div>
                 <ul class="lot_ul clearfix">
                     <li v-for="item in high">
                         <div class="btnbox_top clearfix" >

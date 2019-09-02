@@ -461,6 +461,11 @@ var nav = new Vue({
         this.localhostPath = fullPath.substring(0, pos);
         this.get_ConfigureResult();
     },
+    created(){
+        if (localStorage.userName && localStorage.access_token) {
+            base.threadPoxi();
+        }
+    },
     methods: {
         //获取系统配置
         get_ConfigureResult: function get_ConfigureResult() {
