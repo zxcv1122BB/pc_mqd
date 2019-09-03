@@ -119,7 +119,7 @@
                                         <td v-cloak>{{item.userName?item.userName:'沙发客'}}</td>
                                         <td v-cloak>{{item.gameName}}</td>
                                         <td v-cloak @click="showPopup(item.userId,item.betId,item.type)"><a href="javascript:" style="color: red;text-decoration:underline">{{item.orderId}}</a></td>
-                                        <td v-cloak>  {{item.status==0?'未中奖':item.status==1?"¥"+item.bonus:item.status==2?'已撤单':'未开奖'}}</td>
+                                        <td v-cloak>  {{item.status==0?'未中奖':item.status==1?"NT$"+item.bonus:item.status==2?'已撤单':'未开奖'}}</td>
                                         <td v-cloak>{{item.actionTime}}</td>
                                     </tr>
                                     <tr  v-if="!recordData||recordData.length==0" >

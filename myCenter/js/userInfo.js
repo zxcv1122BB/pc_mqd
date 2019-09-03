@@ -518,8 +518,9 @@ var app = new Vue({
             return that.isCheckFlag;
         },
         PhoneNumber_validate: function (item, index) {
+            console.log(item)
             var that = this;
-            var reg = /^1[34578]\d{9}$/;
+            var reg = /^1[34578]\d{8}$/;
             var indexValue = $("#" + item.attr_name_en).val();
             if (item.is_check == 1) {
                 if (reg.test(indexValue)) {
@@ -719,9 +720,14 @@ var app = new Vue({
          //注册提交
         submit_validate: function () {
             var that = this;
+            var a = true
             for (var i = 0; i < that.userInfoList.length; i++) {
-                that.onChange_validate(that.userInfoList[i], i);
+                var b = that.onChange_validate(that.userInfoList[i], i);
+                if(that.userInfoList[i].attr_name=!'LINE'&&b!=undefined){
+                    a = a&&b?true:false
+                }
             }
+            if(!a) return;
 //          that.checkVerifyCodeInput();
             that.totalIsInputFlag = 0;
             that.totalIsCheckFlag = 0;

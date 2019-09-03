@@ -19,7 +19,7 @@ document.writeln("                  <a href='javascript:void(0)' class='header_w
 document.writeln("              </dt>");
 document.writeln("              <div class='count-infor'>");
 document.writeln("                  <div class='count-money'>余额:");
-document.writeln("                      <span id='money' style='color: #e23a3a;'></span>");
+document.writeln("                      <span id='money' style='color: #e23a3a;'></span><span style='float:right;color: red;' onclick='initIsLogin()'>刷新</span>");
 document.writeln("                  </div>");
 document.writeln("                  <div class='count-btn clearfix'>");
 document.writeln("                      <a href='#' onclick='draw()' class='tx-btn header_word'>提现</a>");
@@ -753,6 +753,8 @@ var nav = new Vue({
 
     }
 });
+
+$('.header_word ')
 
 // 拿二维码
 if (localStorage.config != undefined) {

@@ -37,7 +37,8 @@ var pc = new Vue({
 		coinAvg:[],   //充值取款总额
 		input_id:'', //订单号
 		coinUnit:'元',
-		agencyType: localStorage.agencyType ? localStorage.agencyType:2//用户类型
+		agencyType: localStorage.agencyType ? localStorage.agencyType:2,//用户类型
+		ordersTwo :{}
 	},
 	created: function() {
 		this.coinUnit = JSON.parse(localStorage.getItem('config')).coinUnit;
@@ -395,6 +396,120 @@ var pc = new Vue({
 					}
 				};
 				base.callAuthApi(obj);
+		},
+		showPopup:function(uid,id,type){
+				if(type < 5){
+						this.CompOrdDetail(uid,id);
+
+				}else{
+						this.numOrdDetail(uid,id);
+				}
+		},
+		//数字彩详情
+		numOrdDetail: function(uid,id) {
+				var data=  {
+								'uid':uid,
+								'betId': id,
+								// 'outOfThrity':_this.outOfThrity,
+						};
+				var _this = this,
+						obj = {
+								type: 'post',
+								data: data,
+								dataType: 'json',
+								url: '/authApi/bets/getNumbersLotteryDetails',
+								success: function(data) {
+										if(data.code == 200) {
+												_this.ordersTwo = data.body;
+												layui.use('layer', function() {
+														var layer = layui.layer;
+														layer.open({
+																title: '查看订单详情',
+																type: 1,
+																content: $('.ordersTwo'),
+																area: ['600px', '500px'],
+																btn: ['关闭'],
+																yes: function(index, layero) {
+																		layer.closeAll('page');
+																}
+
+														})
+												})
+										}
+								},
+								error: function(msg) {
+								}
+						}
+				base.callAuthApi(obj);
+		},
+		 //竞技彩详情
+		 CompOrdDetail: function (uid,id) {
+				var data=  {
+						'uid':uid,
+						'betId': id,
+				};
+				var _this = this,
+						obj = {
+								type: 'post',
+								data: data,
+								dataType: 'json',
+								url: '/authApi/bets/queryBettingInfo',
+								success: function(data) {
+										if(data.code == 200) {
+												_this.$nextTick(function () {
+														layui.use('layer', function () {
+																var layer =layui.layer;
+																layer.open({
+																		title: '查看订单详情',
+																		type: 1,
+																		content: $('.ordersOne'),
+																		area: ['600px', '600px'],
+																		btn: ['关闭'],
+																		yes: function (index, layero) {
+																				layer.closeAll('page');
+																		}
+
+																})
+														});
+												})
+											
+												_this.orders = data.body;
+												_this.ordersById = data.body.list;
+												//投注状态
+												for(var i = 0; i < _this.orders.length; i++) {
+														if(_this.orders[i].status == 0) {
+																_this.orders[i].status = '未中奖'
+														} else if(_this.orders[i].status == 1) {
+																_this.orders[i].status = '中奖'
+														} else if(_this.orders[i].status == 2) {
+																_this.orders[i].status = '已撤单'
+														} else {
+																_this.orders[i].status = '未开奖'
+														}
+												}
+												//投注赛果
+												if(_this.ordersById && _this.ordersById.length > 0) {
+														for(var i = 0; i < _this.ordersById.length; i++) {
+																if(_this.ordersById[i].matchResult == 0) {
+																		_this.ordersById[i].matchResult = '负'
+																} else if(_this.ordersById[i].matchResult == 1) {
+																		_this.ordersById[i].matchResult = '平'
+																} else {
+																		_this.ordersById[i].matchResult = '胜'
+																}
+														}
+												}
+
+										} else {
+												_this.ordersById = [];
+											
+										}
+								},
+								error: function(msg) {
+								}
+						}
+				base.callAuthApi(obj);
+				
 		},
 		selectTime: function(index) {
 			var s1, s2, dateTime = new Date();

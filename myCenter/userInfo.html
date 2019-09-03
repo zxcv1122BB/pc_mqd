@@ -135,7 +135,7 @@
 	                                            			<label>
 	                                            		
 														<em>
-															<input v-if="perfectMarker && item.attr_name_en == 'NAME'" disabled="true" @change="onChange_validate(item,index)" type="text" v-model="item.attr_value" :id=item.attr_name_en :placeholder=item.intro_info  />
+															<input v-if="perfectMarker && item.attr_name_en == 'NAME'" @change="onChange_validate(item,index)" type="text" v-model="item.attr_value" :id=item.attr_name_en :placeholder=item.intro_info  />
 															<input v-else @change="onChange_validate(item,index)" type="text" v-model="item.attr_value" :id=item.attr_name_en :placeholder=item.intro_info  />
 														</em>
 	                                            		</label>
