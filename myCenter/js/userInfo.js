@@ -645,7 +645,7 @@ var app = new Vue({
                     return this.QQ_validate(item, index);
                     break;
                 default:
-                    return false;
+                    return true;
                     break;
             }
         },
@@ -723,11 +723,10 @@ var app = new Vue({
             var a = true
             for (var i = 0; i < that.userInfoList.length; i++) {
                 var b = that.onChange_validate(that.userInfoList[i], i);
-                if(that.userInfoList[i].attr_name=!'LINE'&&b!=undefined){
-                    a = a&&b?true:false
+                if(b!=undefined){
+                    if(!b) return ;
                 }
             }
-            if(!a) return;
 //          that.checkVerifyCodeInput();
             that.totalIsInputFlag = 0;
             that.totalIsCheckFlag = 0;

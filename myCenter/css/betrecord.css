@@ -849,10 +849,10 @@ body {
 #personalArea .tips {
   font-size: 12px;
   position: absolute;
-  right: -20px;
+  right: -58px;
   height: 12px;
   color: #e23a3a;
-  top: 2px;
+  top: 6px;
 }
 
 .list:nth-of-type(1) .fenge {
