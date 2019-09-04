@@ -417,7 +417,6 @@ var pc = new Vue({
 		//提款操作
 		clickEnchash: function() {
 			var _this = this;
-			_this.agentCoin = 1000
 			//银行卡
 			if(_this.isTrue.bankBlacklistStatus == 1) {
 				//提款开关
