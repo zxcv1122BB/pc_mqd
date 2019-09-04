@@ -398,49 +398,44 @@ var pc = new Vue({
 				base.callAuthApi(obj);
 		},
 		showPopup:function(uid,id,type){
-				if(type < 5){
-						this.CompOrdDetail(uid,id);
-
-				}else{
-						this.numOrdDetail(uid,id);
-				}
+			this.numOrdDetail(uid,id);
 		},
 		//数字彩详情
 		numOrdDetail: function(uid,id) {
-				var data=  {
-								'uid':uid,
-								'betId': id,
-								// 'outOfThrity':_this.outOfThrity,
-						};
-				var _this = this,
-						obj = {
-								type: 'post',
-								data: data,
-								dataType: 'json',
-								url: '/authApi/bets/getNumbersLotteryDetails',
-								success: function(data) {
-										if(data.code == 200) {
-												_this.ordersTwo = data.body;
-												layui.use('layer', function() {
-														var layer = layui.layer;
-														layer.open({
-																title: '查看订单详情',
-																type: 1,
-																content: $('.ordersTwo'),
-																area: ['600px', '500px'],
-																btn: ['关闭'],
-																yes: function(index, layero) {
-																		layer.closeAll('page');
-																}
+			var data=  {
+						'uid':uid,
+						'betId': id,
+						// 'outOfThrity':_this.outOfThrity,
+					};
+			var _this = this,
+					obj = {
+							type: 'post',
+							data: data,
+							dataType: 'json',
+							url: '/authApi/bets/getNumbersLotteryDetails',
+							success: function(data) {
+									if(data.code == 200) {
+											_this.ordersTwo = data.body;
+											layui.use('layer', function() {
+													var layer = layui.layer;
+													layer.open({
+															title: '查看订单详情',
+															type: 1,
+															content: $('.ordersTwo'),
+															area: ['600px', '500px'],
+															btn: ['关闭'],
+															yes: function(index, layero) {
+																	layer.closeAll('page');
+															}
 
-														})
-												})
-										}
-								},
-								error: function(msg) {
-								}
-						}
-				base.callAuthApi(obj);
+													})
+											})
+									}
+							},
+							error: function(msg) {
+							}
+					}
+			base.callAuthApi(obj);
 		},
 		 //竞技彩详情
 		 CompOrdDetail: function (uid,id) {
