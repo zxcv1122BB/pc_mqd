@@ -27,7 +27,7 @@ var pc = new Vue({
 		coinUnit: '元',
 		cash: 0,
 		agencyType: localStorage.agencyType ? localStorage.agencyType : 2,//用户类型
-
+		agentCoin:0,
 		userInfoList:'',
 			is_wqf: 1,//1-微信  2-qq 3-手机号
 			wqf_num:'',
@@ -395,6 +395,7 @@ var pc = new Vue({
 							var coin = parseFloat(data.body.COIN).toFixed(2);
 							var fcoin = parseFloat(data.body.FCION).toFixed(2);
 							_this.coin = (parseFloat(coin)).toFixed(2);
+							_this.agentCoin = (parseFloat(data.body.AGENT_COIN)).toFixed(2);
 							if(data.body.BANK_NAME){
 								_this.bankName = data.body.BANK_NAME;
 							}
@@ -416,6 +417,7 @@ var pc = new Vue({
 		//提款操作
 		clickEnchash: function() {
 			var _this = this;
+			_this.agentCoin = 1000
 			//银行卡
 			if(_this.isTrue.bankBlacklistStatus == 1) {
 				//提款开关

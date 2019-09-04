@@ -1937,7 +1937,7 @@ this.recentBetInfo={};
 //              
 
                 _this.handleBetsCoins();
-                //_this.clearSelectData(0,0);
+                _this.clearSelectData(0,0);
                 //存储localstorage
                 _this.stopBanner = "";
                 _this.singleCoins = '';

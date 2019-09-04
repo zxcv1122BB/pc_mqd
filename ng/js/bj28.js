@@ -1104,7 +1104,7 @@ var bj28 = new Vue({
                 }
 
                 _this.handleBetsCoins();
-                //_this.clearSelectData(0);
+                _this.clearSelectData(0);
                 _this.rebateNum = 0;
                 //存储localstorage
                 _this.stopBanner = "";

@@ -99,6 +99,7 @@
                                 <div id="title">
                                     <strong>{{i18n.t('提款金额')}}</strong> <span class="userinfotit">0{{coinUnit}}{{i18n.t('手续费')}}</span>
                                     <span class="yue">{{i18n.t('您当前账户余额')}}<em v-cloak>{{coin}}</em>{{coinUnit}}</span>
+                                    <span class="yue">{{i18n.t('返点金额')}}：<em v-cloak>{{agentCoin}}</em>{{coinUnit}}</span>
                                 </div>
 
                                 <section id="record" v-cloak>
@@ -214,6 +215,7 @@
                                                 <div><span v-if="config.drawingSumlowerLimit">{{i18n.t('用户每次最小提现')}}<span v-cloak>{{config.drawingSumlowerLimit}}</span>{{coinUnit}}，</span><span v-if="config.drawingSumUpperLimit">{{i18n.t('最大提现')}}<span v-cloak>{{config.drawingSumUpperLimit}}</span>{{coinUnit}}</span>
                                                 </div>
                                                 <div>{{i18n.t('今日')}}<em v-if="config.drawingCountLimit">{{i18n.t('可取款')}}<span v-cloak>{{config.drawingCountLimit}}</span>次，</em>{{i18n.t('已取款')}}<span v-cloak>{{isTrue.withdrawTimes}}</span>{{i18n.t('次')}}</div>
+                                                <div v-cloak v-if="Number(agentCoin)>=config.drawingSumlowerLimit" style="color:red;">{{i18n.t('在返点金额范围内提现，无需打码量')}}</div>
                                             </div>
                                             <div class="draw">
                                                 <table>
