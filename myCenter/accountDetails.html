@@ -287,8 +287,7 @@
                                             </tbody>
                                             <tbody class="showBetRecord">
                                             <tr v-for="item in datas" v-cloak>
-                                                <td v-cloak v-if="!(item.coinOperateType=='投注' || item.coinOperateType=='派奖' || item.coinOperateType=='投注撤单')">{{item.orderId?item.orderId:'----'}}</a></td>
-                                                <td v-cloak v-else @click="numOrdDetail(item.uid,item.betId)"><a href="javascript:" style="color: red;text-decoration:underline">{{item.orderId?item.orderId:'----'}}</a></td>
+                                                <td v-cloak>{{item.orderId?item.orderId:'----'}}</a></td>
                                                 <td v-cloak>{{item.sourceTime}}</td>
                                                 <td v-cloak>{{item.coinOperateType==25?'代理返点':item.coinOperateType}}</td>
                                                 <td v-cloak>{{item.coinBefore}}{{coinUnit}}</td>

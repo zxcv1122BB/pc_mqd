@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>USDT充值</title>
+	<link rel="stylesheet" type="text/css" href="css/betrecord.css"/>
+	<style>
+		.mainList{
+			margin-top:20px;
+		}
+	</style>
+	<script type="text/javascript" src="../public/js/base.js"></script>
+	<script type="text/javascript" src="../public/js/jqPaginator.js"></script>
+</head>
+<body>
+<div>
+    <script src="../public/js/header.js"></script>
+    <section id="main">
+        <div class="wrapper">
+            <div id="mainContent" class="clearfix">
+                <!--左边导航-->
+                    <!--顶部用户信息-->
+                    <div id="top">
+                        <div>
+                            <div class="memberMsg">
+                                <div class="title">
+                                    <div><strong>USDT{{i18n.t('充值')}}</strong></div>
+                                </div>
+                            </div>
+							<div id="record" style="width:100%;">
+								<div style="width:50%;float:left;border-right:solid 1px #e23a3a;">
+									<div style="padding-left: 20px;margin-top:20px;">USDT{{i18n.t('数量')}}：<input type="text" name="title" lay-verify="required" autocomplete="off" :placeholder=placeholderUsdtNum class="layui-input" id="usdtNum" v-model="usdtNum" style="width: 50%; margin-bottom: 10px; display: inline-block; border-radius: 5px;padding: 5px 10px;" onkeyup="num(this)"><span id="prompt" style="color: red;"></span>
+									</div>
+									<div style="padding-left: 20px">USDT地址：<input type="text" name="title2" lay-verify="required" autocomplete="off" :placeholder=placeholderUsdtAddress class="layui-input" id="usdtAddress" v-model="usdtAddress" style="width: 80%; margin-bottom: 10px; display: inline-block; border-radius: 5px;padding: 5px 10px;"><span id="prompt" style="color: red;"></span>
+									</div>	
+									<div style="padding-left: 20px" ><span class="btn recharge"><a @click="saveApply">{{i18n.t('提交')}}</a></span></div>
+									</br>
+									<div class="pl_tips">
+										<p>
+											<i></i>
+											※ {{i18n.t('操作步骤')}}： <br/>  
+											1、{{i18n.t('USDT兑换台币汇率以')}}{{usdtConfig.exchangePlatform}}{{i18n.t('为准')}}<br/>
+											2、{{i18n.t('往右侧的平台地址转入您需要充值的USDT')}}<br/>
+											3、{{i18n.t('联系客服确认充值操作')}}<br/>
+											4、{{i18n.t('每笔交易需要扣除')}}{{usdtConfig.amountFee}}{{i18n.t('个')}}USDT
+										</p>
+									</div>
+								</div>
+								<div style="width:49%;float:left;"> 
+									<div style="padding-left: 20px">
+											{{i18n.t('平台USDT地址')}}：<span id="span_address">{{usdtConfig.usdtAddress}}</span>
+											<span class="btn recharge" @click="copyAddress(this)"><a style="background-color:grey!important">{{i18n.t('复制')}}</a></span>
+									</div>
+									<div style="padding-left: 20px;margin-top:20px;" id="usdtQrCode">{{i18n.t('平台USDT二维码')}}：</div>
+								</div>
+							</div>
+						</br></br></br></br></br>
+							<div class="mainList">
+								<table class="layui-table" lay-even="" lay-skin="nob" style="border: none;"
+									   width="100%" cellspacing="0" cellpadding="0" border="0">
+									<thead>
+									<tr class="title">
+										<td>{{i18n.t('序号')}}</td>
+										<td>USDT{{i18n.t('数量')}}</td>
+										<td>USDT{{i18n.t('地址')}}</td>
+										<td>{{i18n.t('申请日期')}}</td>
+										<td>{{i18n.t('成功兑换金额')}}</td>
+										<td>{{i18n.t('状态')}}</td>
+									</tr>
+									</thead>
+									<tbody id="noApplies" v-cloak>
+									<tr>
+										<td colspan="10" class="nodate" height="150" style="text-align: center;">{{i18n.t('暂无数据')}}</td>
+									</tr>
+									</tbody>
+									<tbody id="showApplies">
+										<tr v-for="(item,index) in applies" v-cloak>
+											<td v-cloak>{{index+1}}</td>
+											<td v-cloak>{{item.usdtNum}}</td>
+											<td v-cloak>{{item.usdtAddress}}</td>
+											<td v-cloak>{{item.createTime}}</td>
+											<td v-cloak>{{item.amount}}</td>
+											<td v-cloak>{{item.status==2?i18n.t('审核通过'):item.status==3?i18n.t('拒绝'):i18n.t('审核中')}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+                        </div>
+                    </div>
+                </div> 
+		</div>
+	</section>
+	<div id="fenye"></div>
+	<script type="text/javascript" src="https://static.runoob.com/assets/qrcode/qrcode.min.js"></script>
+	<script src="../public/js/footer.js"></script>
+</div>
+
+<script>
+    $(function() {
+	$(".topNav span").eq(0).addClass("chooseYes");
+	$(".topNav span").eq(0).click();
+	$('.topNav span').click(function() {
+		var index = $(this).index();
+		$(this).addClass('chooseYes').siblings().removeClass('chooseYes');
+	});
+	
+	layui.use('layer', function() {
+		var layer = layui.layer;
+	});
+});
+
+//验证金额框只能输入数字
+function num(obj) {
+	obj.value = obj.value.replace(/[^\d.]/g, ""); //清除"数字"和"."以外的字符
+	obj.value = obj.value.replace(/^\./g, ""); //验证第一个字符是数字
+	obj.value = obj.value.replace(/\.{2,}/g, "."); //只保留第一个, 清除多余的
+	obj.value = obj.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+	obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); //只能输入两个小数
+	$(".paySuccess").hide();
+	$(".payError").hide();
+}
+
+var pc = new Vue({
+	el: "#main",
+	data: {
+		payBlankDatas: [],
+		allpayWay: [],
+		payWay: [], //当前选择支付方式
+		applies: [],
+		usdtConfig:'',
+		page_num: 5,
+		usdtNum:'',
+		usdtAddress:'',
+		coinUnit:'元',
+		placeholderUsdtNum:i18n.t('请输入USDT数量'),
+		placeholderUsdtAddress:i18n.t('请输入USDT地址'),
+		agencyType: localStorage.agencyType ? localStorage.agencyType : 2,//用户类型
+		chanel:1,
+		secondTime:{
+			min:'',
+			sec:''
+		},
+		info: {}
+	},
+	created: function() {
+		this.getUsdtConfig();
+	},
+	methods: {
+		init: function () {
+
+		},
+		saveApply:function(){
+			if(this.usdtNum == "" || this.usdtNum<=0){
+				layer.msg(i18n.t('请输入USDT数量'));
+				$("#usdtNum").css('background-color', 'peachpuff');
+				return;
+			}
+			if(this.usdtAddress == ""){
+				layer.msg(i18n.t('请输入usdt地址'));
+				$("#usdtAddress").css('background-color', 'peachpuff');
+				return;
+			}else if(this.usdtAddress.length<5){
+				layer.msg(i18n.t('请填写格式正确的usdt地址'));
+				$("#usdtAddress").css('background-color', 'peachpuff');
+				return;
+			}
+			let usdtNum = this.usdtNum;
+			let usdtAddress = this.usdtAddress;
+			layer.confirm(i18n.t('您确定要提交该申请吗?'),{btn: [i18n.t('确定'), i18n.t('取消')],title:i18n.t('提示')}, function(){
+				layer.closeAll();
+				let obj = {
+                type: 'post',
+                data: {
+                    "usdtNum": usdtNum,
+                    "usdtAddress": usdtAddress
+                },
+                dataType: 'json',
+				url: '/authApi/saveUsdtRechargeApply',
+                success: function (data) {
+                    if (data.code == 200) {
+						layer.msg(data.msg);
+                        setTimeout(function () {
+                            pc.getApplies(1);
+                        },500)
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                },
+                error: function (msg) {
+					layer.msg("请求失败");
+                }
+            };
+            base.callAuthApi(obj);
+			});
+		},
+		//获取申请过的usdt充值记录
+		getApplies: function(num) {
+			var index;
+			layui.use('layer', function() {
+				var layer = layui.layer;
+				index = layer.load(2, {time: 5*1000});
+			})
+			var _this = this;
+			var data = {
+				'pageIndex': num,
+                'pageNum': this.page_num,
+             	'pageSize': 1
+			};
+				var obj = {
+					type: 'post',
+					data: data,
+					dataType: 'json',
+					url:'/authApi/queryUsdtRechargeApplies',
+					success: function(data) {
+						if(data.code == 200) {
+							_this.applies = data.body.list;
+								//分页的(右边点击)
+	                        if(data.body.list.length>0){
+	                           $('#fenye').jqPaginator('option', {
+	                                totalPages: data.body.pageSize,    //返回总页数
+	                                currentPage: num
+	                            });
+	                        }else {
+	                            $('#fenye').jqPaginator('option', {
+	                                totalPages: 1,
+	                                currentPage: 1
+	                            });
+	                        }
+	                        $("#showApplies").show();
+	                        $("#noApplies").hide();
+						}else{
+							$('#fenye').jqPaginator('option', {
+	                                totalPages: 1,
+	                                currentPage: 1
+							});
+							$("#noApplies").show(); 
+							$("#showApplies").hide();
+						}
+						layer.close(index);
+					},
+					error: function(msg) {
+					}
+				};
+				base.callAuthApi(obj);
+		},
+		getUsdtConfig:function(){
+			let _this  = this;
+			var options = {
+					type: 'post',
+					data: {test:'1'},
+					dataType: 'json',
+					url:'/authApi/queryUsdtConfig',
+					success: function(data) {
+						if(data.code == 200) {
+							_this.usdtConfig = data.body;
+							var qrcode = new QRCode(document.getElementById("usdtQrCode"), {
+								width : 100,
+								height : 100
+							});
+							qrcode.makeCode(_this.usdtConfig.usdtAddress); 
+						}else {
+							layer.msg(data.msg);
+						}
+					},
+					error: function(msg) {
+						layer.msg("请求失败");
+					}
+				};
+				base.callAuthApi(options);
+		},copyAddress:function(obj){
+			var text =document.getElementById("span_address").innerText;
+			var input = document.createElement('input');
+			input.setAttribute('id', 'copyInput');
+			input.setAttribute('value', text);
+			document.getElementsByTagName('body')[0].appendChild(input);
+			document.getElementById('copyInput').select();
+			if (document.execCommand('copy')) {
+				layer.msg(i18n.t('复制成功'));
+			}
+			document.getElementById('copyInput').remove();
+		}
+	},
+	watch: {
+		//监听页码下拉框的值
+		page_num: function() {
+			this.getApplies(1);
+		}
+	},
+	beforeDestroy: function() {
+		document.removeEventListener('keyup');
+	}
+});
+// 加载分页功能
+$.jqPaginator('#fenye', {
+	totalPages: 1, //多少页数据
+	visiblePages: 10, //最多显示几页
+	currentPage: 1, //当前页
+	wrapper: '<ul class="pagination"></ul>',
+	first: '<li class="first"><a href="javascript:void(0);">首页</a></li>',
+	prev: '<li class="prev"><a href="javascript:void(0);">上一页</a></li>',
+	next: '<li class="next"><a href="javascript:void(0);">下一页</a></li>',
+	last: '<li class="last"><a href="javascript:void(0);">尾页</a></li>',
+	page: '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>',
+
+	onPageChange: function(num, type) {
+		pc.getApplies(num);
+	}
+});
+</script>
+</body>
+
+</html>

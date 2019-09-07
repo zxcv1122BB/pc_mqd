@@ -112,9 +112,7 @@
                                         <ul v-for="(ways,index) in payWay" class="nav" @click="clickPay(ways,index)"
                                             isClick='1'>
                                             <li class="compname">{{ways.compname}}</li>
-                                            
                                         </ul>
-            							<div style="background: #F6F6F6;color: gray;padding: 15px;padding-left: 10px;line-height: 28px;font-size: 16px;">{{i18n.t('数字货币充值请联系客服')}}</div>
                                     </div>
                                     <div class="noMessage" style="text-align: center;margin: 15px;">
                                         <p>{{i18n.t('暂无数据')}},</p>
@@ -402,6 +400,10 @@ var pc = new Vue({
     		var _this = this;
 			//判断是否输入要充值的金额
 			_this.money = $("#payCoin").val();
+			if(index==2){
+				window.open("usdtRecharge.html");    
+				return;
+			}
 			if(_this.money == ""||_this.money <=0) {
 			    $("#prompt").html("请输入你要充值的金额");
 			} else {

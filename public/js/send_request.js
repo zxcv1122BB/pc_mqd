@@ -17,7 +17,8 @@
 // });
 
 var base = {
-	BASE_IP: 'mqd188.com/lsapi1',
+	//BASE_IP: 'localhost:10895',
+	BASE_IP: 'mqd188.com/lsapi1',  
 	BASE_URL: "http://",
 	WS_URL: "ws://mqd188.com/",
 	// 加密ajax,加token
@@ -122,28 +123,29 @@ var base = {
             // (options.data);
 
             var str = '',strValue='';
-            // var regEx = "[`~!@#$%^&*()\\-+={}':;,\"\'\\[\\].<>/?￥%…（）_+|【】‘；：”“’。，、？\\s]";
+			var regStr = "[`~!$%^&()\\-+={}':;,\"\'\\[\\].<>/?￥%…（）_+|【】‘；：”“’。，、？\\s]"; 
+			var regEx = new RegExp(regStr,'g');
             for(var j in options.data){
             	if(options.data[j]==undefined||options.data[j]=='undefined'){
                     options.data[j]='';
 				}
                 if(options.data[j]!==''){
-                    strValue = JSON.stringify(options.data[j]);
+					strValue = String(options.data[j]); 
+					strValue= strValue.replace(regEx,'');   
+					strValue = JSON.stringify(strValue); 
                     strValue = strValue.replace(/{/g,"").replace(/"/g,"").replace(/\[/g,"").replace(/:/g,"").replace(/,/g,"").replace(/}/g,"").replace(/]/g,"").replace(/\|/g,"").replace(/\./g,"").replace(/_/g,"").replace(/-/g,"").replace(/\\/g,"").replace(/\s+/g,"");
-                    str = (str +j+ "=" +strValue +"&");
+                    str = (str +j+ "=" +strValue +"&"); 
                 }else{
                     str = (str +j+ "="+"&");
                 }
             }
             str = str.substring(0, str.length - 1);
-            // str= str.replace(regEx);
             // str = str.replace(/-/g,"").replace(/:/g,"").replace(/\s+/g,"");
-
+			//String regEx = "[`~!$%^&()\\-+={}':;,\"\'\\[\\].<>/?￥%…（）_+|【】‘；：”“’。，、？\\s]";
             // str = str.replace(/{/g,"").replace(/"/g,"").replace(/\[/g,"").replace(/:/g,"").replace(/,/g,"").replace(/}/g,"").replace(/]/g,"").replace(/\|/g,"").replace(/\./g,"").replace(/_/g,"").replace(/-/g,"").replace(/\s+/g,"");
 
             // (str+"{"+localStorage.userName+"}");
             options.data.sign =md5(str+"{"+localStorage.userName+"}").toUpperCase();
-
         }
 		return $.ajax({
 
