@@ -520,7 +520,7 @@ var app = new Vue({
         PhoneNumber_validate: function (item, index) {
             console.log(item)
             var that = this;
-            var reg = /^1[3456789]\d{8}$/;
+            var reg = /^[0|1][3456789]\d{8}$/;
             var indexValue = $("#" + item.attr_name_en).val();
             if (item.is_check == 1) {
                 if (reg.test(indexValue)) {
