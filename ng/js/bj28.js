@@ -686,8 +686,8 @@ var bj28 = new Vue({
         //获取登录状态
         get_userState: function get_userState() {
             var that = this,
-                userNameMsg = localStorage.userName;
-            if (userNameMsg && that.pack_coin == 0) {
+            userNameMsg = localStorage.userName;
+            if (userNameMsg ) {
                 that.isLogin = true;
                 var getUserInfo = {
                     type: "post",

@@ -606,7 +606,7 @@ let cqssc = new Vue({
         get_userState: function() {
             var that = this,
                 userNameMsg = localStorage.userName;
-            if(userNameMsg && that.pack_coin == 0) {
+            if(userNameMsg) {
                 var getUserInfo = {
                         type: "post",
                         url: "/authApi/AutoLoginGetUserinfoByRedis",

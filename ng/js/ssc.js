@@ -915,7 +915,7 @@ let ssc = new Vue({
         get_userState: function () {
             var that = this,
                 userNameMsg = localStorage.userName;
-            if (userNameMsg && that.pack_coin == 0) {
+            if (userNameMsg) {
                 that.isLogin = true;
                 var getUserInfo = {
                     type: "post",

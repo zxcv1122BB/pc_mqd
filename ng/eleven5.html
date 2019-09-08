@@ -19,7 +19,8 @@
     			<li class="icon"><img :src="'../'+pic_url"></li>
     			<li><h2 class="title" v-cloak>{{typeName}}</h2></li>
     			<div class="welcome" style="padding: 8px 40px;">{{i18n.t('账号余额')}}: <span id="coin11" class="red coin" style="font-size: 20px;" v-cloak>{{pack_coin}}</span>{{i18n.t('元')}}</div>
-    		</ul>
+                <div style="padding-top: 6px;color:red;cursor:pointer;" @click="get_userState">刷新余额</div>
+            </ul>
     	</div>
     	<div class="trendOpenBtn" style="display: flex;align-items: center;">
     		<div style="margin: 0 15px;" @click="collectFn"><i :class="['iconfont',isCollect==1?'coll_succ':'coll_fail']" v-cloak>{{(isCollect==1?'&#xe666;':'&#xe7ce;')}}</i></div>
