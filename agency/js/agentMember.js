@@ -84,15 +84,18 @@ let Member = new Vue({
                 data:paramData,
                 success:function(data){
                     if(data.code==200){
-                        if( _this.downPageIndex==1){
-                            if (!data.body.list || data.body.list.length){
-                                _this.noMsg="暂无数据";
-                            }
-                            _this.nowloadList=data.body.list;
+                        if( data.body.list.length<1){
+                            _this.noMsg="暂无数据";
+                            $('#fenye').jqPaginator('option', {
+                                totalPages: 1,
+                                currentPage: 1 
+                            });
                         }else{
-                            data.body.list.map(function(item){
-                                _this.nowloadList.push(item);
-                            })
+                            _this.nowloadList = data.body.list;
+                            $('#fenye').jqPaginator('option', {
+                                totalPages: data.body.pageSize,    //返回总页数
+                                currentPage: index
+                            });
                         }
                     }else{
                         _this.noMsg="暂无数据";
