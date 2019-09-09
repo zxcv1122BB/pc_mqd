@@ -60,11 +60,11 @@ let Member = new Vue({
     },
     methods: {
 
-        loadMemberList(index){
+        loadMemberList(numIndex){
 
             var paramData={},
                 _this=this;
-            if(index==0){
+            if(numIndex==0){
                 paramData={
                     uid:_this.uid,
                     pageIndex:  _this.downPageIndex,
@@ -72,7 +72,7 @@ let Member = new Vue({
                 };
             }else{
                 paramData={
-                    pageIndex:  _this.downPageIndex,
+                    pageIndex:  numIndex,
                     pageNum:10,
                     lowerUserName:_this.lowerUserName,
                     userType:_this.userType
@@ -94,7 +94,7 @@ let Member = new Vue({
                             _this.nowloadList = data.body.list;
                             $('#fenye').jqPaginator('option', {
                                 totalPages: data.body.pageSize,    //返回总页数
-                                currentPage: index
+                                currentPage: numIndex
                             });
                         }
                     }else{
@@ -195,6 +195,6 @@ $.jqPaginator('#fenye', {
 
     onPageChange: function (num, type) {
         Member.pageIndex = num;
-        Member.loadMemberList();
+        Member.loadMemberList(num); 
     }
 });
