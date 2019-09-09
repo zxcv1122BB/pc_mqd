@@ -4,8 +4,8 @@ $(function () {
         $(this).addClass('curr');
     });
 });
-let Member = new Vue({
-    el: "#agentMember",
+var pc = new Vue({
+    el: "#agentMember", 
     data: {
         pageIndex:0,
 
@@ -51,8 +51,7 @@ let Member = new Vue({
         agencyType: localStorage.agencyType ? localStorage.agencyType:2,//用户类型
     },
     created: function () {
-        this.loadMemberList();
-
+        
     },
     mounted: function () {
 
@@ -64,6 +63,8 @@ let Member = new Vue({
 
             var paramData={},
                 _this=this;
+                console.log("=00==="); 
+			console.log(numIndex);
             if(numIndex==0){
                 paramData={
                     uid:_this.uid,
@@ -194,7 +195,6 @@ $.jqPaginator('#fenye', {
     page: '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>',
 
     onPageChange: function (num, type) {
-        Member.pageIndex = num;
-        Member.loadMemberList(num); 
+        pc.loadMemberList(num);  
     }
 });
