@@ -4,8 +4,8 @@ $(function () {
         $(this).addClass('curr');
     });
 });
-let Member = new Vue({
-    el: "#agentMember",
+var pc = new Vue({
+    el: "#agentMember", 
     data: {
         pageIndex:0,
 
@@ -51,8 +51,7 @@ let Member = new Vue({
         agencyType: localStorage.agencyType ? localStorage.agencyType:2,//用户类型
     },
     created: function () {
-        this.loadMemberList();
-
+        
     },
     mounted: function () {
 
@@ -60,11 +59,13 @@ let Member = new Vue({
     },
     methods: {
 
-        loadMemberList(index){
+        loadMemberList(numIndex){
 
             var paramData={},
                 _this=this;
-            if(index==0){
+                console.log("=00==="); 
+			console.log(numIndex);
+            if(numIndex==0){
                 paramData={
                     uid:_this.uid,
                     pageIndex:  _this.downPageIndex,
@@ -72,7 +73,7 @@ let Member = new Vue({
                 };
             }else{
                 paramData={
-                    pageIndex:  _this.downPageIndex,
+                    pageIndex:  numIndex,
                     pageNum:10,
                     lowerUserName:_this.lowerUserName,
                     userType:_this.userType
@@ -94,7 +95,7 @@ let Member = new Vue({
                             _this.nowloadList = data.body.list;
                             $('#fenye').jqPaginator('option', {
                                 totalPages: data.body.pageSize,    //返回总页数
-                                currentPage: index
+                                currentPage: numIndex
                             });
                         }
                     }else{
@@ -194,7 +195,6 @@ $.jqPaginator('#fenye', {
     page: '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>',
 
     onPageChange: function (num, type) {
-        Member.pageIndex = num;
-        Member.loadMemberList();
+        pc.loadMemberList(num);  
     }
 });
