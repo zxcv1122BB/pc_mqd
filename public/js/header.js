@@ -138,7 +138,7 @@ document.writeln("                      <i class='phone-icon'></i>");
 document.writeln("                      <span class='header_word'>手机购彩</span>");
 document.writeln("                  </a>");
 document.writeln("                  <div class='two-code'>");
-document.writeln("                      <p id='qrcode'></p>");
+document.writeln("                      <p id='qrcode'><img src='../../images/IMG_9849.png' style='width:120px;height:120px;' /></p>");
 document.writeln("                      <h3 class='header_word'>扫码下载手机版</h3>");
 document.writeln("                  </div>");
 document.writeln("              </li>");
@@ -767,42 +767,42 @@ var nav = new Vue({
 $('.header_word ')
 
 // 拿二维码
-if (localStorage.config != undefined) {
-    var obj = JSON.parse(localStorage.config);
-    jQuery('#qrcode').qrcode({
-        render: "canvas", // 渲染方式有table方式和canvas方式
-        width: 120, //默认宽度
-        height: 120, //默认高度
-        text: obj.appDownloadPageUrl, //二维码内容
-        typeNumber: -1, //计算模式一般默认为-1
-        correctLevel: 0, //二维码纠错级别
-        background: "#ffffff", //背景颜色
-        foreground: "#000000" //二维码颜色
-    });
-} else {
-    var _obj = {
-        type: "post",
-        data: {},
-        url: "/commonAPI/privacy/getSysConfigureResult",
-        success: function success(data) {
-            //(data);
-            if (data.code == 200) {
-                var config2 = data.body;
-                localStorage.config = JSON.stringify(data.body);
-                jQuery('#qrcode').qrcode({
-                    render: "canvas", // 渲染方式有table方式和canvas方式
-                    width: 120, //默认宽度
-                    height: 120, //默认高度
-                    text: config2.appDownloadPageUrl, //二维码内容
-                    typeNumber: -1, //计算模式一般默认为-1
-                    correctLevel: 0, //二维码纠错级别
-                    background: "#ffffff", //背景颜色
-                    foreground: "#000000" //二维码颜色
-                });
-            } else {
-                //('获取缓存失败');
-            }
-        }
-    };
-    base.callCommonApi(_obj);
-}
+// if (localStorage.config != undefined) {
+//     var obj = JSON.parse(localStorage.config);
+//     jQuery('#qrcode').qrcode({
+//         render: "canvas", // 渲染方式有table方式和canvas方式
+//         width: 120, //默认宽度
+//         height: 120, //默认高度
+//         text: obj.appDownloadPageUrl, //二维码内容
+//         typeNumber: -1, //计算模式一般默认为-1
+//         correctLevel: 0, //二维码纠错级别
+//         background: "#ffffff", //背景颜色
+//         foreground: "#000000" //二维码颜色
+//     });
+// } else {
+//     var _obj = {
+//         type: "post",
+//         data: {},
+//         url: "/commonAPI/privacy/getSysConfigureResult",
+//         success: function success(data) {
+//             //(data);
+//             if (data.code == 200) {
+//                 var config2 = data.body;
+//                 localStorage.config = JSON.stringify(data.body);
+//                 jQuery('#qrcode').qrcode({
+//                     render: "canvas", // 渲染方式有table方式和canvas方式
+//                     width: 120, //默认宽度
+//                     height: 120, //默认高度
+//                     text: config2.appDownloadPageUrl, //二维码内容
+//                     typeNumber: -1, //计算模式一般默认为-1
+//                     correctLevel: 0, //二维码纠错级别
+//                     background: "#ffffff", //背景颜色
+//                     foreground: "#000000" //二维码颜色
+//                 });
+//             } else {
+//                 //('获取缓存失败');
+//             }
+//         }
+//     };
+//     base.callCommonApi(_obj);
+// }
