@@ -228,7 +228,7 @@ function showLine() {
     layer.open({
         type: 1,
         title: '客服',
-        content: "<div class='two-code' style='padding:30px;'><img src='/images/IMG_9849.png'></p><h3 style='margin-top: 20px;text-align:center;'>客服二维码</h3></div>",
+        content: "<div class='two-code' style='padding:30px;'><img src='/images/IMG_9850.png'></p><h3 style='margin-top: 20px;text-align:center;'>客服二维码</h3></div>",
         success: function() {
             jQuery('#kfCode').qrcode({
                 render: "canvas", // 渲染方式有table方式和canvas方式
