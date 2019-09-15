@@ -83,7 +83,7 @@
                     
                             </ul>
                         </div>
-                        <div class="agency">
+                        <div class="agency" v-if="agencyType==1">
                             <ul>
                                 <blockquote class="layui-elem-quote"><span class="iconfont">&#xe65a;</span>{{i18n.t('代理中心')}}</blockquote>
                                 <li class="on">
@@ -144,12 +144,14 @@
             </div>
         </div>
     </div>
-    
 </section>
 <script src="../public/js/footer.js"></script>
 <script>
     new Vue({
-        el: '#main'
+        el: '#main',
+        data:{
+            agencyType: localStorage.agencyType ? localStorage.agencyType:2,//用户类型
+        }
     })
 </script>
 </div>
