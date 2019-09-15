@@ -62,9 +62,7 @@ var pc = new Vue({
         loadMemberList(numIndex){
 
             var paramData={},
-                _this=this;
-                console.log("=00==="); 
-			console.log(numIndex);
+            _this=this;
             if(numIndex==0){
                 paramData={
                     uid:_this.uid,
