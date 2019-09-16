@@ -136,7 +136,7 @@ let downAccount = new Vue({
                             });
                             //console.log(data);
                         } else {
-
+                            layer.msg(data.msg);
                         }
                     },
                     error: function (msg) {
