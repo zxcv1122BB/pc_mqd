@@ -17,10 +17,10 @@
 // });
 
 var base = {
-	// BASE_IP: 'localhost:10895',
+	//BASE_IP: 'localhost:10895',
 	BASE_IP: 'mqd188.com/lsapi1',  
 	BASE_URL: "https://",
-	WS_URL: "wss://mqd188.com/",
+	WS_URL: "wss://mqd188.com", 
 	// 加密ajax,加token
 	websock: '',
 	userMess:[],
@@ -545,7 +545,7 @@ var base = {
 			userType = 1;
 		}
 		//获取ip地址
-		$.getScript('http://pv.sohu.com/cityjson?ie=utf-8', function() {
+		$.getScript('https://pv.sohu.com/cityjson?ie=utf-8', function() {
 			ip = returnCitySN["cip"];
 			_this.websock = new WebSocket(_this.WS_URL + "/ws?username=" + localStorage.userName + "&channel=" + browserType.initMethod(name).channel + "&device=" + browserType.initMethod(name).device + "&ip=" + ip + '&token=' + token + '&userType=' + userType);
 			_this.websock.onopen = function(evt) {
