@@ -39,6 +39,24 @@ var app = new Vue({
                 area: ['500px', 'auto'],
                 content: $(e.target.dataset.id)
             });
+            if(e.target.dataset.id == '.bank'){
+                var a = this.selectuserInfoList
+                if(this.selectuserInfoList){
+                    this.firstName = a.NAME || ''
+                    this.bankAccount = a.bankAccount || ''
+                    this.bankDot = a.bankAddress || ''
+                    this.bankName = a.bankName || ''
+                    $('#bankName option').each(function() {
+                        $("select").find("option").attr("selected",false);
+                        if(parseInt($(this).html()) == parseInt(a.bankName)){
+                            var _this = this
+                            setTimeout(function(){
+                                $(_this).attr('selected',true)
+                            },100)
+                        }
+                    });
+                }
+            }
         },
         getUserInfo: function () {
             let _this = this,that=this;

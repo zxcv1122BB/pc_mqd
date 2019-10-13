@@ -110,7 +110,10 @@
                                   </div>
                                   <div class="layui-form-item">
                                     <label class="layui-form-label">{{i18n.t('银行卡')}}</label>
-                                    <div class="layui-form-mid" v-cloak v-if="bankPrivacyStatus==0">({{i18n.t('卡号')}}：{{datas.BANK_ACCOUNT}})<span style="color: #aaa;margin-left:10px;">{{i18n.t('如需更换银行卡绑定')}}，{{i18n.t('请联系客服')}}。</span></div>
+                                    <div class="layui-form-mid" v-cloak v-if="bankPrivacyStatus==0">({{i18n.t('卡号')}}：{{datas.BANK_ACCOUNT}})
+																			<!-- <span style="color: #aaa;margin-left:10px;">{{i18n.t('如需更换银行卡绑定')}}，{{i18n.t('请联系客服')}}。</span> -->
+																			<button class="layui-btn layui-btn-normal layui-btn-radius" @click="openLayer" data-id=".bank">{{i18n.t('编辑')}}</button>
+																		</div>
                                     <div class="layui-form-mid red" v-else>{{i18n.t('暂未绑定请先添加银行卡')}}<button class="layui-btn layui-btn-normal layui-btn-radius" @click="openLayer" data-id=".bank">{{i18n.t('立即添加')}}</button></div>
                                   </div>
                                   <div class="layui-form-item">
