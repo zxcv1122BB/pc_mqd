@@ -17,10 +17,10 @@
 // });
 
 var base = {
-	// BASE_IP: 'localhost:10895',
+	//BASE_IP: 'localhost:10895',
 	BASE_IP: 'mqd188.com/lsapi1',  
 	BASE_URL: "https://",
-	WS_URL: "wss://mqd188.com/",
+	WS_URL: "wss://mqd188.com", 
 	// 加密ajax,加token
 	websock: '',
 	userMess:[],

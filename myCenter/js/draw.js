@@ -18,6 +18,7 @@ var pc = new Vue({
 		pwd: '', //取款
 		coin: '', //余额
 		bankName: '', //银行名称
+		bankName2: '', //银行名称
 		bankAccount: '', //银行卡号
 		bankAddress: '', //开户网点
 		isTrue: [],
@@ -398,6 +399,7 @@ var pc = new Vue({
 							_this.agentCoin = (parseFloat(data.body.AGENT_COIN)).toFixed(2);
 							if(data.body.BANK_NAME){
 								_this.bankName = data.body.BANK_NAME;
+								_this.bankName2 = data.body.BANK_NAME;
 							}
 							if(data.body.BANK_ACCOUNT){
 								_this.bankAccount = data.body.BANK_ACCOUNT
